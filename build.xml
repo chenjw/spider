@@ -9,8 +9,13 @@
 	<property name="build.classes.dir" location="${build.dir}/classes"/>
 	<property name="dist.dir" location="${base.dir}/dist"/>
 	<property environment="env"/>
+<<<<<<< HEAD
 	<property name="version" value="0.4.9"/>
 	<property name="appName" value="knife"/>
+=======
+	<property name="version" value="1.0.0"/>
+	<property name="appName" value="textimage"/>
+>>>>>>> parent of 428709a... a
 	<property name="date" value="2012"/>
 	
   	<path id="lib.path">
