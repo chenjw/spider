@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="knife" basedir="." default="main">
+<project name="spider" basedir="." default="main">
     
     <!-- Properties -->
 
@@ -60,7 +60,7 @@
 	</target>
 
 	<target name="tar">
-		<tar destfile="${dist.dir}/textimage-${version}.tar.gz" basedir="${dist.dir}/knife" compression="gzip"/>
+		<tar destfile="${dist.dir}/textimage-${version}.tar.gz" basedir="${dist.dir}/textimage" compression="gzip"/>
 	</target>
     
     	<target name="main" depends="init,build-core,copy-lib,tar"/>
