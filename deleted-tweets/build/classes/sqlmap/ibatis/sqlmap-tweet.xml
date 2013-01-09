@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="dt_tweet">
+
+	<typeAlias alias="TA-DT-TWEET" type="com.chenjw.spider.weibo.dataobject.TweetDO"/>
+
+	<resultMap class="TA-DT-TWEET" id="RM-DT-TWEET">
+		<result property="id" column="TID" jdbcType="VARCHAR" />
+		<result property="userId" column="USER_ID" jdbcType="VARCHAR" />
+		<result property="postDate" column="POST_DATE" jdbcType="DATE" javaType="date" />
+		<result property="content" column="CONTENT" typeHandler="org.springframework.orm.ibatis.support.BlobByteArrayTypeHandler" />
+	</resultMap>
+
+	<select id="MS-SELECT-TWEET-IDS-BY-USER-ID" parameterClass="java.lang.String"
+		resultMap="RM-DT-TWEET">
+		SELECT TID,USER_ID,POST_DATE,CONTENT
+		FROM dt_tweet WHERE USER_ID=#userId#
+	</select>
+	
+	<select id="MS-SELECT-TWEET-BY-TID" parameterClass="java.lang.String"
+		resultMap="RM-DT-TWEET">
+		SELECT TID,USER_ID,POST_DATE,CONTENT
+		FROM dt_tweet WHERE TID=#tid#
+	</select>
+
+    <insert id="MS-INSERT-TWEET" parameterClass="TA-DT-TWEET">
+        INSERT INTO dt_tweet (
+            TID,USER_ID,POST_DATE,CONTENT,GMT_CREATE
+        ) VALUES (
+            #id#,#userId#,#postDate#,#content#,now()
+        )
+    </insert>
+    
+	<delete id="MS-DELETE-TWEET" parameterClass="java.lang.String">
+        DELETE FROM dt_tweet WHERE TID=#tid#
+    </delete>
+   
+</sqlMap>

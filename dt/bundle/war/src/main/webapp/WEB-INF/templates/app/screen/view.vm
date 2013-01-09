@@ -1,0 +1,37 @@
+<html xmlns="http://www.w3.org/1999/xhtml" debug="true">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <link href="css/frame.css" type="text/css" rel="stylesheet" charset="utf-8"/>
+        <link href="css/A_index.css" type="text/css" rel="stylesheet" charset="utf-8"/>
+        <link href="css/index.css" type="text/css" rel="stylesheet" charset="utf-8" />
+        <link href="css/skin.css" type="text/css" rel="stylesheet" charset="utf-8"/>
+        <link href="css/right_thirdpart.css" type="text/css" rel="stylesheet" charset="utf-8"/>
+        <link href="css/wbim.css" type="text/css" rel="stylesheet" charset="utf-8"/>
+        <title>我的首页 新浪微博-随时随地分享身边的新鲜事儿</title>
+    </head>
+    <body class="B_index L-zh-cn" style="">
+        <div class="W_miniblog">
+            <div class="W_miniblog_fb">
+                <div class="W_main">
+                    <div class="W_main_bg clearfix">
+                        <div class="W_main_l">
+                            <div class="WB_left_nav">
+                            </div>
+                        </div>
+                        <div id="plc_main">
+                            <div class="W_main_a">
+                                <div class="W_main_c" id="Box_center" ucardconf="type=1" smartconf="type=1">
+                                    <div id="pl_content_homeFeed">
+                                        <div class="WB_feed" pagenum="1" node-type="feed_list">
+                                            $control.setTemplate("detail_list.vm")
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

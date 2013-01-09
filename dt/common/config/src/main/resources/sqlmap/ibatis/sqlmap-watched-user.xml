@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="dt_watched_user">
+	<typeAlias alias="TA-DT-WATCHED-USER" type="com.chenjw.spider.dt.dataobject.WatchedUserDO"/>
+
+	<resultMap class="TA-DT-WATCHED-USER" id="RM-WATCHED-USER">
+		<result property="userId" column="USER_ID" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<select id="MS-SELECT-ALL-WATCHED-USER" resultMap="RM-WATCHED-USER">
+		SELECT USER_ID
+		FROM dt_watched_user WHERE 1=1
+	</select>
+
+	<select id="MS-SELECT-WATCHED-USER" resultMap="RM-WATCHED-USER">
+		SELECT USER_ID
+		FROM dt_watched_user WHERE USER_ID=#userId#
+	</select>
+
+
+    <insert id="MS-INSERT-WATCHED-USER" parameterClass="TA-DT-WATCHED-USER">
+        INSERT INTO dt_watched_user (
+           	USER_ID,GMT_CREATE
+        ) VALUES (
+    		#userId#,now()
+        )
+    </insert>
+</sqlMap>

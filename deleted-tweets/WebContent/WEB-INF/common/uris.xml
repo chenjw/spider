@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="GBK" ?>
+<beans:beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:services="http://www.alibaba.com/schema/services" xmlns:uris="http://www.alibaba.com/schema/services/uris"
+	xmlns="http://www.alibaba.com/schema/services/uris"
+	xmlns:uri-interceptors="http://www.alibaba.com/schema/services/uris/interceptors"
+	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="
+        http://www.alibaba.com/schema/services http://localhost:8080/schema/services.xsd
+        http://www.alibaba.com/schema/services/uris http://localhost:8080/schema/services-uris.xsd
+        http://www.alibaba.com/schema/services/uris/interceptors http://localhost:8080/schema/services-uris-interceptors.xsd
+        http://www.springframework.org/schema/beans http://localhost:8080/schema/www.springframework.org/schema/beans/spring-beans.xsd
+    ">
+
+	<services:uris>
+		<content-uri id="themisServer">
+			<serverURI>http://themis-test.china.alibaba.com:6100</serverURI>
+		</content-uri>
+		<content-uri id="levitServer">
+			<serverURI>http://levit-test.china.alibaba.com:33100</serverURI>
+		</content-uri>
+		<turbine-uri id="homeLink" exposed="true" extends="themisServer">
+			<componentPath>/</componentPath>
+		</turbine-uri>
+
+		<turbine-content-uri id="homeContent" exposed="true"
+			extends="homeLink" />
+
+		<!-- 认证module -->
+		<turbine-uri id="authenticateModule" exposed="true"
+			extends="themisServer">
+			<componentPath>/authenticate</componentPath>
+		</turbine-uri>
+		<turbine-content-uri id="authenticateContent"
+			exposed="true" extends="authenticateModule" />
+
+		<turbine-uri id="revocSuccess" exposed="true"
+			extends="authenticateModule">
+			<target>auth/auth_index.htm</target>
+		</turbine-uri>
+		<turbine-uri id="authIndex" exposed="true" extends="authenticateModule">
+			<target>auth/auth_index.htm</target>
+		</turbine-uri>
+
+		<turbine-uri id="idCardVerify" exposed="true"
+			extends="authenticateModule">
+			<target>id_card_verify.json</target>
+		</turbine-uri>
+		<!-- winport跳转 -->
+		<turbine-uri id="REDIRECT_TO_WINPORT" exposed="true"
+			extends="authenticateModule">
+			<target>redirectToWinport/goWp.htm</target>
+		</turbine-uri>
+		<!-- 诚信档案跳转 -->
+		<turbine-uri id="REDIRECT_TO_PROFILE" exposed="true"
+			extends="authenticateModule">
+			<target>redirectToWinport/goProfile.htm</target>
+		</turbine-uri>
+
+		<!-- alipay bankRemit interface -->
+		<uri id="alipayBankRemitUrl" exposed="true">
+			<serverURI> http://10.20.141.160:6100/authenticate/alipay/bankRemit.htm</serverURI>
+		</uri>
+		<!-- alipay indentity interface -->
+		<uri id="alipayIdentityUrl" exposed="true">
+			<serverURI> http://10.20.141.160:6100/authenticate/alipay/indentityRemit.htm</serverURI>
+		</uri>
+		<!-- alipay 主站登陆地址 -->
+		<content-uri id="alipayIndexServer" exposed="true">
+			<serverURI>http://www.alipay.net</serverURI>
+		</content-uri>
+
+		<!-- alipay index gate url之前老的配置，没有把域名配置分离出来 -->
+		<uri id="alipayGateUrl" exposed="true">
+			<serverURI>http://aliapi.alipay.net/cooperate/gateway.do</serverURI>
+		</uri>
+
+		<!-- alipay login vm -->
+		<uri id="alipayLoginIndexServer" exposed="true">
+			<serverURI>http://authcenter.alipay.net</serverURI>
+		</uri>
+		<!-- order detail -->
+		<uri id="orderDetailLink" exposed="true" extends="tradeModule">
+			<path>order_detail.htm</path>
+		</uri>
+
+		<turbine-uri id="tradeModule" exposed="true" extends="tradeServer">
+		<componentPath>/order</componentPath>
+		</turbine-uri>
+
+		<content-uri id="tradeServer" exposed="true">
+		<serverURI>http://trading-test.china.alibaba.com:9100</serverURI>
+		</content-uri>
+
+		<uri id="postComplaintLink" exposed="true" extends="complainModule">
+			<path>cmtPost/post.htm</path>
+		</uri>
+
+		<turbine-uri id="complainModule" exposed="true" extends="levitServer">
+			<componentPath>/complain</componentPath>
+		</turbine-uri>
+
+
+
+		<content-uri id="alibabaServer" exposed="true">
+						<serverURI>http://exodus2.china.alibaba.com:2100
+			</serverURI>
+					</content-uri>
+		<content-uri id="menuServer" exposed="true">
+			<serverURI>http://menu-test.china.alibaba.com:25100
+			</serverURI>
+		</content-uri>
+		<!-- work server -->
+		<content-uri id="workServer" exposed="true">
+			<serverURI>http://work-test.china.alibaba.com:25100</serverURI>
+		</content-uri>
+
+		<content-uri id="athenaServer" exposed="true">
+			<serverURI>http://test.athena.china.alibaba.com:3100</serverURI>
+		</content-uri>
+		<!-- aliLogin Server -->
+		<content-uri id="alibabaLoginServer" exposed="true">
+						<serverURI>https://loginchina-test.alibaba.com:3300
+			</serverURI>
+					</content-uri>
+		<!--<servlet-uri id="cna_index_htm" exposed="true" extends="themisServer">
+			<servletPath>cna/apply/cna_index.htm</servletPath>
+		</servlet-uri> -->
+		<!-- 登陆url -->
+		<servlet-uri id="loginLink" exposed="true" extends="alibabaLoginServer">
+			<servletPath>member/signin.htm</servletPath>
+		</servlet-uri>
+		<!-- 退出登录url -->
+        <servlet-uri id="loginOutLink" exposed="true" extends="alibabaLoginServer">
+            <servletPath>member/signout.htm</servletPath>
+        </servlet-uri>
+		<!-- 阿里助手首页 -->
+		<servlet-uri id="myalibabaHomePageLink" exposed="true"
+			extends="alibabaServer">
+			<servletPath>member/myalibaba.htm</servletPath>
+		</servlet-uri>
+		<uri id="denyAccessLink" exposed="true" extends="alibabaServer">
+			<path>member/deniedAccess.htm</path>
+		</uri>
+		<!-- 买家保障页面 -->
+		<turbine-uri id="protectionModule" exposed="true"
+			extends="themisServer">
+			<componentPath>/protection</componentPath>
+		</turbine-uri>
+		<turbine-uri id="bpsIndex" exposed="true" extends="protectionModule">
+			<target>bps/index.htm</target>
+		</turbine-uri>
+		<turbine-uri id="bpsApplyUrl" exposed="true" extends="protectionModule">
+			<target>bps/bpsApply.htm</target>
+		</turbine-uri>
+		<turbine-uri id="bpsOpenUrl" exposed="true" extends="protectionModule">
+			<target>bps/open.htm</target>
+		</turbine-uri>
+		<turbine-uri id="bpsRepayUrl" exposed="true" extends="protectionModule">
+			<target>bps/repay.htm</target>
+		</turbine-uri>
+		<turbine-uri id="bpsInbackUrl" exposed="true" extends="protectionModule">
+			<target>bps/inback.htm</target>
+		</turbine-uri>
+		<turbine-uri id="bpsReturnUrl" exposed="true" extends="protectionModule">
+			<target>bps/return.htm</target>
+		</turbine-uri>
+		<turbine-uri id="ajaxUrl" exposed="true" extends="protectionModule">
+			<target>bps</target>
+		</turbine-uri>
+
+		<!-- 前台json请求链接 -->
+		<uri id="doApplyJson" exposed="true" extends="themisServer">
+			<path>protection/applyJson.json</path>
+		</uri>
+		
+		<uri id="doP4PApplyJson" exposed="true" extends="themisServer">
+			<path>protection/p4pApplyJson.json</path>
+		</uri>
+		<!-- pay server -->
+		<content-uri id="payServer" exposed="true">
+			<serverURI>http://paytest15.alibaba.com:5061</serverURI>
+		</content-uri>
+		<uri id="crmRechargeUrl" exposed="true" extends="payServer">
+			<path>nasdaq/portal/trade/charge.vm</path>
+		</uri>
+
+
+		<!-- 订购server -->
+		<content-uri id="pcServer">
+			<serverURI>http://pc-test.china.alibaba.com:50100</serverURI>
+		</content-uri>
+
+		<!-- 订购平台的产品列表 -->
+		<uri id="pcList" exposed="true" extends="pcServer">
+			<path>product/list.htm</path>
+		</uri>
+
+		<!-- 订购平台的订单列表 -->
+		<uri id="pcOrderList" exposed="true" extends="pcServer">
+			<path>order/list/all.htm</path>
+		</uri>
+
+		<!-- 订购平台——填写汇款凭证 -->
+		<uri id="pcRemit" exposed="true" extends="pcServer">
+			<path>userAccount/remit.htm</path>
+		</uri>
+
+		<!-- 订购平台——二次认证下单页面 -->
+		<uri id="pcSecondAuth" exposed="true" extends="pcServer">
+					<path>product/operate.htm</path>
+			<query key="key">k_av2test</query>
+				</uri>
+
+		<!-- 公司名称认证 -->
+		<turbine-uri id="cnaModule" exposed="true"
+			extends="themisServer">
+			<componentPath>/cna</componentPath>
+		</turbine-uri>
+
+		<!-- 查看企业名称验证的统一跳转页面，那个tab页 htm -->
+	        <turbine-uri id="cna_index_htm" exposed="true"
+			extends="cnaModule">
+			<target>apply/cna_index.htm</target>
+   	        </turbine-uri>
+
+		<!-- 公司名称认证:重新认证 -->
+		<turbine-uri id="RECERTIFY" exposed="true"
+			extends="cnaModule">
+			<target>apply/re_certify.htm</target>
+		</turbine-uri>
+		<!-- 公司名称认证:AC的JSON查询接口 -->
+		<uri id="COMPANY_NAME_VERIFY" exposed="true"
+			extends="cnaModule">
+			<path>company_name_verify.json</path>
+		</uri>
+		<!-- 公司名称认证:开户银行的JSON查询接口 -->
+		<uri id="BANK_NAME_QUERY" exposed="true"
+			extends="cnaModule">
+			<path>bank_query.json</path>
+		</uri>
+		<!-- 公司名称认证:开户银行所在省的JSON查询接口 -->
+		<uri id="BANK_PROVINCE_QUERY" exposed="true"
+			extends="cnaModule">
+			<path>bank_province_query.json</path>
+		</uri>
+		<!-- 公司名称认证:开户银行所在市的JSON查询接口 -->
+		<uri id="BANK_CITY_QUERY" exposed="true"
+			extends="cnaModule">
+			<path>bank_city_query.json</path>
+		</uri>
+		<!-- 公司名称认证:开户银行支行的JSON查询接口 -->
+		<uri id="BANK_BRANCH_QUERY" exposed="true"
+			extends="cnaModule">
+			<path>bank_branch_query.json</path>
+		</uri>
+		<!-- 企业自传资质证书 -->
+		<turbine-uri id="certificateModule" exposed="true"
+			extends="themisServer">
+			<componentPath>/certificate</componentPath>
+		</turbine-uri>
+
+		<uri id="ibankPicmanServerUrl" exposed="true">
+			<serverURI>http://picman-test.china.alibaba.com:40100</serverURI>
+		</uri>
+		
+		<turbine-content-uri id="imageServer" exposed="true">
+					<serverURI>http://test.img.china.alibaba.com</serverURI>
+				</turbine-content-uri>
+		
+	</services:uris>
+
+</beans:beans>

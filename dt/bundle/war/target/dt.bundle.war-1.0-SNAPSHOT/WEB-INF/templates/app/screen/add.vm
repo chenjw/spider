@@ -1,0 +1,17 @@
+
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+ <title>env</title>
+</head>
+<body>
+	
+<form method="post" action="#" autocomplete="off">
+	<input type="hidden" name="event_submit_do_watch_friends" value="doWatchFriends">
+	<input type="hidden" name="action" value="WatchUserAction">
+	<input type="text" name="userName" value="" />
+	<button type="submit">添加该用户的所有关注者</button>
+</form>
+			
+</body>
+</html>
