@@ -9,7 +9,7 @@ public interface WeiboService {
 
 	public List<TweetModel> findUserTimelineByUserId(String userId, long sinceId);
 
-	public List<TweetModel> findFriendsTimelineByUserId(UserTokenModel user,
+	public List<TweetModel> findFriendsTimeline(UserTokenModel user,
 			long sinceId);
 
 	public String findUserIdByName(String name);

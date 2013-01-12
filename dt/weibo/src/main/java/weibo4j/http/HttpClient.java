@@ -93,70 +93,36 @@ public class HttpClient implements java.io.Serializable {
 														// being rate limited.
 
 	private static String proxyHost = Configuration.getProxyHost();
-	private int proxyPort = Configuration.getProxyPort();
-	private String proxyAuthUser = Configuration.getProxyUser();
-	private String proxyAuthPassword = Configuration.getProxyPassword();
+	private static int proxyPort = Configuration.getProxyPort();
+	private static String proxyAuthUser = Configuration.getProxyUser();
+	private static String proxyAuthPassword = Configuration.getProxyPassword();
 	private String token;
 
-	private static Account ACCOUNT = new Account();
-	private static final AtomicLong REMAIN_HITS = new AtomicLong(0);
+	private static Account  ACCOUNT = new Account();
+	private final AtomicLong REMAIN_HITS = new AtomicLong(0);
 
 	public String getProxyHost() {
 		return proxyHost;
 	}
 
-	/**
-	 * Sets proxy host. System property -Dsinat4j.http.proxyHost or
-	 * http.proxyHost overrides this attribute.
-	 * 
-	 * @param proxyHost
-	 */
-	public void setProxyHost(String proxyHost) {
-		this.proxyHost = Configuration.getProxyHost(proxyHost);
-	}
 
 	public int getProxyPort() {
 		return proxyPort;
 	}
 
-	/**
-	 * Sets proxy port. System property -Dsinat4j.http.proxyPort or
-	 * -Dhttp.proxyPort overrides this attribute.
-	 * 
-	 * @param proxyPort
-	 */
-	public void setProxyPort(int proxyPort) {
-		this.proxyPort = Configuration.getProxyPort(proxyPort);
-	}
+
 
 	public String getProxyAuthUser() {
 		return proxyAuthUser;
 	}
 
-	/**
-	 * Sets proxy authentication user. System property -Dsinat4j.http.proxyUser
-	 * overrides this attribute.
-	 * 
-	 * @param proxyAuthUser
-	 */
-	public void setProxyAuthUser(String proxyAuthUser) {
-		this.proxyAuthUser = Configuration.getProxyUser(proxyAuthUser);
-	}
+
 
 	public String getProxyAuthPassword() {
 		return proxyAuthPassword;
 	}
 
-	/**
-	 * Sets proxy authentication password. System property
-	 * -Dsinat4j.http.proxyPassword overrides this attribute.
-	 * 
-	 * @param proxyAuthPassword
-	 */
-	public void setProxyAuthPassword(String proxyAuthPassword) {
-		this.proxyAuthPassword = Configuration
-				.getProxyPassword(proxyAuthPassword);
-	}
+
 
 	public String setToken(String token) {
 		this.token = token;
@@ -165,7 +131,8 @@ public class HttpClient implements java.io.Serializable {
 
 	private final static boolean DEBUG = Configuration.getDebug();
 	static Logger log = Logger.getLogger(HttpClient.class.getName());
-	org.apache.commons.httpclient.HttpClient client = null;
+
+
 
 	private static MultiThreadedHttpConnectionManager connectionManager;
 
@@ -177,17 +144,13 @@ public class HttpClient implements java.io.Serializable {
 		params.setSoTimeout(30000);
 	}
 
-	public HttpClient() {
-		this(150, 30000, 30000, 1024 * 1024);
-	}
 
-	public HttpClient(int maxConPerHost, int conTimeOutMs, int soTimeOutMs,
-			int maxSize) {
+	private org.apache.commons.httpclient.HttpClient getClient(){
 
 		HttpClientParams clientParams = new HttpClientParams();
 		// 忽略cookie 避免 Cookie rejected 警告
 		clientParams.setCookiePolicy(CookiePolicy.IGNORE_COOKIES);
-		client = new org.apache.commons.httpclient.HttpClient(clientParams,
+		org.apache.commons.httpclient.HttpClient client = new org.apache.commons.httpclient.HttpClient(clientParams,
 				connectionManager);
 		Protocol myhttps = new Protocol("https", new MySSLSocketFactory(), 443);
 		Protocol.registerProtocol("https", myhttps);
@@ -204,7 +167,11 @@ public class HttpClient implements java.io.Serializable {
 				log("Proxy AuthPassword: " + proxyAuthPassword);
 			}
 		}
+		return client;
 	}
+	
+	
+
 
 	/**
 	 * log调试
@@ -461,10 +428,8 @@ public class HttpClient implements java.io.Serializable {
 				if (token == null) {
 					throw new IllegalStateException("Oauth2 token is not set!");
 				}
-				headers.add(new Header("Authorization", "OAuth2 " + token));
-				headers.add(new Header("API-RemoteIP", ipaddr.getHostAddress()));
-				client.getHostConfiguration().getParams()
-						.setParameter("http.default-headers", headers);
+				method.addRequestHeader(new Header("Authorization", "OAuth2 " + token));
+				method.addRequestHeader(new Header("API-RemoteIP", ipaddr.getHostAddress()));
 				for (Header hd : headers) {
 					log(hd.getName() + ": " + hd.getValue());
 				}
@@ -472,7 +437,7 @@ public class HttpClient implements java.io.Serializable {
 
 			method.getParams().setParameter(HttpMethodParams.RETRY_HANDLER,
 					new DefaultHttpMethodRetryHandler(3, false));
-			client.executeMethod(method);
+			getClient().executeMethod(method);
 			Header[] resHeader = method.getResponseHeaders();
 			responseCode = method.getStatusCode();
 			log("Response:");
