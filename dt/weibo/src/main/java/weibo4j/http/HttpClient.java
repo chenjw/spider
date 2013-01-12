@@ -92,7 +92,7 @@ public class HttpClient implements java.io.Serializable {
 														// indicate when you are
 														// being rate limited.
 
-	private String proxyHost = Configuration.getProxyHost();
+	private static String proxyHost = Configuration.getProxyHost();
 	private int proxyPort = Configuration.getProxyPort();
 	private String proxyAuthUser = Configuration.getProxyUser();
 	private String proxyAuthPassword = Configuration.getProxyPassword();
@@ -168,7 +168,6 @@ public class HttpClient implements java.io.Serializable {
 	org.apache.commons.httpclient.HttpClient client = null;
 
 	private static MultiThreadedHttpConnectionManager connectionManager;
-	private int maxSize;
 
 	{
 		connectionManager = new MultiThreadedHttpConnectionManager();
@@ -192,7 +191,6 @@ public class HttpClient implements java.io.Serializable {
 				connectionManager);
 		Protocol myhttps = new Protocol("https", new MySSLSocketFactory(), 443);
 		Protocol.registerProtocol("https", myhttps);
-		this.maxSize = maxSize;
 		// 支持proxy
 		if (proxyHost != null && !proxyHost.equals("")) {
 			client.getHostConfiguration().setProxy(proxyHost, proxyPort);
