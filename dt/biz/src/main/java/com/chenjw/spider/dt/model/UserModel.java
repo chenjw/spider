@@ -7,7 +7,6 @@ public class UserModel implements java.io.Serializable {
 	private static final long serialVersionUID = 1683795870467207346L;
 	private String id; // 用户UID
 	private String screenName; // 微博昵称
-	private String name; // 友好显示名称，如Bill Gates,名称中间的空格正常显示(此特性暂不支持)
 	private int province; // 省份编码（参考省份编码表）
 	private int city; // 城市编码（参考城市编码表）
 	private String location; // 地址
@@ -42,10 +41,6 @@ public class UserModel implements java.io.Serializable {
 
 	public void setScreenName(String screenName) {
 		this.screenName = screenName;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	public void setProvince(int province) {
@@ -210,10 +205,6 @@ public class UserModel implements java.io.Serializable {
 
 	public String getScreenName() {
 		return screenName;
-	}
-
-	public String getName() {
-		return name;
 	}
 
 	public int getProvince() {

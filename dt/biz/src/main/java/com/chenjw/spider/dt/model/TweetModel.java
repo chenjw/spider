@@ -5,11 +5,12 @@ import java.util.Date;
 public class TweetModel implements java.io.Serializable {
 
 	private static final long serialVersionUID = -8795691786466526420L;
+	private String html;
+
 	private UserModel user; // 作者信息
 	private Date createdAt; // status创建时间
 	private String id; // status id
 	private String mid; // 微博MID
-	private long idstr; // 保留字段，请勿使用
 	private String text; // 微博内容
 	private boolean favorited; // 是否已收藏
 	private boolean truncated;
@@ -26,6 +27,7 @@ public class TweetModel implements java.io.Serializable {
 	private int commentsCount; // 评论数
 	private String annotations; // 元数据，没有时不返回此字段
 	private int mlevel;
+	private ReasonModel reason;
 
 	public UserModel getUser() {
 		return user;
@@ -33,14 +35,6 @@ public class TweetModel implements java.io.Serializable {
 
 	public void setUser(UserModel user) {
 		this.user = user;
-	}
-
-	public long getIdstr() {
-		return idstr;
-	}
-
-	public void setIdstr(long idstr) {
-		this.idstr = idstr;
 	}
 
 	public Date getCreatedAt() {
@@ -193,6 +187,22 @@ public class TweetModel implements java.io.Serializable {
 
 	public void setTruncated(boolean truncated) {
 		this.truncated = truncated;
+	}
+
+	public ReasonModel getReason() {
+		return reason;
+	}
+
+	public void setReason(ReasonModel reason) {
+		this.reason = reason;
+	}
+
+	public String getHtml() {
+		return html;
+	}
+
+	public void setHtml(String html) {
+		this.html = html;
 	}
 
 }

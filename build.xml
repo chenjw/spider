@@ -30,6 +30,47 @@
 	</target>
 
 	<target name="maven-dt">
+		<exec executable="mvn" dir="dt">
+    			<arg value="install:install-file"/>
+			<arg value="-DgroupId=com.chenjw.external"/>
+			<arg value="-DartifactId=htmlparser"/>
+			<arg value="-Dversion=1.0.0"/>
+			<arg value="-Dfile=lib/htmlparser.jar"/>
+			<arg value="-Dpackaging=jar"/>
+			<arg value="-DgeneratePom=true"/>
+ 		</exec>	
+
+		<exec executable="mvn" dir="dt">
+    			<arg value="install:install-file"/>
+			<arg value="-DgroupId=com.chenjw.external"/>
+			<arg value="-DartifactId=filterbuilder"/>
+			<arg value="-Dversion=1.0.0"/>
+			<arg value="-Dfile=lib/filterbuilder.jar"/>
+			<arg value="-Dpackaging=jar"/>
+			<arg value="-DgeneratePom=true"/>
+ 		</exec>	
+
+		<exec executable="mvn" dir="dt">
+    			<arg value="install:install-file"/>
+			<arg value="-DgroupId=com.chenjw.external"/>
+			<arg value="-DartifactId=htmllexer"/>
+			<arg value="-Dversion=1.0.0"/>
+			<arg value="-Dfile=lib/htmllexer.jar"/>
+			<arg value="-Dpackaging=jar"/>
+			<arg value="-DgeneratePom=true"/>
+ 		</exec>	
+
+
+		<exec executable="mvn" dir="dt">
+    			<arg value="install:install-file"/>
+			<arg value="-DgroupId=com.chenjw"/>
+			<arg value="-DartifactId=beancopyutils"/>
+			<arg value="-Dversion=1.0.0"/>
+			<arg value="-Dfile=lib/beancopyutils-1.0.0.jar"/>
+			<arg value="-Dpackaging=jar"/>
+			<arg value="-DgeneratePom=true"/>
+ 		</exec>	
+
 		<!-- upload to cloudfoundry-->
 		<exec executable="mvn" dir="dt">
     			<arg value="clean"/>

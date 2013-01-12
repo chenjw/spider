@@ -20,6 +20,7 @@
           <string>WEB-INF/templates/app/screen/view.vm</string>
           <string>WEB-INF/templates/app/screen/add.vm</string>
           <string>WEB-INF/templates/app/screen/index.vm</string>
+          <string>WEB-INF/templates/app/control/detail_list2.html</string>
           <string>WEB-INF/templates/app/control/detail_list.vm</string>
           <string>WEB-INF/webx-app.xml</string>
           <string>WEB-INF/common/webx-component.xml</string>
@@ -29,30 +30,35 @@
           <string>WEB-INF/common/resources.xml</string>
           <string>WEB-INF/common/pipeline.xml</string>
           <string>WEB-INF/webx.xml</string>
+          <string>wb_ae76e3171ca9bdb6.txt</string>
           <string>WEB-INF/lib/dt.common.config-1.0-SNAPSHOT.jar</string>
-          <string>WEB-INF/lib/dt.biz-1.0-SNAPSHOT.jar</string>
-          <string>WEB-INF/lib/dt.weibo-1.0-SNAPSHOT.jar</string>
-          <string>WEB-INF/lib/jakarta.commons.httpclient-3.1.jar</string>
+          <string>WEB-INF/lib/dt.core-1.0-SNAPSHOT.jar</string>
+          <string>WEB-INF/lib/jakarta.log4j-1.2.16.jar</string>
+          <string>WEB-INF/lib/jakarta.commons.configuration-1.5.jar</string>
+          <string>WEB-INF/lib/jakarta.commons.lang-2.4.jar</string>
+          <string>WEB-INF/lib/jakarta.commons.collections-0.0.0.jar</string>
           <string>WEB-INF/lib/jakarta.commons.logging-0.0.0.jar</string>
           <string>WEB-INF/lib/jakarta.commons.codec-0.0.0.jar</string>
-          <string>WEB-INF/lib/jakarta.log4j-1.2.16.jar</string>
+          <string>WEB-INF/lib/jakarta.commons.io-1.4.jar</string>
+          <string>WEB-INF/lib/fastjson-1.1.10.jar</string>
+          <string>WEB-INF/lib/jakarta.commons.httpclient-3.1.jar</string>
+          <string>WEB-INF/lib/misc.javassist-3.9.0.GA.jar</string>
+          <string>WEB-INF/lib/htmlparser-1.0.0.jar</string>
+          <string>WEB-INF/lib/htmllexer-1.0.0.jar</string>
+          <string>WEB-INF/lib/filterbuilder-1.0.0.jar</string>
+          <string>WEB-INF/lib/beancopyutils-1.0.0.jar</string>
+          <string>WEB-INF/lib/dt.biz-1.0-SNAPSHOT.jar</string>
+          <string>WEB-INF/lib/dt.weibo-1.0-SNAPSHOT.jar</string>
           <string>WEB-INF/lib/sourceforge.spring-2.5.6.SEC02.jar</string>
           <string>WEB-INF/lib/sourceforge.cglib-nodep-2.1_3.jar</string>
           <string>WEB-INF/lib/objectweb.asm.attrs-0.0.0.jar</string>
           <string>WEB-INF/lib/objectweb.asm-0.0.0.jar</string>
           <string>WEB-INF/lib/sourceforge.ibatis-2.3.0.jar</string>
-          <string>WEB-INF/lib/jakarta.commons.configuration-1.5.jar</string>
-          <string>WEB-INF/lib/jakarta.commons.lang-2.4.jar</string>
-          <string>WEB-INF/lib/jakarta.commons.collections-0.0.0.jar</string>
           <string>WEB-INF/lib/jakarta.commons.dbcp-1.4.jar</string>
           <string>WEB-INF/lib/jakarta.commons.pool-1.4.jar</string>
           <string>WEB-INF/lib/jakarta.commons.fileupload-1.2.1.jar</string>
           <string>WEB-INF/lib/xml.apis-0.0.0.jar</string>
-          <string>WEB-INF/lib/jakarta.commons.io-1.4.jar</string>
           <string>WEB-INF/lib/java.servlet-2.4.jar</string>
-          <string>WEB-INF/lib/fastjson-1.1.10.jar</string>
-          <string>WEB-INF/lib/beancopyutils-1.0.0.jar</string>
-          <string>WEB-INF/lib/misc.javassist-3.9.0.GA.jar</string>
           <string>WEB-INF/lib/jdbc.mysql.mysql-connector-5.1.12.jar</string>
           <string>WEB-INF/lib/dt.web.app-1.0-SNAPSHOT.jar</string>
           <string>WEB-INF/lib/webx3.core-3.0.6.jar</string>
@@ -111,6 +117,18 @@
         <optional>false</optional>
       </dependency>
       <targetFileName>dt.common.config-1.0-SNAPSHOT.jar</targetFileName>
+    </org.apache.maven.plugin.war.util.DependencyInfo>
+    <org.apache.maven.plugin.war.util.DependencyInfo>
+      <dependency>
+        <groupId>com.chenjw.spider</groupId>
+        <artifactId>dt.core</artifactId>
+        <version>1.0-SNAPSHOT</version>
+        <type>jar</type>
+        <scope>compile</scope>
+        <exclusions/>
+        <optional>false</optional>
+      </dependency>
+      <targetFileName>dt.core-1.0-SNAPSHOT.jar</targetFileName>
     </org.apache.maven.plugin.war.util.DependencyInfo>
     <org.apache.maven.plugin.war.util.DependencyInfo>
       <dependency>

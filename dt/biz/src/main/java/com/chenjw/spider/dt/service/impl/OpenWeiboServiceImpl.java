@@ -15,21 +15,30 @@ import weibo4j.model.WeiboException;
 
 import com.chenjw.spider.dt.model.TweetModel;
 import com.chenjw.spider.dt.model.UserModel;
+import com.chenjw.spider.dt.model.UserTokenModel;
 import com.chenjw.spider.dt.service.Handler;
 import com.chenjw.spider.dt.service.WeiboService;
+import com.chenjw.spider.dt.utils.OAuthUtils;
 import com.chenjw.tools.BeanCopyUtils;
 
-public class WeiboServiceImpl implements WeiboService {
-	private String token = "2.00WaGSGC0TXPFW2859bb150etwDzcB";
+public class OpenWeiboServiceImpl implements WeiboService {
+	// private String token = "2.00WaGSGC0TXPFW2859bb150etwDzcB";
+
+	private String token = "2.006ONAWD0TXPFWdf8b2ae70b00kK9K";
 	private Timeline timelineManager = new Timeline();
 	private Comments commentsManager = new Comments();
 	private Users usersManager = new Users();
 	private Friendships friendshipsManager = new Friendships();
+	String signedRequest = "85MbyIjVIPyoIXd0AwQVs0nqwAEQPvKyM2QdvDjxU94.eyJ1c2VyIjp7ImNvdW50cnkiOiJjbiIsImxvY2FsZSI6IiIsInZlcnNpb24iOjV9LCJhbGdvcml0aG0iOiJITUFDLVNIQTI1NiIsImlzc3VlZF9hdCI6MTM1Nzk3MzYwMywicmVmZXJlciI6Imh0dHA6XC9cL3dlaWJvLmNvbVwvbG9naW4ucGhwP3VybD1odHRwJTNBJTJGJTJGYXBwcy53ZWliby5jb20lMkZjaGVuand0ZXN0In0";
 	{
+		System.out.println(OAuthUtils.getAuthorizeUrl());
+		System.out.println(OAuthUtils
+				.getAccessTokenByCode("770f9bea368f6c9d69e1ca619ae3d821"));
 		timelineManager.setToken(token);
 		commentsManager.setToken(token);
 		usersManager.setToken(token);
 		friendshipsManager.setToken(token);
+
 	}
 
 	public String[] findFriendIdsByUserId(String userId) {
@@ -75,12 +84,6 @@ public class WeiboServiceImpl implements WeiboService {
 
 	}
 
-	public static void main(String[] args) throws Exception {
-		WeiboServiceImpl t = new WeiboServiceImpl();
-
-		// t.view("潇潇coffelife");
-	}
-
 	@Override
 	public String findUserIdByName(String name) {
 		User user;
@@ -94,8 +97,9 @@ public class WeiboServiceImpl implements WeiboService {
 	}
 
 	@Override
-	public List<TweetModel> findTimelineByUserId(final String userId,
+	public List<TweetModel> findUserTimelineByUserId(final String userId,
 			long sinceId) {
+
 		final List<TweetModel> result = new ArrayList<TweetModel>();
 		Handler handler = new Handler() {
 			@Override
@@ -116,4 +120,12 @@ public class WeiboServiceImpl implements WeiboService {
 		}
 		return result;
 	}
+
+	@Override
+	public List<TweetModel> findFriendsTimelineByUserId(UserTokenModel user,
+			long sinceId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

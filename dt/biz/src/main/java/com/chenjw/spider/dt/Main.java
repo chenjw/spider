@@ -13,9 +13,7 @@ public class Main {
 				"classpath*:context.xml");
 		DeletedTweetService deletedTweetService = (DeletedTweetService) context
 				.getBean("deletedTweetService");
-		// deletedTweetService.checkByName("陈俊文V");
-		String userId = deletedTweetService.findUserIdByName("陈俊文V");
-		deletedTweetService.watchFriendsByUserId(userId);
+		deletedTweetService.checkByName("陈俊文V");
 
 		// DeletedTweetDAO deletedTweetDAO = (DeletedTweetDAO) context
 		// .getBean("deletedTweetDAO");

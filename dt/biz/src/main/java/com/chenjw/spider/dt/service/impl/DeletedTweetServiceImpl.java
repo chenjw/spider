@@ -102,7 +102,7 @@ public class DeletedTweetServiceImpl implements DeletedTweetService,
 			}
 		}
 
-		List<TweetModel> newTweets = weiboService.findTimelineByUserId(
+		List<TweetModel> newTweets = weiboService.findUserTimelineByUserId(
 				user.getUserId(), minTid);
 		for (TweetModel t : newTweets) {
 			if (retentionTweets.contains(t.getId())) {
@@ -110,6 +110,9 @@ public class DeletedTweetServiceImpl implements DeletedTweetService,
 			} else {
 				TweetDO d = new TweetDO();
 				TweetMapper.model2Do(t, d);
+				if (t.getCreatedAt() == null) {
+					System.out.println("createdAt = null : " + t.getHtml());
+				}
 				if (!retentionDate.after(d.getPostDate())) {
 					tweetDAO.addTweet(d);
 				}
@@ -160,7 +163,7 @@ public class DeletedTweetServiceImpl implements DeletedTweetService,
 
 			}
 
-		}).start();
+		});// .start();
 	}
 
 	public void setWatchedUserDAO(WatchedUserDAO watchedUserDAO) {

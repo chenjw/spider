@@ -5,10 +5,14 @@
   <classpathentry kind="src" path="src/test/resources" output="target/test-classes" excluding="**/*.java"/>
   <classpathentry kind="output" path="target/classes"/>
   <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-  <classpathentry kind="var" path="M2_REPO/com/chenjw/beancopyutils/1.0.0/beancopyutils-1.0.0.jar"/>
+  <classpathentry kind="lib" path="/home/chenjw/my_workspace/spider/dt/lib/beancopyutils-1.0.0.jar"/>
   <classpathentry kind="src" path="/dt.common.config-1.0-SNAPSHOT"/>
+  <classpathentry kind="src" path="/dt.core-1.0-SNAPSHOT"/>
   <classpathentry kind="src" path="/dt.weibo-1.0-SNAPSHOT"/>
   <classpathentry kind="var" path="M2_REPO/com/alibaba/platform/shared/fastjson/1.1.10/fastjson-1.1.10.jar" sourcepath="M2_REPO/com/alibaba/platform/shared/fastjson/1.1.10/fastjson-1.1.10-sources.jar"/>
+  <classpathentry kind="lib" path="/home/chenjw/my_workspace/spider/dt/lib/filterbuilder.jar"/>
+  <classpathentry kind="lib" path="/home/chenjw/my_workspace/spider/dt/lib/htmllexer.jar"/>
+  <classpathentry kind="lib" path="/home/chenjw/my_workspace/spider/dt/lib/htmlparser.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/alibaba/external/jakarta.commons.codec/0.0.0/jakarta.commons.codec-0.0.0.jar" sourcepath="M2_REPO/com/alibaba/external/jakarta.commons.codec/0.0.0/jakarta.commons.codec-0.0.0-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/alibaba/external/jakarta.commons.collections/0.0.0/jakarta.commons.collections-0.0.0.jar" sourcepath="M2_REPO/com/alibaba/external/jakarta.commons.collections/0.0.0/jakarta.commons.collections-0.0.0-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/alibaba/external/jakarta.commons.configuration/1.5/jakarta.commons.configuration-1.5.jar" sourcepath="M2_REPO/com/alibaba/external/jakarta.commons.configuration/1.5/jakarta.commons.configuration-1.5-sources.jar"/>

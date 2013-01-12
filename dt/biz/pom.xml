@@ -21,7 +21,10 @@
 			<groupId>com.chenjw.spider</groupId>
 			<artifactId>dt.weibo</artifactId>
 		</dependency>
-
+		<dependency>
+			<groupId>com.chenjw.spider</groupId>
+			<artifactId>dt.core</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>com.alibaba.external</groupId>
 			<artifactId>sourceforge.spring</artifactId>
@@ -76,10 +79,7 @@
 			<groupId>com.alibaba.platform.shared</groupId>
 			<artifactId>fastjson</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>com.chenjw</groupId>
-			<artifactId>beancopyutils</artifactId>
-		</dependency>
+
 
 		<dependency>
 			<groupId>com.alibaba.external</groupId>
@@ -90,5 +90,6 @@
 			<groupId>com.alibaba.external</groupId>
 			<artifactId>jdbc.mysql.mysql-connector</artifactId>
 		</dependency>
+		
 	</dependencies>
 </project>

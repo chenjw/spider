@@ -167,8 +167,16 @@ public class HttpClient implements java.io.Serializable {
 	static Logger log = Logger.getLogger(HttpClient.class.getName());
 	org.apache.commons.httpclient.HttpClient client = null;
 
-	private MultiThreadedHttpConnectionManager connectionManager;
+	private static MultiThreadedHttpConnectionManager connectionManager;
 	private int maxSize;
+
+	{
+		connectionManager = new MultiThreadedHttpConnectionManager();
+		HttpConnectionManagerParams params = connectionManager.getParams();
+		params.setDefaultMaxConnectionsPerHost(150);
+		params.setConnectionTimeout(30000);
+		params.setSoTimeout(30000);
+	}
 
 	public HttpClient() {
 		this(150, 30000, 30000, 1024 * 1024);
@@ -176,11 +184,6 @@ public class HttpClient implements java.io.Serializable {
 
 	public HttpClient(int maxConPerHost, int conTimeOutMs, int soTimeOutMs,
 			int maxSize) {
-		connectionManager = new MultiThreadedHttpConnectionManager();
-		HttpConnectionManagerParams params = connectionManager.getParams();
-		params.setDefaultMaxConnectionsPerHost(maxConPerHost);
-		params.setConnectionTimeout(conTimeOutMs);
-		params.setSoTimeout(soTimeOutMs);
 
 		HttpClientParams clientParams = new HttpClientParams();
 		// 忽略cookie 避免 Cookie rejected 警告

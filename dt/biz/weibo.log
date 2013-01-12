@@ -1,58 +1,178 @@
-0    INFO  [2013-01-09 16:42:27]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@2c091cee: display name [org.springframework.context.support.ClassPathXmlApplicationContext@2c091cee]; startup date [Wed Jan 09 16:42:27 CST 2013]; root of context hierarchy
-70   INFO  [2013-01-09 16:42:27]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/context.xml]
-240  INFO  [2013-01-09 16:42:27]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/spring/datasource.xml]
-268  INFO  [2013-01-09 16:42:27]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/spring/dao.xml]
-280  INFO  [2013-01-09 16:42:27]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/spring/service.xml]
-289  INFO  [2013-01-09 16:42:27]  Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@2c091cee]: org.springframework.beans.factory.support.DefaultListableBeanFactory@b41b571
-459  INFO  [2013-01-09 16:42:28]  Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@b41b571: defining beans [org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,dataSource,sqlMapClient,lobHandler,baseSqlMapClientDAO,deletedTweetDAO,tweetDAO,watchedUserDAO,deletedTweetService,weiboService]; root of factory hierarchy
-2063 INFO  [2013-01-09 16:42:29]  remain 127
-2063 INFO  [2013-01-09 16:42:29]  remain 128
-2244 INFO  [2013-01-09 16:42:29]  remain 126
-0    INFO  [2013-01-09 16:43:03]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@2c091cee: display name [org.springframework.context.support.ClassPathXmlApplicationContext@2c091cee]; startup date [Wed Jan 09 16:43:03 CST 2013]; root of context hierarchy
-71   INFO  [2013-01-09 16:43:03]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/context.xml]
-178  INFO  [2013-01-09 16:43:03]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/spring/datasource.xml]
-199  INFO  [2013-01-09 16:43:04]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/spring/dao.xml]
-211  INFO  [2013-01-09 16:43:04]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/spring/service.xml]
-220  INFO  [2013-01-09 16:43:04]  Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@2c091cee]: org.springframework.beans.factory.support.DefaultListableBeanFactory@b41b571
-409  INFO  [2013-01-09 16:43:04]  Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@b41b571: defining beans [org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,dataSource,sqlMapClient,lobHandler,baseSqlMapClientDAO,deletedTweetDAO,tweetDAO,watchedUserDAO,deletedTweetService,weiboService]; root of factory hierarchy
-1309 INFO  [2013-01-09 16:43:05]  remain 124
-1309 INFO  [2013-01-09 16:43:05]  remain 125
-1470 INFO  [2013-01-09 16:43:05]  remain 123
-0    INFO  [2013-01-09 16:44:02]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@3b6f0be8: display name [org.springframework.context.support.ClassPathXmlApplicationContext@3b6f0be8]; startup date [Wed Jan 09 16:44:02 CST 2013]; root of context hierarchy
-76   INFO  [2013-01-09 16:44:02]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/context.xml]
-186  INFO  [2013-01-09 16:44:02]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/spring/datasource.xml]
-219  INFO  [2013-01-09 16:44:02]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/spring/dao.xml]
-238  INFO  [2013-01-09 16:44:03]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/spring/service.xml]
-255  INFO  [2013-01-09 16:44:03]  Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@3b6f0be8]: org.springframework.beans.factory.support.DefaultListableBeanFactory@6ee3849c
-452  INFO  [2013-01-09 16:44:03]  Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@6ee3849c: defining beans [org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,dataSource,sqlMapClient,lobHandler,baseSqlMapClientDAO,deletedTweetDAO,tweetDAO,watchedUserDAO,deletedTweetService,weiboService]; root of factory hierarchy
-1441 INFO  [2013-01-09 16:44:04]  remain 120
-1441 INFO  [2013-01-09 16:44:04]  remain 121
-0    INFO  [2013-01-09 16:44:08]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@3b6f0be8: display name [org.springframework.context.support.ClassPathXmlApplicationContext@3b6f0be8]; startup date [Wed Jan 09 16:44:08 CST 2013]; root of context hierarchy
-75   INFO  [2013-01-09 16:44:08]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/context.xml]
-172  INFO  [2013-01-09 16:44:08]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/spring/datasource.xml]
-206  INFO  [2013-01-09 16:44:08]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/spring/dao.xml]
-221  INFO  [2013-01-09 16:44:08]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/spring/service.xml]
-238  INFO  [2013-01-09 16:44:08]  Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@3b6f0be8]: org.springframework.beans.factory.support.DefaultListableBeanFactory@6ee3849c
-452  INFO  [2013-01-09 16:44:08]  Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@6ee3849c: defining beans [org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,dataSource,sqlMapClient,lobHandler,baseSqlMapClientDAO,deletedTweetDAO,tweetDAO,watchedUserDAO,deletedTweetService,weiboService]; root of factory hierarchy
-1455 INFO  [2013-01-09 16:44:09]  remain 120
-1455 INFO  [2013-01-09 16:44:09]  remain 119
-9026 INFO  [2013-01-09 16:44:17]  remain 118
-0    INFO  [2013-01-09 16:46:10]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@2c091cee: display name [org.springframework.context.support.ClassPathXmlApplicationContext@2c091cee]; startup date [Wed Jan 09 16:46:10 CST 2013]; root of context hierarchy
-72   INFO  [2013-01-09 16:46:11]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/context.xml]
-163  INFO  [2013-01-09 16:46:11]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/spring/datasource.xml]
-188  INFO  [2013-01-09 16:46:11]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/spring/dao.xml]
-201  INFO  [2013-01-09 16:46:11]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/spring/service.xml]
-210  INFO  [2013-01-09 16:46:11]  Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@2c091cee]: org.springframework.beans.factory.support.DefaultListableBeanFactory@b41b571
-386  INFO  [2013-01-09 16:46:11]  Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@b41b571: defining beans [org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,dataSource,sqlMapClient,lobHandler,baseSqlMapClientDAO,deletedTweetDAO,tweetDAO,watchedUserDAO,deletedTweetService,weiboService]; root of factory hierarchy
-1236 INFO  [2013-01-09 16:46:12]  remain 116
-1244 INFO  [2013-01-09 16:46:12]  remain 116
-1412 INFO  [2013-01-09 16:46:12]  remain 115
-0    INFO  [2013-01-09 17:12:04]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@7776cad3: display name [org.springframework.context.support.ClassPathXmlApplicationContext@7776cad3]; startup date [Wed Jan 09 17:12:04 CST 2013]; root of context hierarchy
-75   INFO  [2013-01-09 17:12:04]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/context.xml]
-195  INFO  [2013-01-09 17:12:05]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/spring/datasource.xml]
-226  INFO  [2013-01-09 17:12:05]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/spring/dao.xml]
-239  INFO  [2013-01-09 17:12:05]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/spring/service.xml]
-249  INFO  [2013-01-09 17:12:05]  Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@7776cad3]: org.springframework.beans.factory.support.DefaultListableBeanFactory@1b1756a4
-470  INFO  [2013-01-09 17:12:05]  Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@1b1756a4: defining beans [org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,dataSource,sqlMapClient,lobHandler,baseSqlMapClientDAO,deletedTweetDAO,tweetDAO,watchedUserDAO,deletedTweetService,weiboService]; root of factory hierarchy
-1427 INFO  [2013-01-09 17:12:06]  sleep to 2013-01-09 18:00:00
-1436 INFO  [2013-01-09 17:12:06]  sleep to 2013-01-09 18:00:00
+0    INFO  [2013-01-12 15:17:33]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5311a775: display name [org.springframework.context.support.ClassPathXmlApplicationContext@5311a775]; startup date [Sat Jan 12 15:17:33 CST 2013]; root of context hierarchy
+88   INFO  [2013-01-12 15:17:33]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/context.xml]
+207  INFO  [2013-01-12 15:17:33]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/spring/datasource.xml]
+236  INFO  [2013-01-12 15:17:33]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/spring/dao.xml]
+251  INFO  [2013-01-12 15:17:33]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/spring/service.xml]
+260  INFO  [2013-01-12 15:17:33]  Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@5311a775]: org.springframework.beans.factory.support.DefaultListableBeanFactory@74b23210
+458  INFO  [2013-01-12 15:17:33]  Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@74b23210: defining beans [org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,dataSource,sqlMapClient,lobHandler,baseSqlMapClientDAO,deletedTweetDAO,tweetDAO,watchedUserDAO,httpClient,deletedTweetService,weiboService]; root of factory hierarchy
+1684 INFO  [2013-01-12 15:17:34]  remain 149
+2714 INFO  [2013-01-12 15:17:35]  remain 148
+3209 INFO  [2013-01-12 15:17:36]  remain 147
+3693 INFO  [2013-01-12 15:17:36]  remain 146
+4193 INFO  [2013-01-12 15:17:37]  remain 145
+4617 INFO  [2013-01-12 15:17:37]  remain 144
+5001 INFO  [2013-01-12 15:17:38]  remain 143
+5325 INFO  [2013-01-12 15:17:38]  remain 142
+5697 INFO  [2013-01-12 15:17:38]  remain 141
+6037 INFO  [2013-01-12 15:17:39]  remain 140
+6427 INFO  [2013-01-12 15:17:39]  remain 139
+6836 INFO  [2013-01-12 15:17:40]  remain 138
+7240 INFO  [2013-01-12 15:17:40]  remain 137
+7560 INFO  [2013-01-12 15:17:40]  remain 136
+0    INFO  [2013-01-12 15:18:05]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5311a775: display name [org.springframework.context.support.ClassPathXmlApplicationContext@5311a775]; startup date [Sat Jan 12 15:18:05 CST 2013]; root of context hierarchy
+83   INFO  [2013-01-12 15:18:06]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/context.xml]
+201  INFO  [2013-01-12 15:18:06]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/spring/datasource.xml]
+229  INFO  [2013-01-12 15:18:06]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/spring/dao.xml]
+243  INFO  [2013-01-12 15:18:06]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/spring/service.xml]
+253  INFO  [2013-01-12 15:18:06]  Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@5311a775]: org.springframework.beans.factory.support.DefaultListableBeanFactory@5557c2bd
+437  INFO  [2013-01-12 15:18:06]  Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@5557c2bd: defining beans [org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,dataSource,sqlMapClient,lobHandler,baseSqlMapClientDAO,deletedTweetDAO,tweetDAO,watchedUserDAO,httpClient,deletedTweetService,weiboService]; root of factory hierarchy
+1302 INFO  [2013-01-12 15:18:07]  remain 135
+0    INFO  [2013-01-12 15:18:27]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@2c091cee: display name [org.springframework.context.support.ClassPathXmlApplicationContext@2c091cee]; startup date [Sat Jan 12 15:18:27 CST 2013]; root of context hierarchy
+99   INFO  [2013-01-12 15:18:27]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/context.xml]
+241  INFO  [2013-01-12 15:18:28]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/spring/datasource.xml]
+274  INFO  [2013-01-12 15:18:28]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/spring/dao.xml]
+292  INFO  [2013-01-12 15:18:28]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/spring/service.xml]
+309  INFO  [2013-01-12 15:18:28]  Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@2c091cee]: org.springframework.beans.factory.support.DefaultListableBeanFactory@74b23210
+531  INFO  [2013-01-12 15:18:28]  Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@74b23210: defining beans [org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,dataSource,sqlMapClient,lobHandler,baseSqlMapClientDAO,deletedTweetDAO,tweetDAO,watchedUserDAO,httpClient,deletedTweetService,weiboService]; root of factory hierarchy
+1610 INFO  [2013-01-12 15:18:29]  remain 134
+2692 INFO  [2013-01-12 15:18:30]  remain 133
+3214 INFO  [2013-01-12 15:18:31]  remain 132
+0    INFO  [2013-01-12 15:33:33]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@2c091cee: display name [org.springframework.context.support.ClassPathXmlApplicationContext@2c091cee]; startup date [Sat Jan 12 15:33:33 CST 2013]; root of context hierarchy
+102  INFO  [2013-01-12 15:33:33]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/context.xml]
+235  INFO  [2013-01-12 15:33:34]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/spring/datasource.xml]
+264  INFO  [2013-01-12 15:33:34]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/spring/dao.xml]
+279  INFO  [2013-01-12 15:33:34]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/spring/service.xml]
+294  INFO  [2013-01-12 15:33:34]  Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@2c091cee]: org.springframework.beans.factory.support.DefaultListableBeanFactory@4ce32802
+521  INFO  [2013-01-12 15:33:34]  Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@4ce32802: defining beans [org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,dataSource,sqlMapClient,lobHandler,baseSqlMapClientDAO,deletedTweetDAO,tweetDAO,watchedUserDAO,httpClient,deletedTweetService,weiboService]; root of factory hierarchy
+1682 INFO  [2013-01-12 15:33:35]  remain 149
+0    INFO  [2013-01-12 15:34:19]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@2c091cee: display name [org.springframework.context.support.ClassPathXmlApplicationContext@2c091cee]; startup date [Sat Jan 12 15:34:19 CST 2013]; root of context hierarchy
+111  INFO  [2013-01-12 15:34:19]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/context.xml]
+241  INFO  [2013-01-12 15:34:19]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/spring/datasource.xml]
+271  INFO  [2013-01-12 15:34:19]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/spring/dao.xml]
+284  INFO  [2013-01-12 15:34:19]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/spring/service.xml]
+297  INFO  [2013-01-12 15:34:19]  Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@2c091cee]: org.springframework.beans.factory.support.DefaultListableBeanFactory@4ce32802
+530  INFO  [2013-01-12 15:34:19]  Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@4ce32802: defining beans [org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,dataSource,sqlMapClient,lobHandler,baseSqlMapClientDAO,deletedTweetDAO,tweetDAO,watchedUserDAO,httpClient,deletedTweetService,weiboService]; root of factory hierarchy
+1676 INFO  [2013-01-12 15:34:21]  remain 148
+2882 INFO  [2013-01-12 15:34:22]  remain 147
+3440 INFO  [2013-01-12 15:34:22]  remain 146
+3936 INFO  [2013-01-12 15:34:23]  remain 145
+4447 INFO  [2013-01-12 15:34:23]  remain 144
+0    INFO  [2013-01-12 15:34:47]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@2c091cee: display name [org.springframework.context.support.ClassPathXmlApplicationContext@2c091cee]; startup date [Sat Jan 12 15:34:47 CST 2013]; root of context hierarchy
+104  INFO  [2013-01-12 15:34:47]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/context.xml]
+252  INFO  [2013-01-12 15:34:47]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/spring/datasource.xml]
+289  INFO  [2013-01-12 15:34:47]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/spring/dao.xml]
+303  INFO  [2013-01-12 15:34:47]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/spring/service.xml]
+315  INFO  [2013-01-12 15:34:47]  Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@2c091cee]: org.springframework.beans.factory.support.DefaultListableBeanFactory@74b23210
+543  INFO  [2013-01-12 15:34:48]  Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@74b23210: defining beans [org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,dataSource,sqlMapClient,lobHandler,baseSqlMapClientDAO,deletedTweetDAO,tweetDAO,watchedUserDAO,httpClient,deletedTweetService,weiboService]; root of factory hierarchy
+1750 INFO  [2013-01-12 15:34:49]  remain 143
+2826 INFO  [2013-01-12 15:34:50]  remain 142
+3333 INFO  [2013-01-12 15:34:50]  remain 141
+3848 INFO  [2013-01-12 15:34:51]  remain 140
+0    INFO  [2013-01-12 15:37:41]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@2c091cee: display name [org.springframework.context.support.ClassPathXmlApplicationContext@2c091cee]; startup date [Sat Jan 12 15:37:41 CST 2013]; root of context hierarchy
+81   INFO  [2013-01-12 15:37:41]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/context.xml]
+197  INFO  [2013-01-12 15:37:41]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/spring/datasource.xml]
+224  INFO  [2013-01-12 15:37:41]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/spring/dao.xml]
+236  INFO  [2013-01-12 15:37:41]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/spring/service.xml]
+249  INFO  [2013-01-12 15:37:41]  Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@2c091cee]: org.springframework.beans.factory.support.DefaultListableBeanFactory@74b23210
+437  INFO  [2013-01-12 15:37:41]  Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@74b23210: defining beans [org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,dataSource,sqlMapClient,lobHandler,baseSqlMapClientDAO,deletedTweetDAO,tweetDAO,watchedUserDAO,httpClient,deletedTweetService,weiboService]; root of factory hierarchy
+1457 INFO  [2013-01-12 15:37:42]  remain 139
+2331 INFO  [2013-01-12 15:37:43]  remain 138
+2812 INFO  [2013-01-12 15:37:43]  remain 137
+0    INFO  [2013-01-12 15:42:57]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@2c091cee: display name [org.springframework.context.support.ClassPathXmlApplicationContext@2c091cee]; startup date [Sat Jan 12 15:42:57 CST 2013]; root of context hierarchy
+100  INFO  [2013-01-12 15:42:57]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/context.xml]
+230  INFO  [2013-01-12 15:42:57]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/spring/datasource.xml]
+268  INFO  [2013-01-12 15:42:57]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/spring/dao.xml]
+282  INFO  [2013-01-12 15:42:57]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/spring/service.xml]
+298  INFO  [2013-01-12 15:42:57]  Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@2c091cee]: org.springframework.beans.factory.support.DefaultListableBeanFactory@74b23210
+540  INFO  [2013-01-12 15:42:58]  Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@74b23210: defining beans [org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,dataSource,sqlMapClient,lobHandler,baseSqlMapClientDAO,deletedTweetDAO,tweetDAO,watchedUserDAO,httpClient,deletedTweetService,weiboService]; root of factory hierarchy
+0    INFO  [2013-01-12 15:46:04]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5311a775: display name [org.springframework.context.support.ClassPathXmlApplicationContext@5311a775]; startup date [Sat Jan 12 15:46:04 CST 2013]; root of context hierarchy
+86   INFO  [2013-01-12 15:46:04]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/context.xml]
+197  INFO  [2013-01-12 15:46:04]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/spring/datasource.xml]
+219  INFO  [2013-01-12 15:46:05]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/spring/dao.xml]
+231  INFO  [2013-01-12 15:46:05]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/spring/service.xml]
+241  INFO  [2013-01-12 15:46:05]  Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@5311a775]: org.springframework.beans.factory.support.DefaultListableBeanFactory@4ce32802
+415  INFO  [2013-01-12 15:46:05]  Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@4ce32802: defining beans [org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,dataSource,sqlMapClient,lobHandler,baseSqlMapClientDAO,deletedTweetDAO,tweetDAO,watchedUserDAO,httpClient,deletedTweetService,weiboService]; root of factory hierarchy
+0    INFO  [2013-01-12 15:46:15]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@2c091cee: display name [org.springframework.context.support.ClassPathXmlApplicationContext@2c091cee]; startup date [Sat Jan 12 15:46:15 CST 2013]; root of context hierarchy
+84   INFO  [2013-01-12 15:46:15]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/context.xml]
+182  INFO  [2013-01-12 15:46:15]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/spring/datasource.xml]
+206  INFO  [2013-01-12 15:46:15]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/spring/dao.xml]
+218  INFO  [2013-01-12 15:46:15]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/spring/service.xml]
+235  INFO  [2013-01-12 15:46:15]  Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@2c091cee]: org.springframework.beans.factory.support.DefaultListableBeanFactory@4ce32802
+416  INFO  [2013-01-12 15:46:15]  Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@4ce32802: defining beans [org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,dataSource,sqlMapClient,lobHandler,baseSqlMapClientDAO,deletedTweetDAO,tweetDAO,watchedUserDAO,httpClient,deletedTweetService,weiboService]; root of factory hierarchy
+0    INFO  [2013-01-12 15:46:40]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5311a775: display name [org.springframework.context.support.ClassPathXmlApplicationContext@5311a775]; startup date [Sat Jan 12 15:46:40 CST 2013]; root of context hierarchy
+81   INFO  [2013-01-12 15:46:40]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/context.xml]
+203  INFO  [2013-01-12 15:46:40]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/spring/datasource.xml]
+235  INFO  [2013-01-12 15:46:40]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/spring/dao.xml]
+247  INFO  [2013-01-12 15:46:40]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/spring/service.xml]
+260  INFO  [2013-01-12 15:46:40]  Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@5311a775]: org.springframework.beans.factory.support.DefaultListableBeanFactory@5557c2bd
+458  INFO  [2013-01-12 15:46:40]  Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@5557c2bd: defining beans [org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,dataSource,sqlMapClient,lobHandler,baseSqlMapClientDAO,deletedTweetDAO,tweetDAO,watchedUserDAO,httpClient,deletedTweetService,weiboService]; root of factory hierarchy
+0    INFO  [2013-01-12 15:47:54]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@2c091cee: display name [org.springframework.context.support.ClassPathXmlApplicationContext@2c091cee]; startup date [Sat Jan 12 15:47:54 CST 2013]; root of context hierarchy
+116  INFO  [2013-01-12 15:47:54]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/context.xml]
+278  INFO  [2013-01-12 15:47:55]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/spring/datasource.xml]
+315  INFO  [2013-01-12 15:47:55]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/spring/dao.xml]
+334  INFO  [2013-01-12 15:47:55]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/spring/service.xml]
+355  INFO  [2013-01-12 15:47:55]  Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@2c091cee]: org.springframework.beans.factory.support.DefaultListableBeanFactory@74b23210
+610  INFO  [2013-01-12 15:47:55]  Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@74b23210: defining beans [org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,dataSource,sqlMapClient,lobHandler,baseSqlMapClientDAO,deletedTweetDAO,tweetDAO,watchedUserDAO,httpClient,deletedTweetService,weiboService]; root of factory hierarchy
+1709 INFO  [2013-01-12 15:47:56]  remain 149
+2717 INFO  [2013-01-12 15:47:57]  remain 148
+3202 INFO  [2013-01-12 15:47:58]  remain 147
+3799 INFO  [2013-01-12 15:47:58]  remain 146
+4309 INFO  [2013-01-12 15:47:59]  remain 145
+4749 INFO  [2013-01-12 15:47:59]  remain 144
+5181 INFO  [2013-01-12 15:48:00]  remain 143
+5611 INFO  [2013-01-12 15:48:00]  remain 142
+6056 INFO  [2013-01-12 15:48:00]  remain 141
+6387 INFO  [2013-01-12 15:48:01]  remain 140
+6775 INFO  [2013-01-12 15:48:01]  remain 139
+7081 INFO  [2013-01-12 15:48:01]  remain 138
+7356 INFO  [2013-01-12 15:48:02]  remain 137
+7727 INFO  [2013-01-12 15:48:02]  remain 136
+8195 INFO  [2013-01-12 15:48:03]  remain 135
+8672 INFO  [2013-01-12 15:48:03]  remain 134
+9098 INFO  [2013-01-12 15:48:03]  remain 133
+9437 INFO  [2013-01-12 15:48:04]  remain 132
+9763 INFO  [2013-01-12 15:48:04]  remain 131
+10255 INFO  [2013-01-12 15:48:05]  remain 130
+10770 INFO  [2013-01-12 15:48:05]  remain 129
+11147 INFO  [2013-01-12 15:48:06]  remain 128
+11561 INFO  [2013-01-12 15:48:06]  remain 127
+12062 INFO  [2013-01-12 15:48:06]  remain 126
+12517 INFO  [2013-01-12 15:48:07]  remain 125
+12899 INFO  [2013-01-12 15:48:07]  remain 124
+13350 INFO  [2013-01-12 15:48:08]  remain 123
+0    INFO  [2013-01-12 15:49:28]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5311a775: display name [org.springframework.context.support.ClassPathXmlApplicationContext@5311a775]; startup date [Sat Jan 12 15:49:28 CST 2013]; root of context hierarchy
+81   INFO  [2013-01-12 15:49:28]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/context.xml]
+196  INFO  [2013-01-12 15:49:28]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/spring/datasource.xml]
+224  INFO  [2013-01-12 15:49:28]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/spring/dao.xml]
+234  INFO  [2013-01-12 15:49:28]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/spring/service.xml]
+246  INFO  [2013-01-12 15:49:28]  Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@5311a775]: org.springframework.beans.factory.support.DefaultListableBeanFactory@74b23210
+432  INFO  [2013-01-12 15:49:28]  Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@74b23210: defining beans [org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,dataSource,sqlMapClient,lobHandler,baseSqlMapClientDAO,deletedTweetDAO,tweetDAO,watchedUserDAO,httpClient,deletedTweetService,weiboService]; root of factory hierarchy
+1299 INFO  [2013-01-12 15:49:29]  remain 122
+2215 INFO  [2013-01-12 15:49:30]  remain 121
+2851 INFO  [2013-01-12 15:49:31]  remain 120
+3354 INFO  [2013-01-12 15:49:31]  remain 119
+3801 INFO  [2013-01-12 15:49:32]  remain 118
+4255 INFO  [2013-01-12 15:49:32]  remain 117
+4891 INFO  [2013-01-12 15:49:33]  remain 116
+5276 INFO  [2013-01-12 15:49:33]  remain 115
+0    INFO  [2013-01-12 15:57:27]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5311a775: display name [org.springframework.context.support.ClassPathXmlApplicationContext@5311a775]; startup date [Sat Jan 12 15:57:27 CST 2013]; root of context hierarchy
+96   INFO  [2013-01-12 15:57:27]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/context.xml]
+212  INFO  [2013-01-12 15:57:27]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/spring/datasource.xml]
+247  INFO  [2013-01-12 15:57:27]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/spring/dao.xml]
+260  INFO  [2013-01-12 15:57:27]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/spring/service.xml]
+274  INFO  [2013-01-12 15:57:27]  Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@5311a775]: org.springframework.beans.factory.support.DefaultListableBeanFactory@4ce32802
+496  INFO  [2013-01-12 15:57:27]  Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@4ce32802: defining beans [org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,dataSource,sqlMapClient,lobHandler,baseSqlMapClientDAO,deletedTweetDAO,tweetDAO,watchedUserDAO,httpClient,deletedTweetService,weiboService]; root of factory hierarchy
+1680 INFO  [2013-01-12 15:57:28]  remain 149
+0    INFO  [2013-01-12 15:58:07]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5311a775: display name [org.springframework.context.support.ClassPathXmlApplicationContext@5311a775]; startup date [Sat Jan 12 15:58:07 CST 2013]; root of context hierarchy
+125  INFO  [2013-01-12 15:58:07]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/context.xml]
+285  INFO  [2013-01-12 15:58:07]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/spring/datasource.xml]
+325  INFO  [2013-01-12 15:58:07]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/spring/dao.xml]
+343  INFO  [2013-01-12 15:58:07]  Loading XML bean definitions from URL [file:/home/chenjw/my_workspace/spider/dt/common/config/target/classes/spring/service.xml]
+359  INFO  [2013-01-12 15:58:07]  Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@5311a775]: org.springframework.beans.factory.support.DefaultListableBeanFactory@74b23210
+603  INFO  [2013-01-12 15:58:07]  Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@74b23210: defining beans [org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,dataSource,sqlMapClient,lobHandler,baseSqlMapClientDAO,deletedTweetDAO,tweetDAO,watchedUserDAO,httpClient,deletedTweetService,weiboService]; root of factory hierarchy
+1849 INFO  [2013-01-12 15:58:09]  remain 148
+2847 INFO  [2013-01-12 15:58:10]  remain 147
+3250 INFO  [2013-01-12 15:58:10]  remain 146
+3718 INFO  [2013-01-12 15:58:10]  remain 145
+4157 INFO  [2013-01-12 15:58:11]  remain 144
+4672 INFO  [2013-01-12 15:58:11]  remain 143

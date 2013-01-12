@@ -4,46 +4,26 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import java.security.KeyStore;
-import java.security.cert.X509Certificate;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import javax.net.ssl.KeyManager;
-import javax.net.ssl.KeyManagerFactory;
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.TrustManager;
-import javax.net.ssl.X509TrustManager;
-
+import org.apache.commons.httpclient.DefaultHttpMethodRetryHandler;
+import org.apache.commons.httpclient.HttpException;
+import org.apache.commons.httpclient.HttpMethod;
+import org.apache.commons.httpclient.HttpMethodRetryHandler;
+import org.apache.commons.httpclient.HttpStatus;
+import org.apache.commons.httpclient.MultiThreadedHttpConnectionManager;
+import org.apache.commons.httpclient.NameValuePair;
+import org.apache.commons.httpclient.methods.GetMethod;
+import org.apache.commons.httpclient.methods.PostMethod;
+import org.apache.commons.httpclient.params.HttpClientParams;
+import org.apache.commons.httpclient.params.HttpConnectionParams;
+import org.apache.commons.httpclient.params.HttpMethodParams;
+import org.apache.commons.httpclient.params.HttpParams;
+import org.apache.commons.httpclient.protocol.Protocol;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.HttpStatus;
-import org.apache.http.NameValuePair;
-import org.apache.http.ParseException;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpRequestRetryHandler;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.client.methods.HttpUriRequest;
-import org.apache.http.conn.scheme.Scheme;
-import org.apache.http.conn.scheme.SchemeRegistry;
-import org.apache.http.conn.ssl.SSLSocketFactory;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.impl.client.DefaultHttpRequestRetryHandler;
-import org.apache.http.impl.conn.SchemeRegistryFactory;
-import org.apache.http.impl.conn.tsccm.ThreadSafeClientConnManager;
-import org.apache.http.message.BasicNameValuePair;
-import org.apache.http.params.BasicHttpParams;
-import org.apache.http.params.HttpConnectionParams;
-import org.apache.http.params.HttpParams;
-import org.apache.http.protocol.HTTP;
-import org.apache.http.util.EntityUtils;
 
 import com.chenjw.client.HttpClient;
 import com.chenjw.client.exception.ErrorCodeEnum;
@@ -56,43 +36,35 @@ public class SimpleHttpClient implements HttpClient {
 	private int socketTimeout = 100000;
 
 	private int maxTotalConnections = 100;
-	private ThreadSafeClientConnManager connManager = null;
-	private HttpRequestRetryHandler httpRequestRetryHandler = new DefaultHttpRequestRetryHandler(
+	private MultiThreadedHttpConnectionManager connManager = null;
+	private HttpMethodRetryHandler httpRequestRetryHandler = new DefaultHttpMethodRetryHandler(
 			3, true);
 
 	private HttpParams httpParams;
 
 	public void init() {
-		httpParams = new BasicHttpParams();
+		HttpConnectionParams httpParams = new HttpConnectionParams();
+		httpParams.setConnectionTimeout(httpConnectionTimeout);
 		/* 连接超时 */
-		HttpConnectionParams.setConnectionTimeout(httpParams,
-				httpConnectionTimeout);
-		/* 请求超时 */
-		HttpConnectionParams.setSoTimeout(httpParams, socketTimeout);
+		httpParams.setSoTimeout(socketTimeout);
 
-		SchemeRegistry schemeRegistry = SchemeRegistryFactory.createDefault();
-		SSLSocketFactory socketFactory = null;
-		try {
-			socketFactory = new SSLSocketFactory(createSSLContext());
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		Scheme sch = new Scheme("https", 443, socketFactory);
-		schemeRegistry.register(sch);
-		connManager = new ThreadSafeClientConnManager(schemeRegistry);
-		connManager.setMaxTotal(maxTotalConnections);
-		connManager.setDefaultMaxPerRoute(40);
+		Protocol myhttps = new Protocol("https", new MySSLSocketFactory(), 443);
+		Protocol.registerProtocol("https", myhttps);
+		connManager = new MultiThreadedHttpConnectionManager();
+		connManager.setMaxTotalConnections(maxTotalConnections);
+		connManager.setMaxConnectionsPerHost(40);
 
 	}
 
 	private String prepareUrl(String url, Map<String, String> params,
 			String encoding) {
+		boolean isUrlHasParam = url.indexOf("?") != -1;
 		StringBuffer sb = new StringBuffer(url);
 		if (params != null) {
 			boolean isFirst = true;
 			for (Entry<String, String> entry : params.entrySet()) {
 				if (!StringUtils.isBlank(entry.getValue())) {
-					if (isFirst) {
+					if (!isUrlHasParam && isFirst) {
 						sb.append('?');
 						isFirst = false;
 					} else {
@@ -117,12 +89,10 @@ public class SimpleHttpClient implements HttpClient {
 			String cookie) throws HttpClientException {
 		String realUrl = prepareUrl(url, params, encoding);
 		// System.out.println("url=" + realUrl);
-		HttpGet method = new HttpGet(realUrl);
+		GetMethod method = new GetMethod(realUrl);
 		if (cookie != null) {
-			method.addHeader("Cookie", cookie);
+			method.addRequestHeader("Cookie", cookie);
 		}
-
-		method.setParams(httpParams);
 		String result = excuteMethod(method, encoding);
 		// System.out.println(result);
 		return result;
@@ -133,53 +103,52 @@ public class SimpleHttpClient implements HttpClient {
 			String cookie) throws HttpClientException {
 		String realUrl = url;
 		// System.out.println("url=" + realUrl);
-		HttpPost method = new HttpPost(realUrl);
-		List<NameValuePair> postParams = new ArrayList<NameValuePair>();
+		PostMethod method = new PostMethod(realUrl);
 		for (Entry<String, String> entry : params.entrySet()) {
-			postParams.add(new BasicNameValuePair(entry.getKey(), entry
+			method.addParameter(new NameValuePair(entry.getKey(), entry
 					.getValue()));
-		}
-		try {
-			method.setEntity(new UrlEncodedFormEntity(postParams, HTTP.UTF_8));
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
 		}
 		// String cookie =
 		// "240=240; CurLoginUserGUID=a44e6f49751b4d8b9659636ae20540d6; strCertificate=410df02a24354be8bb194aeec0829589;";
 		if (cookie != null) {
-			method.addHeader("Cookie", cookie);
+			method.addRequestHeader("Cookie", cookie);
 		}
-		method.setParams(httpParams);
 		String result = excuteMethod(method, encoding);
 		// System.out.println(result);
 		return result;
 	}
 
-	/**
-	 * 执行http方法
-	 * 
-	 * @param httpMethod
-	 * @return
-	 */
-	private String excuteMethod(HttpUriRequest httpMethod, String encoding)
+	public String excuteMethod(HttpMethod method, String encoding)
 			throws HttpClientException {
-		HttpResponse response = null;
-		org.apache.http.client.HttpClient client = this.createHttpClient();
+		int responseCode = -1;
 		try {
-			response = client.execute(httpMethod);
-			// for (Header h : response.getAllHeaders()) {
-			// System.out.println(h.getName() + " = " + h.getValue());
-			// }
-		} catch (ClientProtocolException e) {
+			method.getParams().setParameter(HttpMethodParams.RETRY_HANDLER,
+					httpRequestRetryHandler);
+			org.apache.commons.httpclient.HttpClient client = this
+					.createHttpClient();
+			client.executeMethod(method);
+			responseCode = method.getStatusCode();
+			if (responseCode != HttpStatus.SC_OK) {
+				throw new HttpClientException(ErrorCodeEnum.NOT_FOUND_ERROR,
+						"responseCode:" + responseCode);
+			} else {
+				InputStream is = method.getResponseBodyAsStream();
+				try {
+					return IOUtils.toString(is, encoding);
+				} finally {
+					IOUtils.closeQuietly(is);
+				}
+			}
+		} catch (HttpException e) {
 			throw new HttpClientException(ErrorCodeEnum.SYSTEM_ERROR,
-					"ClientProtocolException", e);
+					"HttpException", e);
 		} catch (IOException e) {
 			throw new HttpClientException(ErrorCodeEnum.SYSTEM_ERROR,
-					"IOException", e);
+					"HttpException", e);
+		} finally {
+			method.releaseConnection();
 		}
 
-		String result = handleResult(response, httpMethod, encoding);
-		return result;
 	}
 
 	/**
@@ -190,98 +159,38 @@ public class SimpleHttpClient implements HttpClient {
 	 * @return
 	 * @throws IOException
 	 */
-	private String handleResult(HttpResponse response,
-			HttpUriRequest httpMethod, String encoding)
-			throws HttpClientException {
-		int responseCode = response.getStatusLine().getStatusCode();
-		if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
+	// private String handleResult(HttpResponse response,
+	// HttpUriRequest httpMethod, String encoding)
+	// throws HttpClientException {
+	// int responseCode = response.getStatusLine().getStatusCode();
+	// if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
+	//
+	// HttpEntity entity = response.getEntity();
+	//
+	// if (entity != null) {
+	// String result = null;
+	// try {
+	// result = EntityUtils.toString(entity, encoding);
+	// } catch (ParseException e) {
+	// throw new HttpClientException(ErrorCodeEnum.SYSTEM_ERROR,
+	// "ParseException", e);
+	// } catch (IOException e) {
+	// throw new HttpClientException(ErrorCodeEnum.SYSTEM_ERROR,
+	// "IOException", e);
+	// }
+	// return result;
+	// }
+	// }
+	// throw new HttpClientException(ErrorCodeEnum.NOT_FOUND_ERROR,
+	// "responseCode : " + responseCode);
+	//
+	// }
 
-			HttpEntity entity = response.getEntity();
-
-			if (entity != null) {
-				String result = null;
-				// try {
-				// entity.getContent();
-				// } catch (IllegalStateException e) {
-				// // TODO Auto-generated catch block
-				// e.printStackTrace();
-				// } catch (IOException e) {
-				// // TODO Auto-generated catch block
-				// e.printStackTrace();
-				// }
-				try {
-					result = EntityUtils.toString(entity, encoding);
-				} catch (ParseException e) {
-					throw new HttpClientException(ErrorCodeEnum.SYSTEM_ERROR,
-							"ParseException", e);
-				} catch (IOException e) {
-					throw new HttpClientException(ErrorCodeEnum.SYSTEM_ERROR,
-							"IOException", e);
-				}
-				return result;
-			}
-		}
-		throw new HttpClientException(ErrorCodeEnum.NOT_FOUND_ERROR,
-				"responseCode : " + responseCode);
-
-	}
-
-	private org.apache.http.client.HttpClient createHttpClient() {
-		DefaultHttpClient httpClient = new DefaultHttpClient(connManager);
-		httpClient.setHttpRequestRetryHandler(httpRequestRetryHandler);
-		// System.out.println("[pool]" + connManager.getConnectionsInPool());
-		// httpClient = WebClientDevWrapper.wrapClient(httpClient);
+	private org.apache.commons.httpclient.HttpClient createHttpClient() {
+		HttpClientParams clientParams = new HttpClientParams();
+		org.apache.commons.httpclient.HttpClient httpClient = new org.apache.commons.httpclient.HttpClient(
+				clientParams, connManager);
 		return httpClient;
-	}
-
-	private SSLContext createSSLContext() {
-		SSLContext ctx = null;
-		try {
-			ctx = SSLContext.getInstance("TLS");
-			ctx.init(getKeyManagers(), getTrustManagers(), null);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return ctx;
-	}
-
-	private KeyManager[] getKeyManagers() {
-		InputStream in = null;
-		KeyStore ks = null;
-		try {
-			in = SimpleHttpClient.class
-					.getResourceAsStream("/junwen.chenjw.p12");
-			ks = KeyStore.getInstance("pkcs12");
-			ks.load(in, "123456".toCharArray());
-
-			KeyManagerFactory kmfactory = KeyManagerFactory
-					.getInstance(KeyManagerFactory.getDefaultAlgorithm());
-			kmfactory.init(ks, "123456".toCharArray());
-			KeyManager[] keyManagers = kmfactory.getKeyManagers();
-			return keyManagers;
-		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		} finally {
-			IOUtils.closeQuietly(in);
-		}
-	}
-
-	private TrustManager[] getTrustManagers() {
-		X509TrustManager tm = new X509TrustManager() {
-			public void checkClientTrusted(X509Certificate[] xcs, String string) {
-			}
-
-			public void checkServerTrusted(X509Certificate[] xcs, String string) {
-			}
-
-			public X509Certificate[] getAcceptedIssuers() {
-				return null;
-			}
-
-		};
-		return new TrustManager[] { tm };
 	}
 
 	public static void main(String[] args) throws HttpClientException {
