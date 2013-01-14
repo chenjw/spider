@@ -19,15 +19,16 @@ public class Main2 {
 		// 1783831337
 		// 1925238912
 		String userId = "1925238912";//
-		String token="2.00WaGSGC0TXPFW2859bb150etwDzcB";
+		String token = "2.00WaGSGCnpP1DBdf51a94343llFD7C";
 		long sinceId = 100000;
 		int success = 0;
 		long start = System.currentTimeMillis();
-		UserTokenModel user=new UserTokenModel();
-		user.setId(userId);
+		UserTokenModel user = new UserTokenModel();
+		user.setUserId(userId);
 		user.setToken(token);
 		while (true) {
-			List<TweetModel> list = weiboService.findFriendsTimeline(user, sinceId);
+			List<TweetModel> list = weiboService.findFriendsTimeline(user,
+					sinceId);
 			if (list != null) {
 				for (TweetModel t : list) {
 					System.out.println(t.getId() + " " + t.getText());

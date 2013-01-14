@@ -16,6 +16,11 @@ public class IbatisWatchedUserDAO extends SqlMapClientDaoSupport implements
 				watchedUser);
 	}
 
+	public void updateWatchedUser(WatchedUserDO watchedUser) {
+		this.getSqlMapClientTemplate().update("MS-UPDATE-WATCHED-USER",
+				watchedUser);
+	}
+
 	@Override
 	public List<WatchedUserDO> getAllWatchedUsers() {
 		return this.getSqlMapClientTemplate().queryForList(
@@ -26,6 +31,12 @@ public class IbatisWatchedUserDAO extends SqlMapClientDaoSupport implements
 	public WatchedUserDO findWatchedUser(String userId) {
 		return (WatchedUserDO) this.getSqlMapClientTemplate().queryForObject(
 				"MS-SELECT-WATCHED-USER", userId);
+	}
+
+	@Override
+	public WatchedUserDO findWatchedUserByToken(String token) {
+		return (WatchedUserDO) this.getSqlMapClientTemplate().queryForObject(
+				"MS-SELECT-WATCHED-USER-BY-TOKEN", token);
 	}
 
 }

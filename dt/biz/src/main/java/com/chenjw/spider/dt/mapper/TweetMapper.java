@@ -18,7 +18,7 @@ public class TweetMapper {
 			}
 		}
 
-		dataobject.setId(model.getId());
+		dataobject.setTid(model.getId());
 		dataobject.setUserId(model.getUser().getId());
 		dataobject.setPostDate(model.getCreatedAt());
 

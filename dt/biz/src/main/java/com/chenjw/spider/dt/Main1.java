@@ -22,8 +22,8 @@ public class Main1 {
 		int success = 0;
 		long start = System.currentTimeMillis();
 		while (true) {
-			List<TweetModel> list = weiboService.findUserTimelineByUserId(userId,
-					sinceId);
+			List<TweetModel> list = weiboService.findUserTimelineByUserId(
+					userId, null, sinceId);
 			if (list != null) {
 				for (TweetModel t : list) {
 					System.out.println(t.getId() + " " + t.getText());

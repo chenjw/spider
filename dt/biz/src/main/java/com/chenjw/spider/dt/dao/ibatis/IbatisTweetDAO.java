@@ -1,44 +1,56 @@
 package com.chenjw.spider.dt.dao.ibatis;
 
-import java.io.UnsupportedEncodingException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.orm.ibatis.support.SqlMapClientDaoSupport;
 
-import com.chenjw.spider.dt.constants.Constants;
 import com.chenjw.spider.dt.dao.TweetDAO;
 import com.chenjw.spider.dt.dataobject.TweetDO;
+import com.chenjw.spider.dt.mapper.TweetMapper;
+import com.chenjw.spider.dt.model.TweetModel;
+import com.chenjw.tools.beancopy.util.DateUtils;
 
 public class IbatisTweetDAO extends SqlMapClientDaoSupport implements TweetDAO {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<TweetDO> findByUserId(String userId) {
+	public List<TweetDO> findByMemberUserId(String userId) {
 		return this.getSqlMapClientTemplate().queryForList(
-				"MS-SELECT-TWEET-IDS-BY-USER-ID", userId);
+				"MS-SELECT-TWEET-IDS-BY-MEMBER-USER-ID", userId);
 	}
 
 	@Override
-	public TweetDO findById(String tId) {
+	public TweetDO findByTidAndMemberUserId(String tid, String memberUserId) {
+		Map<String, Object> p = new HashMap<String, Object>();
+		p.put("tid", tid);
+		p.put("memberUserId", memberUserId);
 		return (TweetDO) this.getSqlMapClientTemplate().queryForObject(
-				"MS-SELECT-TWEET-BY-TID", tId);
+				"MS-SELECT-TWEET-BY-TID-AND-MEMBER-USER-ID", p);
 	}
 
 	@Override
 	public void addTweet(TweetDO tweet) {
-		try {
-			String str = "add tweet " + new String(tweet.getContent(), "UTF-8");
-			Constants.LOGGER.info(str);
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		}
-
+		TweetModel model = new TweetModel();
+		TweetMapper.do2Model(tweet, model);
+		String str = "[add-tweet] "
+				+ model.getId()
+				+ " "
+				+ DateUtils.toLocaleString(model.getCreatedAt(),
+						"yyyy-MM-dd HH:mm:ss") + " ["
+				+ model.getUser().getScreenName() + "] " + model.getText();
+		System.out.println(str);
 		this.getSqlMapClientTemplate().insert("MS-INSERT-TWEET", tweet);
 	}
 
 	@Override
-	public void deleteById(String id) {
-		this.getSqlMapClientTemplate().delete("MS-DELETE-TWEET", id);
+	public void deleteByTidAndMemberUserId(String tid, String memberUserId) {
+		Map<String, Object> p = new HashMap<String, Object>();
+		p.put("tid", tid);
+		p.put("memberUserId", memberUserId);
+		this.getSqlMapClientTemplate().delete(
+				"MS-DELETE-TWEET-BY-TID-AND-MEMBER-USER-ID", p);
 	}
 
 }

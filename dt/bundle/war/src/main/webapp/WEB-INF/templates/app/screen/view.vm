@@ -7,9 +7,12 @@
         <link href="css/skin.css" type="text/css" rel="stylesheet" charset="utf-8"/>
         <link href="css/right_thirdpart.css" type="text/css" rel="stylesheet" charset="utf-8"/>
         <link href="css/wbim.css" type="text/css" rel="stylesheet" charset="utf-8"/>
-        <title>我的首页 新浪微博-随时随地分享身边的新鲜事儿</title>
+        <title>那些年，被错过的微博</title>
     </head>
     <body class="B_index L-zh-cn" style="">
+		<div>
+			$!{errorMessage}
+		</div>
         <div class="W_miniblog">
             <div class="W_miniblog_fb">
                 <div class="W_main">
@@ -24,6 +27,7 @@
                                     <div id="pl_content_homeFeed">
                                         <div class="WB_feed" pagenum="1" node-type="feed_list">
                                             $control.setTemplate("detail_list.vm")
+											$control.setTemplate("page.vm")
                                         </div>
                                     </div>
                                 </div>

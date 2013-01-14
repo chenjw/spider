@@ -23,6 +23,7 @@
         <csrfToken />
         <control-tool />
         <uris-tool />
+        <bean-tool id="dateUtil" class="com.chenjw.spider.dt.web.app.utils.DateUtil" scope="global" />
     </services:pull>
 
 </beans:beans>

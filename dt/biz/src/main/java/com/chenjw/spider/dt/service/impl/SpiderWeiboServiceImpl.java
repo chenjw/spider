@@ -25,7 +25,8 @@ public class SpiderWeiboServiceImpl extends OpenWeiboServiceImpl {
 	String cookie = "UOR=weibo.com,weibo.com,; ULV=1357916844382:5:5:5:9273337546941.754.1357916844067:1357911239690; un=cjw1983@gmail.com; myuid=1925238912; ALF=1358337854; wvr=5; SinaRot/u/1925238912%3Ftopnav%3D1%26wvr%3D5=38; SinaRot/u/1925238912=35; SINAGLOBAL=9273337546941.754.1357916844067; SinaRot/u/1925238912%3Fwvr%3D5%26lf%3Dreg=18; Apache=9273337546941.754.1357916844067; _s_tentry=login.sina.com.cn; v=5; SSOLoginState=1357916836; SUS=SID-1925238912-1357916836-XD-xqw3p-02715d906517a1694c3d79d112f703b0; SUP=cv%3D1%26bt%3D1357916836%26et%3D1358003236%26d%3Dc909%26i%3Dd78f%26us%3D1%26vf%3D0%26vt%3D0%26ac%3D0%26uid%3D1925238912%26user%3Dcjw1983%2540gmail.com%26ag%3D4%26name%3Dcjw1983%2540gmail.com%26nick%3Dcjw1983%26fmp%3D%26lcp%3D2011-12-12%252021%253A55%253A59; SUE=es%3Ddff95aba4e047ca07ea26f6e278e6d49%26ev%3Dv1%26es2%3Db4ffb6a85cc34d75357eafc9167c10fe%26rs0%3DUnysl21zDCcw45pFsIGyBN4xOMNHDLe1bedoE6gWf33bO%252FuI03ik5195dqnWWF4zjzI6v4btX8ggIsEFMU54wZYH9bDYs8dYyv6NwcrgFwOp3RSqm%252Frx5Q6%252FkTENQVqedDVIuI7wCf%252BLlWZNlZKgZLKsPNSZzhq3RIuVPJMu0Qk%253D%26rv%3D0; USRHAWB=usrmdins315_51";
 
 	@Override
-	public List<TweetModel> findUserTimelineByUserId(String userId, long sinceId) {
+	public List<TweetModel> findUserTimelineByUserId(String userId,
+			String token, long sinceId) {
 		try {
 			HttpUrl url = UrlParseUtils.parseUrl(url2);
 			// url.getQueryParam().put("since_id", String.valueOf(sinceId));

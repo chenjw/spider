@@ -5,16 +5,15 @@ import java.io.UnsupportedEncodingException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.chenjw.spider.dt.service.DeletedTweetService;
+import com.chenjw.spider.dt.service.DeletedTweetCheckService;
 
 public class Main {
 	public static void main(String[] args) throws UnsupportedEncodingException {
 		ApplicationContext context = new ClassPathXmlApplicationContext(
 				"classpath*:context.xml");
-		DeletedTweetService deletedTweetService = (DeletedTweetService) context
-				.getBean("deletedTweetService");
-		deletedTweetService.checkByName("陈俊文V");
-
+		DeletedTweetCheckService deletedTweetCheckService = (DeletedTweetCheckService) context
+				.getBean("deletedTweetCheckService");
+		deletedTweetCheckService.check("1925238912");
 		// DeletedTweetDAO deletedTweetDAO = (DeletedTweetDAO) context
 		// .getBean("deletedTweetDAO");
 		// TweetDAO tweetDAO = (TweetDAO) context.getBean("tweetDAO");

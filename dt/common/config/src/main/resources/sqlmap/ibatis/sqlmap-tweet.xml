@@ -6,34 +6,35 @@
 	<typeAlias alias="TA-DT-TWEET" type="com.chenjw.spider.dt.dataobject.TweetDO"/>
 
 	<resultMap class="TA-DT-TWEET" id="RM-DT-TWEET">
-		<result property="id" column="TID" jdbcType="VARCHAR" />
+		<result property="tid" column="TID" jdbcType="BIGINT" />
 		<result property="userId" column="USER_ID" jdbcType="VARCHAR" />
-		<result property="postDate" column="POST_DATE" jdbcType="DATE" javaType="date" />
+		<result property="memberUserId" column="MEMBER_USER_ID" jdbcType="VARCHAR" />
+		<result property="postDate" column="POST_DATE" jdbcType="DATETIME" javaType="date" />
 		<result property="content" column="CONTENT" typeHandler="org.springframework.orm.ibatis.support.BlobByteArrayTypeHandler" />
 	</resultMap>
 
-	<select id="MS-SELECT-TWEET-IDS-BY-USER-ID" parameterClass="java.lang.String"
+	<select id="MS-SELECT-TWEET-IDS-BY-MEMBER-USER-ID" parameterClass="java.lang.String"
 		resultMap="RM-DT-TWEET">
-		SELECT TID,USER_ID,POST_DATE,CONTENT
-		FROM dt_tweet WHERE USER_ID=#userId#
+		SELECT TID,USER_ID,MEMBER_USER_ID,POST_DATE,CONTENT
+		FROM dt_tweet WHERE MEMBER_USER_ID=#memberUserId#
 	</select>
 	
-	<select id="MS-SELECT-TWEET-BY-TID" parameterClass="java.lang.String"
+	<select id="MS-SELECT-TWEET-BY-TID-AND-MEMBER-USER-ID" parameterClass="java.util.Map"
 		resultMap="RM-DT-TWEET">
-		SELECT TID,USER_ID,POST_DATE,CONTENT
-		FROM dt_tweet WHERE TID=#tid#
+		SELECT TID,USER_ID,MEMBER_USER_ID,POST_DATE,CONTENT
+		FROM dt_tweet WHERE TID=#tid# and MEMBER_USER_ID=#memberUserId#
 	</select>
 
     <insert id="MS-INSERT-TWEET" parameterClass="TA-DT-TWEET">
         INSERT INTO dt_tweet (
-            TID,USER_ID,POST_DATE,CONTENT,GMT_CREATE
+            TID,USER_ID,MEMBER_USER_ID,POST_DATE,CONTENT,GMT_CREATE
         ) VALUES (
-            #id#,#userId#,#postDate#,#content#,now()
+            #tid#,#userId#,#memberUserId#,#postDate#,#content#,now()
         )
     </insert>
     
-	<delete id="MS-DELETE-TWEET" parameterClass="java.lang.String">
-        DELETE FROM dt_tweet WHERE TID=#tid#
+	<delete id="MS-DELETE-TWEET-BY-TID-AND-MEMBER-USER-ID" parameterClass="java.util.Map">
+        DELETE FROM dt_tweet WHERE TID=#tid# and MEMBER_USER_ID=#memberUserId#
     </delete>
    
 </sqlMap>

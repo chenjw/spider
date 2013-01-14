@@ -93,7 +93,7 @@
   		</copy>
 	</target>
 	
-	<target name="upload-dt-to-cloudfoundry">
+	<target name="upload-cloudfoundry">
 		<copy todir="${dist.dir}/deleted-tweets/upload">
     			<fileset dir="${base.dir}/dt/cloudfoundry">
 				<include name="manifest.yml"/>
@@ -114,16 +114,52 @@
 		<exec executable="vmc">
     			<arg value="--path"/>
 			<arg value="${dist.dir}/deleted-tweets/upload/"/>
+			<arg value="stop"/>
+			<arg value="deleted-tweets"/>
+ 		</exec>
+		<exec executable="vmc">
+    			<arg value="--path"/>
+			<arg value="${dist.dir}/deleted-tweets/upload/"/>
 			<arg value="update"/>
+ 		</exec>
+		<exec executable="vmc">
+    			<arg value="--path"/>
+			<arg value="${dist.dir}/deleted-tweets/upload/"/>
+			<arg value="start"/>
+			<arg value="deleted-tweets"/>
  		</exec>
 		<exec executable="vmc">
     			<arg value="logout"/>
  		</exec>	
 	</target>
 
+	<target name="stop-cloudfoundry">
+		<exec executable="vmc">
+    			<arg value="target"/>
+			<arg value="https://api.cloudfoundry.com"/>
+ 		</exec>	
+		<!-- upload to cloudfoundry-->
+		<exec executable="vmc">
+    			<arg value="login"/>
+			<arg value="--email"/>
+			<arg value="cjw1983@gmail.com"/>
+			<arg value="--passwd"/>
+			<arg value="19830926"/>
+ 		</exec>		
+		<exec executable="vmc">
+    			<arg value="--path"/>
+			<arg value="${dist.dir}/deleted-tweets/upload/"/>
+			<arg value="stop"/>
+			<arg value="deleted-tweets"/>
+ 		</exec>
+
+	</target>
 
     
-    	<target name="main" depends="init,maven-dt,copy-war-dt,copy-to-tomcat,upload-dt-to-cloudfoundry"/>
+    	<target name="main" depends="init,maven-dt,copy-war-dt,copy-to-tomcat,upload-cloudfoundry"/>
 
-	<target name="upload" depends="upload-dt-to-cloudfoundry"/>
+	<target name="upload" depends="upload-cloudfoundry"/>
+
+	<target name="stop" depends="stop-cloudfoundry"/>
+
 </project>

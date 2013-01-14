@@ -4,33 +4,33 @@
       <string>currentBuild</string>
       <path-set>
         <pathsSet class="linked-hash-set">
-          <string>META-INF/autoconf/config.properties</string>
           <string>META-INF/autoconf/web.xml</string>
+          <string>META-INF/autoconf/config.properties</string>
           <string>META-INF/autoconf/auto-config.xml</string>
-          <string>WEB-INF/templates/app/screen/env.vm</string>
-          <string>WEB-INF/templates/app/screen/index.vm</string>
+          <string>css/right_thirdpart.css</string>
+          <string>css/skin.css</string>
+          <string>css/A_index.css</string>
+          <string>css/wbim.css</string>
+          <string>css/frame.css</string>
+          <string>css/index.css</string>
+          <string>WEB-INF/web.xml</string>
+          <string>WEB-INF/log4j.xml</string>
           <string>WEB-INF/templates/app/screen/message.vm</string>
+          <string>WEB-INF/templates/app/screen/env.vm</string>
           <string>WEB-INF/templates/app/screen/view.vm</string>
           <string>WEB-INF/templates/app/screen/add.vm</string>
           <string>WEB-INF/templates/app/control/detail_list2.html</string>
           <string>WEB-INF/templates/app/control/detail_list.vm</string>
-          <string>WEB-INF/web.xml</string>
+          <string>WEB-INF/templates/app/control/page.vm</string>
           <string>WEB-INF/webx-app.xml</string>
           <string>WEB-INF/common/webx-component.xml</string>
-          <string>WEB-INF/common/webx-component-and-root.xml</string>
-          <string>WEB-INF/common/resources.xml</string>
-          <string>WEB-INF/common/uris.xml</string>
-          <string>WEB-INF/common/pipeline.xml</string>
           <string>WEB-INF/common/pipeline-exception.xml</string>
+          <string>WEB-INF/common/webx-component-and-root.xml</string>
+          <string>WEB-INF/common/uris.xml</string>
+          <string>WEB-INF/common/resources.xml</string>
+          <string>WEB-INF/common/pipeline.xml</string>
           <string>WEB-INF/webx.xml</string>
-          <string>WEB-INF/log4j.xml</string>
           <string>wb_ae76e3171ca9bdb6.txt</string>
-          <string>css/frame.css</string>
-          <string>css/index.css</string>
-          <string>css/right_thirdpart.css</string>
-          <string>css/skin.css</string>
-          <string>css/wbim.css</string>
-          <string>css/A_index.css</string>
           <string>WEB-INF/lib/dt.common.config-1.0-SNAPSHOT.jar</string>
           <string>WEB-INF/lib/dt.core-1.0-SNAPSHOT.jar</string>
           <string>WEB-INF/lib/jakarta.log4j-1.2.16.jar</string>

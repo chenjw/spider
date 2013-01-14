@@ -3,8 +3,12 @@ package com.chenjw.spider.dt.dataobject;
 import java.util.Date;
 
 public class TweetDO {
-	private String id;
+
+	private String tid;
+	// 微博发送者的id
 	private String userId;
+	// 微博关注者的id
+	private String memberUserId;
 	// 发送时间
 	private Date postDate;
 	private byte[] content;
@@ -17,12 +21,12 @@ public class TweetDO {
 		this.postDate = postDate;
 	}
 
-	public String getId() {
-		return id;
+	public String getTid() {
+		return tid;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setTid(String tid) {
+		this.tid = tid;
 	}
 
 	public String getUserId() {
@@ -31,6 +35,14 @@ public class TweetDO {
 
 	public void setUserId(String userId) {
 		this.userId = userId;
+	}
+
+	public String getMemberUserId() {
+		return memberUserId;
+	}
+
+	public void setMemberUserId(String memberUserId) {
+		this.memberUserId = memberUserId;
 	}
 
 	public byte[] getContent() {

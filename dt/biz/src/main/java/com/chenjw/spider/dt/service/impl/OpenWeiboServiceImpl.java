@@ -3,8 +3,9 @@ package com.chenjw.spider.dt.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
-import weibo4j.Comments;
+import weibo4j.Account;
 import weibo4j.Friendships;
+import weibo4j.Oauth;
 import weibo4j.Timeline;
 import weibo4j.Users;
 import weibo4j.model.Paging;
@@ -12,26 +13,24 @@ import weibo4j.model.Status;
 import weibo4j.model.StatusWapper;
 import weibo4j.model.User;
 import weibo4j.model.WeiboException;
+import weibo4j.org.json.JSONException;
 
 import com.chenjw.spider.dt.model.TweetModel;
 import com.chenjw.spider.dt.model.UserModel;
 import com.chenjw.spider.dt.model.UserTokenModel;
 import com.chenjw.spider.dt.service.Handler;
 import com.chenjw.spider.dt.service.WeiboService;
-import com.chenjw.spider.dt.utils.OAuthUtils;
 import com.chenjw.tools.BeanCopyUtils;
+import com.chenjw.tools.beancopy.util.DateUtils;
 
 public class OpenWeiboServiceImpl implements WeiboService {
 	// private String token = "2.00WaGSGC0TXPFW2859bb150etwDzcB";
 
-	private String DEFAULT_TOKEN = "2.006ONAWD0TXPFWdf8b2ae70b00kK9K";
+	// private String DEFAULT_TOKEN = "2.00WaGSGCnpP1DBdf51a94343llFD7C";
 
-
-
-
-	public String[] findFriendIdsByUserId(String userId) {
+	public String[] findFriendIdsByUserId(String userId, String token) {
 		Friendships friendshipsManager = new Friendships();
-		friendshipsManager.setToken(DEFAULT_TOKEN);
+		friendshipsManager.setToken(token);
 		try {
 			return friendshipsManager.getFriendsIdsByUid(userId, 5000, 0);
 		} catch (WeiboException e) {
@@ -40,12 +39,9 @@ public class OpenWeiboServiceImpl implements WeiboService {
 		}
 	}
 
+	private void readUserTimeline(Timeline timelineManager, String uid,
+			long sinceId, Handler handler) throws WeiboException {
 
-
-	private void readUserTimeline(Timeline timelineManager,String uid, long sinceId, Handler handler)
-			throws WeiboException {
-
-		
 		long lastId = 0;
 		while (true) {
 			Paging page = new Paging();
@@ -75,10 +71,11 @@ public class OpenWeiboServiceImpl implements WeiboService {
 		}
 
 	}
-	
-	private void readFrientsTimeline(Timeline timelineManager,long sinceId, Handler handler)
-			throws WeiboException {
+
+	private void readFrientsTimeline(Timeline timelineManager, long sinceId,
+			Handler handler) throws WeiboException {
 		long lastId = 0;
+
 		while (true) {
 			Paging page = new Paging();
 			if (lastId != 0) {
@@ -88,7 +85,8 @@ public class OpenWeiboServiceImpl implements WeiboService {
 				// 因为需要包括这一条，所以必须-1
 				page.setSinceId(sinceId - 1);
 			}
-
+			System.out.println("[start-page] sinceId=" + page.getSinceId()
+					+ ",maxId=" + page.getMaxId());
 			page.setCount(100);
 			StatusWapper status;
 			status = timelineManager.getFriendsTimeline(0, 0, page);
@@ -96,9 +94,17 @@ public class OpenWeiboServiceImpl implements WeiboService {
 				return;
 			}
 			for (Status s : status.getStatuses()) {
+				System.out.println("[get-status] "
+						+ s.getId()
+						+ " "
+						+ DateUtils.toLocaleString(s.getCreatedAt(),
+								"yyyy-MM-dd HH:mm:ss") + " ["
+						+ s.getUser().getScreenName() + "] " + s.getText());
 				handler.handleStatus(s);
 				lastId = s.getIdstr() - 1;
 			}
+			System.out.println("[end-page] count="
+					+ status.getStatuses().size());
 			// 如果没到count数量，表示只有一页，退出
 			if (status.getStatuses().size() < page.getCount()) {
 				return;
@@ -108,26 +114,45 @@ public class OpenWeiboServiceImpl implements WeiboService {
 
 	}
 
-	@Override
-	public String findUserIdByName(String name) {
-		Users usersManager=new Users();
-		usersManager.setToken(DEFAULT_TOKEN);
+	public UserModel findUserByName(String name, String token) {
+		Users usersManager = new Users();
+		usersManager.setToken(token);
 		User user;
 		try {
-			
+
 			user = usersManager.showUserByScreenName(name);
 		} catch (WeiboException e) {
 			e.printStackTrace();
 			return null;
 		}
-		return user.getId();
+		if (user == null) {
+			return null;
+		}
+		UserModel u = new UserModel();
+		BeanCopyUtils.copyProperties(u, user);
+		return u;
+	}
+
+	public UserModel findUserByUserId(String userId, String token) {
+		Users usersManager = new Users();
+		usersManager.setToken(token);
+		User user;
+		try {
+			user = usersManager.showUserById(userId);
+		} catch (WeiboException e) {
+			e.printStackTrace();
+			return null;
+		}
+		UserModel u = new UserModel();
+		BeanCopyUtils.copyProperties(u, user);
+		return u;
 	}
 
 	@Override
 	public List<TweetModel> findUserTimelineByUserId(final String userId,
-			long sinceId) {
-		Timeline timelineManager=new Timeline();
-		timelineManager.setToken(DEFAULT_TOKEN);
+			String token, long sinceId) {
+		Timeline timelineManager = new Timeline();
+		timelineManager.setToken(token);
 		final List<TweetModel> result = new ArrayList<TweetModel>();
 		Handler handler = new Handler() {
 			@Override
@@ -142,7 +167,7 @@ public class OpenWeiboServiceImpl implements WeiboService {
 		};
 		// 目标用户
 		try {
-			readUserTimeline(timelineManager,userId, sinceId, handler);
+			readUserTimeline(timelineManager, userId, sinceId, handler);
 		} catch (WeiboException e) {
 			e.printStackTrace();
 		}
@@ -152,7 +177,8 @@ public class OpenWeiboServiceImpl implements WeiboService {
 	@Override
 	public List<TweetModel> findFriendsTimeline(UserTokenModel user,
 			long sinceId) {
-		Timeline timelineManager=new Timeline();
+		System.out.println("findFriendsTimeline " + sinceId);
+		Timeline timelineManager = new Timeline();
 		timelineManager.setToken(user.getToken());
 		final List<TweetModel> result = new ArrayList<TweetModel>();
 		Handler handler = new Handler() {
@@ -172,7 +198,59 @@ public class OpenWeiboServiceImpl implements WeiboService {
 		} catch (WeiboException e) {
 			e.printStackTrace();
 		}
+
 		return result;
+	}
+
+	@Override
+	public String findOriginStatusUrl(UserTokenModel user, String tid) {
+		Timeline timelineManager = new Timeline();
+		timelineManager.setToken(user.getToken());
+		try {
+			return timelineManager.QueryMid(1, tid).getString("mid");
+			// http://weibo.com/1674758845/zdyUQ22Ba
+		} catch (WeiboException e) {
+			e.printStackTrace();
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public String findUserIdByToken(String token) {
+		Account account = new Account();
+		account.setToken(token);
+		String uid = null;
+		try {
+			uid = account.getUid().getString("uid");
+		} catch (WeiboException e) {
+			e.printStackTrace();
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		return uid;
+	}
+
+	public String findAuthorizeUrl() {
+		Oauth oauth = new Oauth();
+		try {
+			return oauth.authorize("code", "", "");
+		} catch (WeiboException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	public String findAccessTokenByCode(String code) {
+		Oauth oauth = new Oauth();
+		// oauth.setToken(DEFAULT_TOKEN);
+		try {
+			return oauth.getAccessTokenByCode(code).getAccessToken();
+		} catch (WeiboException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 }

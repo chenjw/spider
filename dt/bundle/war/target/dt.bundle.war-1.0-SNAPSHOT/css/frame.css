@@ -130,6 +130,7 @@ textarea.W_input {
     width: 830px;
 }
 .W_main_c {
+	background-color: #EEE;
     float: left;
     min-height: 800px;
     overflow: hidden;

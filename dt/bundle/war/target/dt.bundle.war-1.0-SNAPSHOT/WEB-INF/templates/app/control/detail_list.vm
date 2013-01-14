@@ -1,16 +1,16 @@
 #foreach( $detail in $detailList) 	
-    <div class="WB_feed_type SW_fun S_line2">
+    <div class="WB_feed_type SW_fun S_line2" tid="${detail.id}">
         <div class="WB_screen">
         </div>
         <div class="WB_feed_datail S_line2 clearfix">
             <div class="WB_face">
-                <a class="W_face_radius" href="http://weibo.com/u/${detail.user.id}" title="${detail.user.screenName}"> 
+                <a class="W_face_radius" href="http://weibo.com/u/${detail.user.id}" title="${detail.user.screenName}" target="_blank"> 
 					<img title="${detail.user.screenName}" alt="" width="50" height="50" src="${detail.user.avatarLarge}" />
                 </a>
             </div>
             <div class="WB_detail">
                 <div class="WB_info">
-                    <a class="WB_name S_func1" title="${detail.user.screenName}" href="http://weibo.com/u/${detail.user.id}">${detail.user.screenName}</a>
+                    <a class="WB_name S_func1" title="${detail.user.screenName}" href="goTweet.htm?tid=${detail.id}" target="_blank">${detail.user.screenName}</a>
                 </div>
                 <div class="WB_text">
                     ${detail.text}
@@ -25,6 +25,9 @@
 				</ul>
 				#end
                 <div class="WB_func clearfix">
+					<div class="WB_from">
+						<a class="S_link2 WB_time" target="_blank" title="$dateUtil.toLocaleString(${detail.createdAt},"yyyy-MM-dd HH:mm:ss")" href="/1925238912/z5TwenQt9">$dateUtil.toLocaleString(${detail.createdAt},"yyyy-MM-dd HH:mm:ss")</a>
+					</div>
                 </div>
                 <div class="WB_media_expand repeat S_line1 S_bg4" style="display: none;" />
             </div>

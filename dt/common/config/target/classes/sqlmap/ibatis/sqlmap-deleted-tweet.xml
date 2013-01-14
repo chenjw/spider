@@ -6,29 +6,48 @@
 	<typeAlias alias="TA-DT-DELETED-TWEET" type="com.chenjw.spider.dt.dataobject.TweetDO"/>
 
 	<resultMap class="TA-DT-DELETED-TWEET" id="RM-DT-DELETED-TWEET">
-		<result property="id" column="TID" jdbcType="VARCHAR" />
+		<result property="tid" column="TID" jdbcType="BIGINT" />
 		<result property="userId" column="USER_ID" jdbcType="VARCHAR" />
-		<result property="postDate" column="POST_DATE" jdbcType="DATE" javaType="date" />
+		<result property="memberUserId" column="MEMBER_USER_ID" jdbcType="VARCHAR" />
+		<result property="postDate" column="POST_DATE" jdbcType="DATETIME" javaType="date" />
 		<result property="content" column="CONTENT" jdbcType="BLOB" />
 	</resultMap>
 	
-	<select id="MS-SELECT-DELETED-TWEET-BY-TID" parameterClass="java.lang.String"
+	<select id="MS-SELECT-DELETED-TWEET-BY-TID-AND-MEMBER-USER-ID" parameterClass="java.util.Map"
 		resultMap="RM-DT-DELETED-TWEET">
-		SELECT TID,USER_ID,POST_DATE,CONTENT
-		FROM dt_deleted_tweet WHERE TID=#tid#
+		SELECT TID,USER_ID,MEMBER_USER_ID,POST_DATE,CONTENT
+		FROM dt_deleted_tweet WHERE TID=#tid# and MEMBER_USER_ID=#memberUserId#
 	</select>
 	
-	<select id="MS-SELECT-DELETED-TWEET-BY-USER-ID" parameterClass="java.lang.String"
+	<select id="MS-SELECT-DELETED-TWEET-BY-MEMBER-USER-ID" parameterClass="java.util.Map"
 		resultMap="RM-DT-DELETED-TWEET">
-		SELECT TID,USER_ID,POST_DATE,CONTENT
-		FROM dt_deleted_tweet WHERE USER_ID=#userId#
+		SELECT TID,USER_ID,MEMBER_USER_ID,POST_DATE,CONTENT
+		FROM dt_deleted_tweet WHERE MEMBER_USER_ID=#memberUserId#
+		<isNotNull property="page.maxId" prepend="AND">
+			<![CDATA[
+				 TID<#page.maxId#
+			]]>
+		</isNotNull>
+		ORDER BY TID DESC 
+		LIMIT $page.pageSize$
+	</select>
+	
+	<select id="MS-COUNT-DELETED-TWEET-BY-MEMBER-USER-ID" parameterClass="java.util.Map"
+		resultClass="int">
+		SELECT COUNT(1)
+		FROM dt_deleted_tweet WHERE MEMBER_USER_ID=#memberUserId#
+		<isNotNull property="maxId" prepend="AND">
+			<![CDATA[
+				 TID < #maxId#
+			]]>
+		</isNotNull>
 	</select>
 
     <insert id="MS-INSERT-DELETED-TWEET" parameterClass="TA-DT-DELETED-TWEET">
         INSERT INTO dt_deleted_tweet (
-            TID,USER_ID,CONTENT,POST_DATE,GMT_CREATE
+            TID,USER_ID,MEMBER_USER_ID,CONTENT,POST_DATE,GMT_CREATE
         ) VALUES (
-            #id#,#userId#,#content#,#postDate#,now()
+            #tid#,#userId#,#memberUserId#,#content#,#postDate#,now()
         )
     </insert>
 </sqlMap>

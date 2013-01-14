@@ -45,7 +45,7 @@
     <!-- 综合设置。 -->
     <services:webx-configuration>
         <!-- 默认将productionMode设为true，建议在jetty插件中设置-DproductionMode=false。 -->
-        <services:productionMode>${productionMode:false}</services:productionMode>
+        <services:productionMode>${productionMode:true}</services:productionMode>
         <services:components defaultComponent="app" />
     </services:webx-configuration>
 

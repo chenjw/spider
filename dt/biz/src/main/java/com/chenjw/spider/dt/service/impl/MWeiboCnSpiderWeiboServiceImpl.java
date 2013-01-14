@@ -17,7 +17,8 @@ public class MWeiboCnSpiderWeiboServiceImpl extends OpenWeiboServiceImpl {
 	String cookie = "USER_LAST_LOGIN_NAME=cjw1983%40gmail.com; gsid_CTandWM=4ug5CpOz1GpTrZEsPBcbt84QeeI; login=true";
 
 	@Override
-	public List<TweetModel> findUserTimelineByUserId(String userId, long sinceId) {
+	public List<TweetModel> findUserTimelineByUserId(String userId,
+			String token, long sinceId) {
 
 		try {
 			int page = 1;

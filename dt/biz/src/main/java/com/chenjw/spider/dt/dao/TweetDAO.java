@@ -5,11 +5,11 @@ import java.util.List;
 import com.chenjw.spider.dt.dataobject.TweetDO;
 
 public interface TweetDAO {
-	public List<TweetDO> findByUserId(String uId);
+	public List<TweetDO> findByMemberUserId(String memberUserId);
 
-	public TweetDO findById(String id);
+	public TweetDO findByTidAndMemberUserId(String tid, String memberUserId);
 
-	public void deleteById(String id);
+	public void deleteByTidAndMemberUserId(String tid, String memberUserId);
 
 	public void addTweet(TweetDO tweet);
 }

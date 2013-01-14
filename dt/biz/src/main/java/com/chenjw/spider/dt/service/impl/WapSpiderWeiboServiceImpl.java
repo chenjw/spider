@@ -22,7 +22,8 @@ public class WapSpiderWeiboServiceImpl extends OpenWeiboServiceImpl {
 	String cookie = "gsid_CTandWM=4ug5CpOz1GpTrZEsPBcbt84QeeI; _WEIBO_UID=${userId}";
 
 	@Override
-	public List<TweetModel> findUserTimelineByUserId(String userId, long sinceId) {
+	public List<TweetModel> findUserTimelineByUserId(String userId,
+			String token, long sinceId) {
 		try {
 			int page = 1;
 			HttpUrl url = UrlParseUtils.parseUrl(url2);
