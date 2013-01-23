@@ -7,7 +7,7 @@
 		<property name="ignoreResourceNotFound" value="false" />
 		<property name="propertiesArray">
 			<list>
-				<bean class="com.chenjw.spider.dt.constants.CloudFoundryEnv"></bean>
+				<bean class="com.chenjw.spider.dt.env.EnvFactoryBean"></bean>
 			</list>
 		</property>
 	</bean>

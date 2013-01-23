@@ -10,25 +10,27 @@
 		<result property="userId" column="USER_ID" jdbcType="VARCHAR" />
 		<result property="memberUserId" column="MEMBER_USER_ID" jdbcType="VARCHAR" />
 		<result property="postDate" column="POST_DATE" jdbcType="DATETIME" javaType="date" />
+		<result property="deleteDate" column="DELETE_DATE" jdbcType="DATETIME" javaType="date" />
+		<result property="deleteSort" column="DELETE_SORT" jdbcType="VARCHAR" />
 		<result property="content" column="CONTENT" jdbcType="BLOB" />
 	</resultMap>
 	
 	<select id="MS-SELECT-DELETED-TWEET-BY-TID-AND-MEMBER-USER-ID" parameterClass="java.util.Map"
 		resultMap="RM-DT-DELETED-TWEET">
-		SELECT TID,USER_ID,MEMBER_USER_ID,POST_DATE,CONTENT
+		SELECT TID,USER_ID,MEMBER_USER_ID,POST_DATE,CONTENT,DELETE_DATE,DELETE_SORT
 		FROM dt_deleted_tweet WHERE TID=#tid# and MEMBER_USER_ID=#memberUserId#
 	</select>
 	
 	<select id="MS-SELECT-DELETED-TWEET-BY-MEMBER-USER-ID" parameterClass="java.util.Map"
 		resultMap="RM-DT-DELETED-TWEET">
-		SELECT TID,USER_ID,MEMBER_USER_ID,POST_DATE,CONTENT
+		SELECT TID,USER_ID,MEMBER_USER_ID,POST_DATE,CONTENT,DELETE_DATE,DELETE_SORT
 		FROM dt_deleted_tweet WHERE MEMBER_USER_ID=#memberUserId#
-		<isNotNull property="page.maxId" prepend="AND">
+		<isNotNull property="page.maxSort" prepend="AND">
 			<![CDATA[
-				 TID<#page.maxId#
+				 DELETE_SORT < #page.maxSort#
 			]]>
 		</isNotNull>
-		ORDER BY TID DESC 
+		ORDER BY DELETE_SORT DESC 
 		LIMIT $page.pageSize$
 	</select>
 	
@@ -36,18 +38,22 @@
 		resultClass="int">
 		SELECT COUNT(1)
 		FROM dt_deleted_tweet WHERE MEMBER_USER_ID=#memberUserId#
-		<isNotNull property="maxId" prepend="AND">
+		<isNotNull property="maxSort" prepend="AND">
 			<![CDATA[
-				 TID < #maxId#
+				 DELETE_SORT < #maxSort#
 			]]>
 		</isNotNull>
 	</select>
 
     <insert id="MS-INSERT-DELETED-TWEET" parameterClass="TA-DT-DELETED-TWEET">
         INSERT INTO dt_deleted_tweet (
-            TID,USER_ID,MEMBER_USER_ID,CONTENT,POST_DATE,GMT_CREATE
+            TID,USER_ID,MEMBER_USER_ID,CONTENT,POST_DATE,DELETE_DATE,DELETE_SORT,GMT_CREATE
         ) VALUES (
-            #tid#,#userId#,#memberUserId#,#content#,#postDate#,now()
+            #tid#,#userId#,#memberUserId#,#content#,#postDate#,#deleteDate#,#deleteSort#,now()
         )
     </insert>
+    
+	<delete id="MS-DELETE-DELETED-TWEET-BY-TID-AND-MEMBER-USER-ID" parameterClass="java.util.Map">
+        DELETE FROM dt_deleted_tweet WHERE TID=#tid# and MEMBER_USER_ID=#memberUserId#
+    </delete>
 </sqlMap>

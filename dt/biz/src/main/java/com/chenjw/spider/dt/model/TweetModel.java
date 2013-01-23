@@ -29,6 +29,12 @@ public class TweetModel implements java.io.Serializable {
 	private int mlevel;
 	private ReasonModel reason;
 
+	//
+	// 删除时间
+	private Date deleteDate;
+	// 删除排序
+	private String deleteSort;
+
 	public UserModel getUser() {
 		return user;
 	}
@@ -203,6 +209,22 @@ public class TweetModel implements java.io.Serializable {
 
 	public void setHtml(String html) {
 		this.html = html;
+	}
+
+	public Date getDeleteDate() {
+		return deleteDate;
+	}
+
+	public void setDeleteDate(Date deleteDate) {
+		this.deleteDate = deleteDate;
+	}
+
+	public String getDeleteSort() {
+		return deleteSort;
+	}
+
+	public void setDeleteSort(String deleteSort) {
+		this.deleteSort = deleteSort;
 	}
 
 }

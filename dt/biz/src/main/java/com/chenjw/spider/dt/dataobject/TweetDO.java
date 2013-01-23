@@ -11,7 +11,12 @@ public class TweetDO {
 	private String memberUserId;
 	// 发送时间
 	private Date postDate;
+	// 内容
 	private byte[] content;
+	// 删除时间
+	private Date deleteDate;
+	// 删除排序
+	private String deleteSort;
 
 	public Date getPostDate() {
 		return postDate;
@@ -51,6 +56,22 @@ public class TweetDO {
 
 	public void setContent(byte[] content) {
 		this.content = content;
+	}
+
+	public Date getDeleteDate() {
+		return deleteDate;
+	}
+
+	public void setDeleteDate(Date deleteDate) {
+		this.deleteDate = deleteDate;
+	}
+
+	public String getDeleteSort() {
+		return deleteSort;
+	}
+
+	public void setDeleteSort(String deleteSort) {
+		this.deleteSort = deleteSort;
 	}
 
 }

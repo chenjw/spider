@@ -1,0 +1,36 @@
+<div class="WB_feed_type SW_fun S_line2" id="$!{detail.id}">
+    <div class="WB_screen">
+    </div>
+    <div class="WB_feed_datail S_line2 clearfix">
+        <div class="WB_face">
+            <a class="W_face_radius" href="http://weibo.com/u/$!{detail.user.id}" title="$!{detail.user.screenName}" target="_blank">
+                <img title="$!{detail.user.screenName}" alt="" width="50" height="50" src="$!{detail.user.profileImageUrl}" />
+            </a>
+        </div>
+        <div class="WB_detail">
+            <div class="WB_info">
+                <a class="WB_name S_func1" title="$!{detail.user.screenName}" href="http://weibo.com/u/$!{detail.user.id}" target="_blank">$!{detail.user.screenName}</a>
+            </div>
+            <div class="WB_text">
+				$!wbTextUtils.toWbText($!{detail.text})
+            </div>
+            #if($!{detail.thumbnailPic}!="")
+				#parse ("control/media.vm")
+			#end
+            #if($!{detail.reason})
+                #set($reason = ${detail.reason})
+                #parse ("control/reason.vm")
+			#end
+            <div class="WB_func clearfix">
+                <div class="WB_handle S_link2 WB_time" mid="3514048219855884">
+                    发送时间：$!dateUtils.toLocaleString($!{detail.createdAt}) <em	class="S_txt3">|</em>
+                    <a class="S_func4" href="javascript:DT.removeTweet('$!{detail.id}');">彻底删除</a> <em	class="S_txt3">|</em>
+                    <a class="S_func4" href="/">回首页</a>
+                </div>
+                <div class="WB_from S_link2 WB_time">
+                    删除时间：$!dateUtils.toLocaleString($!{detail.deleteDate}) 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

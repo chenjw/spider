@@ -10,18 +10,20 @@ import org.apache.commons.lang.time.DateUtils;
 import org.springframework.beans.factory.InitializingBean;
 
 import com.chenjw.spider.dt.constants.Constants;
+import com.chenjw.spider.dt.constants.EnvConstants;
 import com.chenjw.spider.dt.dao.DeletedTweetDAO;
 import com.chenjw.spider.dt.dao.TweetDAO;
 import com.chenjw.spider.dt.dao.WatchedUserDAO;
 import com.chenjw.spider.dt.dataobject.TweetDO;
 import com.chenjw.spider.dt.dataobject.WatchedUserDO;
+import com.chenjw.spider.dt.mapper.TokenMapper;
 import com.chenjw.spider.dt.mapper.TweetMapper;
-import com.chenjw.spider.dt.mapper.UserTokenMapper;
+import com.chenjw.spider.dt.model.TokenModel;
 import com.chenjw.spider.dt.model.TweetModel;
 import com.chenjw.spider.dt.model.UserModel;
-import com.chenjw.spider.dt.model.UserTokenModel;
 import com.chenjw.spider.dt.service.DeletedTweetCheckService;
 import com.chenjw.spider.dt.service.WeiboService;
+import com.chenjw.spider.dt.utils.DeleteSortUtils;
 
 public class DeletedTweetCheckServiceImpl implements DeletedTweetCheckService,
 		InitializingBean {
@@ -29,6 +31,15 @@ public class DeletedTweetCheckServiceImpl implements DeletedTweetCheckService,
 	private TweetDAO tweetDAO;
 	private DeletedTweetDAO deletedTweetDAO;
 	private WeiboService weiboService;
+	private boolean running = false;
+
+	public void start() {
+		running = true;
+	}
+
+	public void stop() {
+		running = false;
+	}
 
 	@Override
 	public void checkByName(String name) {
@@ -38,7 +49,7 @@ public class DeletedTweetCheckServiceImpl implements DeletedTweetCheckService,
 		}
 	}
 
-	private void checkWatchedUser(UserTokenModel user) {
+	private void checkWatchedUser(TokenModel user) {
 		// 当前时间
 		Date currentDate = new Date();
 		// 保留的时间
@@ -68,7 +79,7 @@ public class DeletedTweetCheckServiceImpl implements DeletedTweetCheckService,
 				}
 			}
 		}
-		UserTokenModel token = new UserTokenModel();
+		TokenModel token = new TokenModel();
 		token.setToken(user.getToken());
 		token.setUserId(user.getUserId());
 		List<TweetModel> newTweets = weiboService.findFriendsTimeline(token,
@@ -107,6 +118,9 @@ public class DeletedTweetCheckServiceImpl implements DeletedTweetCheckService,
 						user.getUserId());
 				if (fetchedMinTid != 0
 						&& Long.parseLong(deleted.getTid()) > fetchedMinTid) {
+					deleted.setDeleteDate(currentDate);
+					deleted.setDeleteSort(DeleteSortUtils.getDeleteSort(
+							currentDate, deleted.getTid()));
 					deletedTweetDAO.addTweet(deleted);
 				}
 			}
@@ -117,8 +131,8 @@ public class DeletedTweetCheckServiceImpl implements DeletedTweetCheckService,
 	public void check(String userId) {
 		WatchedUserDO user = watchedUserDAO.findWatchedUser(userId);
 		if (user != null) {
-			UserTokenModel model = new UserTokenModel();
-			UserTokenMapper.do2Model(user, model);
+			TokenModel model = new TokenModel();
+			TokenMapper.do2Model(user, model);
 			checkWatchedUser(model);
 		}
 
@@ -129,8 +143,8 @@ public class DeletedTweetCheckServiceImpl implements DeletedTweetCheckService,
 		List<WatchedUserDO> users = watchedUserDAO.getAllWatchedUsers();
 		for (WatchedUserDO user : users) {
 
-			UserTokenModel model = new UserTokenModel();
-			UserTokenMapper.do2Model(user, model);
+			TokenModel model = new TokenModel();
+			TokenMapper.do2Model(user, model);
 			if (model.isValid() && !StringUtils.isBlank(model.getToken())) {
 				checkWatchedUser(model);
 			}
@@ -140,13 +154,21 @@ public class DeletedTweetCheckServiceImpl implements DeletedTweetCheckService,
 
 	@Override
 	public void afterPropertiesSet() throws Exception {
-
+		if (EnvConstants.isProductMode()) {
+			start();
+		}
 		new Thread(new Runnable() {
 			@Override
 			public void run() {
 				while (true) {
-					DeletedTweetCheckServiceImpl.this.checkAll();
-					Constants.LOGGER.info("checkAll finished!");
+					if (running) {
+						try {
+							DeletedTweetCheckServiceImpl.this.checkAll();
+							Constants.LOGGER.info("checkAll finished!");
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
 					try {
 						Thread.sleep(Constants.WEIBO_QUERY_TIME);
 					} catch (InterruptedException e) {

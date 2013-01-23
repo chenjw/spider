@@ -79,7 +79,7 @@
 	</target>
 
 	<target name="copy-war-dt">
-		<copy tofile="${dist.dir}/deleted-tweets/upload/deleted-tweets.war" file="${base.dir}/dt/bundle/war/target/dt.bundle.war-1.0-SNAPSHOT.war">
+		<copy tofile="${dist.dir}/deleted-tweets/upload/deletedtweets.war" file="${base.dir}/dt/bundle/war/target/dt.bundle.war-1.0-SNAPSHOT.war">
   		</copy>
 	</target>
 
@@ -128,9 +128,7 @@
 			<arg value="start"/>
 			<arg value="deleted-tweets"/>
  		</exec>
-		<exec executable="vmc">
-    			<arg value="logout"/>
- 		</exec>	
+
 	</target>
 
 	<target name="stop-cloudfoundry">

@@ -1,8 +1,8 @@
-<div node-type="feed_list_page" class="W_pages">
+<div class="W_pages">
 	#if($moreNum==0)
 		<span>已到达最后</span>
 	#else
-	<a href="/?maxId=${minId}" class="W_moredown">
+	<a href="/?maxSort=${minSort}" class="W_moredown">
         <span>点击查看剩余${moreNum}条</span>
     </a>
 	#end

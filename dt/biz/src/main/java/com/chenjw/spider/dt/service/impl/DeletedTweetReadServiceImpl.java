@@ -31,7 +31,7 @@ public class DeletedTweetReadServiceImpl implements DeletedTweetReadService {
 			result.setMoreNum(0);
 		} else {
 			int moreNum = deletedTweetDAO.countByMemberUserId(userId,
-					Long.parseLong(l.get(l.size() - 1).getId()));
+					l.get(l.size() - 1).getDeleteSort());
 			result.setMoreNum(moreNum);
 
 		}

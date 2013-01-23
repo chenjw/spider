@@ -1,15 +1,15 @@
 package com.chenjw.spider.dt.service;
 
-import com.chenjw.spider.dt.model.UserTokenModel;
+import com.chenjw.spider.dt.model.TokenModel;
 
 public interface UserService {
 
-	public UserTokenModel addInvalidUser(String token);
+	public TokenModel addInvalidUser(String token);
 
-	public UserTokenModel updatePeriodValid(String token, int days);
+	public TokenModel updatePeriodValid(String token, int days);
 
-	public UserTokenModel findWatchedUserByToken(String token);
+	public TokenModel findWatchedUserByToken(String token);
 
-	public UserTokenModel findWatchedUserById(String userId);
+	public TokenModel findWatchedUserById(String userId);
 
 }

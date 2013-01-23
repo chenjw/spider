@@ -34,10 +34,10 @@ public class IbatisDeletedTweetDAO extends SqlMapClientDaoSupport implements
 
 	}
 
-	public int countByMemberUserId(String memberUserId, Long maxId) {
+	public int countByMemberUserId(String memberUserId, String maxSort) {
 		Map<String, Object> p = new HashMap<String, Object>();
 		p.put("memberUserId", memberUserId);
-		p.put("maxId", maxId);
+		p.put("maxSort", maxSort);
 		return (Integer) this.getSqlMapClientTemplate().queryForObject(
 				"MS-COUNT-DELETED-TWEET-BY-MEMBER-USER-ID", p);
 	}
@@ -54,6 +54,15 @@ public class IbatisDeletedTweetDAO extends SqlMapClientDaoSupport implements
 				+ model.getUser().getScreenName() + "] " + model.getText();
 		System.out.println(str);
 		this.getSqlMapClientTemplate().insert("MS-INSERT-DELETED-TWEET", tweet);
+	}
+
+	@Override
+	public void deleteByTidAndMemberUserId(String tid, String memberUserId) {
+		Map<String, Object> p = new HashMap<String, Object>();
+		p.put("tid", tid);
+		p.put("memberUserId", memberUserId);
+		this.getSqlMapClientTemplate().delete(
+				"MS-DELETE-DELETED-TWEET-BY-TID-AND-MEMBER-USER-ID", p);
 	}
 
 }

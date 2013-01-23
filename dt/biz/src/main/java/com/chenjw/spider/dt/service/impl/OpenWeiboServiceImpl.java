@@ -1,5 +1,6 @@
 package com.chenjw.spider.dt.service.impl;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,13 +16,13 @@ import weibo4j.model.User;
 import weibo4j.model.WeiboException;
 import weibo4j.org.json.JSONException;
 
+import com.chenjw.spider.dt.mapper.TweetMapper;
+import com.chenjw.spider.dt.mapper.UserMapper;
+import com.chenjw.spider.dt.model.TokenModel;
 import com.chenjw.spider.dt.model.TweetModel;
 import com.chenjw.spider.dt.model.UserModel;
-import com.chenjw.spider.dt.model.UserTokenModel;
 import com.chenjw.spider.dt.service.Handler;
 import com.chenjw.spider.dt.service.WeiboService;
-import com.chenjw.tools.BeanCopyUtils;
-import com.chenjw.tools.beancopy.util.DateUtils;
 
 public class OpenWeiboServiceImpl implements WeiboService {
 	// private String token = "2.00WaGSGC0TXPFW2859bb150etwDzcB";
@@ -97,8 +98,8 @@ public class OpenWeiboServiceImpl implements WeiboService {
 				System.out.println("[get-status] "
 						+ s.getId()
 						+ " "
-						+ DateUtils.toLocaleString(s.getCreatedAt(),
-								"yyyy-MM-dd HH:mm:ss") + " ["
+						+ (new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"))
+								.format(s.getCreatedAt()) + " ["
 						+ s.getUser().getScreenName() + "] " + s.getText());
 				handler.handleStatus(s);
 				lastId = s.getIdstr() - 1;
@@ -129,7 +130,7 @@ public class OpenWeiboServiceImpl implements WeiboService {
 			return null;
 		}
 		UserModel u = new UserModel();
-		BeanCopyUtils.copyProperties(u, user);
+		UserMapper.wbUser2Model(user, u);
 		return u;
 	}
 
@@ -144,7 +145,7 @@ public class OpenWeiboServiceImpl implements WeiboService {
 			return null;
 		}
 		UserModel u = new UserModel();
-		BeanCopyUtils.copyProperties(u, user);
+		UserMapper.wbUser2Model(user, u);
 		return u;
 	}
 
@@ -158,10 +159,7 @@ public class OpenWeiboServiceImpl implements WeiboService {
 			@Override
 			public void handleStatus(Status s) {
 				TweetModel model = new TweetModel();
-				BeanCopyUtils.copyProperties(model, s);
-				UserModel user = new UserModel();
-				BeanCopyUtils.copyProperties(user, s.getUser());
-				model.setUser(user);
+				TweetMapper.wbStatus2Model(s, model);
 				result.add(model);
 			}
 		};
@@ -175,8 +173,7 @@ public class OpenWeiboServiceImpl implements WeiboService {
 	}
 
 	@Override
-	public List<TweetModel> findFriendsTimeline(UserTokenModel user,
-			long sinceId) {
+	public List<TweetModel> findFriendsTimeline(TokenModel user, long sinceId) {
 		System.out.println("findFriendsTimeline " + sinceId);
 		Timeline timelineManager = new Timeline();
 		timelineManager.setToken(user.getToken());
@@ -185,10 +182,7 @@ public class OpenWeiboServiceImpl implements WeiboService {
 			@Override
 			public void handleStatus(Status s) {
 				TweetModel model = new TweetModel();
-				BeanCopyUtils.copyProperties(model, s);
-				UserModel user = new UserModel();
-				BeanCopyUtils.copyProperties(user, s.getUser());
-				model.setUser(user);
+				TweetMapper.wbStatus2Model(s, model);
 				result.add(model);
 			}
 		};
@@ -203,7 +197,7 @@ public class OpenWeiboServiceImpl implements WeiboService {
 	}
 
 	@Override
-	public String findOriginStatusUrl(UserTokenModel user, String tid) {
+	public String findOriginStatusUrl(TokenModel user, String tid) {
 		Timeline timelineManager = new Timeline();
 		timelineManager.setToken(user.getToken());
 		try {

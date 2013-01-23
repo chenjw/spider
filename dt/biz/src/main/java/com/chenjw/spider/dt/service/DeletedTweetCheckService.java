@@ -8,4 +8,7 @@ public interface DeletedTweetCheckService {
 
 	public void checkByName(String name);
 
+	public void start();
+
+	public void stop();
 }

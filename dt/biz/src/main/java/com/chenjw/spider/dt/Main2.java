@@ -7,7 +7,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.chenjw.spider.dt.model.TweetModel;
-import com.chenjw.spider.dt.model.UserTokenModel;
+import com.chenjw.spider.dt.model.TokenModel;
 import com.chenjw.spider.dt.service.WeiboService;
 
 public class Main2 {
@@ -23,7 +23,7 @@ public class Main2 {
 		long sinceId = 100000;
 		int success = 0;
 		long start = System.currentTimeMillis();
-		UserTokenModel user = new UserTokenModel();
+		TokenModel user = new TokenModel();
 		user.setUserId(userId);
 		user.setToken(token);
 		while (true) {

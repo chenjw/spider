@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.chenjw.spider.dt.model.TweetModel;
 import com.chenjw.spider.dt.model.UserModel;
-import com.chenjw.spider.dt.model.UserTokenModel;
+import com.chenjw.spider.dt.model.TokenModel;
 
 public interface WeiboService {
 	public String findUserIdByToken(String token);
@@ -16,7 +16,7 @@ public interface WeiboService {
 	public List<TweetModel> findUserTimelineByUserId(String userId,
 			String token, long sinceId);
 
-	public List<TweetModel> findFriendsTimeline(UserTokenModel user,
+	public List<TweetModel> findFriendsTimeline(TokenModel user,
 			long sinceId);
 
 	public UserModel findUserByName(String name, String token);
@@ -25,5 +25,5 @@ public interface WeiboService {
 
 	public String[] findFriendIdsByUserId(String userId, String token);
 
-	public String findOriginStatusUrl(UserTokenModel user, String tid);
+	public String findOriginStatusUrl(TokenModel user, String tid);
 }

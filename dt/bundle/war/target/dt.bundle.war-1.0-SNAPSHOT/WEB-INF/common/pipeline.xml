@@ -41,6 +41,10 @@
                     <performAction />
                     <performScreen />
                 </when>
+				<when>
+					<pl-conditions:target-extension-condition extension="json,jsonp,xml,xhtml" />
+					<valve class="com.alibaba.citrus.extension.rpc.integration.RPCServiceHandlerValve" />
+				</when>
                 <otherwise>
                     <!-- 将控制交还给servlet engine。 -->
                     <exit />

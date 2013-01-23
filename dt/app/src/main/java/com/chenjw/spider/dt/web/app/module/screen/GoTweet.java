@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.alibaba.citrus.turbine.Context;
 import com.alibaba.citrus.turbine.Navigator;
 import com.alibaba.citrus.turbine.dataresolver.Param;
-import com.chenjw.spider.dt.model.UserTokenModel;
+import com.chenjw.spider.dt.model.TokenModel;
 import com.chenjw.spider.dt.service.WeiboService;
 import com.chenjw.spider.dt.web.app.constants.DtConstants;
 
@@ -17,7 +17,7 @@ public class GoTweet {
 
 	public void execute(@Param(name = "tid") String tid, Context context,
 			Navigator navigator, HttpSession session) {
-		UserTokenModel userToken = (UserTokenModel) session
+		TokenModel userToken = (TokenModel) session
 				.getAttribute(DtConstants.USER_SESSION_KEY);
 		String mid = weiboService.findOriginStatusUrl(userToken, tid);
 		String url = "http://weibo.com/" + userToken.getUserId() + "/" + mid;

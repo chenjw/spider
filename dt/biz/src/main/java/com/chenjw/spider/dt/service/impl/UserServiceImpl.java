@@ -3,9 +3,9 @@ package com.chenjw.spider.dt.service.impl;
 import com.chenjw.spider.dt.constants.UserStatusEnum;
 import com.chenjw.spider.dt.dao.WatchedUserDAO;
 import com.chenjw.spider.dt.dataobject.WatchedUserDO;
-import com.chenjw.spider.dt.mapper.UserTokenMapper;
+import com.chenjw.spider.dt.mapper.TokenMapper;
 import com.chenjw.spider.dt.model.UserModel;
-import com.chenjw.spider.dt.model.UserTokenModel;
+import com.chenjw.spider.dt.model.TokenModel;
 import com.chenjw.spider.dt.service.UserService;
 import com.chenjw.spider.dt.service.WeiboService;
 
@@ -14,11 +14,11 @@ public class UserServiceImpl implements UserService {
 	private WeiboService weiboService;
 
 	@Override
-	public UserTokenModel addInvalidUser(String token) {
+	public TokenModel addInvalidUser(String token) {
 		String userId = weiboService.findUserIdByToken(token);
 		UserModel user = weiboService.findUserByUserId(userId, token);
 		WatchedUserDO oldUser = watchedUserDAO.findWatchedUser(userId);
-		UserTokenModel tokenModel = new UserTokenModel();
+		TokenModel tokenModel = new TokenModel();
 		if (oldUser == null) {
 			WatchedUserDO newUser = new WatchedUserDO();
 			newUser.setUserId(userId);
@@ -26,46 +26,46 @@ public class UserServiceImpl implements UserService {
 			newUser.setStatus(UserStatusEnum.FOREVER_VALID.name());
 			newUser.setScreenName(user.getScreenName());
 			watchedUserDAO.addWatchedUser(newUser);
-			UserTokenMapper.do2Model(newUser, tokenModel);
+			TokenMapper.do2Model(newUser, tokenModel);
 		} else {
 			// 如果token已更新，更新db中的token
 			if (!token.equals(oldUser.getToken())) {
 				oldUser.setToken(token);
 				watchedUserDAO.updateWatchedUser(oldUser);
 			}
-			UserTokenMapper.do2Model(oldUser, tokenModel);
+			TokenMapper.do2Model(oldUser, tokenModel);
 		}
 		return tokenModel;
 
 	}
 
 	@Override
-	public UserTokenModel findWatchedUserById(String userId) {
+	public TokenModel findWatchedUserById(String userId) {
 		WatchedUserDO d = watchedUserDAO.findWatchedUser(userId);
 		if (d == null) {
 			return null;
 		} else {
-			UserTokenModel m = new UserTokenModel();
-			UserTokenMapper.do2Model(d, m);
+			TokenModel m = new TokenModel();
+			TokenMapper.do2Model(d, m);
 			return m;
 		}
 	}
 
 	@Override
-	public UserTokenModel findWatchedUserByToken(String token) {
+	public TokenModel findWatchedUserByToken(String token) {
 		String userId = weiboService.findUserIdByToken(token);
 		WatchedUserDO d = watchedUserDAO.findWatchedUser(userId);
 		if (d == null) {
 			return null;
 		} else {
-			UserTokenModel m = new UserTokenModel();
-			UserTokenMapper.do2Model(d, m);
+			TokenModel m = new TokenModel();
+			TokenMapper.do2Model(d, m);
 			return m;
 		}
 	}
 
 	@Override
-	public UserTokenModel updatePeriodValid(String token, int days) {
+	public TokenModel updatePeriodValid(String token, int days) {
 		throw new java.lang.UnsupportedOperationException();
 	}
 

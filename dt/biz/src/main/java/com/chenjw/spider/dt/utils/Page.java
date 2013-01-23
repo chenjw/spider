@@ -1,15 +1,15 @@
 package com.chenjw.spider.dt.utils;
 
 public class Page {
-	private Long maxId;
+	private String maxSort;
 	private int pageSize;
 
-	public Long getMaxId() {
-		return maxId;
+	public String getMaxSort() {
+		return maxSort;
 	}
 
-	public void setMaxId(Long maxId) {
-		this.maxId = maxId;
+	public void setMaxSort(String maxSort) {
+		this.maxSort = maxSort;
 	}
 
 	public int getPageSize() {

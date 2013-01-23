@@ -5,6 +5,11 @@
         http://java.sun.com/xml/ns/j2ee  http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd
     ">
 
+	<!-- 设置默认时区 -->
+	<listener>    
+      	<listener-class>com.chenjw.spider.dt.listener.DtConfigListener</listener-class>    
+	</listener>    
+
     <!-- 初始化日志系统 -->
     <listener>
         <listener-class>com.alibaba.citrus.logconfig.LogConfiguratorListener</listener-class>

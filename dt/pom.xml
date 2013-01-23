@@ -52,6 +52,12 @@
         <artifactId>webx3.core</artifactId>
         <version>${webx3-version}</version>
       </dependency>
+        <dependency>
+            <groupId>com.alibaba.platform.shared</groupId>
+            <artifactId>webx3.extension.rpc</artifactId>
+       		<version>0.2.4</version>
+	</dependency>
+
       <dependency>
         <groupId>com.alibaba.platform.shared</groupId>
         <artifactId>webx3.test</artifactId>

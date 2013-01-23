@@ -36,6 +36,7 @@
                         <vm-plugins:if-matches pattern="^screen_placeholder" />
                         <vm-plugins:if-matches pattern="^stringEscapeUtil\.escape" />
                         <vm-plugins:if-matches pattern="^csrfToken\.(get)?hiddenField" />
+                        <vm-plugins:if-matches pattern="^wbTextUtils\.toWbText" />
                     </vm-plugins:noescape>
                 </vm-plugins:escape-support>
             </plugins>
