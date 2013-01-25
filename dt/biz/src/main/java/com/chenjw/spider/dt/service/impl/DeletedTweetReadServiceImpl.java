@@ -16,6 +16,18 @@ public class DeletedTweetReadServiceImpl implements DeletedTweetReadService {
 	private DeletedTweetDAO deletedTweetDAO;
 
 	@Override
+	public List<TweetModel> findTopReposts() {
+		List<TweetModel> l = new ArrayList<TweetModel>();
+		List<TweetDO> dos = deletedTweetDAO.findTopReposts();
+		for (TweetDO d : dos) {
+			TweetModel model = new TweetModel();
+			TweetMapper.do2Model(d, model);
+			l.add(model);
+		}
+		return l;
+	}
+
+	@Override
 	public PagedResult<TweetModel> findDeletedTweetsByUserId(String userId,
 			Page page) {
 		PagedResult<TweetModel> result = new PagedResult<TweetModel>();

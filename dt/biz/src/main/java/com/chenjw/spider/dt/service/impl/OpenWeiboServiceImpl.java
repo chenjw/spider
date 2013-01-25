@@ -1,6 +1,5 @@
 package com.chenjw.spider.dt.service.impl;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -95,12 +94,12 @@ public class OpenWeiboServiceImpl implements WeiboService {
 				return;
 			}
 			for (Status s : status.getStatuses()) {
-				System.out.println("[get-status] "
-						+ s.getId()
-						+ " "
-						+ (new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"))
-								.format(s.getCreatedAt()) + " ["
-						+ s.getUser().getScreenName() + "] " + s.getText());
+				// System.out.println("[get-status] "
+				// + s.getId()
+				// + " "
+				// + (new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"))
+				// .format(s.getCreatedAt()) + " ["
+				// + s.getUser().getScreenName() + "] " + s.getText());
 				handler.handleStatus(s);
 				lastId = s.getIdstr() - 1;
 			}

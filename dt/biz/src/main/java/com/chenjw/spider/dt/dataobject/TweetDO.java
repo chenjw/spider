@@ -17,6 +17,10 @@ public class TweetDO {
 	private Date deleteDate;
 	// 删除排序
 	private String deleteSort;
+	// 转发数
+	private int repostsCount;
+	// 评论数
+	private int commentsCount;
 
 	public Date getPostDate() {
 		return postDate;
@@ -72,6 +76,22 @@ public class TweetDO {
 
 	public void setDeleteSort(String deleteSort) {
 		this.deleteSort = deleteSort;
+	}
+
+	public int getRepostsCount() {
+		return repostsCount;
+	}
+
+	public void setRepostsCount(int repostsCount) {
+		this.repostsCount = repostsCount;
+	}
+
+	public int getCommentsCount() {
+		return commentsCount;
+	}
+
+	public void setCommentsCount(int commentsCount) {
+		this.commentsCount = commentsCount;
 	}
 
 }

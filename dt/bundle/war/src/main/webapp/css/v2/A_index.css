@@ -3744,13 +3744,13 @@
 .WB_feed .W_dot {
     vertical-align: middle;
 }
-.WB_feed a.notes {
+.WB_feed .notes {
     background: none repeat scroll 0 0 #FEFDED;
     border: 1px solid #F9F2A7;
     color: #F48C12;
     display: block;
-    height: 23px;
-    line-height: 23px;
+    height: 30px;
+    line-height: 30px;
     margin: 0 20px 5px;
     text-align: center;
 }

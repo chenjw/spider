@@ -8,6 +8,7 @@ package com.chenjw.spider.dt.web.app.module.rpc;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -74,6 +75,7 @@ public class TweetRpc {
 				.findDeletedTweetsByUserId(userToken.getUserId(), page);
 		context.put("detailList", result.getList());
 		context.put("moreNum", result.getMoreNum());
+		context.put("allowDelete", allowDelete(session, userToken));
 		if (result.getList().size() > 0) {
 			context.put("minSort",
 					result.getList().get(result.getList().size() - 1)
@@ -103,6 +105,21 @@ public class TweetRpc {
 		return sw.toString();
 	}
 
+	private boolean allowDelete(HttpSession session, TokenModel userToken) {
+		if (userToken == null) {
+			return false;
+		}
+
+		TokenModel loginUserToken = (TokenModel) session
+				.getAttribute(DtConstants.LOGIN_USER_SESSION_KEY);
+		if (loginUserToken == null) {
+			return false;
+		}
+		return StringUtils.equals(loginUserToken.getUserId(),
+				userToken.getUserId());
+
+	}
+
 	@ResourceMapping
 	public HashMap<String, Object> firstPage(HttpSession session) {
 		TurbineRunDataInternal runData = (TurbineRunDataInternal) TurbineUtil
@@ -118,6 +135,7 @@ public class TweetRpc {
 
 		context.put("detailList", result.getList());
 		context.put("moreNum", result.getMoreNum());
+		context.put("allowDelete", allowDelete(session, userToken));
 		String maxSort = "0";
 		if (result.getList().size() > 0) {
 			context.put("minSort",
@@ -139,4 +157,25 @@ public class TweetRpc {
 
 	}
 
+	@ResourceMapping
+	public HashMap<String, Object> topReposts(HttpSession session) {
+		TurbineRunDataInternal runData = (TurbineRunDataInternal) TurbineUtil
+				.getTurbineRunData(request);
+		Context context = runData.getContext();
+		HashMap<String, Object> r = new HashMap<String, Object>();
+		List<TweetModel> result = deletedTweetReadService.findTopReposts();
+		context.put("detailList", result);
+		context.put("moreNum", -1);
+		context.put("allowDelete", false);
+		String pageHtml = "";
+		try {
+			pageHtml = render("control/detailList.vm", context);
+		} catch (Exception e) {
+			throw new WebxException(e);
+		}
+		r.put("page", pageHtml);
+		r.put("success", true);
+		return r;
+
+	}
 }

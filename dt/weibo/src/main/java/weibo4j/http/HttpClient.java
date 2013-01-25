@@ -33,6 +33,7 @@ import org.apache.commons.httpclient.protocol.Protocol;
 import org.apache.log4j.Logger;
 
 import weibo4j.Account;
+import weibo4j.constants.ErrorCode;
 import weibo4j.model.Configuration;
 import weibo4j.model.MySSLSocketFactory;
 import weibo4j.model.Paging;
@@ -229,10 +230,12 @@ public class HttpClient implements java.io.Serializable {
 				Response r = httpRequest(getmethod);
 				return r;
 			} catch (WeiboException e) {
-				if (e.getErrorCode() == 403) {
+				if (e.getErrorCode() == 403
+						|| e.getErrorCode() == ErrorCode.ERROR_CODE_EXPIRED_TOKEN
+						|| e.getErrorCode() == ErrorCode.ERROR_CODE_INVALID_ACCESS_TOKEN) {
 					throw e;
 				}
-				e.printStackTrace();
+				throw e;
 			}
 		}
 

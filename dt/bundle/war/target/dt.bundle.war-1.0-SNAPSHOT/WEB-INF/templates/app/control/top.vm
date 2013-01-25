@@ -6,11 +6,11 @@
                     <div class="gn_title current" >
                         #if($user.userId==$loginUser.userId)
                             <a href="/demo.htm" class="gn_tab" tabindex="4" style="">
-                                <i>使用演示帐号登录</i>
+                                <i>演示帐号的回收站</i>
                             </a>
                         #else
                             <a href="/relogin.htm" class="gn_tab" tabindex="4" style="">
-                                <i>使用 $!{loginUser.screenName} 登录</i>
+                                <i>$!{loginUser.screenName}的回收站</i>
                             </a>
                         #end
                     </div>

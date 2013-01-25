@@ -34,6 +34,13 @@ public class IbatisDeletedTweetDAO extends SqlMapClientDaoSupport implements
 
 	}
 
+	public List<TweetDO> findTopReposts() {
+		Map<String, Object> p = new HashMap<String, Object>();
+		return this.getSqlMapClientTemplate().queryForList(
+				"MS-SELECT-DELETED-TWEET-TOP-REPOSTS", p);
+
+	}
+
 	public int countByMemberUserId(String memberUserId, String minSort,
 			String maxSort) {
 		Map<String, Object> p = new HashMap<String, Object>();

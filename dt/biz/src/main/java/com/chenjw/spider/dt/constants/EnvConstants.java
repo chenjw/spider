@@ -25,6 +25,7 @@ public class EnvConstants {
 	}
 
 	public static boolean isProductMode() {
+		// return true;
 		return !"local".equals(envProvider.getName());
 	}
 

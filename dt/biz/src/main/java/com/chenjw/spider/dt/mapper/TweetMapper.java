@@ -27,6 +27,8 @@ public class TweetMapper {
 		dataobject.setPostDate(model.getCreatedAt());
 		dataobject.setDeleteDate(model.getDeleteDate());
 		dataobject.setDeleteSort(model.getDeleteSort());
+		dataobject.setRepostsCount(model.getRepostsCount());
+		dataobject.setCommentsCount(model.getCommentsCount());
 	}
 
 	public static void do2Model(TweetDO dataobject, TweetModel model) {

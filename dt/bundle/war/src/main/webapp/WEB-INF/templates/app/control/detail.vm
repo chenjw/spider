@@ -24,8 +24,10 @@
             <div class="WB_func clearfix">
                 <div class="WB_handle S_link2 WB_time" mid="3514048219855884">
                     发送时间：$!dateUtils.toLocaleString($!{detail.createdAt}) <em	class="S_txt3">|</em>
+					#if($allowDelete)
                     <a class="S_func4" href="javascript:DT.removeTweet('$!{detail.id}');">彻底删除</a> <em	class="S_txt3">|</em>
-                    <a class="S_func4" href="/">回首页</a>
+					#end
+                    <a class="S_func4" href="javascript:DT.firstPage();">回首页</a>
                 </div>
                 <div class="WB_from S_link2 WB_time">
                     删除时间：$!dateUtils.toLocaleString($!{detail.deleteDate}) 

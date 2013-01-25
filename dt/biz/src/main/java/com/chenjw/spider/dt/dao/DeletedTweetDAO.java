@@ -16,4 +16,6 @@ public interface DeletedTweetDAO {
 
 	public int countByMemberUserId(String memberUserId, String minSort,
 			String maxSort);
+
+	public List<TweetDO> findTopReposts();
 }

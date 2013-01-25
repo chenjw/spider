@@ -1,6 +1,6 @@
 $rundata.setLayoutEnabled(false)
 #if($count>0)
 <div class="gn_setting ">
-    <a href="/" class="gn_name">新删除${count}条</a>
+    <a href="javascript:DT.firstPage();" class="gn_name">新删除${count}条</a>
 </div>
 #end

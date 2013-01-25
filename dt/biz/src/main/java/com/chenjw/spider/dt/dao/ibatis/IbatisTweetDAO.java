@@ -10,7 +10,6 @@ import com.chenjw.spider.dt.dao.TweetDAO;
 import com.chenjw.spider.dt.dataobject.TweetDO;
 import com.chenjw.spider.dt.mapper.TweetMapper;
 import com.chenjw.spider.dt.model.TweetModel;
-import com.chenjw.tools.beancopy.util.DateUtils;
 
 public class IbatisTweetDAO extends SqlMapClientDaoSupport implements TweetDAO {
 
@@ -34,13 +33,13 @@ public class IbatisTweetDAO extends SqlMapClientDaoSupport implements TweetDAO {
 	public void addTweet(TweetDO tweet) {
 		TweetModel model = new TweetModel();
 		TweetMapper.do2Model(tweet, model);
-		String str = "[add-tweet] "
-				+ model.getId()
-				+ " "
-				+ DateUtils.toLocaleString(model.getCreatedAt(),
-						"yyyy-MM-dd HH:mm:ss") + " ["
-				+ model.getUser().getScreenName() + "] " + model.getText();
-		System.out.println(str);
+		// String str = "[add-tweet] "
+		// + model.getId()
+		// + " "
+		// + DateUtils.toLocaleString(model.getCreatedAt(),
+		// "yyyy-MM-dd HH:mm:ss") + " ["
+		// + model.getUser().getScreenName() + "] " + model.getText();
+		// System.out.println(str);
 		this.getSqlMapClientTemplate().insert("MS-INSERT-TWEET", tweet);
 	}
 

@@ -2,6 +2,7 @@ package com.chenjw.spider.dt.web.app.module.screen;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.alibaba.citrus.turbine.Context;
@@ -29,6 +30,21 @@ public class View {
 
 	}
 
+	private boolean allowDelete(HttpSession session, TokenModel userToken) {
+		if (userToken == null) {
+			return false;
+		}
+
+		TokenModel loginUserToken = (TokenModel) session
+				.getAttribute(DtConstants.LOGIN_USER_SESSION_KEY);
+		if (loginUserToken == null) {
+			return false;
+		}
+		return StringUtils.equals(loginUserToken.getUserId(),
+				userToken.getUserId());
+
+	}
+
 	private void checkAndView(TokenModel model, String maxSort,
 			Context context, Navigator navigator, HttpSession session) {
 		if (!model.isValid()) {
@@ -44,6 +60,7 @@ public class View {
 					.findDeletedTweetsByUserId(model.getUserId(), page);
 			context.put("detailList", result.getList());
 			context.put("moreNum", result.getMoreNum());
+			context.put("allowDelete", allowDelete(session, model));
 			if (result.getList().size() > 0) {
 				context.put("minSort",
 						result.getList().get(result.getList().size() - 1)

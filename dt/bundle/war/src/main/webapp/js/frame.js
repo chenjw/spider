@@ -52,6 +52,15 @@ DT.firstPage = function() {
 }
 
 
+DT.topReposts = function() {
+	$.post("tweetRpc/topReposts.json", {}, function(data) {
+		if(data.success){
+			$("#detail_list").html(data.page);
+			DT.scrollToTop();
+		}
+	}, "json");
+}
+
 
 
 DT.mediaOpen = function(id) {

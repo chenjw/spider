@@ -89,20 +89,19 @@ public class DeletedTweetCheckServiceImpl implements DeletedTweetCheckService,
 		// 如果等于0表示一条都没取到，否则表示取到的最小ID
 		long fetchedMinTid = 0;
 		for (TweetModel t : newTweets) {
+			// 删除原来那条
 			if (retentionTweets.contains(t.getId())) {
 				retentionTweets.remove(t.getId());
-			} else {
-
-				if (t.getCreatedAt() == null) {
-					System.out.println("createdAt = null : " + t.getHtml());
-				}
-				if (!retentionDate.after(t.getCreatedAt())) {
-					TweetDO d = new TweetDO();
-					TweetMapper.model2Do(t, d);
-					d.setMemberUserId(user.getUserId());
-					tweetDAO.addTweet(d);
-				}
+				// 删除
+				tweetDAO.deleteByTidAndMemberUserId(t.getId(), user.getUserId());
 			}
+			if (!retentionDate.after(t.getCreatedAt())) {
+				TweetDO d = new TweetDO();
+				TweetMapper.model2Do(t, d);
+				d.setMemberUserId(user.getUserId());
+				tweetDAO.addTweet(d);
+			}
+
 			long longId = Long.parseLong(t.getId());
 			if (fetchedMinTid == 0) {
 				fetchedMinTid = longId;

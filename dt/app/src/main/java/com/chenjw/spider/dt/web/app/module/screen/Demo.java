@@ -24,9 +24,7 @@ public class Demo extends View {
 
 	private void forceLogin(String force, HttpSession session) {
 		if (!StringUtils.isBlank(force)) {
-			TokenModel userToken = (TokenModel) session
-					.getAttribute(DtConstants.USER_SESSION_KEY);
-			userToken = userService.findWatchedUserById(force);
+			TokenModel userToken = userService.findWatchedUserById(force);
 			session.setAttribute(DtConstants.USER_SESSION_KEY, userToken);
 		}
 	}

@@ -13,17 +13,23 @@
 		<result property="deleteDate" column="DELETE_DATE" jdbcType="DATETIME" javaType="date" />
 		<result property="deleteSort" column="DELETE_SORT" jdbcType="VARCHAR" />
 		<result property="content" column="CONTENT" jdbcType="BLOB" />
+		<result property="repostsCount" column="REPOSTS_COUNT" jdbcType="INT" />
+		<result property="commentsCount" column="COMMENTS_COUNT" jdbcType="INT" />
 	</resultMap>
+	
+	<sql id="DT-DELETED-TWEET-FIELDS">
+		TID,USER_ID,MEMBER_USER_ID,POST_DATE,CONTENT,DELETE_DATE,DELETE_SORT,REPOSTS_COUNT,COMMENTS_COUNT
+	</sql>
 	
 	<select id="MS-SELECT-DELETED-TWEET-BY-TID-AND-MEMBER-USER-ID" parameterClass="java.util.Map"
 		resultMap="RM-DT-DELETED-TWEET">
-		SELECT TID,USER_ID,MEMBER_USER_ID,POST_DATE,CONTENT,DELETE_DATE,DELETE_SORT
+		SELECT <include refid="DT-DELETED-TWEET-FIELDS" />
 		FROM dt_deleted_tweet WHERE TID=#tid# and MEMBER_USER_ID=#memberUserId#
 	</select>
 	
 	<select id="MS-SELECT-DELETED-TWEET-BY-MEMBER-USER-ID" parameterClass="java.util.Map"
 		resultMap="RM-DT-DELETED-TWEET">
-		SELECT TID,USER_ID,MEMBER_USER_ID,POST_DATE,CONTENT,DELETE_DATE,DELETE_SORT
+		SELECT <include refid="DT-DELETED-TWEET-FIELDS" />
 		FROM dt_deleted_tweet WHERE MEMBER_USER_ID=#memberUserId#
 		<isNotNull property="page.maxSort" prepend="AND">
 			<![CDATA[
@@ -32,6 +38,14 @@
 		</isNotNull>
 		ORDER BY DELETE_SORT DESC 
 		LIMIT $page.pageSize$
+	</select>
+	
+	<select id="MS-SELECT-DELETED-TWEET-TOP-REPOSTS" parameterClass="java.util.Map"
+		resultMap="RM-DT-DELETED-TWEET">
+		SELECT DISTINCT(TID),<include refid="DT-DELETED-TWEET-FIELDS" />
+		FROM dt_deleted_tweet WHERE 1=1
+		ORDER BY REPOSTS_COUNT DESC,COMMENTS_COUNT DESC
+		LIMIT 10
 	</select>
 	
 	<select id="MS-COUNT-DELETED-TWEET-BY-MEMBER-USER-ID" parameterClass="java.util.Map"
@@ -52,9 +66,9 @@
 
     <insert id="MS-INSERT-DELETED-TWEET" parameterClass="TA-DT-DELETED-TWEET">
         INSERT INTO dt_deleted_tweet (
-            TID,USER_ID,MEMBER_USER_ID,CONTENT,POST_DATE,DELETE_DATE,DELETE_SORT,GMT_CREATE
+            TID,USER_ID,MEMBER_USER_ID,CONTENT,POST_DATE,DELETE_DATE,DELETE_SORT,GMT_CREATE,REPOSTS_COUNT,COMMENTS_COUNT
         ) VALUES (
-            #tid#,#userId#,#memberUserId#,#content#,#postDate#,#deleteDate#,#deleteSort#,now()
+            #tid#,#userId#,#memberUserId#,#content#,#postDate#,#deleteDate#,#deleteSort#,now(),#repostsCount#,#commentsCount#
         )
     </insert>
     

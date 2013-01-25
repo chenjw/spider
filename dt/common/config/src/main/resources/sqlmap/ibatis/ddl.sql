@@ -15,13 +15,16 @@ CREATE TABLE `dt_watched_user` (
 drop table dt_tweet;
 CREATE TABLE `dt_tweet` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT 'pk',
-  `tid` bigint(20) unsigned NOT NULL COMMENT 'pk',
+  `tid` bigint(20) unsigned NOT NULL COMMENT '微博id',
   `gmt_create` datetime DEFAULT NULL COMMENT '创建时间',
   `gmt_modified` datetime DEFAULT NULL COMMENT '修改时间',
   `post_date` datetime DEFAULT NULL COMMENT '微博发送时间',
   `user_id` varchar(128) DEFAULT NULL COMMENT '用户id',
   `member_user_id` varchar(128) DEFAULT NULL COMMENT '会员用户id',
   `content` blob COMMENT '微博内容',
+  `reposts_count` int unsigned NOT NULL COMMENT '转发数',
+  `comments_count` int unsigned NOT NULL COMMENT '评论数',
+  
   PRIMARY KEY (`id`),
   KEY `idx_dt_tweet_member_user_id_tid` (`member_user_id`,`tid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ;
@@ -29,7 +32,7 @@ CREATE TABLE `dt_tweet` (
 drop table dt_deleted_tweet;
 CREATE TABLE `dt_deleted_tweet` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT 'pk',
-  `tid` bigint(20) unsigned NOT NULL COMMENT 'pk',
+  `tid` bigint(20) unsigned NOT NULL COMMENT '微博id',
   `gmt_create` datetime DEFAULT NULL COMMENT '创建时间',
   `gmt_modified` datetime DEFAULT NULL COMMENT '修改时间',
   `post_date` datetime DEFAULT NULL COMMENT '微博发送时间',
@@ -38,6 +41,8 @@ CREATE TABLE `dt_deleted_tweet` (
   `user_id` varchar(128) DEFAULT NULL COMMENT '用户id',
   `member_user_id` varchar(128) DEFAULT NULL COMMENT '会员用户id',
   `content` blob COMMENT '微博内容',
+  `reposts_count` int unsigned NOT NULL COMMENT '转发数',
+  `comments_count` int unsigned NOT NULL COMMENT '评论数',
   PRIMARY KEY (`id`),
   KEY `idx_dt_deleted_tweet_member_user_id_tid` (`member_user_id`,`delete_sort`,`tid`),
   KEY `idx_dt_deleted_tweet_tid` (`tid`)
