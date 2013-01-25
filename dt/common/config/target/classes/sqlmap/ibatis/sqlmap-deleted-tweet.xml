@@ -38,6 +38,11 @@
 		resultClass="int">
 		SELECT COUNT(1)
 		FROM dt_deleted_tweet WHERE MEMBER_USER_ID=#memberUserId#
+		<isNotNull property="minSort" prepend="AND">
+			<![CDATA[
+				 DELETE_SORT > #minSort#
+			]]>
+		</isNotNull>
 		<isNotNull property="maxSort" prepend="AND">
 			<![CDATA[
 				 DELETE_SORT < #maxSort#

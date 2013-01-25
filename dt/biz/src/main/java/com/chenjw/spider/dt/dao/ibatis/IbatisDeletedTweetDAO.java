@@ -34,9 +34,11 @@ public class IbatisDeletedTweetDAO extends SqlMapClientDaoSupport implements
 
 	}
 
-	public int countByMemberUserId(String memberUserId, String maxSort) {
+	public int countByMemberUserId(String memberUserId, String minSort,
+			String maxSort) {
 		Map<String, Object> p = new HashMap<String, Object>();
 		p.put("memberUserId", memberUserId);
+		p.put("minSort", minSort);
 		p.put("maxSort", maxSort);
 		return (Integer) this.getSqlMapClientTemplate().queryForObject(
 				"MS-COUNT-DELETED-TWEET-BY-MEMBER-USER-ID", p);

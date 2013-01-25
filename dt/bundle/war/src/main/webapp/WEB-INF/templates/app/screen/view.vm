@@ -1,3 +1,11 @@
+<script>
+	var Context={};
+	#if($detailList.size()==0)
+	Context.maxSort="0";
+	#else
+	Context.maxSort="${detailList.get(0).deleteSort}";
+	#end
+</script>
 $control.setTemplate("top.vm")
 <div class="W_miniblog">
     <div class="W_miniblog_fb">
@@ -7,9 +15,8 @@ $control.setTemplate("top.vm")
                     <div class="W_main_a ">
                         <div class="W_main_c" id="Box_center" ucardconf="type=1" smartconf="type=1">
                             <div id="pl_content_homeFeed">
-                                <div class="WB_feed" pagenum="1" node-type="feed_list">
-                                    $control.setTemplate("detail_list.vm")
-                                    $control.setTemplate("page.vm")
+                                <div class="WB_feed" id="detail_list">
+                                    #parse ("control/detailList.vm")
                                 </div>
                             </div>
                         </div>

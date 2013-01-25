@@ -4,6 +4,8 @@ import com.chenjw.spider.dt.model.TokenModel;
 
 public interface UserService {
 
+	public void updateUser(TokenModel model);
+
 	public TokenModel addInvalidUser(String token);
 
 	public TokenModel updatePeriodValid(String token, int days);

@@ -23,7 +23,7 @@ public class SaeProvider implements EnvProvider {
 	}
 
 	public boolean isEnable() {
-		return false;
+		return true;
 
 	}
 

@@ -11,7 +11,7 @@ public class Env {
 	public void execute(Context context, Navigator navigator) {
 		Map<Object, Object> map = EnvConstants.getEnvProvider().getProperties();
 		context.put("env", map);
-
+		context.put("sysEnv", System.getenv());
 	}
 
 }

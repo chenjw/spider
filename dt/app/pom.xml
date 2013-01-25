@@ -47,6 +47,13 @@
 			<groupId>com.alibaba.external</groupId>
 			<artifactId>jakarta.commons.lang</artifactId>
 		</dependency>
-    
+		<dependency>
+			<groupId>com.alibaba.external</groupId>
+			<artifactId>java.j2ee</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.alibaba.external</groupId>
+			<artifactId>java.servlet</artifactId>
+		</dependency>
 	</dependencies>
 </project>

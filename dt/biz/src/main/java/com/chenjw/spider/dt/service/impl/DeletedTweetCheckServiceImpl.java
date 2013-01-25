@@ -10,7 +10,6 @@ import org.apache.commons.lang.time.DateUtils;
 import org.springframework.beans.factory.InitializingBean;
 
 import com.chenjw.spider.dt.constants.Constants;
-import com.chenjw.spider.dt.constants.EnvConstants;
 import com.chenjw.spider.dt.dao.DeletedTweetDAO;
 import com.chenjw.spider.dt.dao.TweetDAO;
 import com.chenjw.spider.dt.dao.WatchedUserDAO;
@@ -84,6 +83,9 @@ public class DeletedTweetCheckServiceImpl implements DeletedTweetCheckService,
 		token.setUserId(user.getUserId());
 		List<TweetModel> newTweets = weiboService.findFriendsTimeline(token,
 				minTid);
+		if (newTweets == null) {
+			return;
+		}
 		// 如果等于0表示一条都没取到，否则表示取到的最小ID
 		long fetchedMinTid = 0;
 		for (TweetModel t : newTweets) {
@@ -154,9 +156,9 @@ public class DeletedTweetCheckServiceImpl implements DeletedTweetCheckService,
 
 	@Override
 	public void afterPropertiesSet() throws Exception {
-		if (EnvConstants.isProductMode()) {
-			start();
-		}
+		// if (EnvConstants.isProductMode()) {
+		start();
+		// }
 		new Thread(new Runnable() {
 			@Override
 			public void run() {

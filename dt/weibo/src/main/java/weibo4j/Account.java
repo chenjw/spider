@@ -1,6 +1,7 @@
 package weibo4j;
 
 import java.util.List;
+
 import weibo4j.model.PostParameter;
 import weibo4j.model.RateLimitStatus;
 import weibo4j.model.School;
@@ -8,7 +9,7 @@ import weibo4j.model.WeiboException;
 import weibo4j.org.json.JSONObject;
 import weibo4j.util.WeiboConfig;
 
-public class Account extends Weibo{
+public class Account extends Weibo {
 
 	private static final long serialVersionUID = 3816005087976772682L;
 
@@ -25,7 +26,8 @@ public class Account extends Weibo{
 	 */
 	public JSONObject getUid() throws WeiboException {
 		return client.get(
-				WeiboConfig.getValue("baseURL") + "account/get_uid.json").asJSONObject();
+				WeiboConfig.getValue("baseURL") + "account/get_uid.json")
+				.asJSONObject();
 	}
 
 	/**
@@ -103,7 +105,7 @@ public class Account extends Weibo{
 	 * @since JDK 1.5
 	 */
 	public RateLimitStatus getAccountRateLimitStatus() throws WeiboException {
-		return new RateLimitStatus(client.get(WeiboConfig
-				.getValue("baseURL") + "account/rate_limit_status.json"));
+		return new RateLimitStatus(client.get(WeiboConfig.getValue("baseURL")
+				+ "account/rate_limit_status.json"));
 	}
 }

@@ -4,14 +4,20 @@ import com.chenjw.spider.dt.constants.UserStatusEnum;
 import com.chenjw.spider.dt.dao.WatchedUserDAO;
 import com.chenjw.spider.dt.dataobject.WatchedUserDO;
 import com.chenjw.spider.dt.mapper.TokenMapper;
-import com.chenjw.spider.dt.model.UserModel;
 import com.chenjw.spider.dt.model.TokenModel;
+import com.chenjw.spider.dt.model.UserModel;
 import com.chenjw.spider.dt.service.UserService;
 import com.chenjw.spider.dt.service.WeiboService;
 
 public class UserServiceImpl implements UserService {
 	private WatchedUserDAO watchedUserDAO;
 	private WeiboService weiboService;
+
+	public void updateUser(TokenModel model) {
+		WatchedUserDO newUser = new WatchedUserDO();
+		TokenMapper.model2Do(model, newUser);
+		watchedUserDAO.updateWatchedUser(newUser);
+	}
 
 	@Override
 	public TokenModel addInvalidUser(String token) {

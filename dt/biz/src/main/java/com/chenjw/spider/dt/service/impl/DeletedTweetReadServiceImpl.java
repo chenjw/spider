@@ -30,12 +30,19 @@ public class DeletedTweetReadServiceImpl implements DeletedTweetReadService {
 		if (l.size() < page.getPageSize()) {
 			result.setMoreNum(0);
 		} else {
-			int moreNum = deletedTweetDAO.countByMemberUserId(userId,
-					l.get(l.size() - 1).getDeleteSort());
+			int moreNum = deletedTweetDAO.countByMemberUserId(userId, null, l
+					.get(l.size() - 1).getDeleteSort());
 			result.setMoreNum(moreNum);
 
 		}
 		return result;
+	}
+
+	@Override
+	public int countDeletedTweetsByUserId(String userId, Page page) {
+		int num = deletedTweetDAO.countByMemberUserId(userId,
+				page.getMinSort(), page.getMaxSort());
+		return num;
 	}
 
 	public void setDeletedTweetDAO(DeletedTweetDAO deletedTweetDAO) {

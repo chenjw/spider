@@ -5,14 +5,13 @@ import com.chenjw.spider.dt.env.EnvProvider;
 import com.chenjw.spider.dt.env.LocalProvider;
 import com.chenjw.spider.dt.env.SaeProvider;
 
-
 public class EnvConstants {
 
 	private static EnvProvider envProvider;
 
 	static {
 		EnvProvider[] envs = new EnvProvider[] { new CloudfoundryProvider(),
-				new SaeProvider(), new LocalProvider() };
+				new LocalProvider(), new SaeProvider(), };
 		for (EnvProvider env : envs) {
 			if (env.isEnable()) {
 				envProvider = env;

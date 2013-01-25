@@ -1,24 +1,22 @@
 $(document).ready(function() {
+	
+	// 查找新删除的微薄
+	//new_tweets_message
+	var countNew = function() {
+		$.post("/countNew.htm", {
+			"minSort" : Context.maxSort
+		}, function(data) {
+			$("#new_tweets_message").html(data);
+			setTimeout(countNew, 10000);
+		});
+	}
+	countNew();
 	App.scrollToTop();
-	setTimeout(function() {
-		//App.setPageHeight(document.body.clientHeight);
-	}, 200);
 
 });
 
 DT = {};
 DT.removeTweet = function(id) {
-//	$("#" + id).cluetip({
-//		  hoverClass: 'highlight',
-//		  sticky: true,
-//		  closePosition: 'bottom',
-//		  closeText: '<img src="cross.png" alt="close" />',
-//		  truncate: 60,
-//		  ajaxSettings: {
-//		    type: 'POST'
-//		  }
-//		});
-	
 	$("#" + id).fadeOut(1000, function() {
 		$.post("tweetRpc/deleteTweet.json", {
 			"tid" : id
@@ -31,18 +29,30 @@ DT.removeTweet = function(id) {
 }
 
 
-
-DT.mediaOpen = function(id) {	
-	$("#" + id).fadeOut(1000, function() {
-		$.post("tweetRpc/deleteTweet.json", {
-			"tid" : id
-		}, function(data) {
-			if(!data.success){
-				alert(data.errorCode);
-			}
-		}, "json");
-	});
+DT.nextPage = function(maxSort) {
+	$.post("tweetRpc/nextPage.json", {
+		"maxSort" : maxSort
+	}, function(data) {
+		if(data.success){
+			$("#detail_list").html(data.page);
+			DT.scrollToTop();
+		}
+	}, "json");
 }
+
+DT.firstPage = function() {
+	$.post("tweetRpc/firstPage.json", {}, function(data) {
+		if(data.success){
+			$("#detail_list").html(data.page);
+			Context.maxSort=data.maxSort;
+			$("#new_tweets_message").html("");
+			DT.scrollToTop();
+		}
+	}, "json");
+}
+
+
+
 
 DT.mediaOpen = function(id) {
 	$("#" + id +" [node-type='media_thumbnail']").hide();

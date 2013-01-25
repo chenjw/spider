@@ -11,7 +11,7 @@
 			$!wbTextUtils.toWbText($!{reason.text})
         </div>
 		#if($!{reason.thumbnailPic}!="")
-			#parse ("control/reason_media.vm")
+			#parse ("control/reasonMedia.vm")
 		#end
         <div class="WB_func clearfix">
             <div class="WB_handle" mid="$!{reason.id}">

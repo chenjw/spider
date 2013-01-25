@@ -4,21 +4,20 @@
             <div class="gn_header">
                 <div class="gn_nav">
                     <div class="gn_title current" >
-						#if($user.userId==$loginUser.userId)
-						<a href="/demo.htm" class="gn_tab" tabindex="4" style="">
-                            <i>使用演示帐号登录</i>
-                        </a>
-						#else
-						<a href="/relogin.htm" class="gn_tab" tabindex="4" style="">
-                            <i>使用 $!{loginUser.screenName} 登录</i>
-                        </a>
-						#end
+                        #if($user.userId==$loginUser.userId)
+                            <a href="/demo.htm" class="gn_tab" tabindex="4" style="">
+                                <i>使用演示帐号登录</i>
+                            </a>
+                        #else
+                            <a href="/relogin.htm" class="gn_tab" tabindex="4" style="">
+                                <i>使用 $!{loginUser.screenName} 登录</i>
+                            </a>
+                        #end
                     </div>
-                    <!--div class="gn_title ">
-                        <a href="http://app.weibo.com?topnav=1&amp;wvr=5" class="gn_tab" tabindex="4" target="_top">
-                            <i>演示帐号</i>
-                        </a>
-                    </div-->
+
+                    <div class="gn_person" id="new_tweets_message">
+                    </div>
+
                 </div>
             </div>
         </div>

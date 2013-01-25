@@ -1,0 +1,376 @@
+[INFO] Scanning for projects...
+[INFO] Reactor build order: 
+[INFO]   dt
+[INFO]   deploy
+[INFO]   common.config
+[INFO]   core
+[INFO]   weibo
+[INFO]   biz
+[INFO]   app
+[INFO]   bundle.war
+[INFO] Searching repository for plugin with prefix: 'dependency'.
+[INFO] ------------------------------------------------------------------------
+[INFO] Building dt
+[INFO]    task-segment: [dependency:tree]
+[INFO] ------------------------------------------------------------------------
+Downloading: http://repo.alibaba-inc.com/nexus/content/groups/alirepositiry//org/apache/maven/doxia/doxia-sink-api/1.0-alpha-8/doxia-sink-api-1.0-alpha-8.pom
+[WARNING] Unable to get resource 'org.apache.maven.doxia:doxia-sink-api:pom:1.0-alpha-8' from repository alipluinrepo (http://repo.alibaba-inc.com/nexus/content/groups/alirepositiry/): Error transferring file: Connection timed out
+Downloading: http://repo1.maven.org/maven2/org/apache/maven/doxia/doxia-sink-api/1.0-alpha-8/doxia-sink-api-1.0-alpha-8.pom
+424/424b424b downloaded  (doxia-sink-api-1.0-alpha-8.pom)
+Downloading: http://repo.alibaba-inc.com/nexus/content/groups/alirepositiry//org/apache/maven/doxia/doxia/1.0-alpha-8/doxia-1.0-alpha-8.pom
+[WARNING] Unable to get resource 'org.apache.maven.doxia:doxia:pom:1.0-alpha-8' from repository alipluinrepo (http://repo.alibaba-inc.com/nexus/content/groups/alirepositiry/): Error transferring file: Connection timed out
+Downloading: http://repo1.maven.org/maven2/org/apache/maven/doxia/doxia/1.0-alpha-8/doxia-1.0-alpha-8.pom
+1/2K2/2K2/2K2K downloaded  (doxia-1.0-alpha-8.pom)
+Downloading: http://repo.alibaba-inc.com/nexus/content/groups/alirepositiry//org/apache/maven/maven-parent/1/maven-parent-1.pom
+[WARNING] Unable to get resource 'org.apache.maven:maven-parent:pom:1' from repository alipluinrepo (http://repo.alibaba-inc.com/nexus/content/groups/alirepositiry/): Error transferring file: Connection timed out
+Downloading: http://repo1.maven.org/maven2/org/apache/maven/maven-parent/1/maven-parent-1.pom
+1/6K2/6K4/6K6/6K6K downloaded  (maven-parent-1.pom)
+Downloading: http://repo.alibaba-inc.com/nexus/content/groups/alirepositiry//org/apache/maven/doxia/doxia-site-renderer/1.0-alpha-8/doxia-site-renderer-1.0-alpha-8.pom
+[WARNING] Unable to get resource 'org.apache.maven.doxia:doxia-site-renderer:pom:1.0-alpha-8' from repository alipluinrepo (http://repo.alibaba-inc.com/nexus/content/groups/alirepositiry/): Error transferring file: Connection timed out
+Downloading: http://repo1.maven.org/maven2/org/apache/maven/doxia/doxia-site-renderer/1.0-alpha-8/doxia-site-renderer-1.0-alpha-8.pom
+1/1K1K downloaded  (doxia-site-renderer-1.0-alpha-8.pom)
+Downloading: http://repo.alibaba-inc.com/nexus/content/groups/alirepositiry//org/apache/maven/doxia/doxia-core/1.0-alpha-8/doxia-core-1.0-alpha-8.pom
+[WARNING] Unable to get resource 'org.apache.maven.doxia:doxia-core:pom:1.0-alpha-8' from repository alipluinrepo (http://repo.alibaba-inc.com/nexus/content/groups/alirepositiry/): Error transferring file: Connection timed out
+Downloading: http://repo.alibaba-inc.com/nexus/content/groups/alirepositiry//org/apache/maven/doxia/doxia-core/1.0-alpha-8/doxia-core-1.0-alpha-8.pom
+[WARNING] Unable to get resource 'org.apache.maven.doxia:doxia-core:pom:1.0-alpha-8' from repository alirepository (http://repo.alibaba-inc.com/nexus/content/groups/alirepositiry/): Error transferring file: Connection timed out
+Downloading: http://repo1.maven.org/maven2/org/apache/maven/doxia/doxia-core/1.0-alpha-8/doxia-core-1.0-alpha-8.pom
+1/1K1/1K1K downloaded  (doxia-core-1.0-alpha-8.pom)
+Downloading: http://repo.alibaba-inc.com/nexus/content/groups/alirepositiry//org/codehaus/plexus/plexus-velocity/1.1.3/plexus-velocity-1.1.3.pom
+[WARNING] Unable to get resource 'org.codehaus.plexus:plexus-velocity:pom:1.1.3' from repository alipluinrepo (http://repo.alibaba-inc.com/nexus/content/groups/alirepositiry/): Error transferring file: Connection timed out
+Downloading: http://repo.alibaba-inc.com/nexus/content/groups/alirepositiry//org/codehaus/plexus/plexus-velocity/1.1.3/plexus-velocity-1.1.3.pom
+[WARNING] Unable to get resource 'org.codehaus.plexus:plexus-velocity:pom:1.1.3' from repository alirepository (http://repo.alibaba-inc.com/nexus/content/groups/alirepositiry/): Error transferring file: Connection timed out
+Downloading: http://repo1.maven.org/maven2/org/codehaus/plexus/plexus-velocity/1.1.3/plexus-velocity-1.1.3.pom
+976/976b976b downloaded  (plexus-velocity-1.1.3.pom)
+Downloading: http://repo.alibaba-inc.com/nexus/content/groups/alirepositiry//org/codehaus/plexus/plexus-components/1.1.5/plexus-components-1.1.5.pom
+[WARNING] Unable to get resource 'org.codehaus.plexus:plexus-components:pom:1.1.5' from repository alipluinrepo (http://repo.alibaba-inc.com/nexus/content/groups/alirepositiry/): Error transferring file: Connection timed out
+Downloading: http://repo.alibaba-inc.com/nexus/content/groups/alirepositiry//org/codehaus/plexus/plexus-components/1.1.5/plexus-components-1.1.5.pom
+[WARNING] Unable to get resource 'org.codehaus.plexus:plexus-components:pom:1.1.5' from repository alirepository (http://repo.alibaba-inc.com/nexus/content/groups/alirepositiry/): Error transferring file: Connection timed out
+Downloading: http://repo1.maven.org/maven2/org/codehaus/plexus/plexus-components/1.1.5/plexus-components-1.1.5.pom
+1/2K2/2K2K downloaded  (plexus-components-1.1.5.pom)
+Downloading: http://repo.alibaba-inc.com/nexus/content/groups/alirepositiry//org/apache/maven/doxia/doxia-decoration-model/1.0-alpha-8/doxia-decoration-model-1.0-alpha-8.pom
+[WARNING] Unable to get resource 'org.apache.maven.doxia:doxia-decoration-model:pom:1.0-alpha-8' from repository alipluinrepo (http://repo.alibaba-inc.com/nexus/content/groups/alirepositiry/): Error transferring file: Connection timed out
+Downloading: http://repo.alibaba-inc.com/nexus/content/groups/alirepositiry//org/apache/maven/doxia/doxia-decoration-model/1.0-alpha-8/doxia-decoration-model-1.0-alpha-8.pom
+[WARNING] Unable to get resource 'org.apache.maven.doxia:doxia-decoration-model:pom:1.0-alpha-8' from repository alirepository (http://repo.alibaba-inc.com/nexus/content/groups/alirepositiry/): Error transferring file: Connection timed out
+Downloading: http://repo1.maven.org/maven2/org/apache/maven/doxia/doxia-decoration-model/1.0-alpha-8/doxia-decoration-model-1.0-alpha-8.pom
+1/1K1K downloaded  (doxia-decoration-model-1.0-alpha-8.pom)
+Downloading: http://repo.alibaba-inc.com/nexus/content/groups/alirepositiry//org/apache/maven/shared/maven-dependency-analyzer/1.0/maven-dependency-analyzer-1.0.jar
+Downloading: http://repo.alibaba-inc.com/nexus/content/groups/alirepositiry//org/codehaus/plexus/plexus-velocity/1.1.3/plexus-velocity-1.1.3.jar
+Downloading: http://repo.alibaba-inc.com/nexus/content/groups/alirepositiry//commons-collections/commons-collections/2.0/commons-collections-2.0.jar
+Downloading: http://repo.alibaba-inc.com/nexus/content/groups/alirepositiry//org/apache/maven/doxia/doxia-site-renderer/1.0-alpha-8/doxia-site-renderer-1.0-alpha-8.jar
+[WARNING] Unable to get resource 'org.codehaus.plexus:plexus-velocity:jar:1.1.3' from repository alipluinrepo (http://repo.alibaba-inc.com/nexus/content/groups/alirepositiry/): Error transferring file: Connection timed out
+[WARNING] Unable to get resource 'org.apache.maven.doxia:doxia-site-renderer:jar:1.0-alpha-8' from repository alipluinrepo (http://repo.alibaba-inc.com/nexus/content/groups/alirepositiry/): Error transferring file: Connection timed out
+[WARNING] Unable to get resource 'commons-collections:commons-collections:jar:2.0' from repository alipluinrepo (http://repo.alibaba-inc.com/nexus/content/groups/alirepositiry/): Error transferring file: Connection timed out
+[WARNING] Unable to get resource 'org.apache.maven.shared:maven-dependency-analyzer:jar:1.0' from repository alipluinrepo (http://repo.alibaba-inc.com/nexus/content/groups/alirepositiry/): Error transferring file: Connection timed out
+Downloading: http://repo.alibaba-inc.com/nexus/content/groups/alirepositiry//org/codehaus/plexus/plexus-velocity/1.1.3/plexus-velocity-1.1.3.jar
+Downloading: http://repo.alibaba-inc.com/nexus/content/groups/alirepositiry//commons-collections/commons-collections/2.0/commons-collections-2.0.jar
+Downloading: http://repo1.maven.org/maven2/org/apache/maven/shared/maven-dependency-analyzer/1.0/maven-dependency-analyzer-1.0.jar
+Downloading: http://repo1.maven.org/maven2/org/apache/maven/doxia/doxia-site-renderer/1.0-alpha-8/doxia-site-renderer-1.0-alpha-8.jar
+1/33K2/33K3/33K5/33K9/33K13/33K17/33K21/33K25/33K29/33K30/33K32/33K33/33K33K downloaded  (doxia-site-renderer-1.0-alpha-8.jar)
+Downloading: http://repo.alibaba-inc.com/nexus/content/groups/alirepositiry//org/apache/maven/doxia/doxia-decoration-model/1.0-alpha-8/doxia-decoration-model-1.0-alpha-8.jar
+1/26K2/26K3/26K5/26K6/26K8/26K9/26K11/26K12/26K13/26K15/26K19/26K23/26K26/26K26K downloaded  (maven-dependency-analyzer-1.0.jar)
+Downloading: http://repo.alibaba-inc.com/nexus/content/groups/alirepositiry//org/apache/maven/shared/maven-dependency-tree/1.1/maven-dependency-tree-1.1.jar
+[WARNING] Unable to get resource 'commons-collections:commons-collections:jar:2.0' from repository alirepository (http://repo.alibaba-inc.com/nexus/content/groups/alirepositiry/): Error transferring file: Connection timed out
+[WARNING] Unable to get resource 'org.codehaus.plexus:plexus-velocity:jar:1.1.3' from repository alirepository (http://repo.alibaba-inc.com/nexus/content/groups/alirepositiry/): Error transferring file: Connection timed out
+Downloading: http://repo1.maven.org/maven2/org/codehaus/plexus/plexus-velocity/1.1.3/plexus-velocity-1.1.3.jar
+Downloading: http://repo1.maven.org/maven2/commons-collections/commons-collections/2.0/commons-collections-2.0.jar
+1/88K2/88K2/88K2/88K 1/7K2/88K 2/7K4/88K 2/7K6/88K 2/7K8/88K 2/7K8/88K 2/7K8/88K 5/7K8/88K 6/7K12/88K 6/7K15/88K 6/7K[WARNING] Unable to get resource 'org.apache.maven.doxia:doxia-decoration-model:jar:1.0-alpha-8' from repository alipluinrepo (http://repo.alibaba-inc.com/nexus/content/groups/alirepositiry/): Error transferring file: Connection timed out
+Downloading: http://repo.alibaba-inc.com/nexus/content/groups/alirepositiry//org/apache/maven/doxia/doxia-decoration-model/1.0-alpha-8/doxia-decoration-model-1.0-alpha-8.jar
+15/88K 7/7K7K downloaded  (plexus-velocity-1.1.3.jar)
+16/88K20/88K23/88K25/88K29/88K29/88K[WARNING] Unable to get resource 'org.apache.maven.shared:maven-dependency-tree:jar:1.1' from repository alipluinrepo (http://repo.alibaba-inc.com/nexus/content/groups/alirepositiry/): Error transferring file: Connection timed out
+Downloading: http://repo1.maven.org/maven2/org/apache/maven/shared/maven-dependency-tree/1.1/maven-dependency-tree-1.1.jar
+30/88K30/88K 1/33K30/88K 2/33K32/88K 2/33K33/88K 2/33K33/88K 3/33K33/88K 5/33K35/88K 5/33K36/88K 5/33K36/88K 9/33K36/88K 9/33K36/88K 13/33K36/88K 16/33K40/88K 16/33K43/88K 16/33K46/88K 16/33K46/88K 18/33K47/88K 18/33K47/88K 19/33K49/88K 19/33K50/88K 19/33K51/88K 19/33K53/88K 19/33K54/88K 19/33K54/88K 20/33K56/88K 20/33K60/88K 20/33K63/88K 20/33K64/88K 20/33K66/88K 20/33K70/88K 20/33K74/88K 20/33K74/88K 20/33K75/88K 20/33K77/88K 20/33K78/88K 20/33K80/88K 20/33K81/88K 20/33K82/88K 20/33K84/88K 20/33K85/88K 20/33K85/88K 24/33K85/88K 28/33K85/88K 30/33K87/88K 30/33K88/88K 30/33K88K downloaded  (commons-collections-2.0.jar)
+[WARNING] Unable to get resource 'org.apache.maven.doxia:doxia-decoration-model:jar:1.0-alpha-8' from repository alirepository (http://repo.alibaba-inc.com/nexus/content/groups/alirepositiry/): Error transferring file: Connection timed out
+Downloading: http://repo1.maven.org/maven2/org/apache/maven/doxia/doxia-decoration-model/1.0-alpha-8/doxia-decoration-model-1.0-alpha-8.jar
+30/33K 1/39K30/33K 2/39K30/33K 3/39K30/33K 5/39K30/33K 9/39K30/33K 13/39K30/33K 17/39K30/33K 21/39K30/33K 23/39K30/33K 27/39K30/33K 31/39K30/33K 35/39K30/33K 37/39K30/33K 39/39K30/33K 39/39K39K downloaded  (doxia-decoration-model-1.0-alpha-8.jar)
+33/33K33K downloaded  (maven-dependency-tree-1.1.jar)
+[INFO] [dependency:tree {execution: default-cli}]
+[INFO] com.chenjw.spider:dt.all:pom:1.0-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] Building deploy
+[INFO]    task-segment: [dependency:tree]
+[INFO] ------------------------------------------------------------------------
+[INFO] [dependency:tree {execution: default-cli}]
+[INFO] com.chenjw.spider:dt.deploy:jar:1.0-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] Building common.config
+[INFO]    task-segment: [dependency:tree]
+[INFO] ------------------------------------------------------------------------
+[INFO] [dependency:tree {execution: default-cli}]
+[INFO] com.chenjw.spider:dt.common.config:jar:1.0-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] Building core
+[INFO]    task-segment: [dependency:tree]
+[INFO] ------------------------------------------------------------------------
+[INFO] [dependency:tree {execution: default-cli}]
+[INFO] com.chenjw.spider:dt.core:jar:1.0-SNAPSHOT
+[INFO] +- com.alibaba.external:jakarta.log4j:jar:1.2.16:compile
+[INFO] +- com.alibaba.external:jakarta.commons.configuration:jar:1.5:compile
+[INFO] |  +- com.alibaba.external:jakarta.commons.collections:jar:0.0.0:compile
+[INFO] |  +- com.alibaba.external:jakarta.commons.logging:jar:0.0.0:compile
+[INFO] |  \- com.alibaba.external:jakarta.commons.codec:jar:0.0.0:compile
+[INFO] +- com.alibaba.external:jakarta.commons.lang:jar:2.4:compile
+[INFO] +- com.alibaba.external:jakarta.commons.io:jar:1.4:compile
+[INFO] +- com.alibaba.platform.shared:fastjson:jar:1.1.10:compile
+[INFO] +- com.alibaba.external:jakarta.commons.httpclient:jar:3.1:compile
+[INFO] +- com.alibaba.external:misc.javassist:jar:3.9.0.GA:compile
+[INFO] +- com.chenjw.external:htmlparser:jar:1.0.0:compile
+[INFO] +- com.chenjw.external:htmllexer:jar:1.0.0:compile
+[INFO] +- com.chenjw.external:filterbuilder:jar:1.0.0:compile
+[INFO] \- com.chenjw:beancopyutils:jar:1.0.0:compile
+[INFO] ------------------------------------------------------------------------
+[INFO] Building weibo
+[INFO]    task-segment: [dependency:tree]
+[INFO] ------------------------------------------------------------------------
+[INFO] [dependency:tree {execution: default-cli}]
+[INFO] com.chenjw.spider:dt.weibo:jar:1.0-SNAPSHOT
+[INFO] +- com.alibaba.external:jakarta.commons.httpclient:jar:3.1:compile
+[INFO] |  +- com.alibaba.external:jakarta.commons.logging:jar:0.0.0:compile
+[INFO] |  \- com.alibaba.external:jakarta.commons.codec:jar:0.0.0:compile
+[INFO] \- com.alibaba.external:jakarta.log4j:jar:1.2.16:compile
+[INFO] ------------------------------------------------------------------------
+[INFO] Building biz
+[INFO]    task-segment: [dependency:tree]
+[INFO] ------------------------------------------------------------------------
+[INFO] snapshot com.chenjw.spider:dt.common.config:1.0-SNAPSHOT: checking for updates from alirepository
+[WARNING] repository metadata for: 'snapshot com.chenjw.spider:dt.common.config:1.0-SNAPSHOT' could not be retrieved from repository: alirepository due to an error: Error transferring file: Connection timed out
+[INFO] Repository 'alirepository' will be blacklisted
+[INFO] [dependency:tree {execution: default-cli}]
+[INFO] com.chenjw.spider:dt.biz:jar:1.0-SNAPSHOT
+[INFO] +- com.chenjw.spider:dt.common.config:jar:1.0-SNAPSHOT:compile
+[INFO] +- com.chenjw.spider:dt.weibo:jar:1.0-SNAPSHOT:compile
+[INFO] |  \- com.alibaba.external:jakarta.commons.httpclient:jar:3.1:compile
+[INFO] +- com.chenjw.spider:dt.core:jar:1.0-SNAPSHOT:compile
+[INFO] |  +- com.chenjw.external:htmlparser:jar:1.0.0:compile
+[INFO] |  +- com.chenjw.external:htmllexer:jar:1.0.0:compile
+[INFO] |  +- com.chenjw.external:filterbuilder:jar:1.0.0:compile
+[INFO] |  \- com.chenjw:beancopyutils:jar:1.0.0:compile
+[INFO] +- com.alibaba.external:sourceforge.spring:jar:2.5.6.SEC02:compile
+[INFO] |  \- com.alibaba.external:jakarta.commons.logging:jar:0.0.0:compile
+[INFO] +- com.alibaba.external:sourceforge.cglib:jar:nodep-2.1_3:compile
+[INFO] |  \- com.alibaba.external:objectweb.asm.attrs:jar:0.0.0:compile
+[INFO] |     \- com.alibaba.external:objectweb.asm:jar:0.0.0:compile
+[INFO] +- com.alibaba.external:sourceforge.ibatis:jar:2.3.0:compile
+[INFO] +- com.alibaba.external:jakarta.log4j:jar:1.2.16:compile
+[INFO] +- com.alibaba.external:jakarta.commons.configuration:jar:1.5:compile
+[INFO] |  +- com.alibaba.external:jakarta.commons.collections:jar:0.0.0:compile
+[INFO] |  \- com.alibaba.external:jakarta.commons.codec:jar:0.0.0:compile
+[INFO] +- com.alibaba.external:jakarta.commons.lang:jar:2.4:compile
+[INFO] +- com.alibaba.external:jakarta.commons.dbcp:jar:1.4:compile
+[INFO] +- com.alibaba.external:jakarta.commons.pool:jar:1.4:compile
+[INFO] +- com.alibaba.external:jakarta.commons.fileupload:jar:1.2.1:compile
+[INFO] +- com.alibaba.external:java.j2ee:jar:1.4:provided
+[INFO] |  \- com.alibaba.external:xml.apis:jar:0.0.0:provided
+[INFO] +- com.alibaba.external:java.servlet:jar:2.4:compile
+[INFO] +- com.alibaba.external:jakarta.commons.io:jar:1.4:compile
+[INFO] +- com.alibaba.platform.shared:fastjson:jar:1.1.10:compile
+[INFO] +- com.alibaba.external:misc.javassist:jar:3.9.0.GA:compile
+[INFO] \- com.alibaba.external:jdbc.mysql.mysql-connector:jar:5.1.12:compile
+[INFO] ------------------------------------------------------------------------
+[INFO] Building app
+[INFO]    task-segment: [dependency:tree]
+[INFO] ------------------------------------------------------------------------
+[INFO] snapshot com.chenjw.spider:dt.biz:1.0-SNAPSHOT: checking for updates from alirepository
+[WARNING] repository metadata for: 'snapshot com.chenjw.spider:dt.biz:1.0-SNAPSHOT' could not be retrieved from repository: alirepository due to an error: Error transferring file: Connection timed out
+[INFO] Repository 'alirepository' will be blacklisted
+[INFO] [dependency:tree {execution: default-cli}]
+[INFO] com.chenjw.spider:dt.web.app:jar:1.0-SNAPSHOT
+[INFO] +- com.alibaba.platform.shared:webx3.core:jar:3.0.6:compile
+[INFO] |  +- com.alibaba.external:org.slf4j.slf4j-api:jar:1.5.6:compile
+[INFO] |  +- com.alibaba.external:org.slf4j.jcl104-over-slf4j:jar:1.5.6:compile
+[INFO] |  +- com.alibaba.external:sourceforge.spring.modules.webmvc:jar:2.5.6.SEC02:compile
+[INFO] |  +- com.alibaba.external:sourceforge.spring:jar:2.5.6.SEC02:compile
+[INFO] |  +- com.alibaba.external:jakarta.commons.logging:jar:99.0-does-not-exist:compile
+[INFO] |  +- com.alibaba.external:sourceforge.cglib:jar:nodep-2.1_3:compile
+[INFO] |  +- com.alibaba.external:objectweb.asm.attrs:jar:0.0.0:compile
+[INFO] |  +- com.alibaba.external:objectweb.asm:jar:0.0.0:compile
+[INFO] |  +- com.alibaba.external:sourceforge.spring.weaving.aspects:jar:2.5.4:compile
+[INFO] |  +- com.alibaba.external:jakarta.commons.jexl:jar:1.1:compile
+[INFO] |  +- com.alibaba.external:xml.dom4j:jar:1.6.1:compile
+[INFO] |  +- com.alibaba.external:jakarta.ecs:jar:1.4.2:compile
+[INFO] |  +- com.alibaba.external:jakarta.commons.codec:jar:1.3:compile
+[INFO] |  +- com.alibaba.external:jakarta.commons.fileupload:jar:1.2.1:compile
+[INFO] |  +- com.alibaba.external:jakarta.commons.io:jar:1.4:compile
+[INFO] |  +- com.alibaba.external:jakarta.velocity:jar:1.6.4:compile
+[INFO] |  +- com.alibaba.external:jakarta.commons.collections:jar:3.2.1:compile
+[INFO] |  +- com.alibaba.external:jakarta.oro:jar:2.0.8:compile
+[INFO] |  +- com.alibaba.external:sourceforge.freemarker:jar:2.3.15:compile
+[INFO] |  +- com.alibaba.external:codehaus.groovy:jar:1.6.3:runtime
+[INFO] |  +- com.alibaba.external:jakarta.ant:jar:1.7.1:runtime
+[INFO] |  +- com.alibaba.external:jakarta.ant.launcher:jar:1.7.1:runtime
+[INFO] |  +- com.alibaba.external:sourceforge.jline:jar:0.9.94:runtime
+[INFO] |  +- com.alibaba.external:xml.apis.css:jar:1.3:compile
+[INFO] |  +- com.alibaba.platform.shared:fasttext.all:jar:1.3-SNAPSHOT:compile
+[INFO] |  +- com.alibaba.platform.shared:fasttext-css:jar:1.3.26:compile
+[INFO] |  +- com.alibaba.external:xml.xmlgraphics:jar:1.7:compile
+[INFO] |  +- com.alibaba.external:xml.xmlgraphics__batik-css-1.7.jar:jar:1.7:compile
+[INFO] |  +- com.alibaba.external:xml.xmlgraphics__batik-util-1.6-1.jar:jar:1.7:compile
+[INFO] |  +- com.alibaba.platform.shared:fasttext-html:jar:1.3.5:compile
+[INFO] |  +- com.alibaba.platform.shared:fasttext-utils:jar:1.3.26:compile
+[INFO] |  +- com.alibaba.external:xml.nekohtml:jar:1.9.9:compile
+[INFO] |  +- com.alibaba.external:xml.apis:jar:0.0.0:compile
+[INFO] |  +- com.alibaba.external:xml.xerces:jar:0.0.0:compile
+[INFO] |  +- com.alibaba.external:xml.commons-resolver:jar:0.0.0:compile
+[INFO] |  +- com.alibaba.platform.shared:fasttext-psoriasis:jar:1.3.26:compile
+[INFO] |  +- com.alibaba.platform.shared:fasttext-segment:jar:1.3.26:compile
+[INFO] |  +- com.alibaba.platform.shared:fasttext-sec:jar:1.3.26:compile
+[INFO] |  +- com.alibaba.external:misc.htmlparser:jar:0.0.0:compile
+[INFO] |  +- com.alibaba.external:org.slf4j.slf4j-log4j12:jar:1.5.6:compile
+[INFO] |  \- com.alibaba.external:jakarta.log4j:jar:1.2.16:compile (version managed from 1.2.8)
+[INFO] +- com.alibaba.platform.shared:webx3.compat:jar:3.0.6:compile
+[INFO] |  +- com.alibaba.external:jakarta.commons.configuration:jar:1.5:compile (version managed from 1.5a)
+[INFO] |  +- com.alibaba.external:jakarta.commons.digester:jar:1.8:compile
+[INFO] |  +- com.alibaba.external:jakarta.commons.beanutils:jar:1.7.0:compile
+[INFO] |  +- com.alibaba.external:jakarta.commons.jelly:jar:1.0-RC1:compile
+[INFO] |  +- com.alibaba.platform.shared:webx2:jar:2.0.1:compile
+[INFO] |  +- com.alibaba.external:sourceforge.jaxen:jar:1.1:compile
+[INFO] |  +- com.alibaba.external:sourceforge.saxpath:jar:1.0:compile
+[INFO] |  +- com.alibaba.external:jakarta.taglib.jstl:jar:0.0.0:compile
+[INFO] |  \- com.alibaba.external:jakarta.taglib.jstl.support:jar:0.0.0:compile
+[INFO] +- com.alibaba.platform.shared:webx3.extension.rpc:jar:0.2.4:compile
+[INFO] |  +- com.alibaba.platform.shared:nonda.validation-webx3:jar:0.1.0:compile
+[INFO] |  |  \- com.alibaba.platform.shared:nonda.validation:jar:0.1.0:compile
+[INFO] |  |     \- com.alibaba.platform.shared:nonda.core:jar:0.1.0:compile
+[INFO] |  |        \- com.alibaba.external:sourceforge.spring.modules.beans:jar:2.5.6.SEC02:compile
+[INFO] |  |           \- com.alibaba.external:sourceforge.spring.modules.core:jar:2.5.6.SEC02:compile
+[INFO] |  +- com.alibaba.platform.shared:nonda.databind-webx3:jar:0.1.0:compile
+[INFO] |  |  \- com.alibaba.platform.shared:nonda.databind:jar:0.1.0:compile
+[INFO] |  +- com.alibaba.platform.shared:fastjson:jar:1.1.10:compile (version managed from 1.1.9)
+[INFO] |  \- com.alibaba.external:eclipse.aspectj:jar:1.5.4:compile
+[INFO] +- com.alibaba.platform.shared:webx3.test:jar:3.0.6:test
+[INFO] |  +- com.alibaba.external:test.junit:jar:4.5:test
+[INFO] |  +- com.alibaba.external:test.junit.hamcrest:jar:1.1:test
+[INFO] |  +- com.alibaba.external:test.httpunit:jar:1.7:test
+[INFO] |  +- com.alibaba.external:script.rhino.js:jar:1.7R1:test
+[INFO] |  +- com.alibaba.external:org.apache.xalan.xalan:jar:2.7.1:test
+[INFO] |  +- com.alibaba.external:org.apache.xalan.serializer:jar:2.7.1:test
+[INFO] |  +- com.alibaba.external:test.easymockclassextension:jar:2.4:test
+[INFO] |  \- com.alibaba.external:test.easymock:jar:2.5.1:test
+[INFO] |     \- com.alibaba.external:test.junit:libd:0.0.0:test
+[INFO] |        +- com.alibaba.external:test.junit__junit-4.4.jar:jar:0.0.0:test
+[INFO] |        \- com.alibaba.external:test.junit__hamcrest-1.1.jar:jar:0.0.0:test
+[INFO] +- com.chenjw.spider:dt.common.config:jar:1.0-SNAPSHOT:compile
+[INFO] +- com.chenjw.spider:dt.core:jar:1.0-SNAPSHOT:compile
+[INFO] |  +- com.alibaba.external:jakarta.commons.httpclient:jar:3.1:compile
+[INFO] |  +- com.alibaba.external:misc.javassist:jar:3.9.0.GA:compile
+[INFO] |  +- com.chenjw.external:htmlparser:jar:1.0.0:compile
+[INFO] |  +- com.chenjw.external:htmllexer:jar:1.0.0:compile
+[INFO] |  +- com.chenjw.external:filterbuilder:jar:1.0.0:compile
+[INFO] |  \- com.chenjw:beancopyutils:jar:1.0.0:compile
+[INFO] +- com.chenjw.spider:dt.biz:jar:1.0-SNAPSHOT:compile
+[INFO] |  +- com.chenjw.spider:dt.weibo:jar:1.0-SNAPSHOT:compile
+[INFO] |  +- com.alibaba.external:sourceforge.ibatis:jar:2.3.0:compile
+[INFO] |  +- com.alibaba.external:jakarta.commons.dbcp:jar:1.4:compile
+[INFO] |  +- com.alibaba.external:jakarta.commons.pool:jar:1.4:compile
+[INFO] |  +- com.alibaba.external:java.servlet:jar:2.4:compile
+[INFO] |  \- com.alibaba.external:jdbc.mysql.mysql-connector:jar:5.1.12:compile
+[INFO] \- com.alibaba.external:jakarta.commons.lang:jar:2.4:compile
+[INFO] ------------------------------------------------------------------------
+[INFO] Building bundle.war
+[INFO]    task-segment: [dependency:tree]
+[INFO] ------------------------------------------------------------------------
+[INFO] snapshot com.chenjw.spider:dt.web.app:1.0-SNAPSHOT: checking for updates from alirepository
+[WARNING] repository metadata for: 'snapshot com.chenjw.spider:dt.web.app:1.0-SNAPSHOT' could not be retrieved from repository: alirepository due to an error: Error transferring file: Connection timed out
+[INFO] Repository 'alirepository' will be blacklisted
+[INFO] [dependency:tree {execution: default-cli}]
+[INFO] com.chenjw.spider:dt.bundle.war:war:1.0-SNAPSHOT
+[INFO] +- com.chenjw.spider:dt.common.config:jar:1.0-SNAPSHOT:compile
+[INFO] +- com.chenjw.spider:dt.core:jar:1.0-SNAPSHOT:compile
+[INFO] |  +- com.alibaba.external:jakarta.log4j:jar:1.2.16:compile
+[INFO] |  +- com.alibaba.external:jakarta.commons.configuration:jar:1.5:compile
+[INFO] |  |  +- com.alibaba.external:jakarta.commons.collections:jar:0.0.0:compile
+[INFO] |  |  +- com.alibaba.external:jakarta.commons.logging:jar:0.0.0:compile
+[INFO] |  |  \- com.alibaba.external:jakarta.commons.codec:jar:0.0.0:compile
+[INFO] |  +- com.alibaba.external:jakarta.commons.lang:jar:2.4:compile
+[INFO] |  +- com.alibaba.external:jakarta.commons.io:jar:1.4:compile
+[INFO] |  +- com.alibaba.platform.shared:fastjson:jar:1.1.10:compile
+[INFO] |  +- com.alibaba.external:jakarta.commons.httpclient:jar:3.1:compile
+[INFO] |  +- com.alibaba.external:misc.javassist:jar:3.9.0.GA:compile
+[INFO] |  +- com.chenjw.external:htmlparser:jar:1.0.0:compile
+[INFO] |  +- com.chenjw.external:htmllexer:jar:1.0.0:compile
+[INFO] |  +- com.chenjw.external:filterbuilder:jar:1.0.0:compile
+[INFO] |  \- com.chenjw:beancopyutils:jar:1.0.0:compile
+[INFO] +- com.chenjw.spider:dt.biz:jar:1.0-SNAPSHOT:compile
+[INFO] |  +- com.alibaba.external:sourceforge.spring:jar:2.5.6.SEC02:compile
+[INFO] |  +- com.alibaba.external:sourceforge.cglib:jar:nodep-2.1_3:compile
+[INFO] |  |  \- com.alibaba.external:objectweb.asm.attrs:jar:0.0.0:compile
+[INFO] |  +- com.alibaba.external:sourceforge.ibatis:jar:2.3.0:compile
+[INFO] |  +- com.alibaba.external:jakarta.commons.dbcp:jar:1.4:compile
+[INFO] |  +- com.alibaba.external:jakarta.commons.pool:jar:1.4:compile
+[INFO] |  +- com.alibaba.external:jakarta.commons.fileupload:jar:1.2.1:compile
+[INFO] |  |  \- com.alibaba.external:java.j2ee:jar:1.4:provided (scope managed from compile)
+[INFO] |  +- com.alibaba.external:java.servlet:jar:2.4:compile
+[INFO] |  \- com.alibaba.external:jdbc.mysql.mysql-connector:jar:5.1.12:compile
+[INFO] +- com.chenjw.spider:dt.weibo:jar:1.0-SNAPSHOT:compile
+[INFO] \- com.chenjw.spider:dt.web.app:jar:1.0-SNAPSHOT:compile
+[INFO]    +- com.alibaba.platform.shared:webx3.core:jar:3.0.6:compile
+[INFO]    |  +- com.alibaba.external:org.slf4j.slf4j-api:jar:1.5.6:compile
+[INFO]    |  +- com.alibaba.external:org.slf4j.jcl104-over-slf4j:jar:1.5.6:compile
+[INFO]    |  +- com.alibaba.external:sourceforge.spring.modules.webmvc:jar:2.5.6.SEC02:compile
+[INFO]    |  +- com.alibaba.external:objectweb.asm:jar:0.0.0:compile
+[INFO]    |  +- com.alibaba.external:sourceforge.spring.weaving.aspects:jar:2.5.4:compile
+[INFO]    |  +- com.alibaba.external:jakarta.commons.jexl:jar:1.1:compile
+[INFO]    |  +- com.alibaba.external:xml.dom4j:jar:1.6.1:compile
+[INFO]    |  +- com.alibaba.external:jakarta.ecs:jar:1.4.2:compile
+[INFO]    |  +- com.alibaba.external:jakarta.velocity:jar:1.6.4:compile
+[INFO]    |  +- com.alibaba.external:jakarta.oro:jar:2.0.8:compile
+[INFO]    |  +- com.alibaba.external:sourceforge.freemarker:jar:2.3.15:compile
+[INFO]    |  +- com.alibaba.external:codehaus.groovy:jar:1.6.3:runtime
+[INFO]    |  +- com.alibaba.external:jakarta.ant:jar:1.7.1:runtime
+[INFO]    |  +- com.alibaba.external:jakarta.ant.launcher:jar:1.7.1:runtime
+[INFO]    |  +- com.alibaba.external:sourceforge.jline:jar:0.9.94:runtime
+[INFO]    |  +- com.alibaba.external:xml.apis.css:jar:1.3:compile
+[INFO]    |  +- com.alibaba.platform.shared:fasttext.all:jar:1.3-SNAPSHOT:compile
+[INFO]    |  +- com.alibaba.platform.shared:fasttext-css:jar:1.3.26:compile
+[INFO]    |  +- com.alibaba.external:xml.xmlgraphics:jar:1.7:compile
+[INFO]    |  +- com.alibaba.external:xml.xmlgraphics__batik-css-1.7.jar:jar:1.7:compile
+[INFO]    |  +- com.alibaba.external:xml.xmlgraphics__batik-util-1.6-1.jar:jar:1.7:compile
+[INFO]    |  +- com.alibaba.platform.shared:fasttext-html:jar:1.3.5:compile
+[INFO]    |  +- com.alibaba.platform.shared:fasttext-utils:jar:1.3.26:compile
+[INFO]    |  +- com.alibaba.external:xml.nekohtml:jar:1.9.9:compile
+[INFO]    |  +- com.alibaba.external:xml.apis:jar:0.0.0:compile
+[INFO]    |  +- com.alibaba.external:xml.xerces:jar:0.0.0:compile
+[INFO]    |  +- com.alibaba.external:xml.commons-resolver:jar:0.0.0:compile
+[INFO]    |  +- com.alibaba.platform.shared:fasttext-psoriasis:jar:1.3.26:compile
+[INFO]    |  +- com.alibaba.platform.shared:fasttext-segment:jar:1.3.26:compile
+[INFO]    |  +- com.alibaba.platform.shared:fasttext-sec:jar:1.3.26:compile
+[INFO]    |  +- com.alibaba.external:misc.htmlparser:jar:0.0.0:compile
+[INFO]    |  \- com.alibaba.external:org.slf4j.slf4j-log4j12:jar:1.5.6:compile
+[INFO]    +- com.alibaba.platform.shared:webx3.compat:jar:3.0.6:compile
+[INFO]    |  +- com.alibaba.external:jakarta.commons.digester:jar:1.8:compile
+[INFO]    |  +- com.alibaba.external:jakarta.commons.beanutils:jar:1.7.0:compile
+[INFO]    |  +- com.alibaba.external:jakarta.commons.jelly:jar:1.0-RC1:compile
+[INFO]    |  +- com.alibaba.platform.shared:webx2:jar:2.0.1:compile
+[INFO]    |  +- com.alibaba.external:sourceforge.jaxen:jar:1.1:compile
+[INFO]    |  +- com.alibaba.external:sourceforge.saxpath:jar:1.0:compile
+[INFO]    |  +- com.alibaba.external:jakarta.taglib.jstl:jar:0.0.0:compile
+[INFO]    |  \- com.alibaba.external:jakarta.taglib.jstl.support:jar:0.0.0:compile
+[INFO]    \- com.alibaba.platform.shared:webx3.extension.rpc:jar:0.2.4:compile
+[INFO]       +- com.alibaba.platform.shared:nonda.validation-webx3:jar:0.1.0:compile
+[INFO]       |  \- com.alibaba.platform.shared:nonda.validation:jar:0.1.0:compile
+[INFO]       |     \- com.alibaba.platform.shared:nonda.core:jar:0.1.0:compile
+[INFO]       |        \- com.alibaba.external:sourceforge.spring.modules.beans:jar:2.5.6.SEC02:compile
+[INFO]       |           \- com.alibaba.external:sourceforge.spring.modules.core:jar:2.5.6.SEC02:compile
+[INFO]       +- com.alibaba.platform.shared:nonda.databind-webx3:jar:0.1.0:compile
+[INFO]       |  \- com.alibaba.platform.shared:nonda.databind:jar:0.1.0:compile
+[INFO]       \- com.alibaba.external:eclipse.aspectj:jar:1.5.4:compile
+[INFO] 
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary:
+[INFO] ------------------------------------------------------------------------
+[INFO] dt .................................................... SUCCESS [5:56.467s]
+[INFO] deploy ................................................ SUCCESS [0.004s]
+[INFO] common.config ......................................... SUCCESS [0.003s]
+[INFO] core .................................................. SUCCESS [0.280s]
+[INFO] weibo ................................................. SUCCESS [0.008s]
+[INFO] biz ................................................... SUCCESS [21.491s]
+[INFO] app ................................................... SUCCESS [22.911s]
+[INFO] bundle.war ............................................ SUCCESS [21.244s]
+[INFO] ------------------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESSFUL
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 7 minutes 3 seconds
+[INFO] Finished at: Wed Jan 23 22:32:03 CST 2013
+[INFO] Final Memory: 23M/353M
+[INFO] ------------------------------------------------------------------------

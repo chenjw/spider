@@ -25,17 +25,18 @@
           <string>WEB-INF/templates/app/screen/error.vm</string>
           <string>WEB-INF/templates/app/screen/message.vm</string>
           <string>WEB-INF/templates/app/screen/env.vm</string>
+          <string>WEB-INF/templates/app/screen/countNew.vm</string>
           <string>WEB-INF/templates/app/screen/view.vm</string>
           <string>WEB-INF/templates/app/screen/add.vm</string>
-          <string>WEB-INF/templates/app/control/box_right.vm</string>
+          <string>WEB-INF/templates/app/control/detailList.vm</string>
           <string>WEB-INF/templates/app/control/reason.vm</string>
           <string>WEB-INF/templates/app/control/detail.vm</string>
-          <string>WEB-INF/templates/app/control/detail_list2.html</string>
-          <string>WEB-INF/templates/app/control/detail_list.vm</string>
+          <string>WEB-INF/templates/app/control/detailList2.html</string>
           <string>WEB-INF/templates/app/control/media.vm</string>
           <string>WEB-INF/templates/app/control/top.vm</string>
-          <string>WEB-INF/templates/app/control/reason_media.vm</string>
+          <string>WEB-INF/templates/app/control/reasonMedia.vm</string>
           <string>WEB-INF/templates/app/control/page.vm</string>
+          <string>WEB-INF/templates/app/control/boxRight.vm</string>
           <string>WEB-INF/templates/app/layout/default.vm</string>
           <string>WEB-INF/app/form.xml</string>
           <string>WEB-INF/webx-app.xml</string>
@@ -74,7 +75,6 @@
           <string>WEB-INF/lib/jakarta.commons.pool-1.4.jar</string>
           <string>WEB-INF/lib/jakarta.commons.fileupload-1.2.1.jar</string>
           <string>WEB-INF/lib/xml.apis-0.0.0.jar</string>
-          <string>WEB-INF/lib/java.servlet-2.4.jar</string>
           <string>WEB-INF/lib/jdbc.mysql.mysql-connector-5.1.12.jar</string>
           <string>WEB-INF/lib/dt.web.app-1.0-SNAPSHOT.jar</string>
           <string>WEB-INF/lib/webx3.core-3.0.6.jar</string>
@@ -105,10 +105,9 @@
           <string>WEB-INF/lib/fasttext-sec-1.3.26.jar</string>
           <string>WEB-INF/lib/misc.htmlparser-0.0.0.jar</string>
           <string>WEB-INF/lib/xml.nekohtml-1.9.9.jar</string>
-          <string>WEB-INF/lib/xml.xerces-0.0.0.jar</string>
-          <string>WEB-INF/lib/xml.commons-resolver-0.0.0.jar</string>
           <string>WEB-INF/lib/fasttext-utils-1.3.26.jar</string>
           <string>WEB-INF/lib/fasttext-html-1.3.5.jar</string>
+          <string>WEB-INF/lib/xml.commons-resolver-0.0.0.jar</string>
           <string>WEB-INF/lib/org.slf4j.slf4j-log4j12-1.5.6.jar</string>
           <string>WEB-INF/lib/webx3.compat-3.0.6.jar</string>
           <string>WEB-INF/lib/jakarta.commons.digester-1.8.jar</string>
@@ -121,6 +120,7 @@
           <string>WEB-INF/lib/nonda.validation-webx3-0.1.0.jar</string>
           <string>WEB-INF/lib/nonda.validation-0.1.0.jar</string>
           <string>WEB-INF/lib/nonda.core-0.1.0.jar</string>
+          <string>WEB-INF/lib/xml.xerces-2.8.1.jar</string>
           <string>WEB-INF/lib/sourceforge.spring.modules.beans-2.5.6.SEC02.jar</string>
           <string>WEB-INF/lib/sourceforge.spring.modules.core-2.5.6.SEC02.jar</string>
           <string>WEB-INF/lib/nonda.databind-webx3-0.1.0.jar</string>

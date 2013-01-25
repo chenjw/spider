@@ -9,4 +9,6 @@ public interface DeletedTweetReadService {
 	public PagedResult<TweetModel> findDeletedTweetsByUserId(String userId,
 			Page page);
 
+	public int countDeletedTweetsByUserId(String userId, Page page);
+
 }

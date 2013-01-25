@@ -190,9 +190,8 @@ public class OpenWeiboServiceImpl implements WeiboService {
 		try {
 			this.readFrientsTimeline(timelineManager, sinceId, handler);
 		} catch (WeiboException e) {
-			e.printStackTrace();
+			return null;
 		}
-
 		return result;
 	}
 

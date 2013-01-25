@@ -23,7 +23,7 @@ public class LocalProvider implements EnvProvider {
 	}
 
 	public boolean isEnable() {
-		return true;
+		return "chenjw".equals(System.getenv("USER"));
 
 	}
 

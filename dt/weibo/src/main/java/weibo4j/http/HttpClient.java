@@ -98,31 +98,24 @@ public class HttpClient implements java.io.Serializable {
 	private static String proxyAuthPassword = Configuration.getProxyPassword();
 	private String token;
 
-	private static Account  ACCOUNT = new Account();
+	private static final Account ACCOUNT = new Account();
 	private final AtomicLong REMAIN_HITS = new AtomicLong(0);
 
 	public String getProxyHost() {
 		return proxyHost;
 	}
 
-
 	public int getProxyPort() {
 		return proxyPort;
 	}
-
-
 
 	public String getProxyAuthUser() {
 		return proxyAuthUser;
 	}
 
-
-
 	public String getProxyAuthPassword() {
 		return proxyAuthPassword;
 	}
-
-
 
 	public String setToken(String token) {
 		this.token = token;
@@ -131,8 +124,6 @@ public class HttpClient implements java.io.Serializable {
 
 	private final static boolean DEBUG = Configuration.getDebug();
 	static Logger log = Logger.getLogger(HttpClient.class.getName());
-
-
 
 	private static MultiThreadedHttpConnectionManager connectionManager;
 
@@ -144,14 +135,13 @@ public class HttpClient implements java.io.Serializable {
 		params.setSoTimeout(30000);
 	}
 
-
-	private org.apache.commons.httpclient.HttpClient getClient(){
+	private org.apache.commons.httpclient.HttpClient getClient() {
 
 		HttpClientParams clientParams = new HttpClientParams();
 		// 忽略cookie 避免 Cookie rejected 警告
 		clientParams.setCookiePolicy(CookiePolicy.IGNORE_COOKIES);
-		org.apache.commons.httpclient.HttpClient client = new org.apache.commons.httpclient.HttpClient(clientParams,
-				connectionManager);
+		org.apache.commons.httpclient.HttpClient client = new org.apache.commons.httpclient.HttpClient(
+				clientParams, connectionManager);
 		Protocol myhttps = new Protocol("https", new MySSLSocketFactory(), 443);
 		Protocol.registerProtocol("https", myhttps);
 		// 支持proxy
@@ -169,9 +159,6 @@ public class HttpClient implements java.io.Serializable {
 		}
 		return client;
 	}
-	
-	
-
 
 	/**
 	 * log调试
@@ -198,13 +185,12 @@ public class HttpClient implements java.io.Serializable {
 		if (this != ACCOUNT.client) {
 			while (true) {
 				if (REMAIN_HITS.get() <= 0) {
-					ACCOUNT.setToken(token);
-
-					RateLimitStatus rateLimitStatus = ACCOUNT
-							.getAccountRateLimitStatus();
-
+					RateLimitStatus rateLimitStatus;
+					synchronized (ACCOUNT) {
+						ACCOUNT.setToken(token);
+						rateLimitStatus = ACCOUNT.getAccountRateLimitStatus();
+					}
 					long remainHits = rateLimitStatus.getRemainingUserHits();
-
 					if (remainHits == 0) {
 						log.info("sleep to " + rateLimitStatus.getResetTime());
 						try {
@@ -222,7 +208,6 @@ public class HttpClient implements java.io.Serializable {
 				}
 			}
 		}
-
 	}
 
 	public Response get(String url, PostParameter[] params)
@@ -244,6 +229,9 @@ public class HttpClient implements java.io.Serializable {
 				Response r = httpRequest(getmethod);
 				return r;
 			} catch (WeiboException e) {
+				if (e.getErrorCode() == 403) {
+					throw e;
+				}
 				e.printStackTrace();
 			}
 		}
@@ -428,8 +416,10 @@ public class HttpClient implements java.io.Serializable {
 				if (token == null) {
 					throw new IllegalStateException("Oauth2 token is not set!");
 				}
-				method.addRequestHeader(new Header("Authorization", "OAuth2 " + token));
-				method.addRequestHeader(new Header("API-RemoteIP", ipaddr.getHostAddress()));
+				method.addRequestHeader(new Header("Authorization", "OAuth2 "
+						+ token));
+				method.addRequestHeader(new Header("API-RemoteIP", ipaddr
+						.getHostAddress()));
 				for (Header hd : headers) {
 					log(hd.getName() + ": " + hd.getValue());
 				}

@@ -14,7 +14,7 @@ public class EnvFactoryBean implements FactoryBean {
 	}
 
 	@Override
-	public Class getObjectType() {
+	public Class<?> getObjectType() {
 		return Properties.class;
 	}
 

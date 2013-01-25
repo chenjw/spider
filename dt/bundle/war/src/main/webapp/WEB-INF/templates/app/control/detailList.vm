@@ -1,0 +1,4 @@
+#foreach( $detail in $detailList) 	
+    #parse ("control/detail.vm")
+#end 
+#parse ("control/page.vm")
