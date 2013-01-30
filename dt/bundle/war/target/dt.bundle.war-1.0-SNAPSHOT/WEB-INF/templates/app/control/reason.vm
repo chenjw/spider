@@ -5,7 +5,11 @@
     </div>
     <div>
         <div class="WB_info">
-            <a class="WB_name S_func3" href="http://weibo.com/u/$!{reason.user.id}" title="$!{reason.user.screenName}">@$!{reason.user.screenName}</a>
+            <a class="WB_name S_func3" href="http://weibo.com/u/$!{reason.user.id}" title="$!{reason.user.screenName}">
+				#if($reason.user.screenName)
+					@$!{reason.user.screenName}
+				#end
+			</a>
         </div>
         <div class="WB_text">
 			$!wbTextUtils.toWbText($!{reason.text})

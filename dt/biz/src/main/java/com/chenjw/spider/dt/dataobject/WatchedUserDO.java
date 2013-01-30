@@ -3,6 +3,7 @@ package com.chenjw.spider.dt.dataobject;
 import java.util.Date;
 
 public class WatchedUserDO {
+
 	private String userId;
 	private String token;
 	private String screenName;// 用户昵称

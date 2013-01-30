@@ -227,6 +227,7 @@ public class OpenWeiboServiceImpl implements WeiboService {
 	public String findAuthorizeUrl() {
 		Oauth oauth = new Oauth();
 		try {
+
 			return oauth.authorize("code", "", "");
 		} catch (WeiboException e) {
 			e.printStackTrace();

@@ -10,23 +10,22 @@ import org.apache.commons.io.IOUtils;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.chenjw.spider.dt.constants.Constants;
 import com.chenjw.spider.dt.constants.EnvConstants;
 
 public class CloudfoundryProvider implements EnvProvider {
 
-	private static final Properties CLOUDFOUNDRY_PROPERTIES = new Properties();
-	private static final Properties PROPERTIES = new Properties();
+	private static Properties CLOUDFOUNDRY_PROPERTIES;
+	private static Properties PROPERTIES;
 	private static final String VCAP_SERVICES_KEY = "VCAP_SERVICES";
-
-	static {
-		initCloudfoundry();
-
-		init();
-	}
+	private static final String VMC_APP_INSTANCE_KEY = "VMC_APP_INSTANCE";
+	private static int instanceIndex;
 
 	private static void init() {
+		if (PROPERTIES != null) {
+			return;
+		}
 		try {
+			PROPERTIES = new Properties();
 			PROPERTIES.load(LocalProvider.class.getClassLoader()
 					.getResourceAsStream("env/cloudfoundry/db.properties"));
 		} catch (IOException e) {
@@ -42,14 +41,14 @@ public class CloudfoundryProvider implements EnvProvider {
 			}
 
 		}
-
-		for (Entry<Object, Object> e : PROPERTIES.entrySet()) {
-			Constants.LOGGER.info(e.getKey() + "=" + e.getValue());
-		}
 	}
 
 	@SuppressWarnings("unchecked")
 	private static void initCloudfoundry() {
+		if (CLOUDFOUNDRY_PROPERTIES != null) {
+			return;
+		}
+		CLOUDFOUNDRY_PROPERTIES = new Properties();
 		String services = System.getenv(VCAP_SERVICES_KEY);
 		if (services == null) {
 			try {
@@ -80,9 +79,17 @@ public class CloudfoundryProvider implements EnvProvider {
 				}
 			}
 		}
+		//
+
+		String appInstanceInfo = System.getenv(VMC_APP_INSTANCE_KEY);
+		Map<String, Object> appInstanceInfoMap = JSON.parseObject(
+				appInstanceInfo, Map.class);
+		instanceIndex = (Integer) appInstanceInfoMap.get("instance_index");
 	}
 
 	public Properties getProperties() {
+		initCloudfoundry();
+		init();
 		return PROPERTIES;
 	}
 
@@ -98,5 +105,15 @@ public class CloudfoundryProvider implements EnvProvider {
 	@Override
 	public String getName() {
 		return "cloudfoundry";
+	}
+
+	@Override
+	public int getInstanceCount() {
+		return 2;
+	}
+
+	@Override
+	public int getInstanceIndex() {
+		return instanceIndex;
 	}
 }

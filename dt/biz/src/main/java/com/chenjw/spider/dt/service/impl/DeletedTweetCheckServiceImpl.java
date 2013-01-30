@@ -10,6 +10,7 @@ import org.apache.commons.lang.time.DateUtils;
 import org.springframework.beans.factory.InitializingBean;
 
 import com.chenjw.spider.dt.constants.Constants;
+import com.chenjw.spider.dt.constants.EnvConstants;
 import com.chenjw.spider.dt.dao.DeletedTweetDAO;
 import com.chenjw.spider.dt.dao.TweetDAO;
 import com.chenjw.spider.dt.dao.WatchedUserDAO;
@@ -141,11 +142,18 @@ public class DeletedTweetCheckServiceImpl implements DeletedTweetCheckService,
 
 	@Override
 	public void checkAll() {
+		int instanceIndex = EnvConstants.getEnvProvider().getInstanceIndex();
+		int instanceCount = EnvConstants.getEnvProvider().getInstanceCount();
 		List<WatchedUserDO> users = watchedUserDAO.getAllWatchedUsers();
 		for (WatchedUserDO user : users) {
-
+			Long userId = Long.parseLong(user.getUserId());
+			// 根据userId最后一位来分配
+			if ((userId % instanceCount) != instanceIndex) {
+				continue;
+			}
 			TokenModel model = new TokenModel();
 			TokenMapper.do2Model(user, model);
+
 			if (model.isValid() && !StringUtils.isBlank(model.getToken())) {
 				checkWatchedUser(model);
 			}

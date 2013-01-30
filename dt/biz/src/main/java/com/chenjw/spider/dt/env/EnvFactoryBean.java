@@ -10,6 +10,7 @@ public class EnvFactoryBean implements FactoryBean {
 
 	@Override
 	public Object getObject() throws Exception {
+
 		return EnvConstants.getEnvProvider().getProperties();
 	}
 

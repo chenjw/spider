@@ -8,10 +8,21 @@
         <link href="css/v2/skin.css" type="text/css" rel="stylesheet" charset="utf-8"/>
         <link href="css/v2/right_thirdpart.css" type="text/css" rel="stylesheet" charset="utf-8"/>
         <link href="css/v2/wbim.css" type="text/css" rel="stylesheet" charset="utf-8"/>
-        <title>test</title>
+		<link href="css/v2/colortip-1.0-jquery.css" type="text/css" rel="stylesheet" charset="utf-8"/>
+        
+		<link rel="stylesheet" href="css/v2/tip/tip-yellow.css" type="text/css" />
+    	<link rel="stylesheet" href="css/v2/tip/tip-violet.css" type="text/css" />
+    	<link rel="stylesheet" href="css/v2/tip/tip-darkgray.css" type="text/css" />
+    	<link rel="stylesheet" href="css/v2/tip/tip-skyblue.css" type="text/css" />
+    	<link rel="stylesheet" href="css/v2/tip/tip-yellowsimple.css" type="text/css" />
+    	<link rel="stylesheet" href="css/v2/tip/tip-twitter.css" type="text/css" />
+    	<link rel="stylesheet" href="css/v2/tip/tip-green.css" type="text/css" />
+		<title>test</title>
+		
+		<script src="js/jquery-1.4.2.min.js" language="JavaScript"></script>
+		<script src="js/jquery.poshytip.js" language="JavaScript"></script>
+		<!--script src="js/jquery.qtip-1.0.0-rc3.min.js" language="JavaScript"></script-->
 		<script src="http://tjs.sjs.sinajs.cn/t35/apps/opent/js/frames/client.js" language="JavaScript"></script>
-		<script src="js/jquery-1.9.0.min.js" language="JavaScript"></script>
-		<script src="js/jquery.cluetip.min.js" language="JavaScript"></script>
 		<script src="js/frame.js" language="JavaScript"></script>
 		
     </head>

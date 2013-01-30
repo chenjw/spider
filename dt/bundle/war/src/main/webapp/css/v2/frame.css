@@ -2002,10 +2002,10 @@ div.W_btn_c span {
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 9999;
+    z-index: 999;
 }
 .WB_global_nav .gn_bg {
-    background: url("../../../images/global_nav/bg_line.png") repeat-x scroll center 38px transparent;
+    background: url("../../image/bg_line.png") repeat-x scroll center 38px transparent;
     height: 41px;
 }
 .WB_global_nav .gn_header {
@@ -2093,7 +2093,7 @@ div.W_btn_c span {
     background: url("../../image/bg_nav.png") repeat-x scroll 0 -76px transparent;
 }
 .WB_global_nav .gn_search {
-    background: url("../../../images/global_nav/bg_line.png?id=1351843027189") no-repeat scroll 0 -5px transparent;
+    background: url("../../image/bg_line.png?id=1351843027189") no-repeat scroll 0 -5px transparent;
     display: inline;
     float: left;
     height: 24px;
@@ -2105,7 +2105,7 @@ div.W_btn_c span {
     background-position: -237px -5px;
 }
 .WB_global_nav .gn_search .hot_word {
-    background: url("../../../images/global_nav/bg_line.png?id=1351843027189") no-repeat scroll -976px -8px transparent;
+    background: url("../../image/bg_line.png?id=1351843027189") no-repeat scroll -976px -8px transparent;
     display: none;
     height: 13px;
     margin: 6px 0 0 7px;
@@ -2139,7 +2139,7 @@ div.W_btn_c span {
     width: 20px;
 }
 .WB_global_nav .gn_search.gn_clicked .gn_btn {
-    background: url("../../../images/global_nav/bg_line.png?id=1351843027189") no-repeat scroll -738px -7px transparent;
+    background: url("../../image/bg_line.png?id=1351843027189") no-repeat scroll -738px -7px transparent;
 }
 .WB_global_nav .gn_search .gn_btn:hover {
     background-position: -716px -7px;
@@ -2220,17 +2220,17 @@ div.W_btn_c span {
     display: block;
 }
 .WB_global_nav .gn_setting.gn_onmouse .gn_tab, .WB_global_nav .gn_setting.gn_onmouse .gn_tab:hover {
-    background: url("../../../images/global_nav/bg_line.png?id=1351843027189") no-repeat scroll right -3px transparent;
+    background: url("../../image/bg_line.png?id=1351843027189") no-repeat scroll right -3px transparent;
     height: 29px;
 }
 .WB_global_nav .gn_title.gn_onmouse .gn_tab, .WB_global_nav .gn_bg .gn_title.gn_onmouse .gn_tab:hover {
-    background: url("../../../images/global_nav/bg_line.png?id=1351843027189") no-repeat scroll right -3px transparent;
+    background: url("../../image/bg_line.png?id=1351843027189") no-repeat scroll right -3px transparent;
 }
 .WB_global_nav .gn_setting.gn_onmouse .gn_write, .WB_global_nav .gn_bg .gn_setting.gn_onmouse .gn_write:hover {
     background: none repeat scroll 0 0 transparent;
 }
 .WB_global_nav .gn_title.gn_onmouse i, .WB_global_nav .gn_setting.gn_onmouse i {
-    background: url("../../../images/global_nav/bg_line.png?id=1351843027189") no-repeat scroll -1891px -3px transparent;
+    background: url("../../image/bg_line.png?id=1351843027189") no-repeat scroll -1891px -3px transparent;
     height: 18px;
 }
 .WB_global_nav .gn_setting.gn_onmouse i {
@@ -2367,7 +2367,7 @@ div.W_btn_c span {
 .gn_topmenulist .gn_app_list dd a:hover img {
 }
 .gn_topmenulist .gn_app_list dd a .hot, .gn_topmenulist .gn_app_list dd a .new {
-    background: url("../../../images/global_nav/bg_line.png?id=1351843027189") no-repeat scroll -778px -9px transparent;
+    background: url("../../image/bg_line.png?id=1351843027189") no-repeat scroll -778px -9px transparent;
     display: block;
     height: 14px;
     left: 29px;
@@ -2410,7 +2410,7 @@ div.W_btn_c span {
     margin: 0 auto 8px;
 }
 .gn_topmenulist_app .list li .new, .gn_topmenulist_app .list li .hot {
-    background: url("../../../images/global_nav/bg_line.png?id=1351843027189") no-repeat scroll -837px -5px transparent;
+    background: url("../../image/bg_line.png?id=1351843027189") no-repeat scroll -837px -5px transparent;
     display: block;
     height: 18px;
     left: 38px;
@@ -2457,7 +2457,7 @@ div.W_btn_c span {
     border-color: #FEB747;
 }
 .gn_topmenulist_app .my_app span, .gn_topmenulist_app .all_app span {
-    background: url("../../../images/global_nav/bg_line.png?id=1351843027189") no-repeat scroll -904px -3px transparent;
+    background: url("../../image/bg_line.png?id=1351843027189") no-repeat scroll -904px -3px transparent;
     display: block;
     height: 21px;
     margin: 0 auto;

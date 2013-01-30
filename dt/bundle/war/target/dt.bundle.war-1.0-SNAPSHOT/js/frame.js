@@ -10,9 +10,21 @@ $(document).ready(function() {
 			setTimeout(countNew, 10000);
 		});
 	}
-	countNew();
+	countNew();//btn_account btn_top_reposts btn_logout
+	
+	//alert($('#notify_tip').poshytip);
+	$('#new_tweets_message').poshytip({
+		content: '出现在这里的都是您关注列表中被删除的微博。<a href="javascript:void(0);" onclick="$(\'#new_tweets_message\').poshytip(\'hide\');">知道了</a>',
+		showOn: 'none'
+	});
+	$('#new_tweets_message').poshytip('show');
+//	$('#btn_account').poshytip('show');
+	//$('#btn_account').qtip();
+	//alert(1);
+	$('#btn_top_reposts').poshytip({
+		content: '被删除微博中转发数最高的'
+	});
 	App.scrollToTop();
-
 });
 
 DT = {};
@@ -51,6 +63,15 @@ DT.firstPage = function() {
 	}, "json");
 }
 
+
+DT.topReposts = function() {
+	$.post("tweetRpc/topReposts.json", {}, function(data) {
+		if(data.success){
+			$("#detail_list").html(data.page);
+			DT.scrollToTop();
+		}
+	}, "json");
+}
 
 
 

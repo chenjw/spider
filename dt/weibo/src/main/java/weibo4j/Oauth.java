@@ -16,7 +16,7 @@ import weibo4j.org.json.JSONException;
 import weibo4j.org.json.JSONObject;
 import weibo4j.util.WeiboConfig;
 
-public class Oauth extends Weibo{
+public class Oauth extends Weibo {
 	/**
 	 * 
 	 */
@@ -90,19 +90,21 @@ public class Oauth extends Weibo{
 								.getValue("redirect_URI")) }, false));
 	}
 
-	public String authorize(String response_type,String state) throws WeiboException {
+	public String authorize(String response_type, String state)
+			throws WeiboException {
 		return WeiboConfig.getValue("authorizeURL").trim() + "?client_id="
 				+ WeiboConfig.getValue("client_ID").trim() + "&redirect_uri="
 				+ WeiboConfig.getValue("redirect_URI").trim()
-				+ "&response_type=" + response_type
-				+ "&state="+state;
+				+ "&response_type=" + response_type + "&state=" + state;
 	}
-	public String authorize(String response_type,String state,String scope) throws WeiboException {
+
+	public String authorize(String response_type, String state, String scope)
+			throws WeiboException {
 		return WeiboConfig.getValue("authorizeURL").trim() + "?client_id="
 				+ WeiboConfig.getValue("client_ID").trim() + "&redirect_uri="
 				+ WeiboConfig.getValue("redirect_URI").trim()
-				+ "&response_type=" + response_type
-				+ "&state="+state
-				+ "&scope="+scope;
+				+ "&response_type=" + response_type + "&state=" + state
+				+ "&scope=" + scope + "&forcelogin=true";
+
 	}
 }

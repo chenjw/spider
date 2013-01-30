@@ -3,7 +3,7 @@
         <div class="gn_bg">
             <div class="gn_header">
                 <div class="gn_nav">
-                    <div class="gn_title current" >
+                    <div class="gn_title current" id="btn_account">
                         #if($user.userId==$loginUser.userId)
                             <a href="/demo.htm" class="gn_tab" tabindex="4" style="">
                                 <i>演示帐号的回收站</i>
@@ -14,15 +14,19 @@
                             </a>
                         #end
                     </div>
-					<div class="gn_title">
+					<div class="gn_title" id="btn_top_reposts">
 						<a href="javascript:DT.topReposts()" class="gn_tab" tabindex="4" style="" >
-							<i>Top 10</i>
+							<i>最热门</i>
+						</a>
+                    </div>
+					<div class="gn_title" id="btn_logout">
+						<a href="/logout.htm" class="gn_tab" tabindex="4" style="" >
+							<i>取消授权</i>
 						</a>
                     </div>
 
                     <div class="gn_person" id="new_tweets_message">
                     </div>
-
                 </div>
             </div>
         </div>

@@ -9,5 +9,5 @@ applications:
         mem: 512M
     name: deleted-tweets
     url: ${name}.${target-base}
-    instances: 1
+    instances: 2
     mem: 512M
