@@ -9,8 +9,8 @@ import org.springframework.orm.ibatis.support.SqlMapClientDaoSupport;
 import com.chenjw.spider.dt.dao.DeletedTweetDAO;
 import com.chenjw.spider.dt.dataobject.TweetDO;
 import com.chenjw.spider.dt.mapper.TweetMapper;
+import com.chenjw.spider.dt.model.SearchInfo;
 import com.chenjw.spider.dt.model.TweetModel;
-import com.chenjw.spider.dt.utils.Page;
 import com.chenjw.tools.beancopy.util.DateUtils;
 
 public class IbatisDeletedTweetDAO extends SqlMapClientDaoSupport implements
@@ -25,28 +25,33 @@ public class IbatisDeletedTweetDAO extends SqlMapClientDaoSupport implements
 				"MS-SELECT-DELETED-TWEET-BY-TID-AND-MEMBER-USER-ID", p);
 	}
 
-	public List<TweetDO> findByMemberUserId(String memberUserId, Page page) {
+	@SuppressWarnings("unchecked")
+	public List<TweetDO> findByMemberUserId(SearchInfo searchInfo) {
 		Map<String, Object> p = new HashMap<String, Object>();
-		p.put("memberUserId", memberUserId);
-		p.put("page", page);
+		p.put("followerUserId", searchInfo.getFollowerUserId());
+		p.put("senderUserId", searchInfo.getSenderUserId());
+		p.put("page", searchInfo.getPage());
 		return this.getSqlMapClientTemplate().queryForList(
 				"MS-SELECT-DELETED-TWEET-BY-MEMBER-USER-ID", p);
 
 	}
 
-	public List<TweetDO> findTopReposts() {
+	@SuppressWarnings("unchecked")
+	public List<TweetDO> findTopReposts(SearchInfo searchInfo) {
 		Map<String, Object> p = new HashMap<String, Object>();
+		p.put("followerUserId", searchInfo.getFollowerUserId());
+		p.put("senderUserId", searchInfo.getSenderUserId());
 		return this.getSqlMapClientTemplate().queryForList(
 				"MS-SELECT-DELETED-TWEET-TOP-REPOSTS", p);
 
 	}
 
-	public int countByMemberUserId(String memberUserId, String minSort,
-			String maxSort) {
+	public int countByMemberUserId(SearchInfo searchInfo) {
 		Map<String, Object> p = new HashMap<String, Object>();
-		p.put("memberUserId", memberUserId);
-		p.put("minSort", minSort);
-		p.put("maxSort", maxSort);
+		p.put("followerUserId", searchInfo.getFollowerUserId());
+		p.put("senderUserId", searchInfo.getSenderUserId());
+		p.put("minSort", searchInfo.getPage().getMinSort());
+		p.put("maxSort", searchInfo.getPage().getMaxSort());
 		return (Integer) this.getSqlMapClientTemplate().queryForObject(
 				"MS-COUNT-DELETED-TWEET-BY-MEMBER-USER-ID", p);
 	}

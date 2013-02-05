@@ -27,6 +27,8 @@
 
     <!-- 表单验证。 -->
     <beans:import resource="app/form.xml" />
+    
+	<beans:import resource="app/permission.xml" />
 
     <!-- 装载模块。 -->
     <services:module-loader>

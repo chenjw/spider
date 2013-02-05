@@ -21,6 +21,7 @@ public class IbatisWatchedUserDAO extends SqlMapClientDaoSupport implements
 				watchedUser);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<WatchedUserDO> getAllWatchedUsers() {
 		return this.getSqlMapClientTemplate().queryForList(

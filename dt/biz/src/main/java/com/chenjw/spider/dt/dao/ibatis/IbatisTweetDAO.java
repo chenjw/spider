@@ -15,9 +15,9 @@ public class IbatisTweetDAO extends SqlMapClientDaoSupport implements TweetDAO {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<TweetDO> findByMemberUserId(String userId) {
+	public List<TweetDO> findByMemberUserId(String memberUserId) {
 		return this.getSqlMapClientTemplate().queryForList(
-				"MS-SELECT-TWEET-IDS-BY-MEMBER-USER-ID", userId);
+				"MS-SELECT-TWEET-IDS-BY-MEMBER-USER-ID", memberUserId);
 	}
 
 	@Override

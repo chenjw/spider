@@ -1,18 +1,17 @@
 package com.chenjw.spider.dt.service;
 
-import java.util.List;
-
+import com.chenjw.spider.dt.model.SearchInfo;
 import com.chenjw.spider.dt.model.TweetModel;
-import com.chenjw.spider.dt.utils.Page;
 import com.chenjw.spider.dt.utils.PagedResult;
+import com.chenjw.spider.dt.utils.Result;
 
 public interface DeletedTweetReadService {
 
-	public PagedResult<TweetModel> findDeletedTweetsByUserId(String userId,
-			Page page);
+	public int countDeletedTweetsByUserId(SearchInfo searchInfo);
 
-	public int countDeletedTweetsByUserId(String userId, Page page);
+	public Result<TweetModel> findTopReposts(SearchInfo searchInfo);
 
-	public List<TweetModel> findTopReposts();
+	public PagedResult<TweetModel> findDeletedTweetsByUserId(
+			SearchInfo searchInfo);
 
 }

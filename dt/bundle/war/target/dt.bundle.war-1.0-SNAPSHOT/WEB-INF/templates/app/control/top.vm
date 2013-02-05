@@ -2,31 +2,8 @@
     <div class="WB_global_nav">
         <div class="gn_bg">
             <div class="gn_header">
-                <div class="gn_nav">
-                    <div class="gn_title current" id="btn_account">
-                        #if($user.userId==$loginUser.userId)
-                            <a href="/demo.htm" class="gn_tab" tabindex="4" style="">
-                                <i>演示帐号的回收站</i>
-                            </a>
-                        #else
-                            <a href="/relogin.htm" class="gn_tab" tabindex="4" style="">
-                                <i>$!{loginUser.screenName}的回收站</i>
-                            </a>
-                        #end
-                    </div>
-					<div class="gn_title" id="btn_top_reposts">
-						<a href="javascript:DT.topReposts()" class="gn_tab" tabindex="4" style="" >
-							<i>最热门</i>
-						</a>
-                    </div>
-					<div class="gn_title" id="btn_logout">
-						<a href="/logout.htm" class="gn_tab" tabindex="4" style="" >
-							<i>取消授权</i>
-						</a>
-                    </div>
-
-                    <div class="gn_person" id="new_tweets_message">
-                    </div>
+                <div class="gn_nav" id="nav">
+                    #parse ("control/nav.vm")
                 </div>
             </div>
         </div>

@@ -18,7 +18,7 @@ import com.chenjw.spider.dt.web.app.constants.DtConstants;
  * @author chenjw
  * 
  */
-public class Demo extends View {
+public class Demo {
 	@Autowired
 	private UserService userService;
 

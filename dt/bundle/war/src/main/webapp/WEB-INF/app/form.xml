@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="GB2312"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <beans:beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:services="http://www.alibaba.com/schema/services"
 	xmlns:fm-conditions="http://www.alibaba.com/schema/services/form/conditions"
@@ -15,7 +15,7 @@
 	    <services:group name="csrfTokenGroup">
 			<services:field name="csrfToken">
 				<csrf-validator>
-					<message>您提交的数据已过期,请重新提交!</message>
+					<message>鎮ㄦ彁浜ょ殑鏁版嵁宸茶繃鏈�,璇烽噸鏂版彁浜�!</message>
 				</csrf-validator>
 			</services:field>
 		</services:group>

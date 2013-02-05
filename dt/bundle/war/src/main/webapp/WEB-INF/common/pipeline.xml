@@ -26,15 +26,17 @@
         <!-- 检查csrf token，防止csrf攻击和重复提交。假如request和session中的token不匹配，则出错，或显示expired页面。 -->
         <checkCsrfToken />
         
-        <!-- OAuth认证-->
         
-		<valve class="com.chenjw.spider.dt.web.app.valve.OAuthValve" />
 		
         <loop>
             <choose>
                 <when>
+                	<!-- OAuth认证-->
+        
+					
                     <!-- 执行带模板的screen，默认有layout。 -->
                     <pl-conditions:target-extension-condition extension="null, vm, jsp" />
+                    <valve class="com.chenjw.spider.dt.web.app.valve.OAuthValve" />
                     <performAction />
                     <performTemplateScreen />
                     <renderTemplate />

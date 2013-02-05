@@ -6,54 +6,63 @@ import java.util.List;
 import com.chenjw.spider.dt.dao.DeletedTweetDAO;
 import com.chenjw.spider.dt.dataobject.TweetDO;
 import com.chenjw.spider.dt.mapper.TweetMapper;
+import com.chenjw.spider.dt.model.SearchInfo;
 import com.chenjw.spider.dt.model.TweetModel;
 import com.chenjw.spider.dt.service.DeletedTweetReadService;
 import com.chenjw.spider.dt.utils.Page;
 import com.chenjw.spider.dt.utils.PagedResult;
+import com.chenjw.spider.dt.utils.Result;
+import com.chenjw.tools.BeanCopyUtils;
 
 public class DeletedTweetReadServiceImpl implements DeletedTweetReadService {
 
 	private DeletedTweetDAO deletedTweetDAO;
 
 	@Override
-	public List<TweetModel> findTopReposts() {
+	public Result<TweetModel> findTopReposts(SearchInfo searchInfo) {
+		Result<TweetModel> r = new Result<TweetModel>();
 		List<TweetModel> l = new ArrayList<TweetModel>();
-		List<TweetDO> dos = deletedTweetDAO.findTopReposts();
+		List<TweetDO> dos = deletedTweetDAO.findTopReposts(searchInfo);
 		for (TweetDO d : dos) {
 			TweetModel model = new TweetModel();
 			TweetMapper.do2Model(d, model);
 			l.add(model);
 		}
-		return l;
+		r.setList(l);
+
+		return r;
 	}
 
 	@Override
-	public PagedResult<TweetModel> findDeletedTweetsByUserId(String userId,
-			Page page) {
-		PagedResult<TweetModel> result = new PagedResult<TweetModel>();
+	public PagedResult<TweetModel> findDeletedTweetsByUserId(
+			SearchInfo searchInfo) {
+		PagedResult<TweetModel> r = new PagedResult<TweetModel>();
 		List<TweetModel> l = new ArrayList<TweetModel>();
-		List<TweetDO> list = deletedTweetDAO.findByMemberUserId(userId, page);
+		List<TweetDO> list = deletedTweetDAO.findByMemberUserId(searchInfo);
 		for (TweetDO d : list) {
 			TweetModel model = new TweetModel();
 			TweetMapper.do2Model(d, model);
 			l.add(model);
 		}
-		result.setList(l);
-		if (l.size() < page.getPageSize()) {
-			result.setMoreNum(0);
+		r.setList(l);
+		if (l.size() < searchInfo.getPage().getPageSize()) {
+			r.setMoreNum(0);
 		} else {
-			int moreNum = deletedTweetDAO.countByMemberUserId(userId, null, l
-					.get(l.size() - 1).getDeleteSort());
-			result.setMoreNum(moreNum);
-
+			SearchInfo countInfo = new SearchInfo();
+			BeanCopyUtils.copyProperties(countInfo, searchInfo);
+			Page page = new Page();
+			page.setMaxSort(l.get(l.size() - 1).getDeleteSort());
+			countInfo.setPage(page);
+			int moreNum = deletedTweetDAO.countByMemberUserId(countInfo);
+			r.setMoreNum(moreNum);
 		}
-		return result;
+
+		return r;
 	}
 
 	@Override
-	public int countDeletedTweetsByUserId(String userId, Page page) {
-		int num = deletedTweetDAO.countByMemberUserId(userId,
-				page.getMinSort(), page.getMaxSort());
+	public int countDeletedTweetsByUserId(SearchInfo searchInfo) {
+		int num = deletedTweetDAO.countByMemberUserId(searchInfo);
 		return num;
 	}
 

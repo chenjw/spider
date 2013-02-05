@@ -237,6 +237,7 @@ public class OpenWeiboServiceImpl implements WeiboService {
 
 	public String findAccessTokenByCode(String code) {
 		Oauth oauth = new Oauth();
+
 		// oauth.setToken(DEFAULT_TOKEN);
 		try {
 			return oauth.getAccessTokenByCode(code).getAccessToken();
@@ -246,4 +247,14 @@ public class OpenWeiboServiceImpl implements WeiboService {
 		}
 	}
 
+	public String parseSignedRequest(String signedRequest) {
+		Oauth oauth = new Oauth();
+		// oauth.setToken(DEFAULT_TOKEN);
+		try {
+			return oauth.parseSignedRequest(signedRequest);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 }

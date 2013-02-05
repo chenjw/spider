@@ -46,22 +46,26 @@
           <string>css/v1/index.css</string>
           <string>WEB-INF/web.xml</string>
           <string>WEB-INF/log4j.xml</string>
+          <string>WEB-INF/templates/app/screen/oauth.vm</string>
           <string>WEB-INF/templates/app/screen/error.vm</string>
           <string>WEB-INF/templates/app/screen/message.vm</string>
           <string>WEB-INF/templates/app/screen/env.vm</string>
-          <string>WEB-INF/templates/app/screen/countNew.vm</string>
           <string>WEB-INF/templates/app/screen/view.vm</string>
           <string>WEB-INF/templates/app/screen/add.vm</string>
           <string>WEB-INF/templates/app/control/detailList.vm</string>
           <string>WEB-INF/templates/app/control/reason.vm</string>
           <string>WEB-INF/templates/app/control/detail.vm</string>
           <string>WEB-INF/templates/app/control/detailList2.html</string>
+          <string>WEB-INF/templates/app/control/countNew.vm</string>
           <string>WEB-INF/templates/app/control/media.vm</string>
+          <string>WEB-INF/templates/app/control/nav.vm</string>
           <string>WEB-INF/templates/app/control/top.vm</string>
           <string>WEB-INF/templates/app/control/reasonMedia.vm</string>
           <string>WEB-INF/templates/app/control/page.vm</string>
           <string>WEB-INF/templates/app/control/boxRight.vm</string>
+          <string>WEB-INF/templates/app/layout/t.css</string>
           <string>WEB-INF/templates/app/layout/default.vm</string>
+          <string>WEB-INF/app/permission.xml</string>
           <string>WEB-INF/app/form.xml</string>
           <string>WEB-INF/webx-app.xml</string>
           <string>WEB-INF/common/webx-component.xml</string>

@@ -17,6 +17,7 @@ public class GoTweet {
 
 	public void execute(@Param(name = "tid") String tid, Context context,
 			Navigator navigator, HttpSession session) {
+
 		TokenModel userToken = (TokenModel) session
 				.getAttribute(DtConstants.USER_SESSION_KEY);
 		String mid = weiboService.findOriginStatusUrl(userToken, tid);

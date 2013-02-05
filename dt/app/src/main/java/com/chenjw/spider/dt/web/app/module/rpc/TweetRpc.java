@@ -8,9 +8,7 @@ package com.chenjw.spider.dt.web.app.module.rpc;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.util.HashMap;
-import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang.StringUtils;
@@ -25,23 +23,24 @@ import com.alibaba.citrus.turbine.support.ContextAdapter;
 import com.alibaba.citrus.turbine.util.TurbineUtil;
 import com.alibaba.citrus.webx.WebxException;
 import com.alibaba.nonda.databind.annotation.RequestParam;
+import com.chenjw.spider.dt.constants.SearchTypeEnum;
 import com.chenjw.spider.dt.dao.DeletedTweetDAO;
+import com.chenjw.spider.dt.model.SearchInfo;
 import com.chenjw.spider.dt.model.TokenModel;
 import com.chenjw.spider.dt.model.TweetModel;
 import com.chenjw.spider.dt.service.DeletedTweetReadService;
-import com.chenjw.spider.dt.utils.Page;
 import com.chenjw.spider.dt.utils.PagedResult;
+import com.chenjw.spider.dt.utils.Result;
 import com.chenjw.spider.dt.web.app.constants.DtConstants;
+import com.chenjw.spider.dt.web.app.module.Base;
 
-public class TweetRpc {
+public class TweetRpc extends Base {
 	@Autowired
 	private DeletedTweetReadService deletedTweetReadService;
 	@Autowired
 	private DeletedTweetDAO deletedTweetDAO;
 	@Autowired
 	private TemplateService templateService;
-	@Autowired
-	private HttpServletRequest request;
 
 	@ResourceMapping
 	public HashMap<String, Object> deleteTweet(
@@ -60,31 +59,32 @@ public class TweetRpc {
 	}
 
 	@ResourceMapping
-	public HashMap<String, Object> nextPage(
-			@RequestParam(name = "maxSort") String maxSort, HttpSession session) {
+	public HashMap<String, Object> page(HttpSession session) {
+		SearchInfo searchInfo = findSearchInfo(session);
+		if (searchInfo.getType() == SearchTypeEnum.TIMELINE) {
+			return timeLine(searchInfo, session);
+		} else if (searchInfo.getType() == SearchTypeEnum.TOP_REPOSTS) {
+			return topReposts(searchInfo, session);
+		} else if (searchInfo.getType() == SearchTypeEnum.COUNT_NEW) {
+			return countNew(searchInfo, session);
+		} else {
+			return null;
+		}
+	}
+
+	private HashMap<String, Object> countNew(SearchInfo searchInfo,
+			HttpSession session) {
+		HashMap<String, Object> r = new HashMap<String, Object>();
 		TurbineRunDataInternal runData = (TurbineRunDataInternal) TurbineUtil
 				.getTurbineRunData(request);
 		Context context = runData.getContext();
-		HashMap<String, Object> r = new HashMap<String, Object>();
-		TokenModel userToken = (TokenModel) session
-				.getAttribute(DtConstants.USER_SESSION_KEY);
-		Page page = new Page();
-		page.setMaxSort(maxSort);
-		page.setPageSize(DtConstants.DEFAULT_PAGE_SIZE);
-		PagedResult<TweetModel> result = deletedTweetReadService
-				.findDeletedTweetsByUserId(userToken.getUserId(), page);
-		context.put("detailList", result.getList());
-		context.put("moreNum", result.getMoreNum());
-		context.put("allowDelete", allowDelete(session, userToken));
-		if (result.getList().size() > 0) {
-			context.put("minSort",
-					result.getList().get(result.getList().size() - 1)
-							.getDeleteSort());
-		}
+		int count = deletedTweetReadService
+				.countDeletedTweetsByUserId(searchInfo);
+
+		context.put("count", count);
 		String pageHtml = "";
 		try {
-
-			pageHtml = render("control/detailList.vm", context);
+			pageHtml = render("control/countNew.vm", context);
 		} catch (Exception e) {
 			throw new WebxException(e);
 		}
@@ -93,49 +93,19 @@ public class TweetRpc {
 		return r;
 	}
 
-	private String render(String target, Context context) {
-		StringWriter sw = new StringWriter();
-		try {
-			templateService.writeTo(target, new ContextAdapter(context), sw);
-		} catch (TemplateException e) {
-			throw new WebxException(e);
-		} catch (IOException e) {
-			throw new WebxException(e);
-		}
-		return sw.toString();
-	}
-
-	private boolean allowDelete(HttpSession session, TokenModel userToken) {
-		if (userToken == null) {
-			return false;
-		}
-
-		TokenModel loginUserToken = (TokenModel) session
-				.getAttribute(DtConstants.LOGIN_USER_SESSION_KEY);
-		if (loginUserToken == null) {
-			return false;
-		}
-		return StringUtils.equals(loginUserToken.getUserId(),
-				userToken.getUserId());
-
-	}
-
-	@ResourceMapping
-	public HashMap<String, Object> firstPage(HttpSession session) {
+	private HashMap<String, Object> timeLine(SearchInfo searchInfo,
+			HttpSession session) {
 		TurbineRunDataInternal runData = (TurbineRunDataInternal) TurbineUtil
 				.getTurbineRunData(request);
 		Context context = runData.getContext();
 		HashMap<String, Object> r = new HashMap<String, Object>();
-		TokenModel userToken = (TokenModel) session
-				.getAttribute(DtConstants.USER_SESSION_KEY);
-		Page page = new Page();
-		page.setPageSize(DtConstants.DEFAULT_PAGE_SIZE);
+
 		PagedResult<TweetModel> result = deletedTweetReadService
-				.findDeletedTweetsByUserId(userToken.getUserId(), page);
+				.findDeletedTweetsByUserId(searchInfo);
 
 		context.put("detailList", result.getList());
 		context.put("moreNum", result.getMoreNum());
-		context.put("allowDelete", allowDelete(session, userToken));
+		context.put("searchInfo", searchInfo);
 		String maxSort = "0";
 		if (result.getList().size() > 0) {
 			context.put("minSort",
@@ -153,18 +123,22 @@ public class TweetRpc {
 		r.put("page", pageHtml);
 		r.put("maxSort", maxSort);
 		r.put("success", true);
+		r.put("searchInfo", searchInfo);
+		r.put("nav", navHtml(searchInfo, context, session));
 		return r;
 
 	}
 
-	@ResourceMapping
-	public HashMap<String, Object> topReposts(HttpSession session) {
+	private HashMap<String, Object> topReposts(SearchInfo searchInfo,
+			HttpSession session) {
 		TurbineRunDataInternal runData = (TurbineRunDataInternal) TurbineUtil
 				.getTurbineRunData(request);
 		Context context = runData.getContext();
 		HashMap<String, Object> r = new HashMap<String, Object>();
-		List<TweetModel> result = deletedTweetReadService.findTopReposts();
-		context.put("detailList", result);
+
+		Result<TweetModel> result = deletedTweetReadService
+				.findTopReposts(searchInfo);
+		context.put("detailList", result.getList());
 		context.put("moreNum", -1);
 		context.put("allowDelete", false);
 		String pageHtml = "";
@@ -175,7 +149,36 @@ public class TweetRpc {
 		}
 		r.put("page", pageHtml);
 		r.put("success", true);
+		r.put("searchInfo", searchInfo);
+		r.put("nav", navHtml(searchInfo, context, session));
 		return r;
 
 	}
+
+	private String render(String target, Context context) {
+		StringWriter sw = new StringWriter();
+		try {
+			templateService.writeTo(target, new ContextAdapter(context), sw);
+		} catch (TemplateException e) {
+			throw new WebxException(e);
+		} catch (IOException e) {
+			throw new WebxException(e);
+		}
+		return sw.toString();
+	}
+
+	private String navHtml(SearchInfo searchInfo, Context context,
+			HttpSession session) {
+		context.put("searchInfo", searchInfo);
+		context.put(DtConstants.LOGIN_USER_SESSION_KEY,
+				session.getAttribute(DtConstants.LOGIN_USER_SESSION_KEY));
+		String pageHtml = "";
+		try {
+			pageHtml = render("control/nav.vm", context);
+		} catch (Exception e) {
+			throw new WebxException(e);
+		}
+		return pageHtml;
+	}
+
 }

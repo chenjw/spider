@@ -10,8 +10,11 @@ public class ReasonMapper {
 
 	public static void wbStatus2Model(Status status, ReasonModel model) {
 		BeanCopyUtils.copyProperties(model, status);
-		UserModel user = new UserModel();
-		UserMapper.wbUser2Model(status.getUser(), user);
-		model.setUser(user);
+		if (status.getUser() != null) {
+			UserModel user = new UserModel();
+			UserMapper.wbUser2Model(status.getUser(), user);
+			model.setUser(user);
+		}
+
 	}
 }

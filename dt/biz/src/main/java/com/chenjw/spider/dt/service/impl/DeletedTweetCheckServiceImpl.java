@@ -4,6 +4,10 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.time.DateUtils;
@@ -33,6 +37,10 @@ public class DeletedTweetCheckServiceImpl implements DeletedTweetCheckService,
 	private WeiboService weiboService;
 	private boolean running = false;
 
+	private ExecutorService pool = new ThreadPoolExecutor(10, 10,
+			Constants.WEIBO_QUERY_KEEP_ALIVE_TIME, TimeUnit.MILLISECONDS,
+			new LinkedBlockingQueue<Runnable>());
+
 	public void start() {
 		running = true;
 	}
@@ -50,6 +58,7 @@ public class DeletedTweetCheckServiceImpl implements DeletedTweetCheckService,
 	}
 
 	private void checkWatchedUser(TokenModel user) {
+		Constants.LOGGER.info("start check " + user.getScreenName());
 		// 当前时间
 		Date currentDate = new Date();
 		// 保留的时间
@@ -89,14 +98,20 @@ public class DeletedTweetCheckServiceImpl implements DeletedTweetCheckService,
 		}
 		// 如果等于0表示一条都没取到，否则表示取到的最小ID
 		long fetchedMinTid = 0;
+		Set<String> ttttt = new HashSet<String>();
 		for (TweetModel t : newTweets) {
+			boolean bbbb = ttttt.add(t.getId());
+			if (!bbbb) {
+				System.out.println(t.getId() + " 重复了");
+			}
 			// 删除原来那条
 			if (retentionTweets.contains(t.getId())) {
 				retentionTweets.remove(t.getId());
-				// 删除
-				tweetDAO.deleteByTidAndMemberUserId(t.getId(), user.getUserId());
+
 			}
 			if (!retentionDate.after(t.getCreatedAt())) {
+				// 删除
+				tweetDAO.deleteByTidAndMemberUserId(t.getId(), user.getUserId());
 				TweetDO d = new TweetDO();
 				TweetMapper.model2Do(t, d);
 				d.setMemberUserId(user.getUserId());
@@ -127,6 +142,7 @@ public class DeletedTweetCheckServiceImpl implements DeletedTweetCheckService,
 				}
 			}
 		}
+		Constants.LOGGER.info("end check " + user.getScreenName());
 	}
 
 	@Override
@@ -145,17 +161,22 @@ public class DeletedTweetCheckServiceImpl implements DeletedTweetCheckService,
 		int instanceIndex = EnvConstants.getEnvProvider().getInstanceIndex();
 		int instanceCount = EnvConstants.getEnvProvider().getInstanceCount();
 		List<WatchedUserDO> users = watchedUserDAO.getAllWatchedUsers();
-		for (WatchedUserDO user : users) {
+		for (final WatchedUserDO user : users) {
 			Long userId = Long.parseLong(user.getUserId());
 			// 根据userId最后一位来分配
 			if ((userId % instanceCount) != instanceIndex) {
 				continue;
 			}
-			TokenModel model = new TokenModel();
+			final TokenModel model = new TokenModel();
 			TokenMapper.do2Model(user, model);
 
 			if (model.isValid() && !StringUtils.isBlank(model.getToken())) {
-				checkWatchedUser(model);
+				pool.execute(new Runnable() {
+					@Override
+					public void run() {
+						checkWatchedUser(model);
+					}
+				});
 			}
 
 		}

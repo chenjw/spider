@@ -20,7 +20,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public TokenModel addInvalidUser(String token) {
+	public TokenModel addUser(String token) {
 		String userId = weiboService.findUserIdByToken(token);
 		UserModel user = weiboService.findUserByUserId(userId, token);
 		WatchedUserDO oldUser = watchedUserDAO.findWatchedUser(userId);

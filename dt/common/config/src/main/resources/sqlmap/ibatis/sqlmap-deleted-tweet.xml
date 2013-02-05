@@ -30,7 +30,17 @@
 	<select id="MS-SELECT-DELETED-TWEET-BY-MEMBER-USER-ID" parameterClass="java.util.Map"
 		resultMap="RM-DT-DELETED-TWEET">
 		SELECT <include refid="DT-DELETED-TWEET-FIELDS" />
-		FROM dt_deleted_tweet WHERE MEMBER_USER_ID=#memberUserId#
+		FROM dt_deleted_tweet WHERE 1=1
+		<isNotNull property="senderUserId" prepend="AND">
+			<![CDATA[
+				 USER_ID = #senderUserId#
+			]]>
+		</isNotNull>
+		<isNotNull property="followerUserId" prepend="AND">
+			<![CDATA[
+				 MEMBER_USER_ID = #followerUserId#
+			]]>
+		</isNotNull>
 		<isNotNull property="page.maxSort" prepend="AND">
 			<![CDATA[
 				 DELETE_SORT < #page.maxSort#
@@ -44,6 +54,16 @@
 		resultMap="RM-DT-DELETED-TWEET">
 		SELECT DISTINCT(TID),<include refid="DT-DELETED-TWEET-FIELDS" />
 		FROM dt_deleted_tweet WHERE 1=1
+		<isNotNull property="senderUserId" prepend="AND">
+			<![CDATA[
+				 USER_ID = #senderUserId#
+			]]>
+		</isNotNull>
+		<isNotNull property="followerUserId" prepend="AND">
+			<![CDATA[
+				 MEMBER_USER_ID = #followerUserId#
+			]]>
+		</isNotNull>
 		ORDER BY REPOSTS_COUNT DESC,COMMENTS_COUNT DESC
 		LIMIT 10
 	</select>
@@ -51,7 +71,17 @@
 	<select id="MS-COUNT-DELETED-TWEET-BY-MEMBER-USER-ID" parameterClass="java.util.Map"
 		resultClass="int">
 		SELECT COUNT(1)
-		FROM dt_deleted_tweet WHERE MEMBER_USER_ID=#memberUserId#
+		FROM dt_deleted_tweet WHERE 1=1
+		<isNotNull property="senderUserId" prepend="AND">
+			<![CDATA[
+				 USER_ID = #senderUserId#
+			]]>
+		</isNotNull>
+		<isNotNull property="followerUserId" prepend="AND">
+			<![CDATA[
+				 MEMBER_USER_ID = #followerUserId#
+			]]>
+		</isNotNull>
 		<isNotNull property="minSort" prepend="AND">
 			<![CDATA[
 				 DELETE_SORT > #minSort#

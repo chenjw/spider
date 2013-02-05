@@ -104,7 +104,7 @@ public class Oauth extends Weibo {
 				+ WeiboConfig.getValue("client_ID").trim() + "&redirect_uri="
 				+ WeiboConfig.getValue("redirect_URI").trim()
 				+ "&response_type=" + response_type + "&state=" + state
-				+ "&scope=" + scope + "&forcelogin=true";
+				+ "&scope=" + scope;// + "&forcelogin=true";
 
 	}
 }
