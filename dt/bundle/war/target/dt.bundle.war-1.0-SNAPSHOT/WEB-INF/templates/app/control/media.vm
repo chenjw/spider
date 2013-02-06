@@ -1,7 +1,7 @@
 <ul class="WB_media_list clearfix" node-type="media_thumbnail">
     <li>
         <div class="chePicMin S_bg2 bigcursor" onclick="DT.mediaOpen($!{detail.id});">
-            <img class="bigcursor" node-type="feed_list_media_bgimg" alt="" src="$!{detail.thumbnailPic}" title="$!{detail.thumbnailPic}"/>
+            <img class="bigcursor" image-type="pic" node-type="feed_list_media_bgimg" alt="" src="$!{detail.thumbnailPic}" title="$!{detail.thumbnailPic}"/>
         </div>
     </li>
 </ul>
@@ -24,7 +24,7 @@
                         向右转</a>
     </p>
     <div class="smallcursor" onclick="DT.mediaClose($!{detail.id});">
-        <img src="$!{detail.bmiddlePic}" width="440"/>
+        <img src="$!{detail.bmiddlePic}" image-type="pic" width="440" title="$!{detail.bmiddlePic}"/>
     </div>
     <!--temp end-->
 </div>

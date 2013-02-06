@@ -2,7 +2,7 @@
     <li>
         <!-- img之间不能加空格 -->
         <div class="chePicMin S_bg2 bigcursor" onclick="DT.reasonMediaOpen($!{detail.id});">
-            <img class="bigcursor" src="$!{reason.thumbnailPic}" alt="" />
+            <img class="bigcursor" image-type="pic" src="$!{reason.thumbnailPic}" alt="" />
         </div>
     </li>
 </ul>
@@ -25,6 +25,6 @@
                         向右转</a>
     </p>
     <div class="smallcursor" onclick="javascript:DT.reasonMediaClose($!{detail.id});">
-        <img src="$!{reason.bmiddlePic}" width="440"/>
+        <img src="$!{reason.bmiddlePic}" image-type="pic" width="440"/>
     </div>
 </div>

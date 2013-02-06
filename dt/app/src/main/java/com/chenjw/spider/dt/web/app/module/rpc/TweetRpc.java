@@ -8,6 +8,7 @@ package com.chenjw.spider.dt.web.app.module.rpc;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -43,7 +44,7 @@ public class TweetRpc extends Base {
 	private TemplateService templateService;
 
 	@ResourceMapping
-	public HashMap<String, Object> deleteTweet(
+	public Map<String, Object> deleteTweet(
 			@RequestParam(name = "tid") String tid, HttpSession session) {
 		HashMap<String, Object> result = new HashMap<String, Object>();
 		if (StringUtils.isBlank(tid)) {
@@ -59,7 +60,7 @@ public class TweetRpc extends Base {
 	}
 
 	@ResourceMapping
-	public HashMap<String, Object> page(HttpSession session) {
+	public Map<String, Object> page(HttpSession session) {
 		SearchInfo searchInfo = findSearchInfo(session);
 		if (searchInfo.getType() == SearchTypeEnum.TIMELINE) {
 			return timeLine(searchInfo, session);
@@ -72,7 +73,7 @@ public class TweetRpc extends Base {
 		}
 	}
 
-	private HashMap<String, Object> countNew(SearchInfo searchInfo,
+	private Map<String, Object> countNew(SearchInfo searchInfo,
 			HttpSession session) {
 		HashMap<String, Object> r = new HashMap<String, Object>();
 		TurbineRunDataInternal runData = (TurbineRunDataInternal) TurbineUtil
@@ -93,7 +94,7 @@ public class TweetRpc extends Base {
 		return r;
 	}
 
-	private HashMap<String, Object> timeLine(SearchInfo searchInfo,
+	private Map<String, Object> timeLine(SearchInfo searchInfo,
 			HttpSession session) {
 		TurbineRunDataInternal runData = (TurbineRunDataInternal) TurbineUtil
 				.getTurbineRunData(request);
@@ -129,7 +130,7 @@ public class TweetRpc extends Base {
 
 	}
 
-	private HashMap<String, Object> topReposts(SearchInfo searchInfo,
+	private Map<String, Object> topReposts(SearchInfo searchInfo,
 			HttpSession session) {
 		TurbineRunDataInternal runData = (TurbineRunDataInternal) TurbineUtil
 				.getTurbineRunData(request);

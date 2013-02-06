@@ -3736,10 +3736,10 @@
     height: 42px;
 }
 .bigcursor, .bigcursor img, .bigcursor canvas {
-    cursor: url("http://img.t.sinajs.cn/t5/style/images/common/big.cur"), auto !important;
+
 }
 .smallcursor, .smallcursor img, .smallcursor canvas {
-    cursor: url("http://img.t.sinajs.cn/t5/style/images/common/small.cur"), auto !important;
+
 }
 .WB_feed .W_dot {
     vertical-align: middle;

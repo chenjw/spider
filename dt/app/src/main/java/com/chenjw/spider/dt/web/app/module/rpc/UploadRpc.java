@@ -1,8 +1,12 @@
 package com.chenjw.spider.dt.web.app.module.rpc;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import weibo4j.model.WeiboException;
@@ -13,23 +17,39 @@ import com.alibaba.nonda.databind.annotation.RequestParam;
 import com.chenjw.spider.dt.model.TokenModel;
 import com.chenjw.spider.dt.service.WeiboService;
 import com.chenjw.spider.dt.web.app.constants.DtConstants;
+import com.sun.org.apache.xml.internal.security.utils.Base64;
 
 public class UploadRpc {
 
 	@Autowired
 	private WeiboService weiboService;
-
+	
+	private String getErrorMessage(Exception e){
+		if(!(e instanceof WeiboException)){
+			return "未知原因";
+		}
+		while(e.getCause() !=null && e!=e.getCause() && (e.getCause() instanceof WeiboException)){
+			e=(WeiboException)e.getCause();
+		}
+		return ((WeiboException)e.getCause()).getError();
+	}
+	
 	@ResourceMapping
-	public String upload(@File("pic") FileItem fileItem,
+	public Map<String, Object> upload(@RequestParam(name = "pic") String pic,
 			@RequestParam(name = "status") String status, HttpSession session) {
+		Map<String, Object> result = new HashMap<String, Object>();
+
+		pic = StringUtils.substringAfter(pic, ",");
 		TokenModel userToken = (TokenModel) session
 				.getAttribute(DtConstants.USER_SESSION_KEY);
 		try {
-			weiboService.upload(userToken, status, fileItem.get());
-		} catch (WeiboException e) {
-
-			e.printStackTrace();
+			weiboService.upload(userToken, status, Base64.decode(pic));
+			result.put("success", true);
+		} 
+		catch (Exception e) {
+			result.put("errorMessage", getErrorMessage(e));
+			result.put("success", false);
 		}
-		return "SUCCESS";
+		return result;
 	}
 }

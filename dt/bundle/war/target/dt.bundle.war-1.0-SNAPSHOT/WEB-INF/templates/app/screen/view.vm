@@ -16,9 +16,11 @@
 
 	};
 </script>
+
 <script src="js/frame.js" language="JavaScript"></script>
+
 $control.setTemplate("top.vm")
-<div class="W_miniblog">
+<div class="W_miniblog" >
     <div class="W_miniblog_fb">
         <div class="W_main">
             <div class="W_main_bg clearfix">

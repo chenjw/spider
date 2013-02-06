@@ -2,7 +2,7 @@
     <div class="WB_global_nav">
         <div class="gn_bg">
             <div class="gn_header">
-                <div class="gn_nav" id="nav">
+                <div class="gn_nav" id="nav" title='出现在这里的都是您关注列表中被删除的微博。<a href="javascript:void(0);" onclick="DT.clearGlobalTips();">知道了</a>'>
                     #parse ("control/nav.vm")
                 </div>
             </div>

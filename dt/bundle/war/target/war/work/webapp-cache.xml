@@ -4,78 +4,86 @@
       <string>currentBuild</string>
       <path-set>
         <pathsSet class="linked-hash-set">
+          <string>js/html2canvas.js</string>
+          <string>js/canvas-toBlob.min.js</string>
+          <string>js/client.js</string>
+          <string>js/frame.js</string>
+          <string>js/jquery-1.7.2.min.js</string>
+          <string>js/jquery-1.4.2.min.js</string>
+          <string>js/jquery.plugin.html2canvas.js</string>
+          <string>js/html2canvas.min.js</string>
+          <string>js/jquery-1.9.0.min.js</string>
+          <string>js/FileSaver.min.js</string>
+          <string>js/jquery.poshytip.js</string>
+          <string>js/BlobBuilder.js</string>
+          <string>js/jquery.poshytip.min.js</string>
           <string>image/bg_line.png</string>
           <string>image/bg_nav.png</string>
-          <string>js/jquery.poshytip.js</string>
-          <string>js/jquery-1.4.2.min.js</string>
-          <string>js/jquery.qtip-1.0.0-rc3.min.js</string>
-          <string>js/frame.js</string>
-          <string>js/colortip-1.0-jquery.js</string>
-          <string>js/jquery.poshytip.min.js</string>
-          <string>js/jquery-1.9.0.min.js</string>
-          <string>css/v2/right_thirdpart.css</string>
-          <string>css/v2/tip/tip-twitter.css</string>
-          <string>css/v2/tip/tip-yellow.png</string>
-          <string>css/v2/tip/tip-skyblue_arrows.png</string>
-          <string>css/v2/tip/tip-violet.css</string>
-          <string>css/v2/tip/tip-yellow.css</string>
-          <string>css/v2/tip/tip-violet.png</string>
-          <string>css/v2/tip/tip-yellow_arrows.png</string>
-          <string>css/v2/tip/tip-yellowsimple.css</string>
-          <string>css/v2/tip/tip-darkgray.css</string>
-          <string>css/v2/tip/tip-darkgray_arrows.png</string>
-          <string>css/v2/tip/tip-green_arrows.gif</string>
-          <string>css/v2/tip/tip-yellowsimple_arrows.gif</string>
-          <string>css/v2/tip/tip-violet_arrows.png</string>
-          <string>css/v2/tip/tip-skyblue.png</string>
-          <string>css/v2/tip/tip-twitter_arrows.gif</string>
-          <string>css/v2/tip/tip-skyblue.css</string>
-          <string>css/v2/tip/tip-green.css</string>
-          <string>css/v2/tip/tip-darkgray.png</string>
-          <string>css/v2/skin.css</string>
-          <string>css/v2/A_index.css</string>
-          <string>css/v2/colortip-1.0-jquery.css</string>
-          <string>css/v2/wbim.css</string>
-          <string>css/v2/frame.css</string>
-          <string>css/v2/index.css</string>
-          <string>css/v1/right_thirdpart.css</string>
-          <string>css/v1/skin.css</string>
-          <string>css/v1/A_index.css</string>
-          <string>css/v1/wbim.css</string>
-          <string>css/v1/frame.css</string>
-          <string>css/v1/index.css</string>
-          <string>WEB-INF/web.xml</string>
-          <string>WEB-INF/log4j.xml</string>
-          <string>WEB-INF/templates/app/screen/oauth.vm</string>
-          <string>WEB-INF/templates/app/screen/error.vm</string>
-          <string>WEB-INF/templates/app/screen/message.vm</string>
+          <string>WEB-INF/templates/app/layout/default.vm</string>
+          <string>WEB-INF/templates/app/layout/t.css</string>
           <string>WEB-INF/templates/app/screen/env.vm</string>
+          <string>WEB-INF/templates/app/screen/message.vm</string>
+          <string>WEB-INF/templates/app/screen/view1.vm</string>
           <string>WEB-INF/templates/app/screen/view.vm</string>
           <string>WEB-INF/templates/app/screen/add.vm</string>
-          <string>WEB-INF/templates/app/control/detailList.vm</string>
-          <string>WEB-INF/templates/app/control/reason.vm</string>
-          <string>WEB-INF/templates/app/control/detail.vm</string>
-          <string>WEB-INF/templates/app/control/detailList2.html</string>
+          <string>WEB-INF/templates/app/screen/oauth.vm</string>
+          <string>WEB-INF/templates/app/screen/error.vm</string>
+          <string>WEB-INF/templates/app/screen/test.vm</string>
           <string>WEB-INF/templates/app/control/countNew.vm</string>
-          <string>WEB-INF/templates/app/control/media.vm</string>
+          <string>WEB-INF/templates/app/control/reason.vm</string>
           <string>WEB-INF/templates/app/control/nav.vm</string>
-          <string>WEB-INF/templates/app/control/top.vm</string>
-          <string>WEB-INF/templates/app/control/reasonMedia.vm</string>
+          <string>WEB-INF/templates/app/control/detail.vm</string>
           <string>WEB-INF/templates/app/control/page.vm</string>
+          <string>WEB-INF/templates/app/control/reasonMedia.vm</string>
+          <string>WEB-INF/templates/app/control/media.vm</string>
+          <string>WEB-INF/templates/app/control/top.vm</string>
+          <string>WEB-INF/templates/app/control/detailList.vm</string>
           <string>WEB-INF/templates/app/control/boxRight.vm</string>
-          <string>WEB-INF/templates/app/layout/t.css</string>
-          <string>WEB-INF/templates/app/layout/default.vm</string>
-          <string>WEB-INF/app/permission.xml</string>
-          <string>WEB-INF/app/form.xml</string>
+          <string>WEB-INF/templates/app/control/detailList2.html</string>
+          <string>WEB-INF/web.xml</string>
           <string>WEB-INF/webx-app.xml</string>
           <string>WEB-INF/common/webx-component.xml</string>
-          <string>WEB-INF/common/pipeline-exception.xml</string>
           <string>WEB-INF/common/webx-component-and-root.xml</string>
-          <string>WEB-INF/common/uris.xml</string>
           <string>WEB-INF/common/resources.xml</string>
+          <string>WEB-INF/common/uris.xml</string>
           <string>WEB-INF/common/pipeline.xml</string>
+          <string>WEB-INF/common/pipeline-exception.xml</string>
           <string>WEB-INF/webx.xml</string>
+          <string>WEB-INF/app/permission.xml</string>
+          <string>WEB-INF/app/form.xml</string>
+          <string>WEB-INF/log4j.xml</string>
           <string>wb_ae76e3171ca9bdb6.txt</string>
+          <string>css/v1/frame.css</string>
+          <string>css/v1/index.css</string>
+          <string>css/v1/right_thirdpart.css</string>
+          <string>css/v1/skin.css</string>
+          <string>css/v1/wbim.css</string>
+          <string>css/v1/A_index.css</string>
+          <string>css/v2/frame.css</string>
+          <string>css/v2/colortip-1.0-jquery.css</string>
+          <string>css/v2/index.css</string>
+          <string>css/v2/right_thirdpart.css</string>
+          <string>css/v2/tip/tip-skyblue.png</string>
+          <string>css/v2/tip/tip-darkgray.css</string>
+          <string>css/v2/tip/tip-yellowsimple.css</string>
+          <string>css/v2/tip/tip-green.css</string>
+          <string>css/v2/tip/tip-skyblue.css</string>
+          <string>css/v2/tip/tip-twitter_arrows.gif</string>
+          <string>css/v2/tip/tip-darkgray_arrows.png</string>
+          <string>css/v2/tip/tip-green_arrows.gif</string>
+          <string>css/v2/tip/tip-yellow_arrows.png</string>
+          <string>css/v2/tip/tip-violet.png</string>
+          <string>css/v2/tip/tip-yellow.png</string>
+          <string>css/v2/tip/tip-skyblue_arrows.png</string>
+          <string>css/v2/tip/tip-twitter.css</string>
+          <string>css/v2/tip/tip-violet.css</string>
+          <string>css/v2/tip/tip-violet_arrows.png</string>
+          <string>css/v2/tip/tip-darkgray.png</string>
+          <string>css/v2/tip/tip-yellow.css</string>
+          <string>css/v2/tip/tip-yellowsimple_arrows.gif</string>
+          <string>css/v2/skin.css</string>
+          <string>css/v2/wbim.css</string>
+          <string>css/v2/A_index.css</string>
           <string>WEB-INF/lib/dt.common.config-1.0-SNAPSHOT.jar</string>
           <string>WEB-INF/lib/dt.core-1.0-SNAPSHOT.jar</string>
           <string>WEB-INF/lib/jakarta.log4j-1.2.16.jar</string>
