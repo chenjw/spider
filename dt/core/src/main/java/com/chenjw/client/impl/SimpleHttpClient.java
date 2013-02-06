@@ -87,6 +87,19 @@ public class SimpleHttpClient implements HttpClient {
 	}
 
 	@Override
+	public byte[] getBytes(HttpUrl url, String cookie)
+			throws HttpClientException {
+		String realUrl = url.toUrlString();
+		// System.out.println("url=" + realUrl);
+		GetMethod method = new GetMethod(realUrl);
+		if (cookie != null) {
+			method.addRequestHeader("Cookie", cookie);
+		}
+		byte[] bytes = excuteMethod(method);
+		return bytes;
+	}
+
+	@Override
 	public String get(HttpUrl url, String encoding, String cookie)
 			throws HttpClientException {
 		String realUrl = url.toUrlString();
@@ -95,8 +108,12 @@ public class SimpleHttpClient implements HttpClient {
 		if (cookie != null) {
 			method.addRequestHeader("Cookie", cookie);
 		}
-		String result = excuteMethod(method, encoding);
-		// System.out.println(result);
+		byte[] bytes = excuteMethod(method);
+		String result = null;
+		try {
+			result = new String(bytes, encoding);
+		} catch (UnsupportedEncodingException e) {
+		}
 		return result;
 	}
 
@@ -118,13 +135,16 @@ public class SimpleHttpClient implements HttpClient {
 		if (cookie != null) {
 			method.addRequestHeader("Cookie", cookie);
 		}
-		String result = excuteMethod(method, encoding);
-		// System.out.println(result);
+		byte[] bytes = excuteMethod(method);
+		String result = null;
+		try {
+			result = new String(bytes, encoding);
+		} catch (UnsupportedEncodingException e) {
+		}
 		return result;
 	}
 
-	public String excuteMethod(HttpMethod method, String encoding)
-			throws HttpClientException {
+	public byte[] excuteMethod(HttpMethod method) throws HttpClientException {
 		int responseCode = -1;
 		try {
 			method.getParams().setParameter(HttpMethodParams.RETRY_HANDLER,
@@ -139,7 +159,7 @@ public class SimpleHttpClient implements HttpClient {
 			} else {
 				InputStream is = method.getResponseBodyAsStream();
 				try {
-					return IOUtils.toString(is, encoding);
+					return IOUtils.toByteArray(is);
 				} finally {
 					IOUtils.closeQuietly(is);
 				}
@@ -218,4 +238,5 @@ public class SimpleHttpClient implements HttpClient {
 
 		// System.out.println(s);
 	}
+
 }

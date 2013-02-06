@@ -545,7 +545,7 @@
     padding: 12px 20px 0;
 }
 .WB_right_module .person_list .relation .vs, .WB_right_module .person_list .relation .ask, .WB_right_module .person_list .relation .heart {
-    background: url("../../../images/common/icon.png?id=1357376796194") no-repeat scroll 0 0 transparent;
+
     display: block;
     float: left;
     height: 22px;

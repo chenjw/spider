@@ -22,14 +22,14 @@
                 #parse ("control/reason.vm")
 			#end
             <div class="WB_func clearfix">
-                <div class="WB_handle S_link2 WB_time" mid="3514048219855884">
+                <div class="WB_handle S_link2 WB_time">
                     $!dateUtils.toLocaleString($!{detail.createdAt})发送 <em	class="S_txt3">|</em>
 					转(${detail.repostsCount}) 评(${detail.commentsCount})<em	class="S_txt3">|</em>
 					#if($searchInfo.supportDelete())
                     <a class="S_func4" href="javascript:DT.removeTweet('$!{detail.id}');">删除</a> <em	class="S_txt3">|</em>
 					#end
                     <a class="S_func4" href="javascript:DT.firstPage();">回首页</a><em	class="S_txt3">|</em>
-					<a class="S_func4" href="javascript:DT.capture('$!{detail.id}');">截图</a>
+					<a class="S_func4" href="javascript:DT.capture('$!{detail.id}');">下载</a>
                 </div>
                 <div class="WB_from S_link2 WB_time">
                     $!dateUtils.toLocaleString($!{detail.deleteDate})删除
@@ -40,5 +40,8 @@
         </div>
 	
     </div>
+	<form action="post" enctype="multipart/form-data">
+	</form>
+	<input type="file" />
 		<img class="aaa" src=""/>
 </div>

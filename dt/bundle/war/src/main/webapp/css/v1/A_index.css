@@ -608,7 +608,6 @@
     padding: 8px 4px 6px;
 }
 .layer_send_pic .lapic_edit .beautify, .lapic_edit .delete {
-    background: url("../../../images/index/icon.png?id=1357376796194") no-repeat scroll 0 0 transparent;
     display: inline-block;
     padding-left: 16px;
 }
@@ -3815,7 +3814,6 @@
     position: absolute;
 }
 .WB_feed .type_ico {
-    background: url("../../../images/common/icon.png?id=1357376796194") no-repeat scroll 0 0 transparent;
     float: left;
     height: 18px;
     margin: 0 6px 0 0;
@@ -5653,7 +5651,6 @@
     margin: 0 0 0 -7px;
 }
 .WB_feed .bar_v2_box .W8_imgicons {
-    background-image: url("../../../images/common/icon.png?id=1357376796194");
     background-repeat: no-repeat;
     display: inline-block;
     height: 16px;

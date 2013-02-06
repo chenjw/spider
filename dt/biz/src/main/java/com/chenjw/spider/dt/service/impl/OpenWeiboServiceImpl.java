@@ -8,6 +8,7 @@ import weibo4j.Friendships;
 import weibo4j.Oauth;
 import weibo4j.Timeline;
 import weibo4j.Users;
+import weibo4j.http.ImageItem;
 import weibo4j.model.Paging;
 import weibo4j.model.Status;
 import weibo4j.model.StatusWapper;
@@ -256,5 +257,22 @@ public class OpenWeiboServiceImpl implements WeiboService {
 			e.printStackTrace();
 			return null;
 		}
+	}
+
+	@Override
+	public TweetModel upload(TokenModel user, String text, byte[] img)
+			throws WeiboException {
+		Timeline timeline = new Timeline();
+		timeline.setToken(user.getToken());
+		Status status = null;
+		if (img == null) {
+			status = timeline.UpdateStatus(text);
+		} else {
+			ImageItem imageItem = new ImageItem(img);
+			status = timeline.UploadStatus(text, imageItem);
+		}
+		TweetModel model = new TweetModel();
+		TweetMapper.wbStatus2Model(status, model);
+		return model;
 	}
 }

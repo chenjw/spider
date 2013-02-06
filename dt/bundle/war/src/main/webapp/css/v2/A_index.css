@@ -608,7 +608,7 @@
     padding: 8px 4px 6px;
 }
 .layer_send_pic .lapic_edit .beautify, .lapic_edit .delete {
-    background: url("../../../images/index/icon.png?id=1357376796194") no-repeat scroll 0 0 transparent;
+
     display: inline-block;
     padding-left: 16px;
 }
@@ -3736,10 +3736,10 @@
     height: 42px;
 }
 .bigcursor, .bigcursor img, .bigcursor canvas {
-    cursor: url("http://img.t.sinajs.cn/t5/style/images/common/big.cur"), auto !important;
+
 }
 .smallcursor, .smallcursor img, .smallcursor canvas {
-    cursor: url("http://img.t.sinajs.cn/t5/style/images/common/small.cur"), auto !important;
+
 }
 .WB_feed .W_dot {
     vertical-align: middle;
@@ -3815,7 +3815,7 @@
     position: absolute;
 }
 .WB_feed .type_ico {
-    background: url("../../../images/common/icon.png?id=1357376796194") no-repeat scroll 0 0 transparent;
+
     float: left;
     height: 18px;
     margin: 0 6px 0 0;
@@ -4234,7 +4234,7 @@
     position: absolute;
 }
 .WB_feed .quick_reply_list .ico_more {
-    background: url("../../../images/common/icon.png?id=1357376796194") repeat scroll -270px -25px transparent;
+
     display: inline-block;
     height: 30px;
     width: 30px;
@@ -5653,7 +5653,7 @@
     margin: 0 0 0 -7px;
 }
 .WB_feed .bar_v2_box .W8_imgicons {
-    background-image: url("../../../images/common/icon.png?id=1357376796194");
+
     background-repeat: no-repeat;
     display: inline-block;
     height: 16px;
@@ -5941,7 +5941,7 @@
     margin: 0 0 0 -7px;
 }
 .WB_feed .kan_v2_box .W8_imgicons {
-    background-image: url("../../../images/common/icon.png?id=1357376796194");
+
     background-repeat: no-repeat;
     display: inline-block;
     height: 16px;
@@ -10224,7 +10224,7 @@
     margin: 0 0 -3px;
 }
 .member_list .down_line .ico {
-    background-image: url("../../../images/common/icon.png?id=1357376796194");
+
     background-position: -293px -250px;
     background-repeat: no-repeat;
     display: inline-block;
@@ -10343,7 +10343,7 @@
     color: #7355AA;
 }
 .feed_repeat .type_ico {
-    background: url("../../../images/common/icon.png?id=1357376796194") no-repeat scroll 0 0 transparent;
+
     float: left;
     height: 18px;
     margin: 0 6px 0 0;
@@ -10737,7 +10737,7 @@
     color: #7355AA;
 }
 .big_comment_list .type_ico {
-    background: url("../../../images/common/icon.png?id=1357376796194") no-repeat scroll 0 0 transparent;
+
     float: left;
     height: 18px;
     margin: 0 6px 0 0;
@@ -11662,7 +11662,7 @@
     padding: 12px 20px 0;
 }
 .WB_right_module .person_list .relation .vs, .WB_right_module .person_list .relation .ask, .WB_right_module .person_list .relation .heart {
-    background: url("../../../images/common/icon.png?id=1357376796194") no-repeat scroll 0 0 transparent;
+
     display: block;
     float: left;
     height: 22px;
@@ -12202,7 +12202,7 @@
     text-decoration: none;
 }
 .WB_left_nav .ico_userguide {
-    background-image: url("../../../images/userguide/icon.png?id=1357376796194");
+
     background-position: 0 -223px;
     background-repeat: no-repeat;
     display: inline-block;
@@ -12210,7 +12210,7 @@
     width: 20px;
 }
 .WB_left_nav .lev_curr .ico_userguide {
-    background-image: url("../../../images/userguide/icon.png?id=1357376796194");
+
     background-position: -25px -223px;
     background-repeat: no-repeat;
     display: inline-block;

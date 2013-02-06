@@ -235,7 +235,7 @@ a.W_gotop .icon_gotop {
     margin-bottom: 5px;
 }
 .W_new {
-    background: url("../../../images/common/icon.png?id=1357376796194") no-repeat scroll 0 0 transparent;
+
     display: inline-block;
     height: 10px;
     width: 10px;
@@ -358,21 +358,21 @@ fieldset legend {
     height: 42px;
 }
 .W_ico20 {
-    background-image: url("../../../images/common/icon.png?id=1357376796194");
+
     background-repeat: no-repeat;
     display: inline-block;
     height: 20px;
     width: 20px;
 }
 .W_ico16 {
-    background-image: url("../../../images/common/icon.png?id=1357376796194");
+
     background-repeat: no-repeat;
     display: inline-block;
     height: 16px;
     width: 16px;
 }
 .W_ico12 {
-    background-image: url("../../../images/common/icon.png?id=1357376796194");
+
     background-repeat: no-repeat;
     display: inline-block;
     height: 12px;
@@ -382,7 +382,7 @@ a:hover .W_ico12, a:hover .W_ico16, a:hover .W_ico20 {
     cursor: pointer;
 }
 a:hover .icon_refresh, .W_gotop:hover .icon_gotop, .btn_praise:hover .icon_praise, .btn_praisedd .icon_praise {
-    background-image: url("../../../images/common/icon.png?id=1357376796194") !important;
+
 }
 .ico_myhomepage {
     background-position: 0 -25px;
@@ -615,7 +615,7 @@ a:hover .icon_refresh {
     vertical-align: middle;
 }
 .W_close {
-    background: url("../../../images/common/icon.png?id=1357376796194") no-repeat scroll -75px -200px transparent;
+
     display: inline-block;
     height: 16px;
     width: 16px;
@@ -624,7 +624,7 @@ a:hover .icon_refresh {
     background-position: -100px -200px;
 }
 .W_close_color {
-    background-image: url("../../../images/common/icon.png?id=1357376796194");
+
     background-position: -75px -25px;
     background-repeat: no-repeat;
     display: inline-block;
@@ -1035,7 +1035,7 @@ a .W_level_ico {
     background-position: 0 -350px;
 }
 .credit_ico {
-    background-image: url("../../../images/common/icon.png?id=1357376796194");
+
     background-repeat: no-repeat;
     display: inline-block;
     height: 16px;
@@ -1245,7 +1245,7 @@ a .W_level_ico {
     width: 17px;
 }
 .icon_invite, .icon_prize, .icon_rthot {
-    background: url("../../../images/common/icon.png?id=1357376796194") no-repeat scroll 0 0 transparent;
+
     display: inline-block;
     height: 16px;
     margin-right: 5px;
@@ -1266,7 +1266,7 @@ a .W_level_ico {
     background-position: -350px -300px;
 }
 .ico_novice {
-    background: url("../../../images/common/icon.png?id=1357376796194") no-repeat scroll -325px -225px transparent;
+
     display: inline-block;
     height: 22px;
     width: 22px;
@@ -1980,7 +1980,7 @@ div.W_btn_c span {
     color: #FFFFFF;
 }
 .W_layer .icon_gotop, .W_layer .icon_addtwo, .W_layer .icon_refresh, .W_layer .icon_bytime, .W_layer .icon_bypopular, .W_layer .ico_page_prev, .W_layer .ico_page_next, .W_layer .btn_page_prevdis .ico_page_prev, .W_layer .btn_page_nextdis .ico_page_next {
-    background-image: url("../../../images/common/icon.png?id=1357376796194");
+
 }
 .W_layer .profile_tab {
     background-color: #FAFAFA;
@@ -2168,7 +2168,7 @@ div.W_btn_c span {
     z-index: 9999;
 }
 .WB_global_nav .gn_setting .gn_tab .ico {
-    background: url("../../../images/common/icon.png?id=1357376796194") no-repeat scroll -50px 0 transparent;
+
     display: inline-block;
     height: 16px;
     overflow: hidden;
@@ -2628,7 +2628,7 @@ div.W_btn_c span {
     margin-top: 2px;
 }
 .gn_topmenulist_search .mg_rankicon01, .gn_topmenulist_search .mg_rankicon02, .gn_topmenulist_search .mg_rankicon03, .gn_topmenulist_search .mg_rankicon04, .gn_topmenulist_search .mg_rankicon05, .gn_topmenulist_search .mg_rankicon06, .gn_topmenulist_search .mg_rankicon07, .gn_topmenulist_search .mg_rankicon08, .gn_topmenulist_search .mg_rankicon09, .gn_topmenulist_search .mg_rankicon10 {
-    background: url("../../../images/global_nav/search_bgicon.png?id=1357376796194") no-repeat scroll 0 0 transparent;
+
     display: inline-block;
     height: 20px;
     margin-left: 5px;
@@ -2666,14 +2666,14 @@ div.W_btn_c span {
     background-position: -180px -80px;
 }
 .gn_topmenulist_search .app_score {
-    background: url("../../../images/global_nav/search_bgicon.png?id=1357376796194") no-repeat scroll 0 -105px transparent;
+
     display: inline-block;
     height: 13px;
     vertical-align: middle;
     width: 61px;
 }
 .gn_topmenulist_search .app_score em {
-    background: url("../../../images/global_nav/search_bgicon.png?id=1357376796194") no-repeat scroll -71px -105px transparent;
+
     display: block;
     height: 12px;
     width: 0;
@@ -2726,7 +2726,7 @@ div.W_btn_c span {
     background-repeat: no-repeat;
 }
 .WB_left_nav .ico_userguide {
-    background-image: url("../../../images/userguide/icon.png?id=1357376796194");
+
     background-position: 0 -223px;
     background-repeat: no-repeat;
     display: inline-block;
@@ -2734,7 +2734,7 @@ div.W_btn_c span {
     width: 20px;
 }
 .WB_left_nav .lev_curr .ico_userguide {
-    background-image: url("../../../images/userguide/icon.png?id=1357376796194");
+
     background-position: -25px -223px;
     background-repeat: no-repeat;
     display: inline-block;
@@ -5431,7 +5431,7 @@ body .W_layer .send_weibo_cf_CHT .send_btn.disable, body .W_layer .send_weibo_cf
     background-position: -50px 0;
 }
 .profile_tabbig .pftb_lk .ico_pm {
-    background-image: url("../../../images/index/profile_tabicon.png?id=1357376796194");
+
     background-repeat: no-repeat;
     display: inline-block;
     height: 22px;

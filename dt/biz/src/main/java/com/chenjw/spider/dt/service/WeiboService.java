@@ -2,6 +2,8 @@ package com.chenjw.spider.dt.service;
 
 import java.util.List;
 
+import weibo4j.model.WeiboException;
+
 import com.chenjw.spider.dt.model.TokenModel;
 import com.chenjw.spider.dt.model.TweetModel;
 import com.chenjw.spider.dt.model.UserModel;
@@ -27,4 +29,7 @@ public interface WeiboService {
 	public String[] findFriendIdsByUserId(String userId, String token);
 
 	public String findOriginStatusUrl(TokenModel user, String tid);
+
+	public TweetModel upload(TokenModel user, String text, byte[] img)
+			throws WeiboException;
 }
