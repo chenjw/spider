@@ -2,8 +2,7 @@
 <form method="post" action="#" autocomplete="off">
 	<input type="hidden" name="event_submit_do_add_user" value="doAddUser" />
 	<input type="hidden" name="action" value="UserAction" />
-	用户名：<input type="text" name="screenName" value="" />
-	App Key：<input type="text" name="clientId" value="474094127" />
-	App Secret：<input type="text" name="clientSecret" value="" />
+	App Key：<input type="text" name="clientId" value="1808339065" />
+	App Secret：<input type="text" name="clientSecret" value="50b69748193ebd17b4c449c2adec7137" />
 	<button type="submit">添加用户</button>
 </form>

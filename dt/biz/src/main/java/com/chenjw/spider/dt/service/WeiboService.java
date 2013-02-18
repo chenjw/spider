@@ -14,6 +14,8 @@ public interface WeiboService {
 	public String parseSignedRequest(String signedRequest);
 
 	public String findAuthorizeUrl();
+	
+	public String findAuthorizeUrl(String clientId);
 
 	public String findAccessTokenByCode(String code);
 

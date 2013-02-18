@@ -100,29 +100,29 @@ public class OAuthValve extends AbstractValve {
 		//
 		// return;
 		// }
-		TokenModel model = userService.findWatchedUserByToken(token);
-		// 未开通权限
-		if (model == null) {
-			// 添加一个未开通权限的用户
-			model = userService.addUser(token);
-		} else {
-			boolean changed = false;
-			if (!model.isValid()) {
-				model.setStatus(UserStatusEnum.FOREVER_VALID);
-				changed = true;
-			}
-			if (!StringUtils.equals(model.getToken(), token)) {
-				model.setToken(token);
-				changed = true;
-			}
-			if (changed) {
-				userService.updateUser(model);
-			}
-		}
+//		TokenModel model = userService.findWatchedUserByToken(token);
+//		// 未开通权限
+//		if (model == null) {
+//			// 添加一个未开通权限的用户
+//			model = userService.addUser(token);
+//		} else {
+//			boolean changed = false;
+//			if (!model.isValid()) {
+//				model.setStatus(UserStatusEnum.FOREVER_VALID);
+//				changed = true;
+//			}
+//			if (!StringUtils.equals(model.getToken(), token)) {
+//				model.setToken(token);
+//				changed = true;
+//			}
+//			if (changed) {
+//				userService.updateUser(model);
+//			}
+//		}
 
 		// 已开通权限
-		session.setAttribute(DtConstants.USER_SESSION_KEY, model);
-		session.setAttribute(DtConstants.LOGIN_USER_SESSION_KEY, model);
+//		session.setAttribute(DtConstants.USER_SESSION_KEY, model);
+//		session.setAttribute(DtConstants.LOGIN_USER_SESSION_KEY, model);
 		rundata.setRedirectLocation("/");
 		return;
 	}

@@ -25,6 +25,9 @@
 				app.screen.env
 				app.screen.start
 				app.screen.stop
+				app.screen.add
+				app.screen.regOauth
+				app.screen.redirect
 			</value>
 		</property>
 	</bean>

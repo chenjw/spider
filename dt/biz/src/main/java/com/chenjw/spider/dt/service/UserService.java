@@ -6,7 +6,7 @@ public interface UserService {
 
 	public void updateUser(TokenModel model);
 
-	public TokenModel addUser(String token);
+	public TokenModel addUser(String token,String clientId,String clientSecret);
 
 	public TokenModel updatePeriodValid(String token, int days);
 

@@ -235,6 +235,17 @@ public class OpenWeiboServiceImpl implements WeiboService {
 			return null;
 		}
 	}
+	
+	public String findAuthorizeUrl(String clientId){
+		Oauth oauth = new Oauth();
+		try {
+
+			return oauth.authorizeByClientId("code", clientId);
+		} catch (WeiboException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 
 	public String findAccessTokenByCode(String code) {
 		Oauth oauth = new Oauth();

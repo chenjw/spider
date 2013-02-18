@@ -20,7 +20,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public TokenModel addUser(String token) {
+	public TokenModel addUser(String token,String clientId,String clientSecret) {
 		String userId = weiboService.findUserIdByToken(token);
 		UserModel user = weiboService.findUserByUserId(userId, token);
 		WatchedUserDO oldUser = watchedUserDAO.findWatchedUser(userId);
@@ -31,16 +31,19 @@ public class UserServiceImpl implements UserService {
 			newUser.setToken(token);
 			newUser.setStatus(UserStatusEnum.FOREVER_VALID.name());
 			newUser.setScreenName(user.getScreenName());
+			newUser.setClientId(clientId);
+			newUser.setClientSecret(clientSecret);
 			watchedUserDAO.addWatchedUser(newUser);
-			TokenMapper.do2Model(newUser, tokenModel);
 		} else {
 			// 如果token已更新，更新db中的token
 			if (!token.equals(oldUser.getToken())) {
 				oldUser.setToken(token);
+				oldUser.setClientId(clientId);
+				oldUser.setClientSecret(clientSecret);
 				watchedUserDAO.updateWatchedUser(oldUser);
 			}
-			TokenMapper.do2Model(oldUser, tokenModel);
 		}
+		TokenMapper.do2Model(oldUser, tokenModel);
 		return tokenModel;
 
 	}

@@ -1,6 +1,8 @@
 package weibo4j;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 
@@ -105,6 +107,19 @@ public class Oauth extends Weibo {
 				+ WeiboConfig.getValue("redirect_URI").trim()
 				+ "&response_type=" + response_type + "&state=" + state
 				+ "&scope=" + scope;// + "&forcelogin=true";
+
+	}
+	
+	public String authorizeByClientId(String response_type, String clientId)
+			throws WeiboException {
+		try {
+			return WeiboConfig.getValue("authorizeURL").trim() + "?client_id="
+					+ clientId + "&redirect_uri="
+					+ URLEncoder.encode(WeiboConfig.getValue("redirect_URI").trim(),"UTF-8")
+					+ "&response_type=" + response_type + "&state=";
+		} catch (UnsupportedEncodingException e) {
+			return null;
+		}// + "&forcelogin=true";
 
 	}
 }
