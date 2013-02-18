@@ -88,7 +88,7 @@
 		<mkdir dir="/home/chenjw/software/tomcat/webapps"/>
 		<copy todir="/home/chenjw/software/tomcat/webapps">
     			<fileset dir="${dist.dir}/deleted-tweets/upload">
-				<include name="deleted-tweets.war"/>
+				<include name="deletedtweets.war"/>
 			</fileset>
   		</copy>
 	</target>
@@ -108,26 +108,22 @@
     			<arg value="login"/>
 			<arg value="--email"/>
 			<arg value="cjw1983@gmail.com"/>
-			<arg value="--passwd"/>
+			<arg value="--password"/>
 			<arg value="19830926"/>
- 		</exec>		
-		<exec executable="vmc">
-    			<arg value="--path"/>
-			<arg value="${dist.dir}/deleted-tweets/upload/"/>
+ 		</exec>	
+
+		<exec executable="vmc" dir="${dist.dir}/deleted-tweets/upload/">
 			<arg value="stop"/>
 			<arg value="deleted-tweets"/>
  		</exec>
-		<exec executable="vmc">
-    			<arg value="--path"/>
-			<arg value="${dist.dir}/deleted-tweets/upload/"/>
-			<arg value="update"/>
+		<exec executable="vmc" dir="${dist.dir}/deleted-tweets/upload/">
+			<arg value="push"/>
  		</exec>
-		<exec executable="vmc">
-    			<arg value="--path"/>
-			<arg value="${dist.dir}/deleted-tweets/upload/"/>
+		<exec executable="vmc" dir="${dist.dir}/deleted-tweets/upload/">
 			<arg value="start"/>
 			<arg value="deleted-tweets"/>
  		</exec>
+
 
 	</target>
 
@@ -141,15 +137,15 @@
     			<arg value="login"/>
 			<arg value="--email"/>
 			<arg value="cjw1983@gmail.com"/>
-			<arg value="--passwd"/>
+			<arg value="--password"/>
 			<arg value="19830926"/>
  		</exec>		
-		<exec executable="vmc">
-    			<arg value="--path"/>
-			<arg value="${dist.dir}/deleted-tweets/upload/"/>
+
+		<exec executable="vmc" dir="${dist.dir}/deleted-tweets/upload/">
 			<arg value="stop"/>
 			<arg value="deleted-tweets"/>
  		</exec>
+
 
 	</target>
 

@@ -10,28 +10,30 @@
 		<result property="status" column="STATUS" jdbcType="VARCHAR" />
 		<result property="screenName" column="SCREEN_NAME" jdbcType="VARCHAR" />
 		<result property="expireDate" column="EXPIRE_DATE" jdbcType="DATETIME" javaType="date" />
+		<result property="clientId" column="CLIENT_ID" jdbcType="VARCHAR" />
+		<result property="clientSecret" column="CLIENT_SECRET" jdbcType="VARCHAR" />
 	</resultMap>
 
 	<select id="MS-SELECT-ALL-WATCHED-USER" resultMap="RM-WATCHED-USER">
-		SELECT USER_ID,TOKEN,SCREEN_NAME,STATUS,EXPIRE_DATE
+		SELECT USER_ID,TOKEN,SCREEN_NAME,STATUS,EXPIRE_DATE,CLIENT_ID,CLIENT_SECRET
 		FROM dt_watched_user WHERE 1=1
 	</select>
 
 	<select id="MS-SELECT-WATCHED-USER" resultMap="RM-WATCHED-USER">
-		SELECT USER_ID,TOKEN,SCREEN_NAME,STATUS,EXPIRE_DATE
+		SELECT USER_ID,TOKEN,SCREEN_NAME,STATUS,EXPIRE_DATE,CLIENT_ID,CLIENT_SECRET
 		FROM dt_watched_user WHERE USER_ID=#userId#
 	</select>
 	
 	<select id="MS-SELECT-WATCHED-USER-BY-TOKEN" resultMap="RM-WATCHED-USER">
-		SELECT USER_ID,TOKEN,SCREEN_NAME,STATUS,EXPIRE_DATE
+		SELECT USER_ID,TOKEN,SCREEN_NAME,STATUS,EXPIRE_DATE,CLIENT_ID,CLIENT_SECRET
 		FROM dt_watched_user WHERE TOKEN=#token#
 	</select>
 
     <insert id="MS-INSERT-WATCHED-USER" parameterClass="TA-DT-WATCHED-USER">
         INSERT INTO dt_watched_user (
-           	USER_ID,GMT_CREATE,TOKEN,SCREEN_NAME,STATUS,EXPIRE_DATE
+           	USER_ID,GMT_CREATE,TOKEN,SCREEN_NAME,STATUS,EXPIRE_DATE,CLIENT_ID,CLIENT_SECRET
         ) VALUES (
-    		#userId#,now(),#token#,#screenName#,#status#,#expireDate#
+    		#userId#,now(),#token#,#screenName#,#status#,#expireDate#,#clientId#,#clientSecret#
         )
     </insert>
     
@@ -40,7 +42,9 @@
         	TOKEN = #token#,
         	SCREEN_NAME = #screenName#,
         	STATUS = #status#,
-        	EXPIRE_DATE = #expireDate#
+        	EXPIRE_DATE = #expireDate#,
+        	CLIENT_ID = #clientId#,
+        	CLIENT_SERCRET = #clientSecret#
         WHERE USER_ID = #userId#
     </update>
     

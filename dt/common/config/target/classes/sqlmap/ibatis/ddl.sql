@@ -7,6 +7,8 @@ CREATE TABLE `dt_watched_user` (
   `gmt_modified` datetime DEFAULT NULL COMMENT '修改时间',
   `status` varchar(128) DEFAULT NULL COMMENT '状态',
   `expire_date` datetime DEFAULT NULL COMMENT '过期时间',
+  `client_id` varchar(512) DEFAULT NULL COMMENT '客户端ID',
+  `client_secret` varchar(512) DEFAULT NULL COMMENT '客户端密钥',
   PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ;
 #insert into dt_watched_user (user_id,token,screen_name,status) values ('1925238912','2.00WaGSGCnpP1DBdf51a94343llFD7C','陈俊文V','FOREVER_VALID');

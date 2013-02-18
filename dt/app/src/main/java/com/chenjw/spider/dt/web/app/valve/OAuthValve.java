@@ -71,7 +71,7 @@ public class OAuthValve extends AbstractValve {
 		if (userToken != null) {
 			TokenModel dbToken = userService.findWatchedUserById(userToken
 					.getUserId());
-			if (dbToken.isValid()) {
+			if (dbToken!=null && dbToken.isValid()) {
 
 				pipelineContext.invokeNext();
 				return;

@@ -39,3 +39,11 @@ $control.setTemplate("top.vm")
         </div>
     </div>
 </div>
+<div id="global_dialog" >
+	
+</div>
+	
+<div id="send_box" style="display:none;" >
+	<img width="500" src=""/>
+	<textarea rows="4" cols="40" style="font-size:20px;font-weight:bold;"></textarea>
+</div>

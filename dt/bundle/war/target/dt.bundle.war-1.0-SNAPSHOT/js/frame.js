@@ -1,36 +1,64 @@
 DT = {};
 
-DT.clearGlobalTips = function() {
-	$('#nav').poshytip('hide');
-}
 
-DT.showGlobalTips = function() {
-	$('#nav').poshytip({
-		showOn : 'none'
+DT.showTip = function(content) {
+	$("#global_dialog").html(content);
+	$("#global_dialog").dialog({ 
+		modal: true,
+		title: "提示",
+		autoOpen: true,
+		buttons: [ { 
+			text: "知道了", 
+			click: 
+				function() { 
+					$(this).dialog( "close" ); 
+				} 
+			} ] 
 	});
-	$('#nav').poshytip('show');
+//	$('#nav').poshytip({
+//				showOn : 'none'
+//			});
+//	$('#nav').poshytip('show');
 }
 
-DT.showTips = function() {
-	// $("#nav [title]").poshytip();
+DT.sendBox = function(image,fun) {
+	$("#send_box textarea").html("#hello#");
+	$("#send_box img").attr("src",image);
+	$("#send_box").dialog({ 
+		modal: true,
+		title: "发送到微薄",
+		autoOpen: true,
+		width: 530,
+		buttons: [ { 
+			text: "发送", 
+			click: 
+				function() {
+					if(fun){
+						fun($("#send_box textarea").html());
+					}
+					$(this).dialog( "close" ); 
+				} 
+			} ] 
+	});
+
 }
 
 DT.removeTweet = function(id) {
 	$("#" + id).fadeOut(1000, function() {
-		$.post("tweetRpc/deleteTweet.json", {
-			"tid" : id
-		}, function(data) {
-			if (!data.success) {
-				alert(data.errorCode);
-			}
-		}, "json");
-	});
+				$.post("tweetRpc/deleteTweet.json", {
+							"tid" : id
+						}, function(data) {
+							if (!data.success) {
+								alert(data.errorCode);
+							}
+						}, "json");
+			});
 }
 
 DT.nextPage = function(maxSort) {
 	DT._page({
-		"maxSort" : maxSort
-	});
+				"maxSort" : maxSort
+			});
 }
 
 DT._page = function(params, func) {
@@ -107,71 +135,55 @@ DT.scrollToTop = function() {
 
 DT.publish = function(id) {
 
-	
-
 }
 
 DT.capture = function(id) {
-
+	
 	$("#" + id).html2canvas({
 		logging : true,
 		letterRendering : true,
-		proxy : "http://127.0.0.1:8080/imgRpc/proxy.jsonp"
+		proxy : "imgRpc/proxy.jsonp"
 	}, function(canvas) {
-			// alert(0);
-		canvas.toBlob(function(blob) {
-			
-			var fd = new FormData();
-			fd.append("pic", blob);
-			fd.append("access_token", "2.00WaGSGC0TXPFW0b57896207fzRirC");
-			fd.append("status", "hello world");
-			fd.append("visible", "0");
-
-			$.ajax({
-			  url: "http://127.0.0.1:8080/uploadRpc/upload.json",
-			  type: "POST",
-			  data: fd,
-			  processData: false,  // tell jQuery not to process the data
-			  contentType: false,   // tell jQuery not to set contentType
-			  complete : function(r){
-				  alert(r);
-			  }
-			});
-			
-			// alert(1);
-			//saveAs(blob, id + ".png");
-
-			// var fr=new FileReader();
-			//			   
-			// alert(fr.readAsDataURL);
+		var image=canvas.toDataURL();
+		DT.sendBox(image,function(status){
+			$.post("uploadRpc/upload.json", {
+				"pic": image,
+				"status": status
+			},
+			function(data) {
+				if (data.success) {
+					DT.showTip("发送成功！");
+				}
+				else{
+					DT.showTip("发送失败！("+data.errorMessage+")");
+				}
+			}, "json");
 		});
-		// $("#"+id+" .aaa").attr("src",canvas.toDataURL());
-
 	});
 
 }
 
 $(document).ready(function() {
 
-	// 查找新删除的微薄
-	// new_tweets_message
-	var countNew = function() {
-		DT._page({
-			"minSort" : Context.maxSort,
-			"type" : "COUNT_NEW"
-		}, function(data) {
-			if (data.success) {
-				$("#new_tweets_message").html(data.page);
+			// 查找新删除的微薄
+			// new_tweets_message
+			var countNew = function() {
+				DT._page({
+							"minSort" : Context.maxSort,
+							"type" : "COUNT_NEW"
+						}, function(data) {
+							if (data.success) {
+								$("#new_tweets_message").html(data.page);
+							}
+							setTimeout(countNew, 10000);
+						});
 			}
-			setTimeout(countNew, 10000);
+			countNew();// btn_account btn_top_reposts btn_logout
+
+			// $("[image-type='pic']").remove();
+
+			App.scrollToTop();
+
+			DT.showTip("出现在这里的都是您关注列表中被删除的微博。");
+
 		});
-	}
-	countNew();// btn_account btn_top_reposts btn_logout
-
-	// $("[image-type='pic']").remove();
-
-	App.scrollToTop();
-	DT.showTips();
-	DT.showGlobalTips();
-
-});

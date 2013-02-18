@@ -5,6 +5,10 @@ public class DtConstants {
 	public static final String USER_SESSION_KEY = "user";
 	// 登录后就不会变了
 	public static final String LOGIN_USER_SESSION_KEY = "loginUser";
+	
+	// 注册中的用户
+	public static final String REGISTER_USER_SESSION_KEY = "registerUser";
+	
 	// 默认每页显示数量
 	public static final int DEFAULT_PAGE_SIZE = 10;
 

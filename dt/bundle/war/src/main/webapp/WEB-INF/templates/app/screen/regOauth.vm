@@ -1,0 +1,11 @@
+<script>
+    function authLoad(){
+     	App.AuthDialog.show({
+    		client_id : '${register.clientId}',
+    		redirect_uri : 'http://127.0.0.1:8070?a=a',
+    		height: 120,
+            scope: ''
+    	});
+    }
+    authLoad();
+</script>

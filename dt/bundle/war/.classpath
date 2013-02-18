@@ -1,6 +1,7 @@
 <classpath>
   <classpathentry kind="output" path="target/classes"/>
   <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+  <classpathentry kind="var" path="M2_REPO/javax/activation/activation/1.1/activation-1.1.jar" sourcepath="M2_REPO/javax/activation/activation/1.1/activation-1.1-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/chenjw/beancopyutils/1.0.0/beancopyutils-1.0.0.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/alibaba/external/codehaus.groovy/1.6.3/codehaus.groovy-1.6.3.jar" sourcepath="M2_REPO/com/alibaba/external/codehaus.groovy/1.6.3/codehaus.groovy-1.6.3-sources.jar"/>
   <classpathentry kind="src" path="/dt.biz-1.0-SNAPSHOT"/>
@@ -44,6 +45,7 @@
   <classpathentry kind="var" path="M2_REPO/com/alibaba/external/jakarta.velocity/1.6.4/jakarta.velocity-1.6.4.jar" sourcepath="M2_REPO/com/alibaba/external/jakarta.velocity/1.6.4/jakarta.velocity-1.6.4-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/alibaba/external/java.j2ee/1.4/java.j2ee-1.4.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/alibaba/external/jdbc.mysql.mysql-connector/5.1.12/jdbc.mysql.mysql-connector-5.1.12.jar" sourcepath="M2_REPO/com/alibaba/external/jdbc.mysql.mysql-connector/5.1.12/jdbc.mysql.mysql-connector-5.1.12-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/javax/mail/mail/1.4.3/mail-1.4.3.jar" sourcepath="M2_REPO/javax/mail/mail/1.4.3/mail-1.4.3-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/alibaba/external/misc.htmlparser/0.0.0/misc.htmlparser-0.0.0.jar" sourcepath="M2_REPO/com/alibaba/external/misc.htmlparser/0.0.0/misc.htmlparser-0.0.0-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/alibaba/external/misc.javassist/3.9.0.GA/misc.javassist-3.9.0.GA.jar" sourcepath="M2_REPO/com/alibaba/external/misc.javassist/3.9.0.GA/misc.javassist-3.9.0.GA-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/alibaba/platform/shared/nonda.core/0.1.0/nonda.core-0.1.0.jar" sourcepath="M2_REPO/com/alibaba/platform/shared/nonda.core/0.1.0/nonda.core-0.1.0-sources.jar"/>
