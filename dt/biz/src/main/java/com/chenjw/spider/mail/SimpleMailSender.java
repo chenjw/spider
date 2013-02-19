@@ -53,6 +53,7 @@ public class SimpleMailSender {
 			String mailContent = mailInfo.getContent();
 			mailMessage.setText(mailContent);
 			// 发送邮件
+
 			Transport.send(mailMessage);
 			return true;
 		} catch (MessagingException ex) {

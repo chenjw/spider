@@ -45,7 +45,7 @@ public class Oauth extends Weibo {
 		String part1 = t[0].replace("-", "+").replace("_", "/");
 
 		SecretKey key = new SecretKeySpec(WeiboConfig
-				.getValue("client_SERCRET").getBytes(), "hmacSHA256");
+				.getValue("client_SECRET").getBytes(), "hmacSHA256");
 		Mac m;
 		m = Mac.getInstance("hmacSHA256");
 		m.init(key);
@@ -85,7 +85,7 @@ public class Oauth extends Weibo {
 						new PostParameter("client_id", WeiboConfig
 								.getValue("client_ID")),
 						new PostParameter("client_secret", WeiboConfig
-								.getValue("client_SERCRET")),
+								.getValue("client_SECRET")),
 						new PostParameter("grant_type", "authorization_code"),
 						new PostParameter("code", code),
 						new PostParameter("redirect_uri", WeiboConfig

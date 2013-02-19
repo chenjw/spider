@@ -5,6 +5,8 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import weibo4j.util.WeiboConfig;
+
 import com.alibaba.citrus.turbine.Context;
 import com.alibaba.citrus.turbine.Navigator;
 import com.alibaba.citrus.turbine.dataresolver.Param;
@@ -28,20 +30,21 @@ public class RegOauth {
 
 	public void execute(@Param(name = "code") String code, Context context,
 			HttpSession session, Navigator navigator) {
+		TokenModel register = (TokenModel) session
+				.getAttribute(DtConstants.REGISTER_USER_SESSION_KEY);
+		WeiboConfig.setClientInfo(register);
 		// redirect_URI
 		// client_ID
 		if (StringUtils.isBlank(code)) {
-			TokenModel register = (TokenModel) session
-					.getAttribute(DtConstants.REGISTER_USER_SESSION_KEY);
+
 			// context.put("register",register);
 			String oauthUrl = weiboService.findAuthorizeUrl(register
 					.getClientId());
 			System.out.println(oauthUrl);
 			navigator.redirectToLocation(oauthUrl);
 		} else {
-			TokenModel register = (TokenModel) session
-					.getAttribute(DtConstants.REGISTER_USER_SESSION_KEY);
 			String token = weiboService.findAccessTokenByCode(code);
+			
 			register.setToken(token);
 			TokenModel model = userService.findWatchedUserByToken(token);
 			// 未开通权限

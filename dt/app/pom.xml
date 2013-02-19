@@ -47,10 +47,10 @@
 			<groupId>com.alibaba.external</groupId>
 			<artifactId>jakarta.commons.lang</artifactId>
 		</dependency>
-		<dependency>
+		<!-- dependency>
 			<groupId>com.alibaba.external</groupId>
 			<artifactId>java.j2ee</artifactId>
-		</dependency>
+		</dependency-->
 		<dependency>
 			<groupId>com.alibaba.external</groupId>
 			<artifactId>java.servlet</artifactId>

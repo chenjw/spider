@@ -16,5 +16,6 @@ public class Snippet {
 		// 这个类主要来发送邮件
 		SimpleMailSender.sendTextMail(mailInfo);// 发送文体格式
 		SimpleMailSender.sendHtmlMail(mailInfo);// 发送html格式
+		System.out.println("finished!");
 	}
 }

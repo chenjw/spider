@@ -15,5 +15,9 @@
 	
 	<bean id="userService" class="com.chenjw.spider.dt.service.impl.UserServiceImpl"> 
 	</bean>
+	
+	<bean id="isSheBrokeUpService" class="	com.chenjw.spider.mail.service.impl.IsSheBrokeUpServiceImpl"> 
+	</bean>
+
 </beans>
 

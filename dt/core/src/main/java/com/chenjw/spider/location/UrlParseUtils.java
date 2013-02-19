@@ -12,13 +12,17 @@ public class UrlParseUtils {
 		String address = null;
 		Map<String, String> result = new HashMap<String, String>();
 		if (!StringUtils.isBlank(url)) {
+
 			if (url.indexOf("?") != -1) {
 				address = StringUtils.substringBefore(url, "?");
-				url = StringUtils.substringAfter(url, "?");
+				String params = StringUtils.substringAfter(url, "?");
+				for (String keyValue : params.split("&")) {
+					result.put(StringUtils.substringBefore(keyValue, "="),
+							StringUtils.substringAfter(keyValue, "="));
+				}
 			}
-			for (String keyValue : url.split("&")) {
-				result.put(StringUtils.substringBefore(keyValue, "="),
-						StringUtils.substringAfter(keyValue, "="));
+			else{
+				address = url;
 			}
 		}
 		httpUrl.setUrl(address);

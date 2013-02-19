@@ -11,7 +11,6 @@ import com.alibaba.citrus.service.requestcontext.parser.ParameterParser;
 import com.alibaba.citrus.turbine.Context;
 import com.alibaba.citrus.turbine.Navigator;
 import com.alibaba.citrus.turbine.TurbineRunDataInternal;
-import com.alibaba.citrus.turbine.dataresolver.Param;
 import com.alibaba.citrus.turbine.util.TurbineUtil;
 import com.chenjw.spider.location.HttpUrl;
 import com.chenjw.spider.location.UrlParseUtils;

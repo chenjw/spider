@@ -24,15 +24,38 @@ public class MailSenderInfo extends Authenticator{
 	// 邮件附件的文件名
 	private String[] attachFileNames;
 	
+	private boolean ssl=false;
+	
     protected PasswordAuthentication getPasswordAuthentication(){   
         return new PasswordAuthentication(userName, password);   
     }   
     
+    
+    
+	public boolean isSsl() {
+		return ssl;
+	}
+
+
+
+	public void setSsl(boolean ssl) {
+		this.ssl = ssl;
+	}
+
+
+
 	/**
 	 * 获得邮件会话属性
 	 */
 	public Properties getProperties() {
 		Properties p = new Properties();
+		if(ssl){
+			p.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory"); 
+			p.put("mail.smtp.socketFactory.fallback", "false"); 
+			p.put("mail.smtp.socketFactory.port",mailServerPort); 
+		}
+
+		
 		p.put("mail.smtp.host", this.mailServerHost);
 		p.put("mail.smtp.port", this.mailServerPort);
 		p.put("mail.smtp.auth", validate ? "true" : "false");

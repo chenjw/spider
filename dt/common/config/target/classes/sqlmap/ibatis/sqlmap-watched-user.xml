@@ -44,7 +44,7 @@
         	STATUS = #status#,
         	EXPIRE_DATE = #expireDate#,
         	CLIENT_ID = #clientId#,
-        	CLIENT_SERCRET = #clientSecret#
+        	CLIENT_SECRET = #clientSecret#
         WHERE USER_ID = #userId#
     </update>
     

@@ -43,7 +43,6 @@
   <classpathentry kind="var" path="M2_REPO/com/alibaba/external/jakarta.taglib.jstl/0.0.0/jakarta.taglib.jstl-0.0.0.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/alibaba/external/jakarta.taglib.jstl.support/0.0.0/jakarta.taglib.jstl.support-0.0.0.jar" sourcepath="M2_REPO/com/alibaba/external/jakarta.taglib.jstl.support/0.0.0/jakarta.taglib.jstl.support-0.0.0-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/alibaba/external/jakarta.velocity/1.6.4/jakarta.velocity-1.6.4.jar" sourcepath="M2_REPO/com/alibaba/external/jakarta.velocity/1.6.4/jakarta.velocity-1.6.4-sources.jar"/>
-  <classpathentry kind="var" path="M2_REPO/com/alibaba/external/java.j2ee/1.4/java.j2ee-1.4.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/alibaba/external/jdbc.mysql.mysql-connector/5.1.12/jdbc.mysql.mysql-connector-5.1.12.jar" sourcepath="M2_REPO/com/alibaba/external/jdbc.mysql.mysql-connector/5.1.12/jdbc.mysql.mysql-connector-5.1.12-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/javax/mail/mail/1.4.3/mail-1.4.3.jar" sourcepath="M2_REPO/javax/mail/mail/1.4.3/mail-1.4.3-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/alibaba/external/misc.htmlparser/0.0.0/misc.htmlparser-0.0.0.jar" sourcepath="M2_REPO/com/alibaba/external/misc.htmlparser/0.0.0/misc.htmlparser-0.0.0-sources.jar"/>

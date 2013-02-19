@@ -37,6 +37,8 @@
                     <!-- 执行带模板的screen，默认有layout。 -->
                     <pl-conditions:target-extension-condition extension="null, vm, jsp" />
                     <valve class="com.chenjw.spider.dt.web.app.valve.OAuthValve" />
+                    <valve class="com.chenjw.spider.dt.web.app.valve.WeiboConfigValve" />
+                    
                     <performAction />
                     <performTemplateScreen />
                     <renderTemplate />

@@ -58,15 +58,12 @@
 			<artifactId>jakarta.commons.pool</artifactId>
 		</dependency>
 
-		<dependency>
+		<!-- dependency>
 			<groupId>com.alibaba.external</groupId>
 			<artifactId>jakarta.commons.fileupload</artifactId>
-		</dependency>
+		</dependency-->
 
-		<dependency>
-			<groupId>com.alibaba.external</groupId>
-			<artifactId>java.j2ee</artifactId>
-		</dependency>
+
 		<dependency>
 			<groupId>com.alibaba.external</groupId>
 			<artifactId>java.servlet</artifactId>

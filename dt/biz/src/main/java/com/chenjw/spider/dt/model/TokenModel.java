@@ -1,10 +1,13 @@
 package com.chenjw.spider.dt.model;
 
+import java.io.Serializable;
 import java.util.Date;
+
+import weibo4j.util.ClientInfo;
 
 import com.chenjw.spider.dt.constants.UserStatusEnum;
 
-public class TokenModel implements java.io.Serializable {
+public class TokenModel implements Serializable, ClientInfo {
 
 	private static final long serialVersionUID = 749337812406985921L;
 
@@ -16,7 +19,7 @@ public class TokenModel implements java.io.Serializable {
 	private Date expireDate;// 用户状态
 	private String clientId;// 客户端ID
 	private String clientSecret;// 客户端密钥
-	
+
 	public boolean isValid() {
 		if (status == UserStatusEnum.FOREVER_VALID) {
 			return true;
@@ -83,7 +86,5 @@ public class TokenModel implements java.io.Serializable {
 	public void setClientSecret(String clientSecret) {
 		this.clientSecret = clientSecret;
 	}
-
-	
 
 }
