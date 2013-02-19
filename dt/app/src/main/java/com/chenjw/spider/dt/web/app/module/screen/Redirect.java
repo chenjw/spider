@@ -3,13 +3,16 @@ package com.chenjw.spider.dt.web.app.module.screen;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
-import weibo4j.util.WeiboConfig;
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.alibaba.citrus.service.requestcontext.parser.ParameterParser;
-import com.alibaba.citrus.service.requestcontext.rundata.RunData;
 import com.alibaba.citrus.turbine.Context;
 import com.alibaba.citrus.turbine.Navigator;
+import com.alibaba.citrus.turbine.TurbineRunDataInternal;
 import com.alibaba.citrus.turbine.dataresolver.Param;
+import com.alibaba.citrus.turbine.util.TurbineUtil;
 import com.chenjw.spider.location.HttpUrl;
 import com.chenjw.spider.location.UrlParseUtils;
 
@@ -20,17 +23,22 @@ import com.chenjw.spider.location.UrlParseUtils;
  * 
  */
 public class Redirect {
-
-	public void execute(@Param(name = "url") String url, Context context,
-			Navigator navigator, RunData runData) {
+	@Autowired
+	protected HttpServletRequest request;
+	public void execute(Context context,
+			Navigator navigator) {
+		TurbineRunDataInternal runData = (TurbineRunDataInternal) TurbineUtil
+				.getTurbineRunData(request);
 		ParameterParser param = runData.getParameters();
+		String url=param.getString("url");
 		HttpUrl httpUrl=UrlParseUtils.parseUrl(url);
 		for (String key : param.keySet()) {
 			if (!"url".equals(key)) {
 				httpUrl.getQueryParam().put(key, param.getString(key));
 			}
 		}
-		navigator.redirectToLocation(httpUrl.toUrlString());
+		url=httpUrl.toUrlString();
+		runData.redirectToLocation(url);
 	}
 
 	public static void main(String[] args) throws UnsupportedEncodingException {

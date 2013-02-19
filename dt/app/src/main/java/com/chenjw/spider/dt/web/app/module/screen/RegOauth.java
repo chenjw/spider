@@ -36,6 +36,7 @@ public class RegOauth {
 			// context.put("register",register);
 			String oauthUrl = weiboService.findAuthorizeUrl(register
 					.getClientId());
+			System.out.println(oauthUrl);
 			navigator.redirectToLocation(oauthUrl);
 		} else {
 			TokenModel register = (TokenModel) session
