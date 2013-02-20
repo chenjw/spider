@@ -28,6 +28,7 @@
 				app.screen.add
 				app.screen.regOauth
 				app.screen.redirect
+				app.screen.welcome
 			</value>
 		</property>
 	</bean>

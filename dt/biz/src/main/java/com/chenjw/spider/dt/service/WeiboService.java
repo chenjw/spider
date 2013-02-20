@@ -34,4 +34,12 @@ public interface WeiboService {
 
 	public TweetModel upload(TokenModel user, String text, byte[] img)
 			throws WeiboException;
+	
+	
+	/**
+	 * 最热门的微薄
+	 * 
+	 * @return
+	 */
+	public List<TweetModel> findTopTimeline();
 }

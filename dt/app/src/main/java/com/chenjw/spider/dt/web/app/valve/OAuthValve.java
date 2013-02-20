@@ -23,7 +23,7 @@ import com.chenjw.spider.dt.service.UserService;
 import com.chenjw.spider.dt.service.WeiboService;
 import com.chenjw.spider.dt.web.app.constants.DtConstants;
 
-public class OAuthValve extends AbstractValve {
+public class OAuthValve extends BaseValve {
 
 	public static final String DELIM = ".";
 
@@ -33,11 +33,7 @@ public class OAuthValve extends AbstractValve {
 	private UserService userService;
 
 	@Autowired
-	private HttpServletRequest request;
-	@Autowired
 	private PermissionService permissionService;
-	@Autowired
-	private WebxComponent component;
 
 	@Override
 	protected void init() {
@@ -71,7 +67,7 @@ public class OAuthValve extends AbstractValve {
 		if (userToken != null) {
 			TokenModel dbToken = userService.findWatchedUserById(userToken
 					.getUserId());
-			if (dbToken!=null && dbToken.isValid()) {
+			if (dbToken != null && dbToken.isValid()) {
 				pipelineContext.invokeNext();
 				return;
 			}
@@ -81,17 +77,20 @@ public class OAuthValve extends AbstractValve {
 				session.removeAttribute(DtConstants.LOGIN_USER_SESSION_KEY);
 			}
 		}
-		String signedRequest = rundata.getParameters().getString(
-				"signed_request");
-		if (StringUtils.isBlank(signedRequest)) {
-			oauth(rundata, pipelineContext);
-			return;
-		}
-		String token = weiboService.parseSignedRequest(signedRequest);
-		if (StringUtils.isBlank(token)) {
-			oauth(rundata, pipelineContext);
-			return;
-		}
+		
+		rundata.forwardTo("welcome.vm");
+
+//		String signedRequest = rundata.getParameters().getString(
+//				"signed_request");
+//		if (StringUtils.isBlank(signedRequest)) {
+//			oauth(rundata, pipelineContext);
+//			return;
+//		}
+//		String token = weiboService.parseSignedRequest(signedRequest);
+//		if (StringUtils.isBlank(token)) {
+//			oauth(rundata, pipelineContext);
+//			return;
+//		}
 		// token不存在表示code无效
 		// if (StringUtils.isBlank(token)) {
 		// errorPage(rundata, pipelineContext,
@@ -99,30 +98,30 @@ public class OAuthValve extends AbstractValve {
 		//
 		// return;
 		// }
-//		TokenModel model = userService.findWatchedUserByToken(token);
-//		// 未开通权限
-//		if (model == null) {
-//			// 添加一个未开通权限的用户
-//			model = userService.addUser(token);
-//		} else {
-//			boolean changed = false;
-//			if (!model.isValid()) {
-//				model.setStatus(UserStatusEnum.FOREVER_VALID);
-//				changed = true;
-//			}
-//			if (!StringUtils.equals(model.getToken(), token)) {
-//				model.setToken(token);
-//				changed = true;
-//			}
-//			if (changed) {
-//				userService.updateUser(model);
-//			}
-//		}
+		// TokenModel model = userService.findWatchedUserByToken(token);
+		// // 未开通权限
+		// if (model == null) {
+		// // 添加一个未开通权限的用户
+		// model = userService.addUser(token);
+		// } else {
+		// boolean changed = false;
+		// if (!model.isValid()) {
+		// model.setStatus(UserStatusEnum.FOREVER_VALID);
+		// changed = true;
+		// }
+		// if (!StringUtils.equals(model.getToken(), token)) {
+		// model.setToken(token);
+		// changed = true;
+		// }
+		// if (changed) {
+		// userService.updateUser(model);
+		// }
+		// }
 
 		// 已开通权限
-//		session.setAttribute(DtConstants.USER_SESSION_KEY, model);
-//		session.setAttribute(DtConstants.LOGIN_USER_SESSION_KEY, model);
-		rundata.setRedirectLocation("/");
+		// session.setAttribute(DtConstants.USER_SESSION_KEY, model);
+		// session.setAttribute(DtConstants.LOGIN_USER_SESSION_KEY, model);
+//		rundata.setRedirectLocation("/");
 		return;
 	}
 
@@ -142,38 +141,6 @@ public class OAuthValve extends AbstractValve {
 		rundata.setTarget("error.vm");
 		pipelineContext.invokeNext();
 
-	}
-
-	private String getUrlEscaped() {
-		TurbineRunData rundata = TurbineUtil.getTurbineRunData(request);
-		return getScreenPermissionURI(rundata);
-
-	}
-
-	private String getScreenPermissionURI(TurbineRunData rundata) {
-		String target = rundata.getTarget();
-
-		target = getContent(target);
-		if (target == null) {
-			return null;
-		}
-		return component.getName() + DELIM + TurbineConstant.SCREEN_MODULE
-				+ DELIM + target;
-	}
-
-	private String getContent(String target) {
-		if (StringUtils.isEmpty(target)) {
-			return null;
-		}
-		int dashIndex = target.lastIndexOf(DELIM);
-		if (dashIndex != -1) {
-			target = target.substring(0, dashIndex);
-		}
-		target = StringUtils.replace(target, "/", DELIM);
-		if (target != null && target.startsWith(DELIM)) {
-			target = StringUtils.substring(target, 1);
-		}
-		return StringUtil.toCamelCase(target);
 	}
 
 }

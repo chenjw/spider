@@ -286,4 +286,9 @@ public class OpenWeiboServiceImpl implements WeiboService {
 		TweetMapper.wbStatus2Model(status, model);
 		return model;
 	}
+
+	@Override
+	public List<TweetModel> findTopTimeline() {
+		throw new RuntimeException("not support");
+	}
 }

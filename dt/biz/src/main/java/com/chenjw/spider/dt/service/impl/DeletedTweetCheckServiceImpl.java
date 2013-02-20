@@ -13,6 +13,8 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.time.DateUtils;
 import org.springframework.beans.factory.InitializingBean;
 
+import weibo4j.util.WeiboConfig;
+
 import com.chenjw.spider.dt.constants.Constants;
 import com.chenjw.spider.dt.constants.EnvConstants;
 import com.chenjw.spider.dt.dao.DeletedTweetDAO;
@@ -58,6 +60,7 @@ public class DeletedTweetCheckServiceImpl implements DeletedTweetCheckService,
 	}
 
 	private void checkWatchedUser(TokenModel user) {
+		WeiboConfig.setClientInfo(user);
 		Constants.LOGGER.info("start check " + user.getScreenName());
 		// 当前时间
 		Date currentDate = new Date();
@@ -169,7 +172,7 @@ public class DeletedTweetCheckServiceImpl implements DeletedTweetCheckService,
 			}
 			final TokenModel model = new TokenModel();
 			TokenMapper.do2Model(user, model);
-
+			
 			if (model.isValid() && !StringUtils.isBlank(model.getToken())) {
 				pool.execute(new Runnable() {
 					@Override
