@@ -35,7 +35,7 @@ public class WeiboComTweetParser {
 		return visitor.getTweet();
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) { 
 		InputStream is = WeiboComTweetParser.class.getClassLoader()
 				.getResourceAsStream(
 						"com/chenjw/spider/dt/parser/weibo_com_tweet.html");

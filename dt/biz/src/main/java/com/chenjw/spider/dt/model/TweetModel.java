@@ -12,21 +12,14 @@ public class TweetModel implements java.io.Serializable {
 	private String id; // status id
 	private String mid; // 微博MID
 	private String text; // 微博内容
-	private boolean favorited; // 是否已收藏
-	private boolean truncated;
-	private long inReplyToStatusId; // 回复ID
-	private long inReplyToUserId; // 回复人ID
-	private String inReplyToScreenName; // 回复人昵称
+
 	private String thumbnailPic; // 微博内容中的图片的缩略地址
 	private String bmiddlePic; // 中型图片
 	private String originalPic; // 原始图片
-	private String geo; // 地理信息，保存经纬度，没有时不返回此字段
-	private double latitude = -1; // 纬度
-	private double longitude = -1; // 经度
+
 	private int repostsCount; // 转发数
 	private int commentsCount; // 评论数
-	private String annotations; // 元数据，没有时不返回此字段
-	private int mlevel;
+
 	private ReasonModel reason;
 
 	//
@@ -67,38 +60,6 @@ public class TweetModel implements java.io.Serializable {
 		this.text = text;
 	}
 
-	public boolean isFavorited() {
-		return favorited;
-	}
-
-	public void setFavorited(boolean favorited) {
-		this.favorited = favorited;
-	}
-
-	public long getInReplyToStatusId() {
-		return inReplyToStatusId;
-	}
-
-	public void setInReplyToStatusId(long inReplyToStatusId) {
-		this.inReplyToStatusId = inReplyToStatusId;
-	}
-
-	public long getInReplyToUserId() {
-		return inReplyToUserId;
-	}
-
-	public void setInReplyToUserId(long inReplyToUserId) {
-		this.inReplyToUserId = inReplyToUserId;
-	}
-
-	public String getInReplyToScreenName() {
-		return inReplyToScreenName;
-	}
-
-	public void setInReplyToScreenName(String inReplyToScreenName) {
-		this.inReplyToScreenName = inReplyToScreenName;
-	}
-
 	public String getThumbnailPic() {
 		return thumbnailPic;
 	}
@@ -123,30 +84,6 @@ public class TweetModel implements java.io.Serializable {
 		this.originalPic = originalPic;
 	}
 
-	public String getGeo() {
-		return geo;
-	}
-
-	public void setGeo(String geo) {
-		this.geo = geo;
-	}
-
-	public double getLatitude() {
-		return latitude;
-	}
-
-	public void setLatitude(double latitude) {
-		this.latitude = latitude;
-	}
-
-	public double getLongitude() {
-		return longitude;
-	}
-
-	public void setLongitude(double longitude) {
-		this.longitude = longitude;
-	}
-
 	public int getRepostsCount() {
 		return repostsCount;
 	}
@@ -169,30 +106,6 @@ public class TweetModel implements java.io.Serializable {
 
 	public void setMid(String mid) {
 		this.mid = mid;
-	}
-
-	public String getAnnotations() {
-		return annotations;
-	}
-
-	public void setAnnotations(String annotations) {
-		this.annotations = annotations;
-	}
-
-	public int getMlevel() {
-		return mlevel;
-	}
-
-	public void setMlevel(int mlevel) {
-		this.mlevel = mlevel;
-	}
-
-	public boolean isTruncated() {
-		return truncated;
-	}
-
-	public void setTruncated(boolean truncated) {
-		this.truncated = truncated;
 	}
 
 	public ReasonModel getReason() {
