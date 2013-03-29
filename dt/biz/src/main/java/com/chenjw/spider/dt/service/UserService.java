@@ -13,5 +13,7 @@ public interface UserService {
 	public TokenModel findWatchedUserByToken(String token);
 
 	public TokenModel findWatchedUserById(String userId);
+	
+	public TokenModel findWatchedUserByScreenName(String screenName);
 
 }

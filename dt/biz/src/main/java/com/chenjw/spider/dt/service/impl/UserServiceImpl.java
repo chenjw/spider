@@ -59,6 +59,19 @@ public class UserServiceImpl implements UserService {
 			return m;
 		}
 	}
+	
+	@Override
+	public TokenModel findWatchedUserByScreenName(String screenName) {
+		WatchedUserDO d = watchedUserDAO.findWatchedUserByScreenName(screenName);
+		if (d == null) {
+			return null;
+		} else {
+			TokenModel m = new TokenModel();
+			TokenMapper.do2Model(d, m);
+			return m;
+		}
+	}
+
 
 	@Override
 	public TokenModel findWatchedUserByToken(String token) {

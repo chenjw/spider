@@ -8,7 +8,6 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.alibaba.citrus.service.pipeline.PipelineContext;
 import com.alibaba.citrus.service.pipeline.support.AbstractValve;
 import com.alibaba.citrus.turbine.TurbineConstant;
 import com.alibaba.citrus.turbine.TurbineRunData;
@@ -16,11 +15,9 @@ import com.alibaba.citrus.turbine.TurbineRunDataInternal;
 import com.alibaba.citrus.turbine.util.TurbineUtil;
 import com.alibaba.citrus.util.StringUtil;
 import com.alibaba.citrus.webx.WebxComponent;
-import com.chenjw.spider.dt.constants.UserStatusEnum;
 import com.chenjw.spider.dt.model.TokenModel;
 import com.chenjw.spider.dt.service.PermissionService;
 import com.chenjw.spider.dt.service.UserService;
-import com.chenjw.spider.dt.service.WeiboService;
 import com.chenjw.spider.dt.web.app.constants.DtConstants;
 
 public abstract class BaseValve extends AbstractValve {
@@ -32,10 +29,64 @@ public abstract class BaseValve extends AbstractValve {
 	@Autowired
 	protected HttpServletRequest request;
 
-	protected String getUrlEscaped() {
-		TurbineRunData rundata = TurbineUtil.getTurbineRunData(request);
-		return getScreenPermissionURI(rundata);
+	@Autowired
+	protected PermissionService permissionService;
+	@Autowired
+	protected UserService userService;
 
+	protected boolean isUserAvailable() {
+		TurbineRunDataInternal rundata = (TurbineRunDataInternal) getTurbineRunData(request);
+		HttpSession session = rundata.getRequest().getSession();
+
+		TokenModel userToken = (TokenModel) session
+				.getAttribute(DtConstants.USER_SESSION_KEY);
+		if (userToken != null) {
+			TokenModel dbToken = userService.findWatchedUserById(userToken
+					.getUserId());
+			if (dbToken != null && dbToken.isValid()) {
+				return true;
+			}
+			// 已取消授权
+			else {
+				session.removeAttribute(DtConstants.USER_SESSION_KEY);
+				session.removeAttribute(DtConstants.LOGIN_USER_SESSION_KEY);
+				return false;
+			}
+		}
+		return false;
+	}
+
+	protected boolean hasPermission() {
+		// 如果不需要登录
+		String urlEscaped = getUrlEscaped();
+		return permissionService.havePermission(urlEscaped);
+	}
+
+	private String getUrlEscaped() {
+		TurbineRunData rundata = TurbineUtil.getTurbineRunData(request);
+		return getPermissionURI(rundata);
+
+	}
+
+	private String getPermissionURI(TurbineRunData rundata) {
+		String uri = getActionPermissionURI(rundata);
+		if (uri == null) {
+			return getScreenPermissionURI(rundata);
+		}
+		else{
+			return uri;
+		}
+	}
+
+	private String getActionPermissionURI(TurbineRunData rundata) {
+		String target = rundata.getParameters().getString("action");
+
+		if (StringUtils.isBlank(target)) {
+			return null;
+		}
+		target = getContent(target);
+		return component.getName() + DELIM + TurbineConstant.ACTION_MODULE
+				+ DELIM + target;
 	}
 
 	private String getScreenPermissionURI(TurbineRunData rundata) {

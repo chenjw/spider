@@ -12,6 +12,9 @@ public interface WatchedUserDAO {
 	public WatchedUserDO findWatchedUser(String userId);
 
 	public WatchedUserDO findWatchedUserByToken(String token);
+	
+	public WatchedUserDO findWatchedUserByScreenName(String screenName);
+	
 
 	public List<WatchedUserDO> getAllWatchedUsers();
 }

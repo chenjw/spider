@@ -43,7 +43,8 @@ public class RegOauth {
 			System.out.println(oauthUrl);
 			navigator.redirectToLocation(oauthUrl);
 		} else {
-			String token = weiboService.findAccessTokenByCode(code);
+			String token = null;
+			//weiboService.findAccessTokenByCode(code);
 			
 			register.setToken(token);
 			TokenModel model = userService.findWatchedUserByToken(token);

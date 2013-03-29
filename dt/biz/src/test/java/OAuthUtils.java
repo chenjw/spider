@@ -18,7 +18,7 @@ public class OAuthUtils {
 		System.out.print("Hit enter when it's done.[Enter]:");
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		String code = br.readLine();
-		System.out.println(weiboService.findAccessTokenByCode(code));
+		//System.out.println(weiboService.findAccessTokenByCode(code));
 
 	}
 

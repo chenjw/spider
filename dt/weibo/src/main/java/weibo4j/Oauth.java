@@ -44,8 +44,8 @@ public class Oauth extends Weibo {
 			t[0] += "=";
 		String part1 = t[0].replace("-", "+").replace("_", "/");
 
-		SecretKey key = new SecretKeySpec(WeiboConfig
-				.getValue("client_SECRET").getBytes(), "hmacSHA256");
+		SecretKey key = new SecretKeySpec(WeiboConfig.getValue("client_SECRET")
+				.getBytes(), "hmacSHA256");
 		Mac m;
 		m = Mac.getInstance("hmacSHA256");
 		m.init(key);
@@ -78,14 +78,13 @@ public class Oauth extends Weibo {
 
 	/*----------------------------Oauth接口--------------------------------------*/
 
-	public AccessToken getAccessTokenByCode(String code) throws WeiboException {
+	public AccessToken getAccessTokenByCode(String code, String clientId,
+			String clientSecret) throws WeiboException {
 		return new AccessToken(client.post(
 				WeiboConfig.getValue("accessTokenURL"),
 				new PostParameter[] {
-						new PostParameter("client_id", WeiboConfig
-								.getValue("client_ID")),
-						new PostParameter("client_secret", WeiboConfig
-								.getValue("client_SECRET")),
+						new PostParameter("client_id", clientId),
+						new PostParameter("client_secret", clientSecret),
 						new PostParameter("grant_type", "authorization_code"),
 						new PostParameter("code", code),
 						new PostParameter("redirect_uri", WeiboConfig
@@ -109,14 +108,17 @@ public class Oauth extends Weibo {
 				+ "&scope=" + scope;// + "&forcelogin=true";
 
 	}
-	
+
 	public String authorizeByClientId(String response_type, String clientId)
 			throws WeiboException {
 		try {
-			return WeiboConfig.getValue("authorizeURL").trim() + "?client_id="
-					+ clientId + "&redirect_uri="
-					+ URLEncoder.encode(WeiboConfig.getValue("redirect_URI").trim(),"UTF-8")
-					+ "&response_type=" + response_type + "&state=";
+			return WeiboConfig.getValue("authorizeURL").trim()
+					+ "?client_id="
+					+ clientId
+					+ "&redirect_uri="
+					+ URLEncoder.encode(WeiboConfig.getValue("redirect_URI")
+							.trim(), "UTF-8") + "&response_type="
+					+ response_type + "&state=";
 		} catch (UnsupportedEncodingException e) {
 			return null;
 		}// + "&forcelogin=true";

@@ -26,8 +26,11 @@
 				app.screen.start
 				app.screen.stop
 				app.screen.add
+				app.screen.login
 				app.screen.regOauth
 				app.screen.redirect
+				app.screen.welcome
+				app.action.userAction
 			</value>
 		</property>
 	</bean>

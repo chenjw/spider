@@ -2,24 +2,15 @@ package com.chenjw.spider.dt.web.app.valve;
 
 import static com.alibaba.citrus.turbine.util.TurbineUtil.getTurbineRunData;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.alibaba.citrus.service.pipeline.PipelineContext;
-import com.alibaba.citrus.service.pipeline.support.AbstractValve;
-import com.alibaba.citrus.turbine.TurbineConstant;
-import com.alibaba.citrus.turbine.TurbineRunData;
 import com.alibaba.citrus.turbine.TurbineRunDataInternal;
-import com.alibaba.citrus.turbine.util.TurbineUtil;
-import com.alibaba.citrus.util.StringUtil;
-import com.alibaba.citrus.webx.WebxComponent;
 import com.chenjw.spider.dt.constants.UserStatusEnum;
 import com.chenjw.spider.dt.model.TokenModel;
-import com.chenjw.spider.dt.service.PermissionService;
-import com.chenjw.spider.dt.service.UserService;
 import com.chenjw.spider.dt.service.WeiboService;
 import com.chenjw.spider.dt.web.app.constants.DtConstants;
 
@@ -29,110 +20,111 @@ public class OAuthValve extends BaseValve {
 
 	@Autowired
 	private WeiboService weiboService;
-	@Autowired
-	private UserService userService;
-
-	@Autowired
-	private PermissionService permissionService;
 
 	@Override
 	protected void init() {
 		//
 	}
 
-	private void forceLogin(TurbineRunDataInternal rundata, HttpSession session) {
-		String force = rundata.getParameters().getString("force");
-		if (!StringUtils.isBlank(force)) {
-			TokenModel userToken = (TokenModel) session
-					.getAttribute(DtConstants.USER_SESSION_KEY);
-			userToken = userService.findWatchedUserById(force);
-			session.setAttribute(DtConstants.USER_SESSION_KEY, userToken);
-		}
-	}
-
 	public void invoke(PipelineContext pipelineContext) throws Exception {
 		TurbineRunDataInternal rundata = (TurbineRunDataInternal) getTurbineRunData(request);
-		HttpSession session = rundata.getRequest().getSession();
-		// 强制登录
-		forceLogin(rundata, session);
-		// 如果不需要登录
-		String urlEscaped = getUrlEscaped();
-		if (permissionService.havePermission(urlEscaped)) {
+		HttpSession session = request.getSession();
+		// 不需要登录就能访问的页面
+		if (hasPermission()) {
 			pipelineContext.invokeNext();
 			return;
 		}
-		// 已登录
-		TokenModel userToken = (TokenModel) session
-				.getAttribute(DtConstants.USER_SESSION_KEY);
-		if (userToken != null) {
-			TokenModel dbToken = userService.findWatchedUserById(userToken
-					.getUserId());
-			if (dbToken != null && dbToken.isValid()) {
-				pipelineContext.invokeNext();
-				return;
+
+		// 如果当前已登录，直接進入
+		if (isUserAvailable()) {
+			pipelineContext.invokeNext();
+			return;
+		}
+
+		// rundata.forwardTo("welcome.vm");
+
+		String token = parseTokenFromRequest(rundata, pipelineContext);
+		// 如果请求中没有登录信息，跳转到登录页面
+		if (token == null) {
+			login(token, rundata, pipelineContext);
+			return;
+		}
+		// 查询会员信息
+		TokenModel model = userService.findWatchedUserByToken(token);
+		// 未开通权限
+		if (model == null) {
+			TokenModel registerToken = (TokenModel) session
+					.getAttribute(DtConstants.REGISTER_USER_SESSION_KEY);
+			// 添加用户
+			model=userService.addUser(token, registerToken.getClientId(),
+					registerToken.getClientSecret());
+		}
+		// 已开通
+		else {
+			// 更新信息
+			boolean changed = false;
+			if (!model.isValid()) {
+				model.setStatus(UserStatusEnum.FOREVER_VALID);
+				changed = true;
 			}
-			// 已取消授权
-			else {
-				session.removeAttribute(DtConstants.USER_SESSION_KEY);
-				session.removeAttribute(DtConstants.LOGIN_USER_SESSION_KEY);
+			if (!StringUtils.equals(model.getToken(), token)) {
+				model.setToken(token);
+				changed = true;
+			}
+			if (changed) {
+				userService.updateUser(model);
 			}
 		}
-		
-		rundata.forwardTo("welcome.vm");
-
-//		String signedRequest = rundata.getParameters().getString(
-//				"signed_request");
-//		if (StringUtils.isBlank(signedRequest)) {
-//			oauth(rundata, pipelineContext);
-//			return;
-//		}
-//		String token = weiboService.parseSignedRequest(signedRequest);
-//		if (StringUtils.isBlank(token)) {
-//			oauth(rundata, pipelineContext);
-//			return;
-//		}
-		// token不存在表示code无效
-		// if (StringUtils.isBlank(token)) {
-		// errorPage(rundata, pipelineContext,
-		// "当前环境为测试环境，您的帐号未开通测试权限，请联系管理员把您的帐号添加到测试帐号列表。");
-		//
-		// return;
-		// }
-		// TokenModel model = userService.findWatchedUserByToken(token);
-		// // 未开通权限
-		// if (model == null) {
-		// // 添加一个未开通权限的用户
-		// model = userService.addUser(token);
-		// } else {
-		// boolean changed = false;
-		// if (!model.isValid()) {
-		// model.setStatus(UserStatusEnum.FOREVER_VALID);
-		// changed = true;
-		// }
-		// if (!StringUtils.equals(model.getToken(), token)) {
-		// model.setToken(token);
-		// changed = true;
-		// }
-		// if (changed) {
-		// userService.updateUser(model);
-		// }
-		// }
-
 		// 已开通权限
-		// session.setAttribute(DtConstants.USER_SESSION_KEY, model);
-		// session.setAttribute(DtConstants.LOGIN_USER_SESSION_KEY, model);
-//		rundata.setRedirectLocation("/");
-		return;
+		session.setAttribute(DtConstants.USER_SESSION_KEY, model);
+		session.setAttribute(DtConstants.LOGIN_USER_SESSION_KEY, model);
+		rundata.setRedirectLocation("/");
 	}
 
-	private void oauth(TurbineRunDataInternal rundata,
+	/**
+	 * 从请求中获得token信息
+	 * 
+	 * @param rundata
+	 * @param pipelineContext
+	 * @return
+	 */
+	private String parseTokenFromRequest(TurbineRunDataInternal rundata,
 			PipelineContext pipelineContext) {
-		rundata.setTarget("oauth.vm");
-		pipelineContext.invokeNext();
-		// 重定向到登录页面
-		// String redirectUrl = weiboService.findAuthorizeUrl();
-		// rundata.setRedirectLocation(redirectUrl);
 
+		String code = rundata.getParameters().getString("code");
+		if (StringUtils.isBlank(code)) {
+
+			return null;
+		}
+		TokenModel registerToken = (TokenModel) request.getSession()
+				.getAttribute(DtConstants.REGISTER_USER_SESSION_KEY);
+
+		if (registerToken == null) {
+			return null;
+		}
+		String token = weiboService.findAccessTokenByCode(code,
+				registerToken.getClientId(), registerToken.getClientSecret());
+		if (StringUtils.isBlank(token)) {
+			return null;
+		}
+		return token;
+	}
+
+	private void oauth(String clientId, TurbineRunDataInternal rundata,
+			PipelineContext pipelineContext) {
+		// rundata.setTarget("oauth.vm");
+		// pipelineContext.invokeNext();
+		// 重定向到登录页面
+		String redirectUrl = weiboService.findAuthorizeUrl(clientId);
+		rundata.setRedirectLocation(redirectUrl);
+
+	}
+
+	private void login(String token, TurbineRunDataInternal rundata,
+			PipelineContext pipelineContext) {
+		pipelineContext.setAttribute("token", token);
+		rundata.setTarget("login.vm");
+		pipelineContext.invokeNext();
 	}
 
 	private void errorPage(TurbineRunDataInternal rundata,

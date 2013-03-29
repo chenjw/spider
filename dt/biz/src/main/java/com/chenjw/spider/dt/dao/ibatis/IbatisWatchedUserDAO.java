@@ -40,4 +40,10 @@ public class IbatisWatchedUserDAO extends SqlMapClientDaoSupport implements
 				"MS-SELECT-WATCHED-USER-BY-TOKEN", token);
 	}
 
+	@Override
+	public WatchedUserDO findWatchedUserByScreenName(String screenName) {
+		return (WatchedUserDO) this.getSqlMapClientTemplate().queryForObject(
+				"MS-SELECT-WATCHED-USER-BY-SCREEN-NAME", screenName);
+	}
+
 }

@@ -11,13 +11,13 @@ import com.chenjw.spider.dt.model.UserModel;
 public interface WeiboService {
 	public String findUserIdByToken(String token);
 
-	public String parseSignedRequest(String signedRequest);
+	public String parseSignedRequest(String signedRequest,String clientId,String clientSecret);
 
 	public String findAuthorizeUrl();
 	
 	public String findAuthorizeUrl(String clientId);
 
-	public String findAccessTokenByCode(String code);
+	public String findAccessTokenByCode(String code,String clientId,String clientSecret);
 
 	public List<TweetModel> findUserTimelineByUserId(String userId,
 			String token, long sinceId);
