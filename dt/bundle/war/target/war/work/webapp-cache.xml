@@ -35,6 +35,7 @@
           <string>WEB-INF/templates/app/screen/error.vm</string>
           <string>WEB-INF/templates/app/screen/test.html</string>
           <string>WEB-INF/templates/app/screen/env.vm</string>
+          <string>WEB-INF/templates/app/screen/howToGetAppKey.vm</string>
           <string>WEB-INF/templates/app/screen/message.vm</string>
           <string>WEB-INF/templates/app/screen/login.vm</string>
           <string>WEB-INF/templates/app/screen/test1.html</string>
@@ -105,8 +106,13 @@
           <string>css/v2/right_thirdpart.css</string>
           <string>css/v2/index.css</string>
           <string>css/v2/jquery-ui-1.10.0.custom.min.css</string>
+          <string>image/get_key_1.png</string>
+          <string>image/get_key_2.png</string>
           <string>image/bg_line.png</string>
+          <string>image/get_key_4.png</string>
+          <string>image/get_key_5.png</string>
           <string>image/bg_nav.png</string>
+          <string>image/get_key_3.png</string>
           <string>WEB-INF/lib/dt.common.config-1.0-SNAPSHOT.jar</string>
           <string>WEB-INF/lib/dt.core-1.0-SNAPSHOT.jar</string>
           <string>WEB-INF/lib/jakarta.log4j-1.2.16.jar</string>

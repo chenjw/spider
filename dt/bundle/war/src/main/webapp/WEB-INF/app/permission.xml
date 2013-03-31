@@ -30,6 +30,7 @@
 				app.screen.regOauth
 				app.screen.redirect
 				app.screen.welcome
+				app.screen.howToGetAppKey
 				app.action.userAction
 			</value>
 		</property>
