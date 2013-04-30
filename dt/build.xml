@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="spider" basedir="." default="main">
+    
+    <!-- Properties -->
+
+	<property name="base.dir" value="."/>
+	<property name="build.dir" location="${base.dir}/build"/>
+	<property name="build.classes.dir" location="${build.dir}/classes"/>
+	<property name="dist.dir" location="${base.dir}/dist"/>
+	<property environment="env"/>
+	<property name="version" value="1.0.0"/>
+	<property name="appName" value="deleted-tweets"/>
+	<property name="date" value="2013"/>
+    
+	<target name="init">
+  		<delete dir="${build.dir}" quiet="true"/>
+		<mkdir dir="${build.dir}"/>
+		<mkdir dir="${build.classes.dir}"/>
+		<delete dir="${dist.dir}" quiet="true"/>
+		<mkdir dir="${dist.dir}"/>
+		<mkdir dir="${dist.dir}/deleted-tweets"/>
+		<mkdir dir="${dist.dir}/deleted-tweets/upload"/>
+	</target>
+
+	<target name="maven-install-jar">
+		<!--windows-->
+		<exec executable="cmd" os="Windows 7">
+			<arg line="/c 'mvn install:install-file -DgroupId=com.chenjw.external -DartifactId=htmlparser -Dversion=1.0.0 -Dfile=lib/htmlparser.jar -Dpackaging=jar -DgeneratePom=true'"/>
+ 		</exec>	
+
+		<exec executable="cmd" os="Windows 7">
+    		<arg line="/c 'mvn install:install-file -DgroupId=com.chenjw.external -DartifactId=filterbuilder -Dversion=1.0.0 -Dfile=lib/filterbuilder.jar -Dpackaging=jar -DgeneratePom=true'"/>
+ 		</exec>	
+
+		<exec executable="cmd" os="Windows 7">
+			<arg line="/c 'mvn install:install-file -DgroupId=com.chenjw.external -DartifactId=htmllexer -Dversion=1.0.0 -Dfile=lib/htmllexer.jar -Dpackaging=jar -DgeneratePom=true'"/>
+ 		</exec>	
+
+		<exec executable="cmd" os="Windows 7">
+			<arg line="/c 'mvn install:install-file -DgroupId=com.chenjw -DartifactId=beancopyutils -Dversion=1.0.0 -Dfile=lib/beancopyutils-1.0.0.jar -Dpackaging=jar -DgeneratePom=true'"/>
+ 		</exec>	
+
+		<!--linux-->
+		<exec executable="mvn" os="linux">
+			<arg value="install:install-file"/>
+			<arg value="-DgroupId=com.chenjw.external"/>
+			<arg value="-DartifactId=htmlparser"/>
+			<arg value="-Dversion=1.0.0"/>
+			<arg value="-Dfile=lib/htmlparser.jar"/>
+			<arg value="-Dpackaging=jar"/>
+			<arg value="-DgeneratePom=true"/>
+ 		</exec>	
+
+		<exec executable="mvn" os="linux">
+    		<arg value="install:install-file"/>
+			<arg value="-DgroupId=com.chenjw.external"/>
+			<arg value="-DartifactId=filterbuilder"/>
+			<arg value="-Dversion=1.0.0"/>
+			<arg value="-Dfile=lib/filterbuilder.jar"/>
+			<arg value="-Dpackaging=jar"/>
+			<arg value="-DgeneratePom=true"/>
+ 		</exec>	
+
+		<exec executable="mvn" os="linux">
+			<arg value="install:install-file"/>
+			<arg value="-DgroupId=com.chenjw.external"/>
+			<arg value="-DartifactId=htmllexer"/>
+			<arg value="-Dversion=1.0.0"/>
+			<arg value="-Dfile=lib/htmllexer.jar"/>
+			<arg value="-Dpackaging=jar"/>
+			<arg value="-DgeneratePom=true"/>
+ 		</exec>	
+
+
+		<exec executable="mvn" os="linux">
+			<arg value="install:install-file"/>
+			<arg value="-DgroupId=com.chenjw"/>
+			<arg value="-DartifactId=beancopyutils"/>
+			<arg value="-Dversion=1.0.0"/>
+			<arg value="-Dfile=lib/beancopyutils-1.0.0.jar"/>
+			<arg value="-Dpackaging=jar"/>
+			<arg value="-DgeneratePom=true"/>
+ 		</exec>	
+
+	</target>
+
+	<target name="maven-dt">
+		<!--windows-->
+		<exec executable="cmd" os="Windows 7">
+    		<arg line="/c 'mvn clean install'"/>
+ 		</exec>		
+		<!--linux-->
+		<exec executable="mvn" os="linux">
+    		<arg value="clean"/>
+			<arg value="install"/>
+ 		</exec>		
+	</target>
+
+	<target name="copy-war-dt">
+		<copy tofile="${dist.dir}/deleted-tweets/upload/deletedtweets.war" file="${base.dir}/bundle/war/target/dt.bundle.war-1.0-SNAPSHOT.war">
+  		</copy>
+	</target>
+
+	<!--target name="copy-to-tomcat">
+		<delete dir="/home/chenjw/software/tomcat/webapps" quiet="true"/>
+		<mkdir dir="/home/chenjw/software/tomcat/webapps"/>
+		<copy todir="/home/chenjw/software/tomcat/webapps">
+    			<fileset dir="${dist.dir}/deleted-tweets/upload">
+				<include name="deletedtweets.war"/>
+			</fileset>
+  		</copy>
+	</target-->
+	
+	
+	<target name="cloudfoundry-login">
+		<!--windows-->
+
+		<exec executable="cmd" os="Windows 7">
+			<arg line="/c 'vmc target https://api.cloudfoundry.com'"/>
+ 		</exec>	
+		<exec executable="cmd" os="Windows 7">
+			<arg line="/c 'vmc login --email cjw1983@gmail.com --password 19830926'"/>
+ 		</exec>	
+		<!--linux-->
+
+		<exec executable="vmc" os="linux">
+			<arg value="target"/>
+			<arg value="https://api.cloudfoundry.com"/>
+ 		</exec>	
+		<exec executable="vmc" os="linux">
+			<arg value="login"/>
+			<arg value="--email"/>
+			<arg value="cjw1983@gmail.com"/>
+			<arg value="--password"/>
+			<arg value="19830926"/>
+ 		</exec>	
+	</target>
+
+	<target name="upload-cloudfoundry-dt" depends="cloudfoundry-login">
+		<copy todir="${dist.dir}/deleted-tweets/upload">
+    			<fileset dir="${base.dir}/cloudfoundry">
+				<include name="manifest.yml"/>
+			</fileset>
+  		</copy>
+		<!--windows-->
+		<exec executable="cmd" os="Windows 7" dir="${dist.dir}/deleted-tweets/upload/">
+			<arg line="/c 'vmc stop deleted-tweets'"/>
+ 		</exec>
+		<exec executable="cmd" os="Windows 7" dir="${dist.dir}/deleted-tweets/upload/">
+			<arg line="/c 'vmc push'"/>
+ 		</exec>
+		<exec executable="cmd" os="Windows 7" dir="${dist.dir}/deleted-tweets/upload/">
+			<arg line="/c 'vmc start deleted-tweets'"/>
+ 		</exec>
+
+		<!--linux-->
+		<exec executable="vmc" dir="${dist.dir}/deleted-tweets/upload/" os="linux">
+			<arg value="stop"/>
+			<arg value="deleted-tweets"/>
+ 		</exec>
+		<exec executable="vmc" dir="${dist.dir}/deleted-tweets/upload/" os="linux">
+			<arg value="push"/>
+ 		</exec>
+		<exec executable="vmc" dir="${dist.dir}/deleted-tweets/upload/" os="linux">
+			<arg value="start"/>
+			<arg value="deleted-tweets"/>
+ 		</exec>
+
+
+	</target>
+
+
+
+	<target name="stop-cloudfoundry-dt" depends="cloudfoundry-login">
+		<!--windows-->
+		<exec executable="cmd" os="Windows 7" dir="${dist.dir}/deleted-tweets/upload/">
+			<arg line="/c 'vmc stop deleted-tweets'"/>
+ 		</exec>
+
+		<!--linux-->
+		<exec executable="vmc" dir="${dist.dir}/deleted-tweets/upload/" os="linux">
+			<arg value="stop"/>
+			<arg value="deleted-tweets"/>
+ 		</exec>
+	</target>
+
+    
+	<target name="main" depends="init,maven-install-jar,maven-dt,copy-war-dt,upload-cloudfoundry-dt"/>
+
+	<target name="upload" depends="upload-cloudfoundry-dt"/>
+
+	<target name="stop" depends="stop-cloudfoundry-dt"/>
+
+</project>

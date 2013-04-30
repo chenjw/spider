@@ -1,0 +1,18 @@
+<projectDescription>
+  <name>hacktools.web.app-1.0-SNAPSHOT</name>
+  <comment/>
+  <projects>
+    <project>hacktools.biz-1.0-SNAPSHOT</project>
+    <project>hacktools.common.config-1.0-SNAPSHOT</project>
+    <project>hacktools.core-1.0-SNAPSHOT</project>
+  </projects>
+  <buildSpec>
+    <buildCommand>
+      <name>org.eclipse.jdt.core.javabuilder</name>
+    </buildCommand>
+  </buildSpec>
+  <natures>
+    <nature>jeju.projectcreation.ui.jejunature</nature>
+    <nature>org.eclipse.jdt.core.javanature</nature>
+  </natures>
+</projectDescription>

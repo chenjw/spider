@@ -176,14 +176,6 @@ public class SimpleHttpClient implements HttpClient {
 
 	}
 
-	/**
-	 * 处理http请求的返回结果
-	 * 
-	 * @param responseCode
-	 * @param method
-	 * @return
-	 * @throws IOException
-	 */
 	// private String handleResult(HttpResponse response,
 	// HttpUriRequest httpMethod, String encoding)
 	// throws HttpClientException {

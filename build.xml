@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="knife" basedir="." default="main">
+<project name="spider" basedir="." default="main">
     
     <!-- Properties -->
 
-    	<property name="base.dir" value="."/>
+	<property name="base.dir" value="."/>
 	<property name="build.dir" location="${base.dir}/build"/>
 	<property name="build.classes.dir" location="${build.dir}/classes"/>
 	<property name="dist.dir" location="${base.dir}/dist"/>
@@ -18,7 +18,8 @@
 		</fileset>
 	 	<pathelement location="${env.JAVA_HOME}/lib/tools.jar"/>
   	</path>
-    	<target name="init">
+    
+	<target name="init">
   		<delete dir="${build.dir}" quiet="true"/>
 		<mkdir dir="${build.dir}"/>
 		<mkdir dir="${build.classes.dir}"/>
@@ -27,11 +28,32 @@
 		<mkdir dir="${dist.dir}/spider/lib"/>
 		<mkdir dir="${dist.dir}/deleted-tweets"/>
 		<mkdir dir="${dist.dir}/deleted-tweets/upload"/>
+		<mkdir dir="${dist.dir}/hacktools"/>
+		<mkdir dir="${dist.dir}/hacktools/upload"/>
 	</target>
 
-	<target name="maven-dt">
-		<exec executable="mvn" dir="dt">
-    			<arg value="install:install-file"/>
+	
+	<target name="maven-install-jar">
+		<!--windows-->
+		<exec executable="cmd" dir="dt" os="Windows 7">
+			<arg line="/c 'mvn install:install-file -DgroupId=com.chenjw.external -DartifactId=htmlparser -Dversion=1.0.0 -Dfile=lib/htmlparser.jar -Dpackaging=jar -DgeneratePom=true'"/>
+ 		</exec>	
+
+		<exec executable="cmd" dir="dt" os="Windows 7">
+    		<arg line="/c 'mvn install:install-file -DgroupId=com.chenjw.external -DartifactId=filterbuilder -Dversion=1.0.0 -Dfile=lib/filterbuilder.jar -Dpackaging=jar -DgeneratePom=true'"/>
+ 		</exec>	
+
+		<exec executable="cmd" dir="dt" os="Windows 7">
+			<arg line="/c 'mvn install:install-file -DgroupId=com.chenjw.external -DartifactId=htmllexer -Dversion=1.0.0 -Dfile=lib/htmllexer.jar -Dpackaging=jar -DgeneratePom=true'"/>
+ 		</exec>	
+
+		<exec executable="cmd" dir="dt" os="Windows 7">
+			<arg line="/c 'mvn install:install-file -DgroupId=com.chenjw -DartifactId=beancopyutils -Dversion=1.0.0 -Dfile=lib/beancopyutils-1.0.0.jar -Dpackaging=jar -DgeneratePom=true'"/>
+ 		</exec>	
+
+		<!--linux-->
+		<exec executable="mvn" dir="dt" os="linux">
+			<arg value="install:install-file"/>
 			<arg value="-DgroupId=com.chenjw.external"/>
 			<arg value="-DartifactId=htmlparser"/>
 			<arg value="-Dversion=1.0.0"/>
@@ -40,8 +62,8 @@
 			<arg value="-DgeneratePom=true"/>
  		</exec>	
 
-		<exec executable="mvn" dir="dt">
-    			<arg value="install:install-file"/>
+		<exec executable="mvn" dir="dt" os="linux">
+    		<arg value="install:install-file"/>
 			<arg value="-DgroupId=com.chenjw.external"/>
 			<arg value="-DartifactId=filterbuilder"/>
 			<arg value="-Dversion=1.0.0"/>
@@ -50,8 +72,8 @@
 			<arg value="-DgeneratePom=true"/>
  		</exec>	
 
-		<exec executable="mvn" dir="dt">
-    			<arg value="install:install-file"/>
+		<exec executable="mvn" dir="dt" os="linux">
+			<arg value="install:install-file"/>
 			<arg value="-DgroupId=com.chenjw.external"/>
 			<arg value="-DartifactId=htmllexer"/>
 			<arg value="-Dversion=1.0.0"/>
@@ -61,8 +83,8 @@
  		</exec>	
 
 
-		<exec executable="mvn" dir="dt">
-    			<arg value="install:install-file"/>
+		<exec executable="mvn" dir="dt" os="linux">
+			<arg value="install:install-file"/>
 			<arg value="-DgroupId=com.chenjw"/>
 			<arg value="-DartifactId=beancopyutils"/>
 			<arg value="-Dversion=1.0.0"/>
@@ -71,19 +93,44 @@
 			<arg value="-DgeneratePom=true"/>
  		</exec>	
 
-		<!-- upload to cloudfoundry-->
-		<exec executable="mvn" dir="dt">
+	</target>
+
+	<target name="maven-dt">
+		<!--windows-->
+		<exec executable="cmd" dir="dt" os="Windows 7">
+    		<arg line="/c 'mvn clean install'"/>
+ 		</exec>		
+		<!--linux-->
+		<exec executable="mvn" dir="dt" os="linux">
+    		<arg value="clean"/>
+			<arg value="install"/>
+ 		</exec>		
+	</target>
+
+	<target name="maven-hacktools">
+		<!--windows-->
+		<exec executable="cmd" dir="hacktools" os="Windows 7">
+    		<arg line="/c 'mvn clean install'"/>
+ 		</exec>		
+		<!--linux-->
+		<exec executable="mvn" dir="hacktools" os="linux">
     			<arg value="clean"/>
 			<arg value="install"/>
  		</exec>		
 	</target>
+
 
 	<target name="copy-war-dt">
 		<copy tofile="${dist.dir}/deleted-tweets/upload/deletedtweets.war" file="${base.dir}/dt/bundle/war/target/dt.bundle.war-1.0-SNAPSHOT.war">
   		</copy>
 	</target>
 
-	<target name="copy-to-tomcat">
+	<target name="copy-war-hacktools">
+		<copy tofile="${dist.dir}/hacktools/upload/hacktools.war" file="${base.dir}/hacktools/bundle/war/target/hacktools.bundle.war-1.0-SNAPSHOT.war">
+  		</copy>
+	</target>
+
+	<!--target name="copy-to-tomcat">
 		<delete dir="/home/chenjw/software/tomcat/webapps" quiet="true"/>
 		<mkdir dir="/home/chenjw/software/tomcat/webapps"/>
 		<copy todir="/home/chenjw/software/tomcat/webapps">
@@ -91,35 +138,49 @@
 				<include name="deletedtweets.war"/>
 			</fileset>
   		</copy>
-	</target>
+	</target-->
 	
-	<target name="upload-cloudfoundry">
-		<copy todir="${dist.dir}/deleted-tweets/upload">
-    			<fileset dir="${base.dir}/dt/cloudfoundry">
-				<include name="manifest.yml"/>
-			</fileset>
-  		</copy>
-		<exec executable="vmc">
-    			<arg value="target"/>
+	
+	<target name="cloudfoundry-login">
+		<!--windows-->
+
+		<exec executable="cmd" os="Windows 7">
+			<arg line="/c 'vmc target https://api.cloudfoundry.com'"/>
+ 		</exec>	
+		<exec executable="cmd" os="Windows 7">
+			<arg line="/c 'vmc login --email cjw1983@gmail.com --password 19830926'"/>
+ 		</exec>	
+		<!--linux-->
+
+		<exec executable="vmc" os="linux">
+			<arg value="target"/>
 			<arg value="https://api.cloudfoundry.com"/>
  		</exec>	
-		<!-- upload to cloudfoundry-->
-		<exec executable="vmc">
-    			<arg value="login"/>
+		<exec executable="vmc" os="linux">
+			<arg value="login"/>
 			<arg value="--email"/>
 			<arg value="cjw1983@gmail.com"/>
 			<arg value="--password"/>
 			<arg value="19830926"/>
  		</exec>	
+	</target>
 
-		<exec executable="vmc" dir="${dist.dir}/deleted-tweets/upload/">
+	<target name="upload-cloudfoundry-dt" depends="cloudfoundry-login">
+		<copy todir="${dist.dir}/deleted-tweets/upload">
+    			<fileset dir="${base.dir}/dt/cloudfoundry">
+				<include name="manifest.yml"/>
+			</fileset>
+  		</copy>
+
+
+		<exec executable="vmc" dir="${dist.dir}/deleted-tweets/upload/" os="linux">
 			<arg value="stop"/>
 			<arg value="deleted-tweets"/>
  		</exec>
-		<exec executable="vmc" dir="${dist.dir}/deleted-tweets/upload/">
+		<exec executable="vmc" dir="${dist.dir}/deleted-tweets/upload/" os="linux">
 			<arg value="push"/>
  		</exec>
-		<exec executable="vmc" dir="${dist.dir}/deleted-tweets/upload/">
+		<exec executable="vmc" dir="${dist.dir}/deleted-tweets/upload/" os="linux">
 			<arg value="start"/>
 			<arg value="deleted-tweets"/>
  		</exec>
@@ -127,21 +188,50 @@
 
 	</target>
 
-	<target name="stop-cloudfoundry">
-		<exec executable="vmc">
-    			<arg value="target"/>
-			<arg value="https://api.cloudfoundry.com"/>
- 		</exec>	
-		<!-- upload to cloudfoundry-->
-		<exec executable="vmc">
-    			<arg value="login"/>
-			<arg value="--email"/>
-			<arg value="cjw1983@gmail.com"/>
-			<arg value="--password"/>
-			<arg value="19830926"/>
- 		</exec>		
+	<target name="upload-cloudfoundry-hacktools" depends="cloudfoundry-login">
+		<copy todir="${dist.dir}/hacktools/upload">
+			<fileset dir="${base.dir}/hacktools/cloudfoundry">
+				<include name="manifest.yml"/>
+			</fileset>
+  		</copy>
 
-		<exec executable="vmc" dir="${dist.dir}/deleted-tweets/upload/">
+		<!--windows-->
+		<exec executable="cmd" os="Windows 7" dir="${dist.dir}/hacktools/upload/">
+			<arg line="/c 'vmc stop hacktools'"/>
+ 		</exec>
+		<exec executable="cmd" os="Windows 7" dir="${dist.dir}/hacktools/upload/">
+			<arg line="/c 'vmc push'"/>
+ 		</exec>
+		<exec executable="cmd" os="Windows 7" dir="${dist.dir}/hacktools/upload/">
+			<arg line="/c 'vmc start hacktools'"/>
+ 		</exec>
+
+		<!--linux-->
+
+		<exec executable="vmc" dir="${dist.dir}/hacktools/upload/" os="linux">
+			<arg value="stop"/>
+			<arg value="hacktools"/>
+ 		</exec>
+		<exec executable="vmc" dir="${dist.dir}/hacktools/upload/" os="linux">
+			<arg value="push"/>
+ 		</exec>
+		<exec executable="vmc" dir="${dist.dir}/hacktools/upload/" os="linux">
+			<arg value="start"/>
+			<arg value="hacktools"/>
+ 		</exec>
+
+
+	</target>
+
+
+	<target name="stop-cloudfoundry-dt" depends="cloudfoundry-login">
+		<!--windows-->
+		<exec executable="cmd" os="Windows 7" dir="${dist.dir}/hacktools/upload/">
+			<arg line="/c 'vmc stop deleted-tweets'"/>
+ 		</exec>
+
+		<!--linux-->
+		<exec executable="vmc" dir="${dist.dir}/deleted-tweets/upload/" os="linux">
 			<arg value="stop"/>
 			<arg value="deleted-tweets"/>
  		</exec>
@@ -149,11 +239,26 @@
 
 	</target>
 
+	<target name="stop-cloudfoundry-hacktools" depends="cloudfoundry-login">
+		<!--windows-->
+		<exec executable="cmd" os="Windows 7" dir="${dist.dir}/hacktools/upload/">
+			<arg line="/c 'vmc stop hacktools'"/>
+ 		</exec>
+
+		<!--linux-->
+		<exec executable="vmc" dir="${dist.dir}/hacktools/upload/" os="linux">
+			<arg value="stop"/>
+			<arg value="hacktools"/>
+ 		</exec>
+	</target>
+
     
-    	<target name="main" depends="init,maven-dt,copy-war-dt,copy-to-tomcat,upload-cloudfoundry"/>
+	<target name="main" depends="init,maven-install-jar,maven-dt,copy-war-dt,upload-cloudfoundry-dt"/>
 
-	<target name="upload" depends="upload-cloudfoundry"/>
+	<target name="hacktools" depends="init,maven-install-jar,maven-hacktools,copy-war-hacktools,upload-cloudfoundry-hacktools"/>
 
-	<target name="stop" depends="stop-cloudfoundry"/>
+	<target name="upload" depends="upload-cloudfoundry-dt"/>
+
+	<target name="stop" depends="stop-cloudfoundry-dt"/>
 
 </project>
