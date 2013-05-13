@@ -81,22 +81,22 @@ public class IsSheBrokeUpServiceImpl implements IsSheBrokeUpService,
 		if (!EnvConstants.isProductMode()) {
 			return;
 		}
-		new Thread(new Runnable() {
-
-			@Override
-			public void run() {
-				while (true) {
-					try {
-						check();
-						Thread.sleep(24 * 60 * 60 * 1000);
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
-				}
-
-			}
-
-		}).start();
+//		new Thread(new Runnable() {
+//
+//			@Override
+//			public void run() {
+//				while (true) {
+//					try {
+//						check();
+//						Thread.sleep(24 * 60 * 60 * 1000);
+//					} catch (Exception e) {
+//						e.printStackTrace();
+//					}
+//				}
+//
+//			}
+//
+//		}).start();
 
 	}
 

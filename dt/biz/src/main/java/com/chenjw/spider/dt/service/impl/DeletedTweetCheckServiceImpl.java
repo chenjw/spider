@@ -190,28 +190,28 @@ public class DeletedTweetCheckServiceImpl implements DeletedTweetCheckService,
 		// if (EnvConstants.isProductMode()) {
 		start();
 		// }
-		new Thread(new Runnable() {
-			@Override
-			public void run() {
-				while (true) {
-					if (running) {
-						try {
-							DeletedTweetCheckServiceImpl.this.checkAll();
-							Constants.LOGGER.info("checkAll finished!");
-						} catch (Exception e) {
-							e.printStackTrace();
-						}
-					}
-					try {
-						Thread.sleep(Constants.WEIBO_QUERY_TIME);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-				}
-
-			}
-
-		}).start();
+//		new Thread(new Runnable() {
+//			@Override
+//			public void run() {
+//				while (true) {
+//					if (running) {
+//						try {
+//							DeletedTweetCheckServiceImpl.this.checkAll();
+//							Constants.LOGGER.info("checkAll finished!");
+//						} catch (Exception e) {
+//							e.printStackTrace();
+//						}
+//					}
+//					try {
+//						Thread.sleep(Constants.WEIBO_QUERY_TIME);
+//					} catch (InterruptedException e) {
+//						e.printStackTrace();
+//					}
+//				}
+//
+//			}
+//
+//		}).start();
 	}
 
 	public void setWatchedUserDAO(WatchedUserDAO watchedUserDAO) {

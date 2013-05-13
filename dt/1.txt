@@ -1,0 +1,186 @@
+[INFO] Scanning for projects...
+[INFO] Reactor build order: 
+[INFO]   dt
+[INFO]   deploy
+[INFO]   common.config
+[INFO]   core
+[INFO]   weibo
+[INFO]   biz
+[INFO]   app
+[INFO]   bundle.war
+[INFO] ------------------------------------------------------------------------
+[INFO] Building dt
+[INFO]    task-segment: [clean, install]
+[INFO] ------------------------------------------------------------------------
+[INFO] [clean:clean {execution: default-clean}]
+[INFO] [site:attach-descriptor {execution: default-attach-descriptor}]
+[INFO] [install:install {execution: default-install}]
+[INFO] Installing C:\workspace\spider\dt\pom.xml to c:\m2\repository\com\chenjw\spider\dt.all\1.0-SNAPSHOT\dt.all-1.0-SNAPSHOT.pom
+[INFO] ------------------------------------------------------------------------
+[INFO] Building deploy
+[INFO]    task-segment: [clean, install]
+[INFO] ------------------------------------------------------------------------
+[INFO] [clean:clean {execution: default-clean}]
+[INFO] Deleting directory C:\workspace\spider\dt\deploy\target
+[INFO] [resources:resources {execution: default-resources}]
+[WARNING] Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] Copying 1 resource
+[INFO] [compiler:compile {execution: default-compile}]
+[INFO] No sources to compile
+[INFO] [resources:testResources {execution: default-testResources}]
+[WARNING] Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory C:\workspace\spider\dt\deploy\src\test\resources
+[INFO] [compiler:testCompile {execution: default-testCompile}]
+[INFO] No sources to compile
+[INFO] [surefire:test {execution: default-test}]
+[INFO] No tests to run.
+[INFO] [jar:jar {execution: default-jar}]
+[INFO] Building jar: C:\workspace\spider\dt\deploy\target\dt.deploy-1.0-SNAPSHOT.jar
+[INFO] [install:install {execution: default-install}]
+[INFO] Installing C:\workspace\spider\dt\deploy\target\dt.deploy-1.0-SNAPSHOT.jar to c:\m2\repository\com\chenjw\spider\dt.deploy\1.0-SNAPSHOT\dt.deploy-1.0-SNAPSHOT.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] Building common.config
+[INFO]    task-segment: [clean, install]
+[INFO] ------------------------------------------------------------------------
+[INFO] [clean:clean {execution: default-clean}]
+[INFO] Deleting directory C:\workspace\spider\dt\common\config\target
+[INFO] [resources:resources {execution: default-resources}]
+[WARNING] Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] Copying 22 resources
+[INFO] [compiler:compile {execution: default-compile}]
+[INFO] No sources to compile
+[INFO] [resources:testResources {execution: default-testResources}]
+[WARNING] Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory C:\workspace\spider\dt\common\config\src\test\resources
+[INFO] [compiler:testCompile {execution: default-testCompile}]
+[INFO] No sources to compile
+[INFO] [surefire:test {execution: default-test}]
+[INFO] No tests to run.
+[INFO] [jar:jar {execution: default-jar}]
+[INFO] Building jar: C:\workspace\spider\dt\common\config\target\dt.common.config-1.0-SNAPSHOT.jar
+[INFO] [install:install {execution: default-install}]
+[INFO] Installing C:\workspace\spider\dt\common\config\target\dt.common.config-1.0-SNAPSHOT.jar to c:\m2\repository\com\chenjw\spider\dt.common.config\1.0-SNAPSHOT\dt.common.config-1.0-SNAPSHOT.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] Building core
+[INFO]    task-segment: [clean, install]
+[INFO] ------------------------------------------------------------------------
+[INFO] [clean:clean {execution: default-clean}]
+[INFO] Deleting directory C:\workspace\spider\dt\core\target
+[INFO] [resources:resources {execution: default-resources}]
+[WARNING] Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory C:\workspace\spider\dt\core\src\main\resources
+[INFO] [compiler:compile {execution: default-compile}]
+[INFO] Compiling 35 source files to C:\workspace\spider\dt\core\target\classes
+[INFO] [resources:testResources {execution: default-testResources}]
+[WARNING] Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory C:\workspace\spider\dt\core\src\test\resources
+[INFO] [compiler:testCompile {execution: default-testCompile}]
+[INFO] No sources to compile
+[INFO] [surefire:test {execution: default-test}]
+[INFO] No tests to run.
+[INFO] [jar:jar {execution: default-jar}]
+[INFO] Building jar: C:\workspace\spider\dt\core\target\dt.core-1.0-SNAPSHOT.jar
+[INFO] [install:install {execution: default-install}]
+[INFO] Installing C:\workspace\spider\dt\core\target\dt.core-1.0-SNAPSHOT.jar to c:\m2\repository\com\chenjw\spider\dt.core\1.0-SNAPSHOT\dt.core-1.0-SNAPSHOT.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] Building weibo
+[INFO]    task-segment: [clean, install]
+[INFO] ------------------------------------------------------------------------
+[INFO] [clean:clean {execution: default-clean}]
+[INFO] Deleting directory C:\workspace\spider\dt\weibo\target
+[INFO] [resources:resources {execution: default-resources}]
+[WARNING] Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory C:\workspace\spider\dt\weibo\src\main\resources
+[INFO] [compiler:compile {execution: default-compile}]
+[INFO] Compiling 69 source files to C:\workspace\spider\dt\weibo\target\classes
+[WARNING] \workspace\spider\dt\weibo\src\main\java\weibo4j\http\ImageItem.java:[14,34] 警告：com.sun.imageio.plugins.bmp.BMPImageReader 是 Sun 的专用 API，可能会在未来版本中删除
+[WARNING] \workspace\spider\dt\weibo\src\main\java\weibo4j\http\ImageItem.java:[15,34] 警告：com.sun.imageio.plugins.gif.GIFImageReader 是 Sun 的专用 API，可能会在未来版本中删除
+[WARNING] \workspace\spider\dt\weibo\src\main\java\weibo4j\http\ImageItem.java:[16,35] 警告：com.sun.imageio.plugins.jpeg.JPEGImageReader 是 Sun 的专用 API，可能会在未来版本中删除
+[WARNING] \workspace\spider\dt\weibo\src\main\java\weibo4j\http\ImageItem.java:[17,34] 警告：com.sun.imageio.plugins.png.PNGImageReader 是 Sun 的专用 API，可能会在未来版本中删除
+[WARNING] \workspace\spider\dt\weibo\src\main\java\weibo4j\http\ImageItem.java:[70,26] 警告：com.sun.imageio.plugins.gif.GIFImageReader 是 Sun 的专用 API，可能会在未来版本中删除
+[WARNING] \workspace\spider\dt\weibo\src\main\java\weibo4j\http\ImageItem.java:[72,33] 警告：com.sun.imageio.plugins.jpeg.JPEGImageReader 是 Sun 的专用 API，可能会在未来版本中删除
+[WARNING] \workspace\spider\dt\weibo\src\main\java\weibo4j\http\ImageItem.java:[74,33] 警告：com.sun.imageio.plugins.png.PNGImageReader 是 Sun 的专用 API，可能会在未来版本中删除
+[WARNING] \workspace\spider\dt\weibo\src\main\java\weibo4j\http\ImageItem.java:[76,33] 警告：com.sun.imageio.plugins.bmp.BMPImageReader 是 Sun 的专用 API，可能会在未来版本中删除
+[WARNING] \workspace\spider\dt\weibo\src\main\java\weibo4j\Oauth.java:[55,10] 警告：sun.misc.BASE64Decoder 是 Sun 的专用 API，可能会在未来版本中删除
+[WARNING] \workspace\spider\dt\weibo\src\main\java\weibo4j\Oauth.java:[55,46] 警告：sun.misc.BASE64Decoder 是 Sun 的专用 API，可能会在未来版本中删除
+[INFO] [resources:testResources {execution: default-testResources}]
+[WARNING] Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory C:\workspace\spider\dt\weibo\src\test\resources
+[INFO] [compiler:testCompile {execution: default-testCompile}]
+[INFO] No sources to compile
+[INFO] [surefire:test {execution: default-test}]
+[INFO] No tests to run.
+[INFO] [jar:jar {execution: default-jar}]
+[INFO] Building jar: C:\workspace\spider\dt\weibo\target\dt.weibo-1.0-SNAPSHOT.jar
+[INFO] [install:install {execution: default-install}]
+[INFO] Installing C:\workspace\spider\dt\weibo\target\dt.weibo-1.0-SNAPSHOT.jar to c:\m2\repository\com\chenjw\spider\dt.weibo\1.0-SNAPSHOT\dt.weibo-1.0-SNAPSHOT.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] Building biz
+[INFO]    task-segment: [clean, install]
+[INFO] ------------------------------------------------------------------------
+[INFO] [clean:clean {execution: default-clean}]
+[INFO] Deleting directory C:\workspace\spider\dt\biz\target
+[INFO] [resources:resources {execution: default-resources}]
+[WARNING] Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory C:\workspace\spider\dt\biz\src\main\resources
+[INFO] [compiler:compile {execution: default-compile}]
+[INFO] Compiling 66 source files to C:\workspace\spider\dt\biz\target\classes
+[INFO] [resources:testResources {execution: default-testResources}]
+[WARNING] Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory C:\workspace\spider\dt\biz\src\test\resources
+[INFO] [compiler:testCompile {execution: default-testCompile}]
+[INFO] Compiling 5 source files to C:\workspace\spider\dt\biz\target\test-classes
+[INFO] [surefire:test {execution: default-test}]
+[INFO] Surefire report directory: C:\workspace\spider\dt\biz\target\surefire-reports
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running Test
+Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.014 sec
+Running WeiboCnTest
+Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.009 sec
+
+Results :
+
+Tests run: 0, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] [jar:jar {execution: default-jar}]
+[INFO] Building jar: C:\workspace\spider\dt\biz\target\dt.biz-1.0-SNAPSHOT.jar
+[INFO] [install:install {execution: default-install}]
+[INFO] Installing C:\workspace\spider\dt\biz\target\dt.biz-1.0-SNAPSHOT.jar to c:\m2\repository\com\chenjw\spider\dt.biz\1.0-SNAPSHOT\dt.biz-1.0-SNAPSHOT.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] Building app
+[INFO]    task-segment: [clean, install]
+[INFO] ------------------------------------------------------------------------
+[INFO] [clean:clean {execution: default-clean}]
+[INFO] Deleting directory C:\workspace\spider\dt\app\target
+[INFO] [resources:resources {execution: default-resources}]
+[WARNING] Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory C:\workspace\spider\dt\app\src\main\resources
+[INFO] [compiler:compile {execution: default-compile}]
+[INFO] Compiling 31 source files to C:\workspace\spider\dt\app\target\classes
+[INFO] [resources:testResources {execution: default-testResources}]
+[WARNING] Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory C:\workspace\spider\dt\app\src\test\resources
+[INFO] [compiler:testCompile {execution: default-testCompile}]
+[INFO] No sources to compile
+[INFO] [surefire:test {execution: default-test}]
+[INFO] No tests to run.
+[INFO] [jar:jar {execution: default-jar}]
+[INFO] Building jar: C:\workspace\spider\dt\app\target\dt.web.app-1.0-SNAPSHOT.jar
+[INFO] [install:install {execution: default-install}]
+[INFO] Installing C:\workspace\spider\dt\app\target\dt.web.app-1.0-SNAPSHOT.jar to c:\m2\repository\com\chenjw\spider\dt.web.app\1.0-SNAPSHOT\dt.web.app-1.0-SNAPSHOT.jar
+[INFO] ------------------------------------------------------------------------
+[ERROR] BUILD ERROR
+[INFO] ------------------------------------------------------------------------
+[INFO] Error installing artifact's metadata: Error installing metadata: Error updating group repository metadata
+
+only whitespace content allowed before start tag and not \u0 (position: START_DOCUMENT seen \u0... @1:1) 
+[INFO] ------------------------------------------------------------------------
+[INFO] For more information, run Maven with the -e switch
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 13 seconds
+[INFO] Finished at: Mon May 13 13:19:20 CST 2013
+[INFO] Final Memory: 50M/375M
+[INFO] ------------------------------------------------------------------------

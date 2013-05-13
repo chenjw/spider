@@ -1,4 +1,4 @@
-drop table dt_watched_user;
+drop table if exists dt_watched_user;
 CREATE TABLE `dt_watched_user` (
   `user_id` varchar(128) DEFAULT NULL COMMENT '用户id',
   `screen_name` varchar(512) DEFAULT NULL COMMENT '用户名称',
@@ -14,7 +14,7 @@ CREATE TABLE `dt_watched_user` (
 #insert into dt_watched_user (user_id,token,screen_name,status) values ('1925238912','2.00WaGSGCnpP1DBdf51a94343llFD7C','陈俊文V','FOREVER_VALID');
 #insert into dt_watched_user (user_id,token,screen_name,status) values ('3221292113','2.006ONAWD0TXPFWdf8b2ae70b00kK9K','霸气软件推荐','FOREVER_VALID');
 #update dt_watched_user set token ='2.00WaGSGCnpP1DBdf51a94343llFD7C',status='FOREVER_VALID' where user_id='1925238912'
-drop table dt_tweet;
+drop table if exists dt_tweet;
 CREATE TABLE `dt_tweet` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT 'pk',
   `tid` bigint(20) unsigned NOT NULL COMMENT '微博id',
@@ -31,7 +31,7 @@ CREATE TABLE `dt_tweet` (
   KEY `idx_dt_tweet_member_user_id_tid` (`member_user_id`,`tid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ;
 
-drop table dt_deleted_tweet;
+drop table if exists dt_deleted_tweet;
 CREATE TABLE `dt_deleted_tweet` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT 'pk',
   `tid` bigint(20) unsigned NOT NULL COMMENT '微博id',
