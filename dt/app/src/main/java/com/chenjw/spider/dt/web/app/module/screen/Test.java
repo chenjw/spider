@@ -14,6 +14,7 @@ import com.alibaba.citrus.turbine.Context;
 import com.alibaba.citrus.turbine.Navigator;
 import com.alibaba.citrus.turbine.dataresolver.Param;
 import com.chenjw.client.HttpClient;
+import com.chenjw.client.result.Result;
 import com.chenjw.spider.dt.web.app.module.Base;
 import com.chenjw.spider.location.HttpUrl;
 
@@ -27,15 +28,17 @@ public class Test extends Base {
 		url = "http://tp2.sinaimg.cn/2268916473/50/5608371350/1";
 		byte[] bytes = null;
 		boolean isSuccess = true;
-		try {
-			bytes = httpClient.getBytes(new HttpUrl(url, null), null);
-		} catch (Exception e) {
-			e.printStackTrace();
+
+		Result result = httpClient
+				.get(new HttpUrl(url, null), null, null, null);
+		if (!result.isSuccess()) {
 			isSuccess = false;
+		} else {
+			bytes = result.getResultBytes();
+			String s = "data:image/png;base64,";
+			context.put("data", s + Base64.encode(bytes));
 		}
 		context.put("success", isSuccess);
 
-		String s = "data:image/png;base64,";
-		context.put("data", s + Base64.encode(bytes));
 	}
 }

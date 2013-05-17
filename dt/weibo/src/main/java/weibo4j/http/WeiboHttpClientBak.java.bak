@@ -46,7 +46,7 @@ import weibo4j.org.json.JSONException;
  * @author sinaWeibo
  * 
  */
-public class HttpClient implements java.io.Serializable {
+public class WeiboHttpClientBak implements java.io.Serializable {
 
 	private static final long serialVersionUID = -176092625883595547L;
 	private static final int OK = 200; // OK: Success!
@@ -124,7 +124,7 @@ public class HttpClient implements java.io.Serializable {
 	}
 
 	private final static boolean DEBUG = Configuration.getDebug();
-	static Logger log = Logger.getLogger(HttpClient.class.getName());
+	static Logger log = Logger.getLogger(WeiboHttpClient.class.getName());
 
 	private static MultiThreadedHttpConnectionManager connectionManager;
 
@@ -216,7 +216,7 @@ public class HttpClient implements java.io.Serializable {
 		log("Request:");
 		log("GET:" + url);
 		if (null != params && params.length > 0) {
-			String encodedParams = HttpClient.encodeParameters(params);
+			String encodedParams = WeiboHttpClient.encodeParameters(params);
 			if (-1 == url.indexOf("?")) {
 				url += "?" + encodedParams;
 			} else {
@@ -278,7 +278,7 @@ public class HttpClient implements java.io.Serializable {
 						params.length, pagingParams.size());
 			} else {
 				if (0 != arrayPagingParams.length) {
-					String encodedParams = HttpClient
+					String encodedParams = WeiboHttpClient
 							.encodeParameters(arrayPagingParams);
 					if (-1 != url.indexOf("?")) {
 						url += "&" + encodedParams;
@@ -300,7 +300,7 @@ public class HttpClient implements java.io.Serializable {
 	public Response delete(String url, PostParameter[] params)
 			throws WeiboException {
 		if (0 != params.length) {
-			String encodedParams = HttpClient.encodeParameters(params);
+			String encodedParams = WeiboHttpClient.encodeParameters(params);
 			if (-1 == url.indexOf("?")) {
 				url += "?" + encodedParams;
 			} else {

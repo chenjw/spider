@@ -12,6 +12,7 @@ public class Env {
 		Map<Object, Object> map = EnvConstants.getEnvProvider().getProperties();
 		context.put("env", map);
 		context.put("sysEnv", System.getenv());
+		context.put("sysProp", System.getProperties());
 	}
 
 }

@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.alibaba.citrus.extension.rpc.annotation.ResourceMapping;
 import com.alibaba.nonda.databind.annotation.RequestParam;
 import com.chenjw.client.HttpClient;
+import com.chenjw.client.result.Result;
 import com.chenjw.spider.dt.web.app.module.Base;
 import com.chenjw.spider.location.HttpUrl;
 
@@ -22,11 +23,10 @@ public class ImgRpc extends Base {
 	@ResourceMapping
 	public String proxy(@RequestParam(name = "url") String url) {
 		byte[] bytes = null;
-		try {
-			bytes = httpClient.getBytes(new HttpUrl(url, null), null);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+
+		Result result = httpClient
+				.get(new HttpUrl(url, null), null, null, null);
+		bytes = result.getResultBytes();
 		String s = "data:image/jpeg;base64,";
 		return s + Base64.encode(bytes);
 	}

@@ -5,6 +5,7 @@
   <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
   <classpathentry kind="var" path="M2_REPO/javax/activation/activation/1.1/activation-1.1.jar" sourcepath="M2_REPO/javax/activation/activation/1.1/activation-1.1-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/chenjw/beancopyutils/1.0.0/beancopyutils-1.0.0.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/chenjw/external/com.baidu.bae.api/1.0.0/com.baidu.bae.api-1.0.0.jar"/>
   <classpathentry kind="src" path="/dt.common.config-1.0-SNAPSHOT"/>
   <classpathentry kind="src" path="/dt.core-1.0-SNAPSHOT"/>
   <classpathentry kind="src" path="/dt.weibo-1.0-SNAPSHOT"/>

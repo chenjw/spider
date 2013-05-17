@@ -1,15 +1,20 @@
 package com.chenjw.client;
 
-import com.chenjw.client.exception.HttpClientException;
+import java.util.Map;
+
+import com.chenjw.client.result.Result;
 import com.chenjw.spider.location.HttpUrl;
 
 public interface HttpClient {
-	public String get(HttpUrl url, String encoding, String cookie)
-			throws HttpClientException;
+	public Result get(HttpUrl url, String encoding, String cookie,
+			Map<String, String> headers);
 
-	public byte[] getBytes(HttpUrl url, String cookie)
-			throws HttpClientException;
+	public Result post(HttpUrl url, String encoding, String cookie,
+			Map<String, String> headers);
 
-	public String post(HttpUrl url, String encoding, String cookie)
-			throws HttpClientException;
+	public Result multPartPost(HttpUrl url, String encoding, String cookie,
+			Map<String, String> headers, String fileParamName, String fileName,
+			byte[] fileBytes);
+
+	public void init();
 }

@@ -3,6 +3,7 @@
   <classpathentry kind="output" path="target/classes"/>
   <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
   <classpathentry kind="var" path="M2_REPO/com/chenjw/beancopyutils/1.0.0/beancopyutils-1.0.0.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/chenjw/external/com.baidu.bae.api/1.0.0/com.baidu.bae.api-1.0.0.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/alibaba/platform/shared/fastjson/1.1.10/fastjson-1.1.10.jar" sourcepath="M2_REPO/com/alibaba/platform/shared/fastjson/1.1.10/fastjson-1.1.10-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/chenjw/external/filterbuilder/1.0.0/filterbuilder-1.0.0.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/chenjw/external/htmllexer/1.0.0/htmllexer-1.0.0.jar"/>

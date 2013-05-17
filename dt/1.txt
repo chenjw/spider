@@ -1,97 +1,236 @@
 [INFO] Scanning for projects...
-[INFO] Reactor build order: 
-[INFO]   dt
-[INFO]   deploy
-[INFO]   common.config
-[INFO]   core
-[INFO]   weibo
-[INFO]   biz
-[INFO]   app
-[INFO]   bundle.war
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.chenjw.spider:dt.deploy:jar:1.0-SNAPSHOT
+[WARNING] The expression ${pom.version} is deprecated. Please use ${project.version} instead.
+[WARNING] The expression ${pom.version} is deprecated. Please use ${project.version} instead.
+[WARNING] The expression ${pom.version} is deprecated. Please use ${project.version} instead.
+[WARNING] The expression ${pom.version} is deprecated. Please use ${project.version} instead.
+[WARNING] The expression ${pom.version} is deprecated. Please use ${project.version} instead.
+[WARNING] The expression ${pom.version} is deprecated. Please use ${project.version} instead.
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.chenjw.spider:dt.common.config:jar:1.0-SNAPSHOT
+[WARNING] The expression ${pom.version} is deprecated. Please use ${project.version} instead.
+[WARNING] The expression ${pom.version} is deprecated. Please use ${project.version} instead.
+[WARNING] The expression ${pom.version} is deprecated. Please use ${project.version} instead.
+[WARNING] The expression ${pom.version} is deprecated. Please use ${project.version} instead.
+[WARNING] The expression ${pom.version} is deprecated. Please use ${project.version} instead.
+[WARNING] The expression ${pom.version} is deprecated. Please use ${project.version} instead.
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.chenjw.spider:dt.core:jar:1.0-SNAPSHOT
+[WARNING] The expression ${pom.version} is deprecated. Please use ${project.version} instead.
+[WARNING] The expression ${pom.version} is deprecated. Please use ${project.version} instead.
+[WARNING] The expression ${pom.version} is deprecated. Please use ${project.version} instead.
+[WARNING] The expression ${pom.version} is deprecated. Please use ${project.version} instead.
+[WARNING] The expression ${pom.version} is deprecated. Please use ${project.version} instead.
+[WARNING] The expression ${pom.version} is deprecated. Please use ${project.version} instead.
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.chenjw.spider:dt.biz:jar:1.0-SNAPSHOT
+[WARNING] The expression ${pom.version} is deprecated. Please use ${project.version} instead.
+[WARNING] The expression ${pom.version} is deprecated. Please use ${project.version} instead.
+[WARNING] The expression ${pom.version} is deprecated. Please use ${project.version} instead.
+[WARNING] The expression ${pom.version} is deprecated. Please use ${project.version} instead.
+[WARNING] The expression ${pom.version} is deprecated. Please use ${project.version} instead.
+[WARNING] The expression ${pom.version} is deprecated. Please use ${project.version} instead.
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.chenjw.spider:dt.weibo:jar:1.0-SNAPSHOT
+[WARNING] The expression ${pom.version} is deprecated. Please use ${project.version} instead.
+[WARNING] The expression ${pom.version} is deprecated. Please use ${project.version} instead.
+[WARNING] The expression ${pom.version} is deprecated. Please use ${project.version} instead.
+[WARNING] The expression ${pom.version} is deprecated. Please use ${project.version} instead.
+[WARNING] The expression ${pom.version} is deprecated. Please use ${project.version} instead.
+[WARNING] The expression ${pom.version} is deprecated. Please use ${project.version} instead.
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.chenjw.spider:dt.web.app:jar:1.0-SNAPSHOT
+[WARNING] The expression ${pom.version} is deprecated. Please use ${project.version} instead.
+[WARNING] The expression ${pom.version} is deprecated. Please use ${project.version} instead.
+[WARNING] The expression ${pom.version} is deprecated. Please use ${project.version} instead.
+[WARNING] The expression ${pom.version} is deprecated. Please use ${project.version} instead.
+[WARNING] The expression ${pom.version} is deprecated. Please use ${project.version} instead.
+[WARNING] The expression ${pom.version} is deprecated. Please use ${project.version} instead.
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.chenjw.spider:dt.bundle.war:war:1.0-SNAPSHOT
+[WARNING] The expression ${pom.version} is deprecated. Please use ${project.version} instead.
+[WARNING] The expression ${pom.version} is deprecated. Please use ${project.version} instead.
+[WARNING] The expression ${pom.version} is deprecated. Please use ${project.version} instead.
+[WARNING] The expression ${pom.version} is deprecated. Please use ${project.version} instead.
+[WARNING] The expression ${pom.version} is deprecated. Please use ${project.version} instead.
+[WARNING] The expression ${pom.version} is deprecated. Please use ${project.version} instead.
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.chenjw.spider:dt.all:pom:1.0-SNAPSHOT
+[WARNING] The expression ${pom.version} is deprecated. Please use ${project.version} instead.
+[WARNING] The expression ${pom.version} is deprecated. Please use ${project.version} instead.
+[WARNING] The expression ${pom.version} is deprecated. Please use ${project.version} instead.
+[WARNING] The expression ${pom.version} is deprecated. Please use ${project.version} instead.
+[WARNING] The expression ${pom.version} is deprecated. Please use ${project.version} instead.
+[WARNING] The expression ${pom.version} is deprecated. Please use ${project.version} instead.
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
 [INFO] ------------------------------------------------------------------------
-[INFO] Building dt
-[INFO]    task-segment: [clean, install]
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] dt
+[INFO] deploy
+[INFO] common.config
+[INFO] core
+[INFO] weibo
+[INFO] biz
+[INFO] app
+[INFO] bundle.war
+[INFO]                                                                         
 [INFO] ------------------------------------------------------------------------
-[INFO] [clean:clean {execution: default-clean}]
-[INFO] [site:attach-descriptor {execution: default-attach-descriptor}]
-[INFO] [install:install {execution: default-install}]
+[INFO] Building dt 1.0-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.4.1:clean (default-clean) @ dt.all ---
+[INFO] 
+[INFO] --- maven-install-plugin:2.3.1:install (default-install) @ dt.all ---
 [INFO] Installing C:\workspace\spider\dt\pom.xml to c:\m2\repository\com\chenjw\spider\dt.all\1.0-SNAPSHOT\dt.all-1.0-SNAPSHOT.pom
+[INFO]                                                                         
 [INFO] ------------------------------------------------------------------------
-[INFO] Building deploy
-[INFO]    task-segment: [clean, install]
+[INFO] Building deploy 1.0-SNAPSHOT
 [INFO] ------------------------------------------------------------------------
-[INFO] [clean:clean {execution: default-clean}]
-[INFO] Deleting directory C:\workspace\spider\dt\deploy\target
-[INFO] [resources:resources {execution: default-resources}]
+[INFO] 
+[INFO] --- maven-clean-plugin:2.4.1:clean (default-clean) @ dt.deploy ---
+[INFO] Deleting C:\workspace\spider\dt\deploy\target
+[INFO] 
+[INFO] --- maven-resources-plugin:2.5:resources (default-resources) @ dt.deploy ---
+[debug] execute contextualize
 [WARNING] Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
 [INFO] Copying 1 resource
-[INFO] [compiler:compile {execution: default-compile}]
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.3.2:compile (default-compile) @ dt.deploy ---
 [INFO] No sources to compile
-[INFO] [resources:testResources {execution: default-testResources}]
+[INFO] 
+[INFO] --- maven-resources-plugin:2.5:testResources (default-testResources) @ dt.deploy ---
+[debug] execute contextualize
 [WARNING] Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
 [INFO] skip non existing resourceDirectory C:\workspace\spider\dt\deploy\src\test\resources
-[INFO] [compiler:testCompile {execution: default-testCompile}]
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.3.2:testCompile (default-testCompile) @ dt.deploy ---
 [INFO] No sources to compile
-[INFO] [surefire:test {execution: default-test}]
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.10:test (default-test) @ dt.deploy ---
 [INFO] No tests to run.
-[INFO] [jar:jar {execution: default-jar}]
+[INFO] Surefire report directory: C:\workspace\spider\dt\deploy\target\surefire-reports
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+
+Results :
+
+Tests run: 0, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] 
+[INFO] --- maven-jar-plugin:2.3.2:jar (default-jar) @ dt.deploy ---
 [INFO] Building jar: C:\workspace\spider\dt\deploy\target\dt.deploy-1.0-SNAPSHOT.jar
-[INFO] [install:install {execution: default-install}]
+[INFO] 
+[INFO] --- maven-install-plugin:2.3.1:install (default-install) @ dt.deploy ---
 [INFO] Installing C:\workspace\spider\dt\deploy\target\dt.deploy-1.0-SNAPSHOT.jar to c:\m2\repository\com\chenjw\spider\dt.deploy\1.0-SNAPSHOT\dt.deploy-1.0-SNAPSHOT.jar
+[INFO] Installing C:\workspace\spider\dt\deploy\pom.xml to c:\m2\repository\com\chenjw\spider\dt.deploy\1.0-SNAPSHOT\dt.deploy-1.0-SNAPSHOT.pom
+[INFO]                                                                         
 [INFO] ------------------------------------------------------------------------
-[INFO] Building common.config
-[INFO]    task-segment: [clean, install]
+[INFO] Building common.config 1.0-SNAPSHOT
 [INFO] ------------------------------------------------------------------------
-[INFO] [clean:clean {execution: default-clean}]
-[INFO] Deleting directory C:\workspace\spider\dt\common\config\target
-[INFO] [resources:resources {execution: default-resources}]
+[INFO] 
+[INFO] --- maven-clean-plugin:2.4.1:clean (default-clean) @ dt.common.config ---
+[INFO] Deleting C:\workspace\spider\dt\common\config\target
+[INFO] 
+[INFO] --- maven-resources-plugin:2.5:resources (default-resources) @ dt.common.config ---
+[debug] execute contextualize
 [WARNING] Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
 [INFO] Copying 22 resources
-[INFO] [compiler:compile {execution: default-compile}]
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.3.2:compile (default-compile) @ dt.common.config ---
 [INFO] No sources to compile
-[INFO] [resources:testResources {execution: default-testResources}]
+[INFO] 
+[INFO] --- maven-resources-plugin:2.5:testResources (default-testResources) @ dt.common.config ---
+[debug] execute contextualize
 [WARNING] Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
 [INFO] skip non existing resourceDirectory C:\workspace\spider\dt\common\config\src\test\resources
-[INFO] [compiler:testCompile {execution: default-testCompile}]
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.3.2:testCompile (default-testCompile) @ dt.common.config ---
 [INFO] No sources to compile
-[INFO] [surefire:test {execution: default-test}]
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.10:test (default-test) @ dt.common.config ---
 [INFO] No tests to run.
-[INFO] [jar:jar {execution: default-jar}]
+[INFO] Surefire report directory: C:\workspace\spider\dt\common\config\target\surefire-reports
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+
+Results :
+
+Tests run: 0, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] 
+[INFO] --- maven-jar-plugin:2.3.2:jar (default-jar) @ dt.common.config ---
 [INFO] Building jar: C:\workspace\spider\dt\common\config\target\dt.common.config-1.0-SNAPSHOT.jar
-[INFO] [install:install {execution: default-install}]
+[INFO] 
+[INFO] --- maven-install-plugin:2.3.1:install (default-install) @ dt.common.config ---
 [INFO] Installing C:\workspace\spider\dt\common\config\target\dt.common.config-1.0-SNAPSHOT.jar to c:\m2\repository\com\chenjw\spider\dt.common.config\1.0-SNAPSHOT\dt.common.config-1.0-SNAPSHOT.jar
+[INFO] Installing C:\workspace\spider\dt\common\config\pom.xml to c:\m2\repository\com\chenjw\spider\dt.common.config\1.0-SNAPSHOT\dt.common.config-1.0-SNAPSHOT.pom
+[INFO]                                                                         
 [INFO] ------------------------------------------------------------------------
-[INFO] Building core
-[INFO]    task-segment: [clean, install]
+[INFO] Building core 1.0-SNAPSHOT
 [INFO] ------------------------------------------------------------------------
-[INFO] [clean:clean {execution: default-clean}]
-[INFO] Deleting directory C:\workspace\spider\dt\core\target
-[INFO] [resources:resources {execution: default-resources}]
+[INFO] 
+[INFO] --- maven-clean-plugin:2.4.1:clean (default-clean) @ dt.core ---
+[INFO] Deleting C:\workspace\spider\dt\core\target
+[INFO] 
+[INFO] --- maven-resources-plugin:2.5:resources (default-resources) @ dt.core ---
+[debug] execute contextualize
 [WARNING] Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
 [INFO] skip non existing resourceDirectory C:\workspace\spider\dt\core\src\main\resources
-[INFO] [compiler:compile {execution: default-compile}]
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.3.2:compile (default-compile) @ dt.core ---
 [INFO] Compiling 35 source files to C:\workspace\spider\dt\core\target\classes
-[INFO] [resources:testResources {execution: default-testResources}]
+[INFO] 
+[INFO] --- maven-resources-plugin:2.5:testResources (default-testResources) @ dt.core ---
+[debug] execute contextualize
 [WARNING] Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
 [INFO] skip non existing resourceDirectory C:\workspace\spider\dt\core\src\test\resources
-[INFO] [compiler:testCompile {execution: default-testCompile}]
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.3.2:testCompile (default-testCompile) @ dt.core ---
 [INFO] No sources to compile
-[INFO] [surefire:test {execution: default-test}]
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.10:test (default-test) @ dt.core ---
 [INFO] No tests to run.
-[INFO] [jar:jar {execution: default-jar}]
+[INFO] Surefire report directory: C:\workspace\spider\dt\core\target\surefire-reports
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+
+Results :
+
+Tests run: 0, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] 
+[INFO] --- maven-jar-plugin:2.3.2:jar (default-jar) @ dt.core ---
 [INFO] Building jar: C:\workspace\spider\dt\core\target\dt.core-1.0-SNAPSHOT.jar
-[INFO] [install:install {execution: default-install}]
+[INFO] 
+[INFO] --- maven-install-plugin:2.3.1:install (default-install) @ dt.core ---
 [INFO] Installing C:\workspace\spider\dt\core\target\dt.core-1.0-SNAPSHOT.jar to c:\m2\repository\com\chenjw\spider\dt.core\1.0-SNAPSHOT\dt.core-1.0-SNAPSHOT.jar
+[INFO] Installing C:\workspace\spider\dt\core\pom.xml to c:\m2\repository\com\chenjw\spider\dt.core\1.0-SNAPSHOT\dt.core-1.0-SNAPSHOT.pom
+[INFO]                                                                         
 [INFO] ------------------------------------------------------------------------
-[INFO] Building weibo
-[INFO]    task-segment: [clean, install]
+[INFO] Building weibo 1.0-SNAPSHOT
 [INFO] ------------------------------------------------------------------------
-[INFO] [clean:clean {execution: default-clean}]
-[INFO] Deleting directory C:\workspace\spider\dt\weibo\target
-[INFO] [resources:resources {execution: default-resources}]
+[INFO] 
+[INFO] --- maven-clean-plugin:2.4.1:clean (default-clean) @ dt.weibo ---
+[INFO] Deleting C:\workspace\spider\dt\weibo\target
+[INFO] 
+[INFO] --- maven-resources-plugin:2.5:resources (default-resources) @ dt.weibo ---
+[debug] execute contextualize
 [WARNING] Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
 [INFO] skip non existing resourceDirectory C:\workspace\spider\dt\weibo\src\main\resources
-[INFO] [compiler:compile {execution: default-compile}]
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.3.2:compile (default-compile) @ dt.weibo ---
 [INFO] Compiling 69 source files to C:\workspace\spider\dt\weibo\target\classes
 [WARNING] \workspace\spider\dt\weibo\src\main\java\weibo4j\http\ImageItem.java:[14,34] 警告：com.sun.imageio.plugins.bmp.BMPImageReader 是 Sun 的专用 API，可能会在未来版本中删除
 [WARNING] \workspace\spider\dt\weibo\src\main\java\weibo4j\http\ImageItem.java:[15,34] 警告：com.sun.imageio.plugins.gif.GIFImageReader 是 Sun 的专用 API，可能会在未来版本中删除
@@ -103,84 +242,148 @@
 [WARNING] \workspace\spider\dt\weibo\src\main\java\weibo4j\http\ImageItem.java:[76,33] 警告：com.sun.imageio.plugins.bmp.BMPImageReader 是 Sun 的专用 API，可能会在未来版本中删除
 [WARNING] \workspace\spider\dt\weibo\src\main\java\weibo4j\Oauth.java:[55,10] 警告：sun.misc.BASE64Decoder 是 Sun 的专用 API，可能会在未来版本中删除
 [WARNING] \workspace\spider\dt\weibo\src\main\java\weibo4j\Oauth.java:[55,46] 警告：sun.misc.BASE64Decoder 是 Sun 的专用 API，可能会在未来版本中删除
-[INFO] [resources:testResources {execution: default-testResources}]
+[INFO] 
+[INFO] --- maven-resources-plugin:2.5:testResources (default-testResources) @ dt.weibo ---
+[debug] execute contextualize
 [WARNING] Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
 [INFO] skip non existing resourceDirectory C:\workspace\spider\dt\weibo\src\test\resources
-[INFO] [compiler:testCompile {execution: default-testCompile}]
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.3.2:testCompile (default-testCompile) @ dt.weibo ---
 [INFO] No sources to compile
-[INFO] [surefire:test {execution: default-test}]
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.10:test (default-test) @ dt.weibo ---
 [INFO] No tests to run.
-[INFO] [jar:jar {execution: default-jar}]
+[INFO] Surefire report directory: C:\workspace\spider\dt\weibo\target\surefire-reports
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+
+Results :
+
+Tests run: 0, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] 
+[INFO] --- maven-jar-plugin:2.3.2:jar (default-jar) @ dt.weibo ---
 [INFO] Building jar: C:\workspace\spider\dt\weibo\target\dt.weibo-1.0-SNAPSHOT.jar
-[INFO] [install:install {execution: default-install}]
+[INFO] 
+[INFO] --- maven-install-plugin:2.3.1:install (default-install) @ dt.weibo ---
 [INFO] Installing C:\workspace\spider\dt\weibo\target\dt.weibo-1.0-SNAPSHOT.jar to c:\m2\repository\com\chenjw\spider\dt.weibo\1.0-SNAPSHOT\dt.weibo-1.0-SNAPSHOT.jar
+[INFO] Installing C:\workspace\spider\dt\weibo\pom.xml to c:\m2\repository\com\chenjw\spider\dt.weibo\1.0-SNAPSHOT\dt.weibo-1.0-SNAPSHOT.pom
+[INFO]                                                                         
 [INFO] ------------------------------------------------------------------------
-[INFO] Building biz
-[INFO]    task-segment: [clean, install]
+[INFO] Building biz 1.0-SNAPSHOT
 [INFO] ------------------------------------------------------------------------
-[INFO] [clean:clean {execution: default-clean}]
-[INFO] Deleting directory C:\workspace\spider\dt\biz\target
-[INFO] [resources:resources {execution: default-resources}]
+[INFO] 
+[INFO] --- maven-clean-plugin:2.4.1:clean (default-clean) @ dt.biz ---
+[INFO] Deleting C:\workspace\spider\dt\biz\target
+[INFO] 
+[INFO] --- maven-resources-plugin:2.5:resources (default-resources) @ dt.biz ---
+[debug] execute contextualize
 [WARNING] Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
 [INFO] skip non existing resourceDirectory C:\workspace\spider\dt\biz\src\main\resources
-[INFO] [compiler:compile {execution: default-compile}]
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.3.2:compile (default-compile) @ dt.biz ---
 [INFO] Compiling 66 source files to C:\workspace\spider\dt\biz\target\classes
-[INFO] [resources:testResources {execution: default-testResources}]
+[INFO] 
+[INFO] --- maven-resources-plugin:2.5:testResources (default-testResources) @ dt.biz ---
+[debug] execute contextualize
 [WARNING] Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
 [INFO] skip non existing resourceDirectory C:\workspace\spider\dt\biz\src\test\resources
-[INFO] [compiler:testCompile {execution: default-testCompile}]
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.3.2:testCompile (default-testCompile) @ dt.biz ---
 [INFO] Compiling 5 source files to C:\workspace\spider\dt\biz\target\test-classes
-[INFO] [surefire:test {execution: default-test}]
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.10:test (default-test) @ dt.biz ---
 [INFO] Surefire report directory: C:\workspace\spider\dt\biz\target\surefire-reports
 
 -------------------------------------------------------
  T E S T S
 -------------------------------------------------------
 Running Test
-Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.014 sec
+Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 sec
 Running WeiboCnTest
-Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.009 sec
+Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 sec
 
 Results :
 
 Tests run: 0, Failures: 0, Errors: 0, Skipped: 0
 
-[INFO] [jar:jar {execution: default-jar}]
+[INFO] 
+[INFO] --- maven-jar-plugin:2.3.2:jar (default-jar) @ dt.biz ---
 [INFO] Building jar: C:\workspace\spider\dt\biz\target\dt.biz-1.0-SNAPSHOT.jar
-[INFO] [install:install {execution: default-install}]
+[INFO] 
+[INFO] --- maven-install-plugin:2.3.1:install (default-install) @ dt.biz ---
 [INFO] Installing C:\workspace\spider\dt\biz\target\dt.biz-1.0-SNAPSHOT.jar to c:\m2\repository\com\chenjw\spider\dt.biz\1.0-SNAPSHOT\dt.biz-1.0-SNAPSHOT.jar
+[INFO] Installing C:\workspace\spider\dt\biz\pom.xml to c:\m2\repository\com\chenjw\spider\dt.biz\1.0-SNAPSHOT\dt.biz-1.0-SNAPSHOT.pom
+[INFO]                                                                         
 [INFO] ------------------------------------------------------------------------
-[INFO] Building app
-[INFO]    task-segment: [clean, install]
+[INFO] Building app 1.0-SNAPSHOT
 [INFO] ------------------------------------------------------------------------
-[INFO] [clean:clean {execution: default-clean}]
-[INFO] Deleting directory C:\workspace\spider\dt\app\target
-[INFO] [resources:resources {execution: default-resources}]
+[INFO] 
+[INFO] --- maven-clean-plugin:2.4.1:clean (default-clean) @ dt.web.app ---
+[INFO] Deleting C:\workspace\spider\dt\app\target
+[INFO] 
+[INFO] --- maven-resources-plugin:2.5:resources (default-resources) @ dt.web.app ---
+[debug] execute contextualize
 [WARNING] Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
 [INFO] skip non existing resourceDirectory C:\workspace\spider\dt\app\src\main\resources
-[INFO] [compiler:compile {execution: default-compile}]
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.3.2:compile (default-compile) @ dt.web.app ---
 [INFO] Compiling 31 source files to C:\workspace\spider\dt\app\target\classes
-[INFO] [resources:testResources {execution: default-testResources}]
+[INFO] 
+[INFO] --- maven-resources-plugin:2.5:testResources (default-testResources) @ dt.web.app ---
+[debug] execute contextualize
 [WARNING] Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
 [INFO] skip non existing resourceDirectory C:\workspace\spider\dt\app\src\test\resources
-[INFO] [compiler:testCompile {execution: default-testCompile}]
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.3.2:testCompile (default-testCompile) @ dt.web.app ---
 [INFO] No sources to compile
-[INFO] [surefire:test {execution: default-test}]
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.10:test (default-test) @ dt.web.app ---
 [INFO] No tests to run.
-[INFO] [jar:jar {execution: default-jar}]
-[INFO] Building jar: C:\workspace\spider\dt\app\target\dt.web.app-1.0-SNAPSHOT.jar
-[INFO] [install:install {execution: default-install}]
-[INFO] Installing C:\workspace\spider\dt\app\target\dt.web.app-1.0-SNAPSHOT.jar to c:\m2\repository\com\chenjw\spider\dt.web.app\1.0-SNAPSHOT\dt.web.app-1.0-SNAPSHOT.jar
-[INFO] ------------------------------------------------------------------------
-[ERROR] BUILD ERROR
-[INFO] ------------------------------------------------------------------------
-[INFO] Error installing artifact's metadata: Error installing metadata: Error updating group repository metadata
+[INFO] Surefire report directory: C:\workspace\spider\dt\app\target\surefire-reports
 
-only whitespace content allowed before start tag and not \u0 (position: START_DOCUMENT seen \u0... @1:1) 
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+
+Results :
+
+Tests run: 0, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] 
+[INFO] --- maven-jar-plugin:2.3.2:jar (default-jar) @ dt.web.app ---
+[INFO] Building jar: C:\workspace\spider\dt\app\target\dt.web.app-1.0-SNAPSHOT.jar
+[INFO] 
+[INFO] --- maven-install-plugin:2.3.1:install (default-install) @ dt.web.app ---
+[INFO] Installing C:\workspace\spider\dt\app\target\dt.web.app-1.0-SNAPSHOT.jar to c:\m2\repository\com\chenjw\spider\dt.web.app\1.0-SNAPSHOT\dt.web.app-1.0-SNAPSHOT.jar
+[INFO] Installing C:\workspace\spider\dt\app\pom.xml to c:\m2\repository\com\chenjw\spider\dt.web.app\1.0-SNAPSHOT\dt.web.app-1.0-SNAPSHOT.pom
 [INFO] ------------------------------------------------------------------------
-[INFO] For more information, run Maven with the -e switch
+[INFO] Reactor Summary:
+[INFO] 
+[INFO] dt ................................................ SUCCESS [0.551s]
+[INFO] deploy ............................................ SUCCESS [2.027s]
+[INFO] common.config ..................................... SUCCESS [0.797s]
+[INFO] core .............................................. SUCCESS [2.296s]
+[INFO] weibo ............................................. SUCCESS [3.185s]
+[INFO] biz ............................................... SUCCESS [3.325s]
+[INFO] app ............................................... FAILURE [2.685s]
+[INFO] bundle.war ........................................ SKIPPED
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time: 13 seconds
-[INFO] Finished at: Mon May 13 13:19:20 CST 2013
-[INFO] Final Memory: 50M/375M
+[INFO] BUILD FAILURE
 [INFO] ------------------------------------------------------------------------
+[INFO] Total time: 15.163s
+[INFO] Finished at: Mon May 13 13:49:00 CST 2013
+[INFO] Final Memory: 28M/181M
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-install-plugin:2.3.1:install (default-install) on project dt.web.app: Failed to install metadata com.chenjw.spider:dt.web.app:1.0-SNAPSHOT/maven-metadata.xml: Could not parse metadata c:\m2\repository\com\chenjw\spider\dt.web.app\1.0-SNAPSHOT\maven-metadata-local.xml: only whitespace content allowed before start tag and not \u0 (position: START_DOCUMENT seen \u0... @1:1) -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
+[ERROR] 
+[ERROR] After correcting the problems, you can resume the build with the command
+[ERROR]   mvn <goals> -rf :dt.web.app

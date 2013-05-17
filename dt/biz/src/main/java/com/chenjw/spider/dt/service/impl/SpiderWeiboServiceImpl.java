@@ -5,7 +5,7 @@ import java.util.Map;
 
 import com.alibaba.fastjson.JSON;
 import com.chenjw.client.HttpClient;
-import com.chenjw.client.exception.HttpClientException;
+import com.chenjw.client.result.Result;
 import com.chenjw.parser.utils.TemplateUtils;
 import com.chenjw.spider.dt.model.TweetModel;
 import com.chenjw.spider.dt.parser.UserTimelineParser;
@@ -27,22 +27,21 @@ public class SpiderWeiboServiceImpl extends OpenWeiboServiceImpl {
 	@Override
 	public List<TweetModel> findUserTimelineByUserId(String userId,
 			String token, long sinceId) {
-		try {
-			HttpUrl url = UrlParseUtils.parseUrl(url2);
-			// url.getQueryParam().put("since_id", String.valueOf(sinceId));
-			url.getQueryParam().put("uid", userId);
-			String s = TemplateUtils.render(cookie, url.getQueryParam());
-			String str = httpClient.get(url, "UTF-8", s);
 
-			Map m = JSON.parseObject(str, Map.class);
-			String d = (String) m.get("data");
-			// System.out.println(d);
-			List<TweetModel> result = UserTimelineParser.parse(d);
-			return result;
-		} catch (HttpClientException e) {
-			e.printStackTrace();
+		HttpUrl url = UrlParseUtils.parseUrl(url2);
+		// url.getQueryParam().put("since_id", String.valueOf(sinceId));
+		url.getQueryParam().put("uid", userId);
+		String s = TemplateUtils.render(cookie, url.getQueryParam());
+		Result result = httpClient.get(url, "UTF-8", s, null);
+		if (!result.isSuccess()) {
 			return null;
 		}
+		String str = result.getResultString();
+		Map m = JSON.parseObject(str, Map.class);
+		String d = (String) m.get("data");
+		// System.out.println(d);
+		List<TweetModel> r = UserTimelineParser.parse(d);
+		return r;
 
 	}
 

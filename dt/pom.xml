@@ -225,6 +225,13 @@
 				<version>1.0.0</version>
 			</dependency>
 			<!--htmlparser end-->
+
+			<dependency>
+				<groupId>com.chenjw.external</groupId>
+				<artifactId>com.baidu.bae.api</artifactId>
+				<version>1.0.0</version>
+			</dependency>
+
 		</dependencies>
 	</dependencyManagement>
 	<properties>

@@ -58,7 +58,7 @@ input {
 				<td colspan="2"><button type="submit">注册用户</button></td>
 			</tr>
 			<tr>
-				<td colspan="2"> <a href="/how_to_get_app_key.htm" target="_blank">如何获得App Key和App Secret</a></td>
+				<td colspan="2"> <a href="/how_to_get_app_key" target="_blank">如何获得App Key和App Secret</a></td>
 			</tr>
 		</table>
 

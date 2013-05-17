@@ -8,7 +8,7 @@ import java.util.List;
 import org.apache.commons.io.FileUtils;
 
 import com.chenjw.client.HttpClient;
-import com.chenjw.client.exception.HttpClientException;
+import com.chenjw.client.result.Result;
 import com.chenjw.parser.utils.TemplateUtils;
 import com.chenjw.spider.dt.model.TweetModel;
 import com.chenjw.spider.location.HttpUrl;
@@ -24,25 +24,23 @@ public class WapSpiderWeiboServiceImpl extends OpenWeiboServiceImpl {
 	@Override
 	public List<TweetModel> findUserTimelineByUserId(String userId,
 			String token, long sinceId) {
-		try {
-			int page = 1;
-			HttpUrl url = UrlParseUtils.parseUrl(url2);
-			url.getQueryParam().put("userId", userId);
-			url.getQueryParam().put("page", String.valueOf(page));
-			String str = httpClient.get(url, "UTF-8",
-					TemplateUtils.render(cookie, url.getQueryParam()));
-			try {
-				FileUtils.writeStringToFile(
-						new File("/home/chenjw/test/a.txt"), str);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-
-			return new ArrayList<TweetModel>();
-		} catch (HttpClientException e) {
+		int page = 1;
+		HttpUrl url = UrlParseUtils.parseUrl(url2);
+		url.getQueryParam().put("userId", userId);
+		url.getQueryParam().put("page", String.valueOf(page));
+		Result result = httpClient.get(url, "UTF-8",
+				TemplateUtils.render(cookie, url.getQueryParam()), null);
+		if (!result.isSuccess()) {
 			return null;
 		}
-
+		String str = result.getResultString();
+		try {
+			FileUtils.writeStringToFile(new File("/home/chenjw/test/a.txt"),
+					str);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return new ArrayList<TweetModel>();
 	}
 
 	public void setHttpClient(HttpClient httpClient) {

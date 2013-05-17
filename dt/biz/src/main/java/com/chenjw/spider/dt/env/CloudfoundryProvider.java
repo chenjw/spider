@@ -7,6 +7,8 @@ import java.util.Properties;
 
 import org.apache.commons.io.IOUtils;
 
+import weibo4j.util.WeiboConfig;
+
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
@@ -14,25 +16,36 @@ import com.chenjw.spider.dt.constants.EnvConstants;
 
 public class CloudfoundryProvider implements EnvProvider {
 
-	private static Properties CLOUDFOUNDRY_PROPERTIES;
-	private static Properties PROPERTIES;
+	private  Properties cloudfoundryProperties;
+	private  Properties properties;
 	private static final String VCAP_SERVICES_KEY = "VCAP_SERVICES";
 	private static final String VMC_APP_INSTANCE_KEY = "VMC_APP_INSTANCE";
-	private static int instanceIndex;
+	private  int instanceIndex;
 
-	private static void init() {
-		if (PROPERTIES != null) {
+	@Override
+	public void init() {
+		initCloudfoundry();
+		initDb();
+		initWeibo();
+	}
+	
+	private void initWeibo() {
+		WeiboConfig.load("env/cloudfoundry/weibo.properties");
+	}
+	
+	private void initDb() {
+		if (properties != null) {
 			return;
 		}
 		try {
-			PROPERTIES = new Properties();
-			PROPERTIES.load(LocalProvider.class.getClassLoader()
+			properties = new Properties();
+			properties.load(LocalProvider.class.getClassLoader()
 					.getResourceAsStream("env/cloudfoundry/db.properties"));
 		} catch (IOException e) {
 		}
-		for (Map.Entry<Object, Object> entry : PROPERTIES.entrySet()) {
+		for (Map.Entry<Object, Object> entry : properties.entrySet()) {
 			if (entry.getValue() != null) {
-				Object v = CLOUDFOUNDRY_PROPERTIES.get(entry.getValue()
+				Object v = cloudfoundryProperties.get(entry.getValue()
 						.toString());
 				if (v != null) {
 					entry.setValue(v);
@@ -44,11 +57,11 @@ public class CloudfoundryProvider implements EnvProvider {
 	}
 
 	@SuppressWarnings("unchecked")
-	private static void initCloudfoundry() {
-		if (CLOUDFOUNDRY_PROPERTIES != null) {
+	private  void initCloudfoundry() {
+		if (cloudfoundryProperties != null) {
 			return;
 		}
-		CLOUDFOUNDRY_PROPERTIES = new Properties();
+		cloudfoundryProperties = new Properties();
 		String services = System.getenv(VCAP_SERVICES_KEY);
 		if (services == null) {
 			try {
@@ -74,7 +87,7 @@ public class CloudfoundryProvider implements EnvProvider {
 						(JSONObject) map1.get("credentials"), Map.class);
 				for (Entry<String, Object> entry : map2.entrySet()) {
 					String key2 = key1 + "_" + entry.getKey();
-					CLOUDFOUNDRY_PROPERTIES.put(key2, entry.getValue()
+					cloudfoundryProperties.put(key2, entry.getValue()
 							.toString());
 				}
 			}
@@ -88,9 +101,8 @@ public class CloudfoundryProvider implements EnvProvider {
 	}
 
 	public Properties getProperties() {
-		initCloudfoundry();
-		init();
-		return PROPERTIES;
+
+		return properties;
 	}
 
 	public boolean isEnable() {
@@ -116,4 +128,6 @@ public class CloudfoundryProvider implements EnvProvider {
 	public int getInstanceIndex() {
 		return instanceIndex;
 	}
+
+
 }

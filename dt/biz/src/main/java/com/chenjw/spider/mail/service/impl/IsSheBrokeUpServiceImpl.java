@@ -3,7 +3,7 @@ package com.chenjw.spider.mail.service.impl;
 import org.springframework.beans.factory.InitializingBean;
 
 import com.chenjw.client.HttpClient;
-import com.chenjw.client.exception.HttpClientException;
+import com.chenjw.client.result.Result;
 import com.chenjw.spider.dt.constants.EnvConstants;
 import com.chenjw.spider.location.UrlParseUtils;
 import com.chenjw.spider.mail.MailSenderInfo;
@@ -27,17 +27,18 @@ public class IsSheBrokeUpServiceImpl implements IsSheBrokeUpService,
 	}
 
 	private boolean isDeleted() {
-		String result = null;
-		try {
-			result = httpClient.get(UrlParseUtils
-					.parseUrl("http://weibo.com/2646772100/zhZ1FdYYG"),
-					"UTF-8", cookie);
-		} catch (HttpClientException e) {
-		}
-		if (result == null) {
+		Result result = httpClient
+				.get(UrlParseUtils
+						.parseUrl("http://weibo.com/2646772100/zhZ1FdYYG"),
+						"UTF-8", cookie, null);
+		if (!result.isSuccess()) {
 			return false;
 		}
-		if (result.indexOf("这问题到底是该跟脑走，还是跟着心情走？") != -1) {
+		String str = result.getResultString();
+		if (str == null) {
+			return false;
+		}
+		if (str.indexOf("这问题到底是该跟脑走，还是跟着心情走？") != -1) {
 			return false;
 		}
 		return true;
@@ -81,22 +82,22 @@ public class IsSheBrokeUpServiceImpl implements IsSheBrokeUpService,
 		if (!EnvConstants.isProductMode()) {
 			return;
 		}
-//		new Thread(new Runnable() {
-//
-//			@Override
-//			public void run() {
-//				while (true) {
-//					try {
-//						check();
-//						Thread.sleep(24 * 60 * 60 * 1000);
-//					} catch (Exception e) {
-//						e.printStackTrace();
-//					}
-//				}
-//
-//			}
-//
-//		}).start();
+		// new Thread(new Runnable() {
+		//
+		// @Override
+		// public void run() {
+		// while (true) {
+		// try {
+		// check();
+		// Thread.sleep(24 * 60 * 60 * 1000);
+		// } catch (Exception e) {
+		// e.printStackTrace();
+		// }
+		// }
+		//
+		// }
+		//
+		// }).start();
 
 	}
 

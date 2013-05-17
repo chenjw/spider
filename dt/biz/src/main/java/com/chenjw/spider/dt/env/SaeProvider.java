@@ -3,24 +3,36 @@ package com.chenjw.spider.dt.env;
 import java.io.IOException;
 import java.util.Properties;
 
-public class SaeProvider implements EnvProvider {
-	private static Properties PROPERTIES;
+import weibo4j.util.WeiboConfig;
 
-	public Properties getProperties() {
-		init();
-		return PROPERTIES;
+public class SaeProvider implements EnvProvider {
+	private static Properties properties;
+
+	@Override
+	public void init() {
+		initDb();
+		initWeibo();
 	}
 
-	private static void init() {
-		if (PROPERTIES != null) {
+	
+	public Properties getProperties() {
+		return properties;
+	}
+
+	private  void initDb() {
+		if (properties != null) {
 			return;
 		}
 		try {
-			PROPERTIES = new Properties();
-			PROPERTIES.load(LocalProvider.class.getClassLoader()
+			properties = new Properties();
+			properties.load(LocalProvider.class.getClassLoader()
 					.getResourceAsStream("env/sae/db.properties"));
 		} catch (IOException e) {
 		}
+	}
+	
+	private void initWeibo() {
+		WeiboConfig.load("env/sae/weibo.properties");
 	}
 
 	public boolean isEnable() {

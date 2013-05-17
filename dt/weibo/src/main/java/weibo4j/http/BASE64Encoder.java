@@ -27,7 +27,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 package weibo4j.http;
 /**
  * A utility class encodes byte array into String using Base64 encoding scheme.
- * @see weibo4j.http.HttpClient
+ * @see weibo4j.http.WeiboHttpClient
  * @author Yusuke Yamamoto - yusuke at mac.com
  */
 public class BASE64Encoder {

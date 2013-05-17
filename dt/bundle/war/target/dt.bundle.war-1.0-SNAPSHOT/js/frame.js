@@ -184,6 +184,6 @@ $(document).ready(function() {
 
 			App.scrollToTop();
 
-			DT.showTip("出现在这里的都是您关注列表中被删除的微博。");
+			//DT.showTip("出现在这里的都是您关注列表中被删除的微博。");
 
 		});

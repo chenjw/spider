@@ -39,9 +39,14 @@ public class DeletedTweetCheckServiceImpl implements DeletedTweetCheckService,
 	private WeiboService weiboService;
 	private boolean running = false;
 
-	private ExecutorService pool = new ThreadPoolExecutor(10, 10,
-			Constants.WEIBO_QUERY_KEEP_ALIVE_TIME, TimeUnit.MILLISECONDS,
-			new LinkedBlockingQueue<Runnable>());
+	private ExecutorService pool;
+	{
+		if("true".equals(WeiboConfig.getValue("is_auto_fatch"))){
+			 pool = new ThreadPoolExecutor(10, 10,
+					Constants.WEIBO_QUERY_KEEP_ALIVE_TIME, TimeUnit.MILLISECONDS,
+					new LinkedBlockingQueue<Runnable>());
+		}
+	}
 
 	public void start() {
 		running = true;
@@ -174,12 +179,17 @@ public class DeletedTweetCheckServiceImpl implements DeletedTweetCheckService,
 			TokenMapper.do2Model(user, model);
 			
 			if (model.isValid() && !StringUtils.isBlank(model.getToken())) {
-				pool.execute(new Runnable() {
-					@Override
-					public void run() {
-						checkWatchedUser(model);
-					}
-				});
+				if("true".equals(WeiboConfig.getValue("is_auto_fatch"))){
+					pool.execute(new Runnable() {
+						@Override
+						public void run() {
+							checkWatchedUser(model);
+						}
+					});
+				}
+				else{
+					checkWatchedUser(model);
+				}
 			}
 
 		}
@@ -190,28 +200,32 @@ public class DeletedTweetCheckServiceImpl implements DeletedTweetCheckService,
 		// if (EnvConstants.isProductMode()) {
 		start();
 		// }
-//		new Thread(new Runnable() {
-//			@Override
-//			public void run() {
-//				while (true) {
-//					if (running) {
-//						try {
-//							DeletedTweetCheckServiceImpl.this.checkAll();
-//							Constants.LOGGER.info("checkAll finished!");
-//						} catch (Exception e) {
-//							e.printStackTrace();
-//						}
-//					}
-//					try {
-//						Thread.sleep(Constants.WEIBO_QUERY_TIME);
-//					} catch (InterruptedException e) {
-//						e.printStackTrace();
-//					}
-//				}
-//
-//			}
-//
-//		}).start();
+		
+		if("true".equals(WeiboConfig.getValue("is_auto_fatch"))){
+			new Thread(new Runnable() {
+				@Override
+				public void run() {
+					while (true) {
+						if (running) {
+							try {
+								DeletedTweetCheckServiceImpl.this.checkAll();
+								Constants.LOGGER.info("checkAll finished!");
+							} catch (Exception e) {
+								e.printStackTrace();
+							}
+						}
+						try {
+							Thread.sleep(Constants.WEIBO_QUERY_TIME);
+						} catch (InterruptedException e) {
+							e.printStackTrace();
+						}
+					}
+
+				}
+
+			}).start();
+		}
+
 	}
 
 	public void setWatchedUserDAO(WatchedUserDAO watchedUserDAO) {

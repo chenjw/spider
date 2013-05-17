@@ -32,6 +32,7 @@
 				app.screen.welcome
 				app.screen.howToGetAppKey
 				app.action.userAction
+				app.action.command
 			</value>
 		</property>
 	</bean>

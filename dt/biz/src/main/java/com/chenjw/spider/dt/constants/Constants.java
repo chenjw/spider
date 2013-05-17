@@ -2,7 +2,7 @@ package com.chenjw.spider.dt.constants;
 
 import java.util.logging.Logger;
 
-import weibo4j.http.HttpClient;
+import weibo4j.http.WeiboHttpClient;
 
 public class Constants {
 	// 微博保留的时间间隔（单位秒），默认保留4天内的所有微博。
@@ -12,6 +12,6 @@ public class Constants {
 
 	// 查找微博，超时时间
 	public static int WEIBO_QUERY_KEEP_ALIVE_TIME = 90 * 1000;
-	public static final Logger LOGGER = Logger.getLogger(HttpClient.class
+	public static final Logger LOGGER = Logger.getLogger(WeiboHttpClient.class
 			.getName());
 }

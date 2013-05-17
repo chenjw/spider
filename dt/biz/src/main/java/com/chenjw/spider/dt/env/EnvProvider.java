@@ -9,6 +9,8 @@ public interface EnvProvider {
 
 	public Properties getProperties();
 
+	public void init();
+	
 	public boolean isEnable();
 
 	public String getName();

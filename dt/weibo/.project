@@ -1,7 +1,9 @@
 <projectDescription>
   <name>dt.weibo-1.0-SNAPSHOT</name>
   <comment/>
-  <projects/>
+  <projects>
+    <project>dt.core-1.0-SNAPSHOT</project>
+  </projects>
   <buildSpec>
     <buildCommand>
       <name>org.eclipse.jdt.core.javabuilder</name>

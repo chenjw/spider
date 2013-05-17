@@ -14,9 +14,24 @@
 	<name>weibo</name>
 	<dependencies>
 		<dependency>
+			<groupId>com.chenjw.spider</groupId>
+			<artifactId>dt.core</artifactId>
+		</dependency>
+	
+		<dependency>
 			<groupId>com.alibaba.external</groupId>
 			<artifactId>jakarta.commons.httpclient</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>com.alibaba.external</groupId>
+			<artifactId>jakarta.commons.lang</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.alibaba.external</groupId>
+			<artifactId>jakarta.commons.io</artifactId>
+		</dependency>
+		
 		<dependency>
 			<groupId>com.alibaba.external</groupId>
 			<artifactId>jakarta.log4j</artifactId>

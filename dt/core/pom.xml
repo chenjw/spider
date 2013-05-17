@@ -65,5 +65,9 @@
 			<artifactId>beancopyutils</artifactId>
 		</dependency>
 
+		<dependency>
+			<groupId>com.chenjw.external</groupId>
+			<artifactId>com.baidu.bae.api</artifactId>
+		</dependency>
 	</dependencies>
 </project>

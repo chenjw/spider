@@ -3,28 +3,39 @@ package com.chenjw.spider.dt.env;
 import java.io.IOException;
 import java.util.Properties;
 
+import weibo4j.util.WeiboConfig;
+
 public class LocalProvider implements EnvProvider {
-	private static Properties PROPERTIES;
+	private  Properties properties;
 
 	public Properties getProperties() {
-		init();
-		return PROPERTIES;
+		return properties;
+	}
+	
+	@Override
+	public void init() {
+		initDb();
+		initWeibo();
 	}
 
-	private static void init() {
-		if (PROPERTIES != null) {
+	private  void initDb() {
+		if (properties != null) {
 			return;
 		}
 		try {
-			PROPERTIES = new Properties();
-			PROPERTIES.load(LocalProvider.class.getClassLoader()
+			properties = new Properties();
+			properties.load(LocalProvider.class.getClassLoader()
 					.getResourceAsStream("env/local/db.properties"));
 		} catch (IOException e) {
 		}
 	}
 
+	private void initWeibo() {
+		WeiboConfig.load("env/local/weibo.properties");
+	}
+	
 	public boolean isEnable() {
-		return "chenjw".equals(System.getenv("USER"));
+		return true;
 
 	}
 
@@ -42,4 +53,6 @@ public class LocalProvider implements EnvProvider {
 	public int getInstanceIndex() {
 		return 0;
 	}
+
+
 }

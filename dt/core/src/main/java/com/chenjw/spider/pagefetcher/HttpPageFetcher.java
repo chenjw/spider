@@ -6,7 +6,7 @@ import java.util.Map.Entry;
 
 import com.chenjw.client.HttpClient;
 import com.chenjw.client.exception.ErrorCodeEnum;
-import com.chenjw.client.exception.HttpClientException;
+import com.chenjw.client.result.Result;
 import com.chenjw.parser.HtmlParser;
 import com.chenjw.parser.impl.SimpleHtmlParser;
 import com.chenjw.spider.Page;
@@ -38,13 +38,14 @@ public class HttpPageFetcher implements PageFetcher {
 	public Page fetch(HttpLocation loc) {
 		Page r = new Page();
 		String html = null;
-		try {
-			html = httpClient.get(loc, loc.getEncoding(), null);
-		} catch (HttpClientException e) {
+
+		Result result = httpClient.get(loc, loc.getEncoding(), null, null);
+		if (!result.isSuccess()) {
 			r.setSuccess(false);
-			r.setErrorCode(e.getErrorCode());
+			r.setErrorCode(result.getErrorCode());
 			return r;
 		}
+		html = result.getResultString();
 		if (html == null) {
 			r.setSuccess(false);
 			r.setErrorCode(ErrorCodeEnum.SYSTEM_ERROR);

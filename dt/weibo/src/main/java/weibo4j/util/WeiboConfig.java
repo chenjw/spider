@@ -16,21 +16,11 @@ public class WeiboConfig {
 
 	private static Properties props = new Properties();
 
-	static {
+	
+	public static void load(String path) {
 		try {
 			props.load(Thread.currentThread().getContextClassLoader()
-					.getResourceAsStream("weibo_dev.properties"));
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-
-	public static void setProductMode() {
-		try {
-			props.load(Thread.currentThread().getContextClassLoader()
-					.getResourceAsStream("weibo_product.properties"));
+					.getResourceAsStream(path));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
