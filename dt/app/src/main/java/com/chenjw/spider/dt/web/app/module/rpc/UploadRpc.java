@@ -32,7 +32,7 @@ public class UploadRpc {
 		while(e.getCause() !=null && e!=e.getCause() && (e.getCause() instanceof WeiboException)){
 			e=(WeiboException)e.getCause();
 		}
-		return ((WeiboException)e.getCause()).getError();
+		return ((WeiboException)e).getError();
 	}
 	
 	@ResourceMapping
@@ -48,7 +48,7 @@ public class UploadRpc {
 			weiboService.upload(userToken, status, Base64.decodeBase64(pic.getBytes()));
 			result.put("success", true);
 		} 
-		catch (Exception e) {
+		catch (WeiboException e) {
 			result.put("errorMessage", getErrorMessage(e));
 			result.put("success", false);
 		}

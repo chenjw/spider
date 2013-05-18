@@ -45,6 +45,10 @@
 			<arg line="/c 'mvn install:install-file -DgroupId=com.chenjw.external -DartifactId=com.baidu.bae.api -Dversion=1.0.0 -Dfile=lib/com.baidu.bae.api.jar -Dpackaging=jar -DgeneratePom=true'"/>
  		</exec>	
 
+		<exec executable="cmd" os="Windows 7">
+			<arg line="/c 'mvn install:install-file -DgroupId=com.chenjw.external -DartifactId=com.baidu.bae.log4j.adapter -Dversion=1.0.0 -Dfile=lib/bae-log4j-adapter-1.0.0.jar -Dpackaging=jar -DgeneratePom=true'"/>
+ 		</exec>	
+
 
 		<!--linux-->
 		<exec executable="mvn" os="linux">
@@ -94,6 +98,16 @@
 			<arg value="-DartifactId=com.baidu.bae.api"/>
 			<arg value="-Dversion=1.0.0"/>
 			<arg value="-Dfile=lib/com.baidu.bae.api.jar"/>
+			<arg value="-Dpackaging=jar"/>
+			<arg value="-DgeneratePom=true"/>
+ 		</exec>	
+
+		<exec executable="mvn" os="linux">
+			<arg value="install:install-file"/>
+			<arg value="-DgroupId=com.chenjw.external"/>
+			<arg value="-DartifactId=com.baidu.bae.log4j.adapter"/>
+			<arg value="-Dversion=1.0.0"/>
+			<arg value="-Dfile=lib/bae-log4j-adapter-1.0.0.jar"/>
 			<arg value="-Dpackaging=jar"/>
 			<arg value="-DgeneratePom=true"/>
  		</exec>	

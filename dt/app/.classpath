@@ -6,6 +6,7 @@
   <classpathentry kind="var" path="M2_REPO/com/chenjw/beancopyutils/1.0.0/beancopyutils-1.0.0.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/alibaba/external/codehaus.groovy/1.6.3/codehaus.groovy-1.6.3.jar" sourcepath="M2_REPO/com/alibaba/external/codehaus.groovy/1.6.3/codehaus.groovy-1.6.3-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/chenjw/external/com.baidu.bae.api/1.0.0/com.baidu.bae.api-1.0.0.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/chenjw/external/com.baidu.bae.log4j.adapter/1.0.0/com.baidu.bae.log4j.adapter-1.0.0.jar"/>
   <classpathentry kind="src" path="/dt.biz-1.0-SNAPSHOT"/>
   <classpathentry kind="src" path="/dt.common.config-1.0-SNAPSHOT"/>
   <classpathentry kind="src" path="/dt.core-1.0-SNAPSHOT"/>

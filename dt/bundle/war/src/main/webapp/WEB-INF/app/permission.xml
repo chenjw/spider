@@ -31,8 +31,9 @@
 				app.screen.redirect
 				app.screen.welcome
 				app.screen.howToGetAppKey
+				app.screen.command
+				app.screen.message
 				app.action.userAction
-				app.action.command
 			</value>
 		</property>
 	</bean>

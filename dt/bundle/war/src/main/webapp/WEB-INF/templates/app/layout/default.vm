@@ -9,21 +9,20 @@
         <link href="css/v2/skin.css" type="text/css" rel="stylesheet" charset="utf-8"/>
         <link href="css/v2/right_thirdpart.css" type="text/css" rel="stylesheet" charset="utf-8"/>
         <link href="css/v2/wbim.css" type="text/css" rel="stylesheet" charset="utf-8"/>
-		<link href="css/v2/colortip-1.0-jquery.css" type="text/css" rel="stylesheet" charset="utf-8"/>
+		
         
-		<link rel="stylesheet" href="css/v2/tip/tip-yellow.css" type="text/css" />
+		<!--link rel="stylesheet" href="css/v2/tip/tip-yellow.css" type="text/css" />
     	<link rel="stylesheet" href="css/v2/tip/tip-violet.css" type="text/css" />
     	<link rel="stylesheet" href="css/v2/tip/tip-darkgray.css" type="text/css" />
     	<link rel="stylesheet" href="css/v2/tip/tip-skyblue.css" type="text/css" />
     	<link rel="stylesheet" href="css/v2/tip/tip-yellowsimple.css" type="text/css" />
     	<link rel="stylesheet" href="css/v2/tip/tip-twitter.css" type="text/css" />
-    	<link rel="stylesheet" href="css/v2/tip/tip-green.css" type="text/css" />
+    	<link rel="stylesheet" href="css/v2/tip/tip-green.css" type="text/css" /-->
 		<link rel="stylesheet" href="css/v2/jquery-ui-1.10.0.custom.min.css" type="text/css" />
 		
 		<title>test</title>
 		
 		<script src="js/jquery-1.7.2.min.js" language="JavaScript"></script>
-		<script src="js/jquery.poshytip.min.js" language="JavaScript"></script>
 		<script src="js/jquery-ui-1.10.0.custom.min.js" language="JavaScript"></script>
 		
 		

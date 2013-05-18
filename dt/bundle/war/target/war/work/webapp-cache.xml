@@ -70,8 +70,6 @@
           <string>js/jquery-1.9.0.min.js</string>
           <string>js/jquery-ui-1.10.0.custom.min.js</string>
           <string>js/jquery.plugin.html2canvas.js</string>
-          <string>js/jquery.poshytip.js</string>
-          <string>js/jquery.poshytip.min.js</string>
           <string>wb_ae76e3171ca9bdb6.txt</string>
           <string>WEB-INF/app/form.xml</string>
           <string>WEB-INF/app/permission.xml</string>
@@ -194,6 +192,7 @@
           <string>WEB-INF/lib/nonda.databind-webx3-0.1.0.jar</string>
           <string>WEB-INF/lib/nonda.databind-0.1.0.jar</string>
           <string>WEB-INF/lib/eclipse.aspectj-1.5.4.jar</string>
+          <string>WEB-INF/lib/com.baidu.bae.log4j.adapter-1.0.0.jar</string>
         </pathsSet>
       </path-set>
     </entry>

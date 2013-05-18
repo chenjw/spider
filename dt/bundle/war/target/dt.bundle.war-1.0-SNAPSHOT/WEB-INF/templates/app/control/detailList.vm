@@ -1,5 +1,5 @@
 #if($detailList.size()==0)
-    <div class="notes">回收站还是空的？没关系。现在开始你关注的人删掉的消息都会出现在这里。先试试<a href="javascript:DT.demo();">公共帐号</a>吧。</div>
+    <div class="notes">现在开始您关注的人被删掉的微博都会出现在这里！<!--先试试<a href="javascript:DT.demo();">公共帐号</a>吧。--></div>
 #else
     #foreach( $detail in $detailList) 	
         #parse ("control/detail.vm")

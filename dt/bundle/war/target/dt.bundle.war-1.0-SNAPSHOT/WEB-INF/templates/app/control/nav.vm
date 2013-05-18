@@ -1,9 +1,15 @@
-#if($searchInfo.type.name()=="TIMELINE" && !$searchInfo.demo)
     <div class="gn_title" id="btn_account">
+        <a href="javascript:DT.firstPage()" class="gn_tab" tabindex="4" style="">
+            <i>首页</i>
+        </a>
+    </div>
+
+#if($searchInfo.type.name()=="TIMELINE" && !$searchInfo.demo)
+    <!--div class="gn_title" id="btn_account">
         <a href="javascript:DT.demoTimeline()" class="gn_tab" tabindex="4" style="">
             <i>公共帐号</i>
         </a>
-    </div>
+    </div-->
 #end
 
 #if($searchInfo.type.name()!="TOP_REPOSTS")
@@ -13,6 +19,19 @@
         </a>
     </div>
 #end
+
+	<div class="selected-attr gn_title">
+		<dl>
+			<dd>
+				<input id="tags" />
+			</dd>
+			<dd>
+				<input type="button" value="搜索" />
+			</dd>
+		</dl>
+	</div>
+
+
 <div class="selected-attr gn_title">
     <dl id="your-choices" class="props-now">
         #if($searchInfo.type.name()=="TIMELINE")

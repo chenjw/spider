@@ -15,10 +15,6 @@ DT.showTip = function(content) {
 				} 
 			} ] 
 	});
-//	$('#nav').poshytip({
-//				showOn : 'none'
-//			});
-//	$('#nav').poshytip('show');
 }
 
 DT.sendBox = function(image,fun) {
@@ -71,7 +67,7 @@ DT._page = function(params, func) {
 						$("#detail_list").html(data.page);
 						Context.maxSort = data.maxSort;
 						$("#nav").html(data.nav);
-						DT.showTips();
+						//DT.showTips();
 						DT.scrollToTop();
 						Context.searchInfo = data.searchInfo;
 					}
@@ -130,6 +126,9 @@ DT.reasonMediaClose = function(id) {
 }
 
 DT.scrollToTop = function() {
+	
+	//alert(1);
+	$('html,body').animate({scrollTop:0}, 'slow');
 	App.scrollToTop();
 }
 
@@ -164,26 +163,33 @@ DT.capture = function(id) {
 }
 
 $(document).ready(function() {
-
 			// 查找新删除的微薄
 			// new_tweets_message
 			var countNew = function() {
-				DT._page({
+				// 只有时间线模式下才需要定时刷新是否有新消息
+				if("TIMELINE"==Context.searchInfo.type){
+					DT._page({
 							"minSort" : Context.maxSort,
 							"type" : "COUNT_NEW"
-						}, function(data) {
+						}, 
+						function(data) {
 							if (data.success) {
 								$("#new_tweets_message").html(data.page);
 							}
 							setTimeout(countNew, 10000);
-						});
+						}
+					);
+					
+				}
+				else{
+					setTimeout(countNew, 10000);
+				}
+				
 			}
 			countNew();// btn_account btn_top_reposts btn_logout
 
-			// $("[image-type='pic']").remove();
 
-			App.scrollToTop();
-
+			DT.scrollToTop();
 			//DT.showTip("出现在这里的都是您关注列表中被删除的微博。");
 
 		});

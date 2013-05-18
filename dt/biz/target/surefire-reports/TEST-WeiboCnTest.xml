@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite failures="0" time="0.057" errors="0" skipped="0" tests="0" name="WeiboCnTest">
+<testsuite failures="0" time="0.002" errors="0" skipped="0" tests="0" name="WeiboCnTest">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\software\jdk1.6.0_43\jre\bin"/>
@@ -19,7 +19,7 @@
     <property name="basedir" value="C:\workspace\spider\dt\biz"/>
     <property name="java.endorsed.dirs" value="C:\software\jdk1.6.0_43\jre\lib\endorsed"/>
     <property name="os.arch" value="amd64"/>
-    <property name="surefire.real.class.path" value="C:\Users\ADMINI~1\AppData\Local\Temp\surefirebooter6650063991043764238.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\ADMINI~1\AppData\Local\Temp\surefirebooter2054217636846891041.jar"/>
     <property name="java.io.tmpdir" value="C:\Users\ADMINI~1\AppData\Local\Temp\"/>
     <property name="line.separator" value="
 "/>
@@ -43,7 +43,7 @@
     <property name="java.vm.specification.version" value="1.0"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="java.home" value="C:\software\jdk1.6.0_43\jre"/>
-    <property name="sun.java.command" value="C:\Users\ADMINI~1\AppData\Local\Temp\surefirebooter6650063991043764238.jar C:\Users\ADMINI~1\AppData\Local\Temp\surefire6671629970920880157tmp C:\Users\ADMINI~1\AppData\Local\Temp\surefire8169228251807929005tmp"/>
+    <property name="sun.java.command" value="C:\Users\ADMINI~1\AppData\Local\Temp\surefirebooter2054217636846891041.jar C:\Users\ADMINI~1\AppData\Local\Temp\surefire8751260939367057897tmp C:\Users\ADMINI~1\AppData\Local\Temp\surefire2996356535614329224tmp"/>
     <property name="java.specification.vendor" value="Sun Microsystems Inc."/>
     <property name="user.language" value="zh"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>

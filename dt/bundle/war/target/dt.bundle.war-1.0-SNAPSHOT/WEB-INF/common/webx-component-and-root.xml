@@ -41,7 +41,7 @@
                 </vm-plugins:escape-support>
             </plugins>
         </velocity-engine>
-        <freemarker-engine templateEncoding="UTF-8" path="/${component}/templates" />
+        <!--freemarker-engine templateEncoding="UTF-8" path="/${component}/templates" /-->
         <jsp-engine path="/templates/${component}" />
     </services:template>
 

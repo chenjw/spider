@@ -26,6 +26,14 @@
         </layout>
     </appender>
     
+	<appender name="baidu" class="com.baidu.bae.api.baelog.BaeAppender">
+        <param name="encoding" value="UTF-8"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{yyyy-MM-dd HH\:mm\:ss,SSS} %5p %c\:(%F\:%L) %n - %m%n" />
+        </layout>
+    </appender>
+  
+    
     <!-- ===================================================================== -->
     <!--  以下是logger的定义                                                   -->
     <!-- ===================================================================== -->
@@ -45,5 +53,6 @@
         <level value="ERROR"/>
         <appender-ref ref="STDOUT"/>
         <appender-ref ref="STDERR"/>
+        <appender-ref ref="baidu"/>
     </root>
 </log4j:configuration>

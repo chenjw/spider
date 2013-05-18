@@ -55,5 +55,10 @@
 			<groupId>com.alibaba.external</groupId>
 			<artifactId>java.servlet</artifactId>
 		</dependency>
+
+		<dependency>
+			<groupId>com.chenjw.external</groupId>
+			<artifactId>com.baidu.bae.log4j.adapter</artifactId>
+		</dependency>
 	</dependencies>
 </project>
