@@ -22,7 +22,7 @@ public class Place extends Weibo{
 	 * 获取当前登录用户与其好友的位置动态 
 	 */
 	public StatusWapper friendsTimeLine () throws WeiboException {
-		return Status.constructWapperStatus(client.get(WeiboConfig.getValue("baseURL") + "place/friends_timeline.json"));
+		return Status.constructWapperStatus(client.get(WeiboConfig.getWeiboInfo().getBaseUrl() + "place/friends_timeline.json"));
 	}
 	
 	
@@ -33,13 +33,13 @@ public class Place extends Weibo{
 	 * 
 	 */
 	public JSONObject userInfoInLBS (String uid) throws WeiboException {
-		return client.get(WeiboConfig.getValue("baseURL") + "place/users/show.json",new PostParameter[] {
+		return client.get(WeiboConfig.getWeiboInfo().getBaseUrl() + "place/users/show.json",new PostParameter[] {
 			new PostParameter("uid", uid)
 		}).asJSONObject();
 	}
 	
 	public JSONObject userInfoInLBS (String uid,int base_app) throws WeiboException {
-		return client.get(WeiboConfig.getValue("baseURL") + "place/users/show.json",new PostParameter[] {
+		return client.get(WeiboConfig.getWeiboInfo().getBaseUrl() + "place/users/show.json",new PostParameter[] {
 			new PostParameter("uid", uid),
 			new PostParameter("base_app", base_app)
 		}).asJSONObject();
@@ -51,7 +51,7 @@ public class Place extends Weibo{
 	 *   注：没有写完
 	 */
 	public JSONObject checkinsList (String uid) throws WeiboException {
-		return client.get(WeiboConfig.getValue("baseURL") + "place/users/checkins.json",new PostParameter[] {
+		return client.get(WeiboConfig.getWeiboInfo().getBaseUrl() + "place/users/checkins.json",new PostParameter[] {
 			new PostParameter("uid", uid)
 		}).asJSONObject();
 	}
@@ -63,7 +63,7 @@ public class Place extends Weibo{
 	 */
 	
 	public JSONObject photoList (String uid) throws WeiboException {
-		return client.get(WeiboConfig.getValue("baseURL") + "place/users/photos.json",new PostParameter[] {
+		return client.get(WeiboConfig.getWeiboInfo().getBaseUrl() + "place/users/photos.json",new PostParameter[] {
 			new PostParameter("uid", uid)
 		}).asJSONObject();
 	}
@@ -75,7 +75,7 @@ public class Place extends Weibo{
 	 */
 	
 	public JSONObject tipsList (String uid) throws WeiboException {
-		return client.get(WeiboConfig.getValue("baseURL") + "place/users/tips.json",new PostParameter[] {
+		return client.get(WeiboConfig.getWeiboInfo().getBaseUrl() + "place/users/tips.json",new PostParameter[] {
 			new PostParameter("uid", uid)
 		}).asJSONObject();
 	}
@@ -87,13 +87,13 @@ public class Place extends Weibo{
 	 * 
 	 */
 	public JSONObject poisShow (String poiid) throws WeiboException {
-		return client.get(WeiboConfig.getValue("baseURL") + "place/pois/show.json",new PostParameter[] {
+		return client.get(WeiboConfig.getWeiboInfo().getBaseUrl() + "place/pois/show.json",new PostParameter[] {
 			new PostParameter("poiid", poiid)
 		}).asJSONObject();
 	}
 	
 	public JSONObject poisShow (String poiid,int base_app) throws WeiboException {
-		return client.get(WeiboConfig.getValue("baseURL") + "place/pois/show.json",new PostParameter[] {
+		return client.get(WeiboConfig.getWeiboInfo().getBaseUrl() + "place/pois/show.json",new PostParameter[] {
 			new PostParameter("poiid", poiid),
 			new PostParameter("base_app",base_app)
 		}).asJSONObject();
@@ -105,7 +105,7 @@ public class Place extends Weibo{
 	 * 注：没写完
 	 */
 	public JSONObject poisUsersList (String poiid) throws WeiboException {
-		return client.get(WeiboConfig.getValue("baseURL") + "place/pois/show.json",new PostParameter[] { 
+		return client.get(WeiboConfig.getWeiboInfo().getBaseUrl() + "place/pois/show.json",new PostParameter[] { 
 			new PostParameter("poiid", poiid) }).asJSONObject();
 	}
 	
@@ -115,7 +115,7 @@ public class Place extends Weibo{
 	 * 注：没写完
 	 */
 	public User poisTipsList (String poiid) throws WeiboException {
-		return new User(client.get(WeiboConfig.getValue("baseURL") + "place/pois/tips.json",new PostParameter[] { 
+		return new User(client.get(WeiboConfig.getWeiboInfo().getBaseUrl() + "place/pois/tips.json",new PostParameter[] { 
 			new PostParameter("poiid", poiid) }).asJSONObject());
 	}
 	

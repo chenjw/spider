@@ -23,6 +23,7 @@ import weibo4j.org.json.JSONObject;
 import weibo4j.util.WeiboConfig;
 
 import com.chenjw.client.HttpClient;
+import com.chenjw.client.impl.HttpClientFactoryBean;
 import com.chenjw.client.result.Result;
 import com.chenjw.spider.location.HttpUrl;
 
@@ -34,17 +35,12 @@ public class WeiboHttpClient implements java.io.Serializable {
 	private static HttpClient httpClient;
 	static {
 		// 初始化httpClient
-		String className = WeiboConfig.getValue("http_client_impl");
+		String className = WeiboConfig.getWeiboInfo().getHttpClientImpl();
+		HttpClientFactoryBean factoryBean = new HttpClientFactoryBean();
+		factoryBean.setClassName(className);
 		try {
-			httpClient= (HttpClient) Class.forName(className).newInstance();
-		} catch (InstantiationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
+			httpClient = (HttpClient) factoryBean.getObject();
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		httpClient.init();

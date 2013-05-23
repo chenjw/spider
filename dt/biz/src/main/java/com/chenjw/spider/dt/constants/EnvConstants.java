@@ -9,6 +9,10 @@ public class EnvConstants {
 	public static EnvProvider getEnvProvider() {
 		return EnvProviderHolder.instance;
 	}
+	
+	public static String getValue(String key){
+		return String.valueOf(EnvConstants.getEnvProvider().getProperties().get(key));
+	}
 
 	public static boolean isProductMode() {
 		// return true;

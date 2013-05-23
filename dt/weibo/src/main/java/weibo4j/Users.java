@@ -26,7 +26,7 @@ public class Users extends Weibo{
 	 */
 	public User showUserById(String uid) throws WeiboException {
 		return new User(client.get(
-				WeiboConfig.getValue("baseURL") + "users/show.json",
+				WeiboConfig.getWeiboInfo().getBaseUrl() + "users/show.json",
 				new PostParameter[] { new PostParameter("uid", uid) })
 				.asJSONObject());
 	}
@@ -45,7 +45,7 @@ public class Users extends Weibo{
 	 */
 	public User showUserByScreenName(String screen_name) throws WeiboException {
 		return new User(client.get(
-				WeiboConfig.getValue("baseURL") + "users/show.json",
+				WeiboConfig.getWeiboInfo().getBaseUrl() + "users/show.json",
 				new PostParameter[] { new PostParameter("screen_name",
 						screen_name) }).asJSONObject());
 	}
@@ -65,7 +65,7 @@ public class Users extends Weibo{
 	 */
 	public User showUserByDomain(String domain) throws WeiboException {
 		return new User(client.get(
-				WeiboConfig.getValue("baseURL") + "users/domain_show.json",
+				WeiboConfig.getWeiboInfo().getBaseUrl() + "users/domain_show.json",
 				new PostParameter[] { new PostParameter("domain", domain) })
 				.asJSONObject());
 	}
@@ -83,7 +83,7 @@ public class Users extends Weibo{
 	 * @since JDK 1.5
 	 */
 	public JSONArray getUserCount(String uids) throws WeiboException{
-		return  client.get(WeiboConfig.getValue("baseURL") + "users/counts.json",
+		return  client.get(WeiboConfig.getWeiboInfo().getBaseUrl() + "users/counts.json",
 				new PostParameter[] { new PostParameter("uids", uids)}).asJSONArray();
 	}
 }

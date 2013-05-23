@@ -50,13 +50,13 @@
 		<img src="/image/get_key_2.png"/>
 	</div>
 	<div class="line">
-		三. 其中“应用地址”必须要填“http://deleted-tweets.cloudfoundry.com”，其他信息都可以随便填。
+		三. 其中“应用地址”必须要填“${env.get("redirectUrl")}”，其他信息都可以随便填。
 	</div>
 	<div class="img">
 		<img src="/image/get_key_3.png"/>
 	</div>
 	<div class="line">
-		四. 左侧菜单选择“高级信息”，把“授权回调页”修改为“http://deleted-tweets.cloudfoundry.com”。
+		四. 左侧菜单选择“高级信息”，把“授权回调页”修改为“${env.get("redirectUrl")}”。
 	</div>
 	<div class="img">
 		<img src="/image/get_key_4.png"/>

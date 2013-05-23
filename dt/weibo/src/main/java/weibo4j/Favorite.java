@@ -30,8 +30,7 @@ public class Favorite extends Weibo{
 	 * @since JDK 1.5
 	 */
 	public List<Favorites> getFavorites() throws WeiboException {
-		return Favorites.constructFavorites(client.get(WeiboConfig
-				.getValue("baseURL") + "favorites.json"));
+		return Favorites.constructFavorites(client.get(WeiboConfig.getWeiboInfo().getBaseUrl() + "favorites.json"));
 	}
 
 	/**
@@ -48,7 +47,7 @@ public class Favorite extends Weibo{
 	 */
 	public List<Favorites> getFavorites(Paging page) throws WeiboException {
 		return Favorites.constructFavorites(client.get(
-						WeiboConfig.getValue("baseURL") + "favorites.json",
+				WeiboConfig.getWeiboInfo().getBaseUrl() + "favorites.json",
 						null, page));
 	}
 	/**
@@ -62,8 +61,7 @@ public class Favorite extends Weibo{
 	 * @since JDK 1.5
 	 */
 	public JSONObject getFavoritesIds() throws WeiboException {
-		return client.get(WeiboConfig
-				.getValue("baseURL") + "favorites/ids.json").asJSONObject();
+		return client.get(WeiboConfig.getWeiboInfo().getBaseUrl() + "favorites/ids.json").asJSONObject();
 	}
 	/**
 	 * 获取当前登录用户的收藏列表ID
@@ -76,8 +74,7 @@ public class Favorite extends Weibo{
 	 * @since JDK 1.5
 	 */
 	public JSONObject getFavoritesIds(Paging page) throws WeiboException {
-		return client.get(WeiboConfig
-				.getValue("baseURL") + "favorites/ids.json",null,page).asJSONObject();
+		return client.get(WeiboConfig.getWeiboInfo().getBaseUrl() + "favorites/ids.json",null,page).asJSONObject();
 	}
 	/**
 	 * 根据收藏ID获取指定的收藏信息
@@ -92,7 +89,7 @@ public class Favorite extends Weibo{
 	 * @since JDK 1.5
 	 */
 	public Favorites showFavorites(String id) throws WeiboException {
-		return new Favorites(client.get(WeiboConfig.getValue("baseURL")
+		return new Favorites(client.get(WeiboConfig.getWeiboInfo().getBaseUrl()
 				+ "favorites/show.json",
 				new PostParameter[] { new PostParameter("id", id) }));
 	}
@@ -111,7 +108,7 @@ public class Favorite extends Weibo{
 	 */
 	public List<Favorites> getFavoritesByTags(String tid) throws WeiboException {
 		return Favorites.constructFavorites(client.get(
-				WeiboConfig.getValue("baseURL") + "favorites/by_tags.json",
+				WeiboConfig.getWeiboInfo().getBaseUrl() + "favorites/by_tags.json",
 				new PostParameter[] { new PostParameter("tid", tid) }));
 	}
 
@@ -131,7 +128,7 @@ public class Favorite extends Weibo{
 	public List<Favorites> getFavoritesByTags(String tid, Paging page)
 			throws WeiboException {
 		return Favorites.constructFavorites(client.get(
-				WeiboConfig.getValue("baseURL") + "favorites/by_tags.json",
+				WeiboConfig.getWeiboInfo().getBaseUrl() + "favorites/by_tags.json",
 				new PostParameter[] { new PostParameter("tid", tid) }, page));
 	}
 
@@ -148,8 +145,7 @@ public class Favorite extends Weibo{
 	 * @since JDK 1.5
 	 */
 	public List<FavoritesTag> getFavoritesTags() throws WeiboException {
-		return Tag.constructTag(client.get(WeiboConfig
-				.getValue("baseURL") + "favorites/tags.json"));
+		return Tag.constructTag(client.get(WeiboConfig.getWeiboInfo().getBaseUrl() + "favorites/tags.json"));
 
 	}
 
@@ -167,7 +163,7 @@ public class Favorite extends Weibo{
 	 * @since JDK 1.5
 	 */
 	public Favorites createFavorites(String id) throws WeiboException {
-		return new Favorites(client.post(WeiboConfig.getValue("baseURL")
+		return new Favorites(client.post(WeiboConfig.getWeiboInfo().getBaseUrl()
 				+ "favorites/create.json",
 				new PostParameter[] { new PostParameter("id", id) }));
 	}
@@ -186,7 +182,7 @@ public class Favorite extends Weibo{
 	 * @since JDK 1.5
 	 */
 	public Favorites destroyFavorites(String id) throws WeiboException {
-		return new Favorites(client.post(WeiboConfig.getValue("baseURL")
+		return new Favorites(client.post(WeiboConfig.getWeiboInfo().getBaseUrl()
 				+ "favorites/destroy.json",
 				new PostParameter[] { new PostParameter("id", id) }));
 	}
@@ -207,7 +203,7 @@ public class Favorite extends Weibo{
 	public Boolean destroyFavoritesBatch(String ids) throws WeiboException {
 		try {
 			return client
-					.post(WeiboConfig.getValue("baseURL")
+					.post(WeiboConfig.getWeiboInfo().getBaseUrl()
 							+ "favorites/destroy_batch.json",
 							new PostParameter[] { new PostParameter("ids", ids) })
 					.asJSONObject().getBoolean("result");
@@ -230,7 +226,7 @@ public class Favorite extends Weibo{
 	 * @since JDK 1.5
 	 */
 	public Favorites updateFavoritesTags(String id) throws WeiboException {
-		return new Favorites(client.post(WeiboConfig.getValue("baseURL")
+		return new Favorites(client.post(WeiboConfig.getWeiboInfo().getBaseUrl()
 				+ "favorites/tags/update.json",
 				new PostParameter[] { new PostParameter("id", id) }));
 	}
@@ -252,7 +248,7 @@ public class Favorite extends Weibo{
 	 */
 	public Favorites updateFavoritesTags(String id, String tags)
 			throws WeiboException {
-		return new Favorites(client.post(WeiboConfig.getValue("baseURL")
+		return new Favorites(client.post(WeiboConfig.getWeiboInfo().getBaseUrl()
 				+ "favorites/tags/update.json", new PostParameter[] {
 				new PostParameter("id", id), new PostParameter("tags", tags) }));
 	}
@@ -273,7 +269,7 @@ public class Favorite extends Weibo{
 	public JSONObject updateFavoritesTagsBatch(String tid, String tag)
 			throws WeiboException {
 		return client.post(
-				WeiboConfig.getValue("baseURL")
+				WeiboConfig.getWeiboInfo().getBaseUrl()
 						+ "favorites/tags/update_batch.json",
 				new PostParameter[] { new PostParameter("tid", tid),
 						new PostParameter("tag", tag) }).asJSONObject();
@@ -295,7 +291,7 @@ public class Favorite extends Weibo{
 	public Boolean destroyFavoritesTagsBatch(String ids) throws WeiboException {
 		try {
 			return client
-					.post(WeiboConfig.getValue("baseURL")
+					.post(WeiboConfig.getWeiboInfo().getBaseUrl()
 							+ "favorites/destroy_batch.json",
 							new PostParameter[] { new PostParameter("ids", ids) })
 					.asJSONObject().getBoolean("result");

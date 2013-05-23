@@ -4,6 +4,7 @@
   <classpathentry kind="output" path="target/classes"/>
   <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
   <classpathentry kind="var" path="M2_REPO/javax/activation/activation/1.1/activation-1.1.jar" sourcepath="M2_REPO/javax/activation/activation/1.1/activation-1.1-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/typesafe/akka/akka-actor/2.0/akka-actor-2.0.jar" sourcepath="M2_REPO/com/typesafe/akka/akka-actor/2.0/akka-actor-2.0-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/chenjw/beancopyutils/1.0.0/beancopyutils-1.0.0.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/chenjw/external/com.baidu.bae.api/1.0.0/com.baidu.bae.api-1.0.0.jar"/>
   <classpathentry kind="src" path="/dt.common.config-1.0-SNAPSHOT"/>
@@ -29,6 +30,7 @@
   <classpathentry kind="var" path="M2_REPO/com/alibaba/external/misc.javassist/3.9.0.GA/misc.javassist-3.9.0.GA.jar" sourcepath="M2_REPO/com/alibaba/external/misc.javassist/3.9.0.GA/misc.javassist-3.9.0.GA-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/alibaba/external/objectweb.asm/0.0.0/objectweb.asm-0.0.0.jar" sourcepath="M2_REPO/com/alibaba/external/objectweb.asm/0.0.0/objectweb.asm-0.0.0-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/alibaba/external/objectweb.asm.attrs/0.0.0/objectweb.asm.attrs-0.0.0.jar" sourcepath="M2_REPO/com/alibaba/external/objectweb.asm.attrs/0.0.0/objectweb.asm.attrs-0.0.0-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/scala-lang/scala-library/2.9.1-1/scala-library-2.9.1-1.jar" sourcepath="M2_REPO/org/scala-lang/scala-library/2.9.1-1/scala-library-2.9.1-1-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/alibaba/external/sourceforge.cglib/nodep-2.1_3/sourceforge.cglib-nodep-2.1_3.jar" sourcepath="M2_REPO/com/alibaba/external/sourceforge.cglib/nodep-2.1_3/sourceforge.cglib-nodep-2.1_3-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/alibaba/external/sourceforge.ibatis/2.3.0/sourceforge.ibatis-2.3.0.jar" sourcepath="M2_REPO/com/alibaba/external/sourceforge.ibatis/2.3.0/sourceforge.ibatis-2.3.0-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/alibaba/external/sourceforge.spring/2.5.6.SEC02/sourceforge.spring-2.5.6.SEC02.jar" sourcepath="M2_REPO/com/alibaba/external/sourceforge.spring/2.5.6.SEC02/sourceforge.spring-2.5.6.SEC02-sources.jar"/>

@@ -41,7 +41,7 @@ public class DeletedTweetCheckServiceImpl implements DeletedTweetCheckService,
 
 	private ExecutorService pool;
 	{
-		if("true".equals(WeiboConfig.getValue("is_auto_fatch"))){
+		if("true".equals(EnvConstants.getValue("isAutoFatch"))){
 			 pool = new ThreadPoolExecutor(10, 10,
 					Constants.WEIBO_QUERY_KEEP_ALIVE_TIME, TimeUnit.MILLISECONDS,
 					new LinkedBlockingQueue<Runnable>());
@@ -179,7 +179,7 @@ public class DeletedTweetCheckServiceImpl implements DeletedTweetCheckService,
 			TokenMapper.do2Model(user, model);
 			
 			if (model.isValid() && !StringUtils.isBlank(model.getToken())) {
-				if("true".equals(WeiboConfig.getValue("is_auto_fatch"))){
+				if("true".equals(EnvConstants.getValue("isAutoFatch"))){
 					pool.execute(new Runnable() {
 						@Override
 						public void run() {
@@ -201,7 +201,7 @@ public class DeletedTweetCheckServiceImpl implements DeletedTweetCheckService,
 		start();
 		// }
 		
-		if("true".equals(WeiboConfig.getValue("is_auto_fatch"))){
+		if("true".equals(EnvConstants.getValue("isAutoFatch"))){
 			new Thread(new Runnable() {
 				@Override
 				public void run() {

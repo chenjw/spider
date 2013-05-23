@@ -26,7 +26,7 @@ public class Account extends Weibo {
 	 */
 	public JSONObject getUid() throws WeiboException {
 		return client.get(
-				WeiboConfig.getValue("baseURL") + "account/get_uid.json")
+				WeiboConfig.getWeiboInfo().getBaseUrl() + "account/get_uid.json")
 				.asJSONObject();
 	}
 
@@ -44,7 +44,7 @@ public class Account extends Weibo {
 	 */
 	public JSONObject getAccountPrivacy() throws WeiboException {
 		return client.get(
-				WeiboConfig.getValue("baseURL") + "account/get_privacy.json")
+				WeiboConfig.getWeiboInfo().getBaseUrl() + "account/get_privacy.json")
 				.asJSONObject();
 	}
 
@@ -60,8 +60,7 @@ public class Account extends Weibo {
 	 * @since JDK 1.5
 	 */
 	public List<School> getAccountPrpfileSchoolList() throws WeiboException {
-		return School.constructSchool(client.get(WeiboConfig
-				.getValue("baseURL") + "account/profile/school_list.json"));
+		return School.constructSchool(client.get(WeiboConfig.getWeiboInfo().getBaseUrl() + "account/profile/school_list.json"));
 	}
 
 	/**
@@ -81,7 +80,7 @@ public class Account extends Weibo {
 			Integer city, Integer area, Integer type, String capital,
 			String keyword, Integer count) throws WeiboException {
 		return School.constructSchool(client.get(
-				WeiboConfig.getValue("baseURL")
+				WeiboConfig.getWeiboInfo().getBaseUrl()
 						+ "account/profile/school_list.json",
 				new PostParameter[] {
 						new PostParameter("province", province.toString()),
@@ -105,7 +104,7 @@ public class Account extends Weibo {
 	 * @since JDK 1.5
 	 */
 	public RateLimitStatus getAccountRateLimitStatus() throws WeiboException {
-		return new RateLimitStatus(client.get(WeiboConfig.getValue("baseURL")
+		return new RateLimitStatus(client.get(WeiboConfig.getWeiboInfo().getBaseUrl()
 				+ "account/rate_limit_status.json"));
 	}
 }

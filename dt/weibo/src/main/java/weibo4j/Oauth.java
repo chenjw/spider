@@ -44,7 +44,7 @@ public class Oauth extends Weibo {
 			t[0] += "=";
 		String part1 = t[0].replace("-", "+").replace("_", "/");
 
-		SecretKey key = new SecretKeySpec(WeiboConfig.getValue("client_SECRET")
+		SecretKey key = new SecretKeySpec(WeiboConfig.getWeiboInfo().getClientSecret()
 				.getBytes(), "hmacSHA256");
 		Mac m;
 		m = Mac.getInstance("hmacSHA256");
@@ -81,29 +81,29 @@ public class Oauth extends Weibo {
 	public AccessToken getAccessTokenByCode(String code, String clientId,
 			String clientSecret) throws WeiboException {
 		return new AccessToken(client.post(
-				WeiboConfig.getValue("accessTokenURL"),
+				WeiboConfig.getWeiboInfo().getAccessTokenUrl(),
 				new PostParameter[] {
 						new PostParameter("client_id", clientId),
 						new PostParameter("client_secret", clientSecret),
 						new PostParameter("grant_type", "authorization_code"),
 						new PostParameter("code", code),
-						new PostParameter("redirect_uri", WeiboConfig
-								.getValue("redirect_URI")) }, false));
+						new PostParameter("redirect_uri", WeiboConfig.getWeiboInfo().getRedirectUrl()
+								) }, false));
 	}
 
 	public String authorize(String response_type, String state)
 			throws WeiboException {
-		return WeiboConfig.getValue("authorizeURL").trim() + "?client_id="
-				+ WeiboConfig.getValue("client_ID").trim() + "&redirect_uri="
-				+ WeiboConfig.getValue("redirect_URI").trim()
+		return WeiboConfig.getWeiboInfo().getAuthorizeUrl().trim() + "?client_id="
+				+ WeiboConfig.getWeiboInfo().getClientId().trim() + "&redirect_uri="
+				+ WeiboConfig.getWeiboInfo().getRedirectUrl().trim()
 				+ "&response_type=" + response_type + "&state=" + state;
 	}
 
 	public String authorize(String response_type, String state, String scope)
 			throws WeiboException {
-		return WeiboConfig.getValue("authorizeURL").trim() + "?client_id="
-				+ WeiboConfig.getValue("client_ID").trim() + "&redirect_uri="
-				+ WeiboConfig.getValue("redirect_URI").trim()
+		return WeiboConfig.getWeiboInfo().getAuthorizeUrl().trim() + "?client_id="
+				+ WeiboConfig.getWeiboInfo().getClientId().trim() + "&redirect_uri="
+				+ WeiboConfig.getWeiboInfo().getRedirectUrl().trim()
 				+ "&response_type=" + response_type + "&state=" + state
 				+ "&scope=" + scope;// + "&forcelogin=true";
 
@@ -112,11 +112,11 @@ public class Oauth extends Weibo {
 	public String authorizeByClientId(String response_type, String clientId)
 			throws WeiboException {
 		try {
-			return WeiboConfig.getValue("authorizeURL").trim()
+			return WeiboConfig.getWeiboInfo().getAuthorizeUrl().trim()
 					+ "?client_id="
 					+ clientId
 					+ "&redirect_uri="
-					+ URLEncoder.encode(WeiboConfig.getValue("redirect_URI")
+					+ URLEncoder.encode(WeiboConfig.getWeiboInfo().getRedirectUrl()
 							.trim(), "UTF-8") + "&response_type="
 					+ response_type + "&state=";
 		} catch (UnsupportedEncodingException e) {

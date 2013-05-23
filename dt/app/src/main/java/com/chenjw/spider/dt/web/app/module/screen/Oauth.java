@@ -15,7 +15,7 @@ public class Oauth {
 	public void execute(Context context) {
 		// redirect_URI
 		// client_ID
-		context.put("client_ID", WeiboConfig.getValue("client_ID"));
-		context.put("app_URI", WeiboConfig.getValue("app_URI"));
+		context.put("client_ID", WeiboConfig.getWeiboInfo().getClientId());
+		context.put("app_URI", WeiboConfig.getWeiboInfo().getAppUrl());
 	}
 }

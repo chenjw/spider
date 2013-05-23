@@ -7,53 +7,25 @@ import java.util.Properties;
 
 import org.apache.commons.io.IOUtils;
 
-import weibo4j.util.WeiboConfig;
-
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.chenjw.spider.dt.constants.EnvConstants;
 
-public class CloudfoundryProvider implements EnvProvider {
+public class CloudfoundryProvider  extends BaseProvider {
 
 	private  Properties cloudfoundryProperties;
-	private  Properties properties;
+
 	private static final String VCAP_SERVICES_KEY = "VCAP_SERVICES";
 	private static final String VMC_APP_INSTANCE_KEY = "VMC_APP_INSTANCE";
 	private  int instanceIndex;
 
 	@Override
 	public void init() {
+		
+		initProp("env/cloudfoundry/env.properties");
 		initCloudfoundry();
-		initDb();
-		initWeibo();
-	}
-	
-	private void initWeibo() {
-		WeiboConfig.load("env/cloudfoundry/weibo.properties");
-	}
-	
-	private void initDb() {
-		if (properties != null) {
-			return;
-		}
-		try {
-			properties = new Properties();
-			properties.load(LocalProvider.class.getClassLoader()
-					.getResourceAsStream("env/cloudfoundry/db.properties"));
-		} catch (IOException e) {
-		}
-		for (Map.Entry<Object, Object> entry : properties.entrySet()) {
-			if (entry.getValue() != null) {
-				Object v = cloudfoundryProperties.get(entry.getValue()
-						.toString());
-				if (v != null) {
-					entry.setValue(v);
-					// PROPERTIES.put(entry.getKey(), v);
-				}
-			}
-
-		}
+		initWeibo(getProperties());
 	}
 
 	@SuppressWarnings("unchecked")
@@ -98,12 +70,21 @@ public class CloudfoundryProvider implements EnvProvider {
 		Map<String, Object> appInstanceInfoMap = JSON.parseObject(
 				appInstanceInfo, Map.class);
 		instanceIndex = (Integer) appInstanceInfoMap.get("instance_index");
+		
+		
+		for (Map.Entry<Object, Object> entry : getProperties().entrySet()) {
+			if (entry.getValue() != null) {
+				Object v = cloudfoundryProperties.get(entry.getValue()
+						.toString());
+				if (v != null) {
+					entry.setValue(v);
+					// PROPERTIES.put(entry.getKey(), v);
+				}
+			}
+
+		}
 	}
 
-	public Properties getProperties() {
-
-		return properties;
-	}
 
 	public boolean isEnable() {
 		String services = System.getenv(VCAP_SERVICES_KEY);

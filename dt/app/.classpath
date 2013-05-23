@@ -3,6 +3,7 @@
   <classpathentry kind="output" path="target/classes"/>
   <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
   <classpathentry kind="var" path="M2_REPO/javax/activation/activation/1.1/activation-1.1.jar" sourcepath="M2_REPO/javax/activation/activation/1.1/activation-1.1-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/typesafe/akka/akka-actor/2.0/akka-actor-2.0.jar" sourcepath="M2_REPO/com/typesafe/akka/akka-actor/2.0/akka-actor-2.0-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/chenjw/beancopyutils/1.0.0/beancopyutils-1.0.0.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/alibaba/external/codehaus.groovy/1.6.3/codehaus.groovy-1.6.3.jar" sourcepath="M2_REPO/com/alibaba/external/codehaus.groovy/1.6.3/codehaus.groovy-1.6.3-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/chenjw/external/com.baidu.bae.api/1.0.0/com.baidu.bae.api-1.0.0.jar"/>
@@ -62,6 +63,7 @@
   <classpathentry kind="var" path="M2_REPO/com/alibaba/external/org.slf4j.jcl104-over-slf4j/1.5.6/org.slf4j.jcl104-over-slf4j-1.5.6.jar" sourcepath="M2_REPO/com/alibaba/external/org.slf4j.jcl104-over-slf4j/1.5.6/org.slf4j.jcl104-over-slf4j-1.5.6-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/alibaba/external/org.slf4j.slf4j-api/1.5.6/org.slf4j.slf4j-api-1.5.6.jar" sourcepath="M2_REPO/com/alibaba/external/org.slf4j.slf4j-api/1.5.6/org.slf4j.slf4j-api-1.5.6-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/alibaba/external/org.slf4j.slf4j-log4j12/1.5.6/org.slf4j.slf4j-log4j12-1.5.6.jar" sourcepath="M2_REPO/com/alibaba/external/org.slf4j.slf4j-log4j12/1.5.6/org.slf4j.slf4j-log4j12-1.5.6-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/scala-lang/scala-library/2.9.1-1/scala-library-2.9.1-1.jar" sourcepath="M2_REPO/org/scala-lang/scala-library/2.9.1-1/scala-library-2.9.1-1-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/alibaba/external/script.rhino.js/1.7R1/script.rhino.js-1.7R1.jar" sourcepath="M2_REPO/com/alibaba/external/script.rhino.js/1.7R1/script.rhino.js-1.7R1-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/alibaba/external/sourceforge.cglib/nodep-2.1_3/sourceforge.cglib-nodep-2.1_3.jar" sourcepath="M2_REPO/com/alibaba/external/sourceforge.cglib/nodep-2.1_3/sourceforge.cglib-nodep-2.1_3-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/alibaba/external/sourceforge.freemarker/2.3.15/sourceforge.freemarker-2.3.15.jar" sourcepath="M2_REPO/com/alibaba/external/sourceforge.freemarker/2.3.15/sourceforge.freemarker-2.3.15-sources.jar"/>

@@ -14,7 +14,7 @@ public class OAuthUtils {
 	public static void main(String[] args) throws WeiboException, IOException {
 		WeiboService weiboService = new OpenWeiboServiceImpl();
 		// BareBonesBrowserLaunch.openURL(getAuthorizeUrl());
-		System.out.println(weiboService.findAuthorizeUrl());
+		//System.out.println(weiboService.findAuthorizeUrl());
 		System.out.print("Hit enter when it's done.[Enter]:");
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		String code = br.readLine();

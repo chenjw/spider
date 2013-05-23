@@ -14,11 +14,11 @@ public class Reminds extends Weibo{
 	 * 
 	 */
 	public JSONObject getUnreadCountOfRemind () throws WeiboException {
-		return client.get(WeiboConfig.getValue("rmURL") + "remind/unread_count.json").asJSONObject();
+		return client.get(WeiboConfig.getWeiboInfo().getRmUrl() + "remind/unread_count.json").asJSONObject();
 	}
 	
 	public JSONObject getUnreadCountOfRemind (String callback) throws WeiboException {
-		return client.get(WeiboConfig.getValue("rmURL") + "remind/unread_count.json",new PostParameter[] {
+		return client.get(WeiboConfig.getWeiboInfo().getRmUrl() + "remind/unread_count.json",new PostParameter[] {
 			new PostParameter("callback", callback)
 		}).asJSONObject();
 	}

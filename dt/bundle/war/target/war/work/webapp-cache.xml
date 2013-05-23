@@ -122,6 +122,10 @@
           <string>WEB-INF/lib/jakarta.commons.io-1.4.jar</string>
           <string>WEB-INF/lib/fastjson-1.1.10.jar</string>
           <string>WEB-INF/lib/jakarta.commons.httpclient-3.1.jar</string>
+          <string>WEB-INF/lib/sourceforge.spring-2.5.6.SEC02.jar</string>
+          <string>WEB-INF/lib/sourceforge.cglib-nodep-2.1_3.jar</string>
+          <string>WEB-INF/lib/objectweb.asm.attrs-0.0.0.jar</string>
+          <string>WEB-INF/lib/objectweb.asm-0.0.0.jar</string>
           <string>WEB-INF/lib/misc.javassist-3.9.0.GA.jar</string>
           <string>WEB-INF/lib/htmlparser-1.0.0.jar</string>
           <string>WEB-INF/lib/htmllexer-1.0.0.jar</string>
@@ -130,10 +134,6 @@
           <string>WEB-INF/lib/com.baidu.bae.api-1.0.0.jar</string>
           <string>WEB-INF/lib/dt.biz-1.0-SNAPSHOT.jar</string>
           <string>WEB-INF/lib/dt.weibo-1.0-SNAPSHOT.jar</string>
-          <string>WEB-INF/lib/sourceforge.spring-2.5.6.SEC02.jar</string>
-          <string>WEB-INF/lib/sourceforge.cglib-nodep-2.1_3.jar</string>
-          <string>WEB-INF/lib/objectweb.asm.attrs-0.0.0.jar</string>
-          <string>WEB-INF/lib/objectweb.asm-0.0.0.jar</string>
           <string>WEB-INF/lib/sourceforge.ibatis-2.3.0.jar</string>
           <string>WEB-INF/lib/jakarta.commons.dbcp-1.4.jar</string>
           <string>WEB-INF/lib/jakarta.commons.pool-1.4.jar</string>

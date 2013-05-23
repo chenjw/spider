@@ -5,7 +5,8 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class WeiboConfig {
-	private static ThreadLocal<ClientInfo> clientInfo = new ThreadLocal<ClientInfo>();
+	private static WeiboInfo weiboInfo;
+	public static ThreadLocal<ClientInfo> clientInfo = new ThreadLocal<ClientInfo>();
 
 	public static void setClientInfo(ClientInfo clientInfo) {
 		WeiboConfig.clientInfo.set(clientInfo);
@@ -17,7 +18,11 @@ public class WeiboConfig {
 	private static Properties props = new Properties();
 
 	
-	public static void load(String path) {
+	public static void load(WeiboInfo weiboInfo) {
+		WeiboConfig.weiboInfo=weiboInfo;
+	}
+	
+	public static void loadFromPath(String path) {
 		try {
 			props.load(Thread.currentThread().getContextClassLoader()
 					.getResourceAsStream(path));
@@ -28,19 +33,9 @@ public class WeiboConfig {
 		}
 	}
 
-	public static String getValue(String key) {
-		ClientInfo clientInfo = WeiboConfig.clientInfo.get();
-		if (clientInfo != null) {
-			if ("client_ID".equals(key)) {
-				return clientInfo.getClientId();
-			} else if ("client_SECRET".equals(key)) {
-				return clientInfo.getClientSecret();
-			}
-		}
-		return props.getProperty(key);
+	public static WeiboInfo getWeiboInfo() {
+		return weiboInfo;
 	}
 
-	public static void updateProperties(String key, String value) {
-		props.setProperty(key, value);
-	}
+
 }

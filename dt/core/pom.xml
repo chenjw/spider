@@ -39,6 +39,10 @@
 			<groupId>com.alibaba.external</groupId>
 			<artifactId>jakarta.commons.httpclient</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>com.alibaba.external</groupId>
+			<artifactId>sourceforge.spring</artifactId>
+		</dependency>
 
 		<dependency>
 			<groupId>com.alibaba.external</groupId>
