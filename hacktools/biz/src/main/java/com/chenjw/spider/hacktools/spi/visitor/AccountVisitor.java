@@ -18,7 +18,10 @@ public class  AccountVisitor extends SimpleResourceVisitor {
 	private Convertor convertor;
 	private AccountHandler handler;
 
-	private int depth=0;
+	private ThreadLocal<Integer>  depth=new ThreadLocal<Integer>();
+	{
+		depth.set(0);
+	}
 	
 	
 	public AccountVisitor(Convertor convertor,AccountHandler handler){
@@ -27,19 +30,19 @@ public class  AccountVisitor extends SimpleResourceVisitor {
 	}
 	
 	private void start(File folder){
-		if(depth==0){
+		//if(depth.get()==0){
 			String groupName=folder.getName();
 			handler.startAccountGroup(groupName);
-		}
-		depth++;
+		//}
+		//depth.set(depth.get()+1);
 	}
 	
 	private void end(File folder){
-		depth--;
-		if(depth==0){
+		//depth.set(depth.get()-1);
+		//if(depth.get()==0){
 			String groupName=folder.getName();
 			handler.endAccountGroup(groupName);
-		}
+		//}
 	}
 	
 	@Override

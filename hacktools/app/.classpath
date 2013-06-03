@@ -3,16 +3,17 @@
   <classpathentry kind="output" path="target/classes"/>
   <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
   <classpathentry kind="var" path="M2_REPO/javax/activation/activation/1.1/activation-1.1.jar" sourcepath="M2_REPO/javax/activation/activation/1.1/activation-1.1-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/typesafe/akka/akka-actor/2.0/akka-actor-2.0.jar" sourcepath="M2_REPO/com/typesafe/akka/akka-actor/2.0/akka-actor-2.0-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/chenjw/beancopyutils/1.0.0/beancopyutils-1.0.0.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/alibaba/external/codehaus.groovy/1.6.3/codehaus.groovy-1.6.3.jar" sourcepath="M2_REPO/com/alibaba/external/codehaus.groovy/1.6.3/codehaus.groovy-1.6.3-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/alibaba/external/eclipse.aspectj/1.5.4/eclipse.aspectj-1.5.4.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/alibaba/platform/shared/fastjson/1.1.10/fastjson-1.1.10.jar" sourcepath="M2_REPO/com/alibaba/platform/shared/fastjson/1.1.10/fastjson-1.1.10-sources.jar"/>
-  <classpathentry kind="var" path="M2_REPO/com/alibaba/platform/shared/fasttext-css/1.3.28/fasttext-css-1.3.28.jar" sourcepath="M2_REPO/com/alibaba/platform/shared/fasttext-css/1.3.28/fasttext-css-1.3.28-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/alibaba/platform/shared/fasttext-css/1.3.29/fasttext-css-1.3.29.jar" sourcepath="M2_REPO/com/alibaba/platform/shared/fasttext-css/1.3.29/fasttext-css-1.3.29-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/alibaba/platform/shared/fasttext-html/1.3.5/fasttext-html-1.3.5.jar" sourcepath="M2_REPO/com/alibaba/platform/shared/fasttext-html/1.3.5/fasttext-html-1.3.5-sources.jar"/>
-  <classpathentry kind="var" path="M2_REPO/com/alibaba/platform/shared/fasttext-psoriasis/1.3.28/fasttext-psoriasis-1.3.28.jar" sourcepath="M2_REPO/com/alibaba/platform/shared/fasttext-psoriasis/1.3.28/fasttext-psoriasis-1.3.28-sources.jar"/>
-  <classpathentry kind="var" path="M2_REPO/com/alibaba/platform/shared/fasttext-sec/1.3.28/fasttext-sec-1.3.28.jar" sourcepath="M2_REPO/com/alibaba/platform/shared/fasttext-sec/1.3.28/fasttext-sec-1.3.28-sources.jar"/>
-  <classpathentry kind="var" path="M2_REPO/com/alibaba/platform/shared/fasttext-segment/1.3.28/fasttext-segment-1.3.28.jar" sourcepath="M2_REPO/com/alibaba/platform/shared/fasttext-segment/1.3.28/fasttext-segment-1.3.28-sources.jar"/>
-  <classpathentry kind="var" path="M2_REPO/com/alibaba/platform/shared/fasttext-utils/1.3.28/fasttext-utils-1.3.28.jar" sourcepath="M2_REPO/com/alibaba/platform/shared/fasttext-utils/1.3.28/fasttext-utils-1.3.28-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/alibaba/platform/shared/fasttext-psoriasis/1.3.29/fasttext-psoriasis-1.3.29.jar" sourcepath="M2_REPO/com/alibaba/platform/shared/fasttext-psoriasis/1.3.29/fasttext-psoriasis-1.3.29-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/alibaba/platform/shared/fasttext-sec/1.3.29/fasttext-sec-1.3.29.jar" sourcepath="M2_REPO/com/alibaba/platform/shared/fasttext-sec/1.3.29/fasttext-sec-1.3.29-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/alibaba/platform/shared/fasttext-segment/1.3.29/fasttext-segment-1.3.29.jar" sourcepath="M2_REPO/com/alibaba/platform/shared/fasttext-segment/1.3.29/fasttext-segment-1.3.29-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/alibaba/platform/shared/fasttext-utils/1.3.29/fasttext-utils-1.3.29.jar" sourcepath="M2_REPO/com/alibaba/platform/shared/fasttext-utils/1.3.29/fasttext-utils-1.3.29-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/alibaba/platform/shared/fasttext.all/1.3-SNAPSHOT/fasttext.all-1.3-SNAPSHOT.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/chenjw/external/filterbuilder/1.0.0/filterbuilder-1.0.0.jar"/>
   <classpathentry kind="src" path="/hacktools.biz-1.0-SNAPSHOT"/>
@@ -59,6 +60,7 @@
   <classpathentry kind="var" path="M2_REPO/com/alibaba/external/org.slf4j.jcl104-over-slf4j/1.5.6/org.slf4j.jcl104-over-slf4j-1.5.6.jar" sourcepath="M2_REPO/com/alibaba/external/org.slf4j.jcl104-over-slf4j/1.5.6/org.slf4j.jcl104-over-slf4j-1.5.6-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/alibaba/external/org.slf4j.slf4j-api/1.5.6/org.slf4j.slf4j-api-1.5.6.jar" sourcepath="M2_REPO/com/alibaba/external/org.slf4j.slf4j-api/1.5.6/org.slf4j.slf4j-api-1.5.6-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/alibaba/external/org.slf4j.slf4j-log4j12/1.5.6/org.slf4j.slf4j-log4j12-1.5.6.jar" sourcepath="M2_REPO/com/alibaba/external/org.slf4j.slf4j-log4j12/1.5.6/org.slf4j.slf4j-log4j12-1.5.6-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/scala-lang/scala-library/2.9.1-1/scala-library-2.9.1-1.jar" sourcepath="M2_REPO/org/scala-lang/scala-library/2.9.1-1/scala-library-2.9.1-1-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/alibaba/external/script.rhino.js/1.7R1/script.rhino.js-1.7R1.jar" sourcepath="M2_REPO/com/alibaba/external/script.rhino.js/1.7R1/script.rhino.js-1.7R1-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/alibaba/external/sourceforge.cglib/nodep-2.1_3/sourceforge.cglib-nodep-2.1_3.jar" sourcepath="M2_REPO/com/alibaba/external/sourceforge.cglib/nodep-2.1_3/sourceforge.cglib-nodep-2.1_3-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/alibaba/external/sourceforge.freemarker/2.3.15/sourceforge.freemarker-2.3.15.jar" sourcepath="M2_REPO/com/alibaba/external/sourceforge.freemarker/2.3.15/sourceforge.freemarker-2.3.15-sources.jar"/>

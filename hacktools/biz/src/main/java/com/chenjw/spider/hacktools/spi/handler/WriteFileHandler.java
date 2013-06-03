@@ -6,8 +6,7 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
 
-import org.apache.commons.lang.StringUtils;
-
+import com.chenjw.spider.hacktools.mapper.AccountMapper;
 import com.chenjw.spider.hacktools.model.AccountModel;
 import com.chenjw.spider.hacktools.spi.AccountHandler;
 
@@ -36,7 +35,7 @@ public class WriteFileHandler implements AccountHandler {
 		}
 		if(fileWriter!=null){
 			try {
-				fileWriter.write(StringUtils.defaultString(account.getLoginId())+"|"+StringUtils.defaultString(account.getNick())+"|"+StringUtils.defaultString(account.getEmail())+"|"+StringUtils.defaultString(account.getPassword())+"|"+StringUtils.defaultString(account.getMd5()));
+				fileWriter.write(AccountMapper.modelToString(account));
 				fileWriter.write("\n");
 			} catch (IOException e) {
 				e.printStackTrace();

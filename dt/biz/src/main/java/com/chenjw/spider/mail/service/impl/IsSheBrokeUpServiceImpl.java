@@ -79,25 +79,25 @@ public class IsSheBrokeUpServiceImpl implements IsSheBrokeUpService,
 
 	@Override
 	public void afterPropertiesSet() throws Exception {
-		if (!EnvConstants.isProductMode()) {
+		if (!"true".equals(EnvConstants.getValue("isAutoFatch"))) {
 			return;
 		}
-		// new Thread(new Runnable() {
-		//
-		// @Override
-		// public void run() {
-		// while (true) {
-		// try {
-		// check();
-		// Thread.sleep(24 * 60 * 60 * 1000);
-		// } catch (Exception e) {
-		// e.printStackTrace();
-		// }
-		// }
-		//
-		// }
-		//
-		// }).start();
+		new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				while (true) {
+					try {
+						check();
+						Thread.sleep(24 * 60 * 60 * 1000);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+
+			}
+
+		}).start();
 
 	}
 

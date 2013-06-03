@@ -1,7 +1,5 @@
 package com.chenjw.spider.hacktools.spi.convertor;
 
-import java.io.UnsupportedEncodingException;
-
 import org.apache.commons.lang.StringUtils;
 
 import com.chenjw.spider.hacktools.model.AccountModel;

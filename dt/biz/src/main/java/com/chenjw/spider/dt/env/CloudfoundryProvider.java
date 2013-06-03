@@ -110,5 +110,10 @@ public class CloudfoundryProvider  extends BaseProvider {
 		return instanceIndex;
 	}
 
+	@Override
+	public boolean isProductMode() {
+		return true;
+	}
+
 
 }

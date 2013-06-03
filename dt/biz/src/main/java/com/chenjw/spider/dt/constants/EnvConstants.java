@@ -14,7 +14,7 @@ public class EnvConstants {
 		return String.valueOf(EnvConstants.getEnvProvider().getProperties().get(key));
 	}
 
-	public static boolean isProductMode() {
+	public static boolean isProductMode1() {
 		// return true;
 		return !"local".equals(EnvProviderHolder.instance.getName());
 	}

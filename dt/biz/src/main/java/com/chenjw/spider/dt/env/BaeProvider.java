@@ -21,6 +21,8 @@ public class BaeProvider extends BaseProvider {
 		return "bae";
 	}
 
+
+	
 	@Override
 	public int getInstanceCount() {
 		return 1;
@@ -29,6 +31,14 @@ public class BaeProvider extends BaseProvider {
 	@Override
 	public int getInstanceIndex() {
 		return 0;
+	}
+
+
+
+
+	@Override
+	public boolean isProductMode() {
+		return true;
 	}
 
 

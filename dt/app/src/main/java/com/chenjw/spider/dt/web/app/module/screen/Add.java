@@ -9,6 +9,6 @@ public class Add {
 
 	public void execute(Context context,
 			Navigator navigator) {
-		context.put("isProductMode", EnvConstants.isProductMode());
+		context.put("isProductMode", EnvConstants.getEnvProvider().isProductMode());
 	}
 }

@@ -140,6 +140,8 @@
           <string>WEB-INF/lib/jdbc.mysql.mysql-connector-5.1.12.jar</string>
           <string>WEB-INF/lib/mail-1.4.3.jar</string>
           <string>WEB-INF/lib/activation-1.1.jar</string>
+          <string>WEB-INF/lib/akka-actor-2.0.jar</string>
+          <string>WEB-INF/lib/scala-library-2.9.1-1.jar</string>
           <string>WEB-INF/lib/dt.web.app-1.0-SNAPSHOT.jar</string>
           <string>WEB-INF/lib/webx3.core-3.0.6.jar</string>
           <string>WEB-INF/lib/org.slf4j.slf4j-api-1.5.6.jar</string>

@@ -14,4 +14,7 @@ public interface EnvProvider {
 	public boolean isEnable();
 
 	public String getName();
+
+	
+	public boolean isProductMode();
 }

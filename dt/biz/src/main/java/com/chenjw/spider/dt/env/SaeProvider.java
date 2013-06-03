@@ -28,4 +28,9 @@ public class SaeProvider  extends BaseProvider {
 	public int getInstanceIndex() {
 		return 0;
 	}
+
+	@Override
+	public boolean isProductMode() {
+		return true;
+	}
 }

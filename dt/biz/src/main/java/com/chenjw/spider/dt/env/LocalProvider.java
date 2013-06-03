@@ -31,4 +31,10 @@ public class LocalProvider  extends BaseProvider {
 	}
 
 
+	@Override
+	public boolean isProductMode() {
+		return false;
+	}
+
+
 }
