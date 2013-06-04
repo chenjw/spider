@@ -6,10 +6,10 @@ import akka.actor.UntypedActor;
 import akka.actor.UntypedActorFactory;
 import akka.routing.RoundRobinRouter;
 
-import com.chenjw.spider.hacktools.test.ResultCallback;
 import com.chenjw.spider.hacktools.test.actor.message.HandleFinishMessage;
 import com.chenjw.spider.hacktools.test.actor.message.HandleMessage;
 import com.chenjw.spider.hacktools.test.actor.message.JobMessage;
+import com.chenjw.spider.hacktools.test.spi.ResultCallback;
 
 public class HandleWorker extends AbstractWorker {
 	private ResultCallback resultCallback;

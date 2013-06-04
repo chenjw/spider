@@ -1,0 +1,34 @@
+akka {
+	loglevel = "DEBUG"
+	actor {
+		default-dispatcher {
+	      	type = "Dispatcher"
+	      	executor = "thread-pool-executor"
+	      	fork-join-executor {
+		        parallelism-min = 8
+		        parallelism-factor = 3.0
+		        parallelism-max = 64
+	      	}
+			thread-pool-executor {
+				keep-alive-time = 60s
+		        core-pool-size-min = 8
+		        core-pool-size-factor = 3.0
+		        core-pool-size-max = 64
+		        max-pool-size-min = 8
+		        max-pool-size-factor  = 3.0
+		        max-pool-size-max = 64
+		        task-queue-size = -1
+		        task-queue-type = "linked"
+		        allow-core-timeout = on
+			}
+			shutdown-timeout = 1s
+			throughput = 5
+			throughput-deadline-time = 0ms
+			mailbox-capacity = -1
+			mailbox-push-timeout-time = 10s
+			mailbox-type = ""
+			attempt-teamwork = on
+			stash-capacity = -1
+		}
+  	}
+}
