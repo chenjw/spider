@@ -27,7 +27,11 @@ public class DefaultTaskExecutor implements TaskExecutor {
 		executorService.execute(new Runnable() {
 			@Override
 			public void run() {
-				task.execute();
+				try {
+                    task.execute();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
 			}
 		});
 		// task.execute();

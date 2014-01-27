@@ -2,8 +2,7 @@ package com.chenjw.spider;
 
 public interface Task {
 
-	public void execute();
+	public void execute() throws Exception ;
 
-	public Object getContextKey();
 
 }

@@ -10,7 +10,7 @@ public class Page {
 
 	private ErrorCodeEnum errorCode;
 
-	private Map<String, String> context;
+	private Map<String, Object> context;
 
 	public boolean isSuccess() {
 		return isSuccess;
@@ -28,11 +28,11 @@ public class Page {
 		this.errorCode = errorCode;
 	}
 
-	public Map<String, String> getContext() {
+	public Map<String, Object> getContext() {
 		return context;
 	}
 
-	public void setContext(Map<String, String> context) {
+	public void setContext(Map<String, Object> context) {
 		this.context = context;
 	}
 

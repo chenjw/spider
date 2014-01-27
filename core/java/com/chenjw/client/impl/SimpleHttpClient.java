@@ -1,214 +1,225 @@
 package com.chenjw.client.impl;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.concurrent.ConcurrentHashMap;
 
-import org.apache.commons.httpclient.DefaultHttpMethodRetryHandler;
-import org.apache.commons.httpclient.HttpException;
-import org.apache.commons.httpclient.HttpMethod;
-import org.apache.commons.httpclient.HttpMethodRetryHandler;
-import org.apache.commons.httpclient.HttpStatus;
-import org.apache.commons.httpclient.MultiThreadedHttpConnectionManager;
-import org.apache.commons.httpclient.NameValuePair;
-import org.apache.commons.httpclient.methods.GetMethod;
-import org.apache.commons.httpclient.methods.PostMethod;
-import org.apache.commons.httpclient.params.HttpClientParams;
-import org.apache.commons.httpclient.params.HttpConnectionParams;
-import org.apache.commons.httpclient.params.HttpMethodParams;
-import org.apache.commons.httpclient.params.HttpParams;
-import org.apache.commons.httpclient.protocol.Protocol;
-import org.apache.commons.io.IOUtils;
+import javax.net.ssl.SSLContext;
+
 import org.apache.commons.lang.StringUtils;
+import org.apache.http.Header;
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.CookieStore;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.HttpUriRequest;
+import org.apache.http.client.protocol.ClientContext;
+import org.apache.http.conn.ConnectTimeoutException;
+import org.apache.http.conn.ConnectionPoolTimeoutException;
+import org.apache.http.conn.scheme.PlainSocketFactory;
+import org.apache.http.conn.scheme.Scheme;
+import org.apache.http.conn.scheme.SchemeRegistry;
+import org.apache.http.conn.ssl.SSLSocketFactory;
+import org.apache.http.cookie.Cookie;
+import org.apache.http.entity.ContentType;
+import org.apache.http.impl.client.BasicCookieStore;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.conn.PoolingClientConnectionManager;
+import org.apache.http.params.HttpConnectionParams;
+import org.apache.http.params.HttpParams;
+import org.apache.http.protocol.BasicHttpContext;
+import org.apache.http.protocol.HttpContext;
+import org.apache.http.util.EntityUtils;
 
-import com.chenjw.client.HttpClient;
+import com.chenjw.client.TheHttpClient;
 import com.chenjw.client.exception.ErrorCodeEnum;
 import com.chenjw.client.exception.HttpClientException;
+import com.chenjw.logger.Logger;
 
-public class SimpleHttpClient implements HttpClient {
-	private int connectionTimeout = 3000;
-	private int timeoutInMilliseconds = 5000;
-	private int httpConnectionTimeout = 100000;
-	private int socketTimeout = 100000;
 
-	private int maxTotalConnections = 100;
-	private MultiThreadedHttpConnectionManager connManager = null;
-	private HttpMethodRetryHandler httpRequestRetryHandler = new DefaultHttpMethodRetryHandler(
-			3, true);
+public class SimpleHttpClient implements TheHttpClient {
+    public static final Logger LOGGER = Logger.getLogger(SimpleHttpClient.class);
+    private int                         httpConnectionTimeout = 100000;
+    private int                         socketTimeout         = 100000;
 
-	private HttpParams httpParams;
+    private int                         maxTotalConnections   = 100;
+    private PoolingClientConnectionManager connManager           = null;
+    private Map<String, CookieStore>    cookieStores          = new ConcurrentHashMap<String, CookieStore>();
+    /** 位置key */
+    public static final String          LOCATION_KEY = "Location";
+    public void init() {
+        connManager = new PoolingClientConnectionManager();
+        connManager.setMaxTotal(maxTotalConnections);
+        connManager.setDefaultMaxPerRoute(40);
+        SSLContext ctx = MySSLSocketFactory.createSSLContext();
+        SSLContext.setDefault(ctx);
+        SSLSocketFactory ssf = new SSLSocketFactory(ctx);
+        SchemeRegistry sr = connManager.getSchemeRegistry();
+        //注册支持的http连接模式
+        sr.register(new Scheme("https", 443, ssf));
+        sr.register(new Scheme("http", 80, PlainSocketFactory.getSocketFactory()));
 
-	public void init() {
-		HttpConnectionParams httpParams = new HttpConnectionParams();
-		httpParams.setConnectionTimeout(httpConnectionTimeout);
-		/* 连接超时 */
-		httpParams.setSoTimeout(socketTimeout);
+    }
 
-		Protocol myhttps = new Protocol("https", new MySSLSocketFactory(), 443);
-		Protocol.registerProtocol("https", myhttps);
-		connManager = new MultiThreadedHttpConnectionManager();
-		connManager.setMaxTotalConnections(maxTotalConnections);
-		connManager.setMaxConnectionsPerHost(40);
+    private HttpClient getHttpClient() {
+        HttpClient httpClient = new DefaultHttpClient(connManager);
+        HttpParams params = httpClient.getParams();
+        HttpConnectionParams.setConnectionTimeout(params, httpConnectionTimeout);
+        HttpConnectionParams.setSoTimeout(params, socketTimeout);
+        return httpClient;
+    }
 
-	}
+    private String prepareUrl(String url, Map<String, String> params, String encoding) {
+        boolean isUrlHasParam = url.indexOf("?") != -1;
+        StringBuffer sb = new StringBuffer(url);
+        if (params != null) {
+            boolean isFirst = true;
+            for (Entry<String, String> entry : params.entrySet()) {
+                if (!StringUtils.isBlank(entry.getValue())) {
+                    if (!isUrlHasParam && isFirst) {
+                        sb.append('?');
+                        isFirst = false;
+                    } else {
+                        sb.append('&');
+                    }
+                    try {
+                        sb.append(entry.getKey()).append('=')
+                            .append(URLEncoder.encode(entry.getValue(), encoding));
+                    } catch (UnsupportedEncodingException e) {
+                        //
+                    }
+                }
+            }
+        }
+        return sb.toString();
+    }
 
-	private String prepareUrl(String url, Map<String, String> params,
-			String encoding) {
-		boolean isUrlHasParam = url.indexOf("?") != -1;
-		StringBuffer sb = new StringBuffer(url);
-		if (params != null) {
-			boolean isFirst = true;
-			for (Entry<String, String> entry : params.entrySet()) {
-				if (!StringUtils.isBlank(entry.getValue())) {
-					if (!isUrlHasParam && isFirst) {
-						sb.append('?');
-						isFirst = false;
-					} else {
-						sb.append('&');
-					}
-					try {
-						sb.append(entry.getKey())
-								.append('=')
-								.append(URLEncoder.encode(entry.getValue(),
-										encoding));
-					} catch (UnsupportedEncodingException e) {
-						//
-					}
-				}
-			}
-		}
-		return sb.toString();
-	}
-
-	@Override
-	public String get(String url, Map<String, String> params, String encoding,
-			String cookie) throws HttpClientException {
+    /**
+     * 设置http头
+     * @param request
+     */
+    private void setHeaders(HttpUriRequest request) {
+        request.setHeader("Content-Type", "application/x-www-form-urlencoded");
+        request.setHeader("Accept", "text/html,application/xhtml+xml,application/xml;");
+        request.setHeader("Accept-Language", "zh-cn");
+        request
+            .setHeader("User-Agent",
+                "Mozilla/5.0 (Windows; U; Windows NT 5.1; zh-CN; rv:1.9.0.3) Gecko/2008092417 Firefox/3.0.3");
+        request.setHeader("Accept-Charset", "UTF-8");
+        request.setHeader("Keep-Alive", "600");
+        request.setHeader("Connection", "Keep-Alive");
+        request.setHeader("Cache-Control", "no-cache");
+    }
+    
+    @Override
+	public String get(String sessionId,String url, Map<String, String> params, String encoding) throws HttpClientException {
 		String realUrl = prepareUrl(url, params, encoding);
-		// System.out.println("url=" + realUrl);
-		GetMethod method = new GetMethod(realUrl);
-		if (cookie != null) {
-			method.addRequestHeader("Cookie", cookie);
-		}
-		String result = excuteMethod(method, encoding);
-		// System.out.println(result);
-		return result;
+		HttpGet method = new HttpGet(realUrl);
+		HttpRequestResult result = excuteMethod(sessionId,method, encoding);
+		return result.getContent();
 	}
 
-	@Override
-	public String post(String url, Map<String, String> params, String encoding,
-			String cookie) throws HttpClientException {
-		String realUrl = url;
-		// System.out.println("url=" + realUrl);
-		PostMethod method = new PostMethod(realUrl);
-		for (Entry<String, String> entry : params.entrySet()) {
-			method.addParameter(new NameValuePair(entry.getKey(), entry
-					.getValue()));
-		}
-		// String cookie =
-		// "240=240; CurLoginUserGUID=a44e6f49751b4d8b9659636ae20540d6; strCertificate=410df02a24354be8bb194aeec0829589;";
-		if (cookie != null) {
-			method.addRequestHeader("Cookie", cookie);
-		}
-		String result = excuteMethod(method, encoding);
-		// System.out.println(result);
-		return result;
-	}
+    @Override
+    public String post(String sessionId, String url, Map<String, String> params, String encoding) throws HttpClientException  {      
+        String realUrl = url;
+        HttpPost request = new HttpPost(realUrl);
+        if(params!=null){
+            for(Entry<String,String> entry:params.entrySet()){
+                request.getParams().setParameter(entry.getKey(), entry.getValue());
+            }
+        }
+        HttpRequestResult result = excuteMethod(sessionId,request, encoding);
+        return result.getContent();        
+    }
+    
+    
+    /**
+     * 更新http上下文
+     * @param sessionId
+     * @param context
+     */
+    public void updateHttpContext(String sessionId, HttpContext context) {
+        if (StringUtils.isBlank(sessionId)) {
+            return;
+        }
+        CookieStore cookieStore = (CookieStore) context.getAttribute(ClientContext.COOKIE_STORE);
+        cookieStores.put(sessionId, cookieStore);
+    }
+    
+    private void logRequest(HttpUriRequest request,HttpContext context){
+        LOGGER.debug("******request************");
+        LOGGER.debug(request.getRequestLine().toString());
+        for(Header header:request.getAllHeaders()){
+            LOGGER.debug(header.toString());
+        }
+        CookieStore cookieStore = (CookieStore) context.getAttribute(ClientContext.COOKIE_STORE);
+        for(Cookie cookie:cookieStore.getCookies()){
+            LOGGER.debug("[COOKIE] "+cookie);
+        }
+       
+        LOGGER.debug("******request************");
+    }
+    
+    private void logResponse(HttpResponse response){
+        LOGGER.debug("******response************");
+        LOGGER.debug(response.getStatusLine().toString());
+        for(Header header:response.getAllHeaders()){
+            LOGGER.debug(header.toString());
+        }
+        LOGGER.debug("******response************");
+    }
 
-	public String excuteMethod(HttpMethod method, String encoding)
-			throws HttpClientException {
-		int responseCode = -1;
-		try {
-			method.getParams().setParameter(HttpMethodParams.RETRY_HANDLER,
-					httpRequestRetryHandler);
-			org.apache.commons.httpclient.HttpClient client = this
-					.createHttpClient();
-			client.executeMethod(method);
-			responseCode = method.getStatusCode();
-			if (responseCode != HttpStatus.SC_OK) {
-				throw new HttpClientException(ErrorCodeEnum.NOT_FOUND_ERROR,
-						"responseCode:" + responseCode);
-			} else {
-				InputStream is = method.getResponseBodyAsStream();
-				try {
-					return IOUtils.toString(is, encoding);
-				} finally {
-					IOUtils.closeQuietly(is);
-				}
-			}
-		} catch (HttpException e) {
-			throw new HttpClientException(ErrorCodeEnum.SYSTEM_ERROR,
-					"HttpException", e);
-		} catch (IOException e) {
-			throw new HttpClientException(ErrorCodeEnum.SYSTEM_ERROR,
-					"HttpException", e);
-		} finally {
-			method.releaseConnection();
-		}
+    public HttpRequestResult excuteMethod(String sessionId,HttpUriRequest request, String encoding) throws HttpClientException {
+        HttpRequestResult result=new HttpRequestResult();
+        HttpContext context =null;
+        if(sessionId!=null){
+            context=getHttpContext(sessionId);
+        }
+        HttpClient httpClient = getHttpClient();
+        try {
+            setHeaders(request);
+            logRequest(request,context);
+            
+            HttpResponse response = httpClient.execute(request, context);
+            logResponse(response);
+           
+            
+            HttpEntity entity = response.getEntity();
+            result.setContentType(ContentType.getOrDefault(entity));
+            result.setBytes(EntityUtils.toByteArray(entity));
+            EntityUtils.consume(entity);
+            updateHttpContext(sessionId, context);
+        } catch (ConnectionPoolTimeoutException e) {
+            LOGGER.error("执行HTTP请求失败,从线程池中获取连接超时", e);
+            throw new HttpClientException(ErrorCodeEnum.SYSTEM_ERROR, e);
+        } catch (ConnectTimeoutException e) {
+            LOGGER.error("执行HTTP请求失败,连接超时", e);
+            throw new HttpClientException(ErrorCodeEnum.SYSTEM_ERROR, e);
+        } catch (Exception e) {
+            if (e instanceof HttpClientException) {
+                HttpClientException c = (HttpClientException) e;
+                throw c;
+            }
+            LOGGER.error("执行HTTP请求失败", e);
+        } 
+        return result;
+    }
 
-	}
+    public HttpContext getHttpContext(String sessionId) {
+        HttpContext context = new BasicHttpContext();
+        if (!StringUtils.isBlank(sessionId)) {
+            CookieStore cookieStore=cookieStores.get(sessionId);
+            if(cookieStore==null){
+                cookieStore = new BasicCookieStore();
+            }
+            context.setAttribute(ClientContext.COOKIE_STORE, cookieStore);
+        }
+        return context;
+    }
 
-	/**
-	 * 处理http请求的返回结果
-	 * 
-	 * @param responseCode
-	 * @param method
-	 * @return
-	 * @throws IOException
-	 */
-	// private String handleResult(HttpResponse response,
-	// HttpUriRequest httpMethod, String encoding)
-	// throws HttpClientException {
-	// int responseCode = response.getStatusLine().getStatusCode();
-	// if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
-	//
-	// HttpEntity entity = response.getEntity();
-	//
-	// if (entity != null) {
-	// String result = null;
-	// try {
-	// result = EntityUtils.toString(entity, encoding);
-	// } catch (ParseException e) {
-	// throw new HttpClientException(ErrorCodeEnum.SYSTEM_ERROR,
-	// "ParseException", e);
-	// } catch (IOException e) {
-	// throw new HttpClientException(ErrorCodeEnum.SYSTEM_ERROR,
-	// "IOException", e);
-	// }
-	// return result;
-	// }
-	// }
-	// throw new HttpClientException(ErrorCodeEnum.NOT_FOUND_ERROR,
-	// "responseCode : " + responseCode);
-	//
-	// }
 
-	private org.apache.commons.httpclient.HttpClient createHttpClient() {
-		HttpClientParams clientParams = new HttpClientParams();
-		org.apache.commons.httpclient.HttpClient httpClient = new org.apache.commons.httpclient.HttpClient(
-				clientParams, connManager);
-		return httpClient;
-	}
-
-	public static void main(String[] args) throws HttpClientException {
-		SimpleHttpClient c = new SimpleHttpClient();
-		c.init();
-		String cookie = "240=240; CurLoginUserGUID=a44e6f49751b4d8b9659636ae20540d6; strCertificate=410df02a24354be8bb194aeec0829589;";
-		// String s = c
-		// .get("http://res.gsjy.net/PLWeb/protect.aspx?AuthorizedInfo=%3cUserInfo%3e%3cCertificate%3e410df02a24354be8bb194aeec0829589%3c%2fCertificate%3e%3cUserId%3eFaa3rxGTExepUXV%2b2x3qLA%3d%3d%3c%2fUserId%3e%3cExpiredDate%3eqgTJ2eNxOozYDJJ6WlK7pee%2fNtTHmkegIfDookIcqQM%3d%3c%2fExpiredDate%3e%3cAuthorizedDate%3e2%2bkqOdYv2461V2Y6IEgpLICxMaD%2bv766ByLgMZGJiwY%3d%3c%2fAuthorizedDate%3e%3c%2fUserInfo%3e",
-		// new HashMap(), "UTF-8");
-		// System.out.println(s);
-		for (int i = 0; i < 111; i++) {
-			// c.get("http://res.gsjy.net/PLWeb/GroupManage.aspx?GroupInfoID=240",
-			// new HashMap(), "UTF-8");
-			c.get("http://res.gsjy.net/PLWeb/Common/DownAttach.aspx?ResID=68004ee21f4c489d9c0c14da482d4ed4&flag=Yes&GID=240",
-					new HashMap(), "UTF-8", cookie);
-
-		}
-
-		// System.out.println(s);
-	}
 }
