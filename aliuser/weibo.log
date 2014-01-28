@@ -69,3 +69,27 @@
 233  INFO  [2014-01-28 03:07:33]  Loading XML bean definitions from class path resource [bean/aliuser.xml]
 246  INFO  [2014-01-28 03:07:33]  Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@5265a77f]: org.springframework.beans.factory.support.DefaultListableBeanFactory@5ece2187
 270  INFO  [2014-01-28 03:07:33]  Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@5ece2187: defining beans [httpClient,com.chenjw.dynacomponent.ComponentManager#0,aliUserService,actorService,aliUserDAO]; root of factory hierarchy
+0    INFO  [2014-01-28 13:33:56]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@fd7ad1c: display name [org.springframework.context.support.ClassPathXmlApplicationContext@fd7ad1c]; startup date [Tue Jan 28 13:33:56 CST 2014]; root of context hierarchy
+95   INFO  [2014-01-28 13:33:56]  Loading XML bean definitions from class path resource [bean/main.xml]
+245  INFO  [2014-01-28 13:33:56]  Loading XML bean definitions from class path resource [bean/common.xml]
+306  INFO  [2014-01-28 13:33:56]  Loading XML bean definitions from class path resource [bean/aliuser.xml]
+317  INFO  [2014-01-28 13:33:56]  Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@fd7ad1c]: org.springframework.beans.factory.support.DefaultListableBeanFactory@76f8968f
+341  INFO  [2014-01-28 13:33:56]  Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@76f8968f: defining beans [httpClient,com.chenjw.dynacomponent.ComponentManager#0,aliUserService,actorService,aliUserDAO]; root of factory hierarchy
+0    INFO  [2014-01-28 13:34:14]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@fd7ad1c: display name [org.springframework.context.support.ClassPathXmlApplicationContext@fd7ad1c]; startup date [Tue Jan 28 13:34:14 CST 2014]; root of context hierarchy
+84   INFO  [2014-01-28 13:34:14]  Loading XML bean definitions from class path resource [bean/main.xml]
+202  INFO  [2014-01-28 13:34:14]  Loading XML bean definitions from class path resource [bean/common.xml]
+266  INFO  [2014-01-28 13:34:14]  Loading XML bean definitions from class path resource [bean/aliuser.xml]
+279  INFO  [2014-01-28 13:34:14]  Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@fd7ad1c]: org.springframework.beans.factory.support.DefaultListableBeanFactory@76f8968f
+296  INFO  [2014-01-28 13:34:14]  Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@76f8968f: defining beans [httpClient,com.chenjw.dynacomponent.ComponentManager#0,aliUserService,actorService,aliUserDAO]; root of factory hierarchy
+0    INFO  [2014-01-28 13:39:38]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5265a77f: display name [org.springframework.context.support.ClassPathXmlApplicationContext@5265a77f]; startup date [Tue Jan 28 13:39:38 CST 2014]; root of context hierarchy
+68   INFO  [2014-01-28 13:39:38]  Loading XML bean definitions from class path resource [bean/main.xml]
+188  INFO  [2014-01-28 13:39:38]  Loading XML bean definitions from class path resource [bean/common.xml]
+237  INFO  [2014-01-28 13:39:38]  Loading XML bean definitions from class path resource [bean/aliuser.xml]
+257  INFO  [2014-01-28 13:39:38]  Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@5265a77f]: org.springframework.beans.factory.support.DefaultListableBeanFactory@2efb56b1
+278  INFO  [2014-01-28 13:39:38]  Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@2efb56b1: defining beans [httpClient,com.chenjw.dynacomponent.ComponentManager#0,aliUserService,actorService,aliUserDAO]; root of factory hierarchy
+1    INFO  [2014-01-28 14:30:14]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5265a77f: display name [org.springframework.context.support.ClassPathXmlApplicationContext@5265a77f]; startup date [Tue Jan 28 14:30:14 CST 2014]; root of context hierarchy
+89   INFO  [2014-01-28 14:30:14]  Loading XML bean definitions from class path resource [bean/main.xml]
+256  INFO  [2014-01-28 14:30:14]  Loading XML bean definitions from class path resource [bean/common.xml]
+347  INFO  [2014-01-28 14:30:14]  Loading XML bean definitions from class path resource [bean/aliuser.xml]
+364  INFO  [2014-01-28 14:30:14]  Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@5265a77f]: org.springframework.beans.factory.support.DefaultListableBeanFactory@2efb56b1
+392  INFO  [2014-01-28 14:30:14]  Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@2efb56b1: defining beans [httpClient,com.chenjw.dynacomponent.ComponentManager#0,aliUserService,actorService,aliUserDAO]; root of factory hierarchy

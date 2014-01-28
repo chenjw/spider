@@ -6,7 +6,7 @@ public class AliUserServiceImpl implements AliUserService {
 
     private ActorService actorService;
     public void start() {
-        actorService.send(new LoginActor());
+        actorService.send(new StatActor());
     }
     public void setActorService(ActorService actorService) {
         this.actorService = actorService;
