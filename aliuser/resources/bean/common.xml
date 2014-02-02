@@ -4,7 +4,7 @@
 
 
 	
-	<bean id="httpClient" class="com.chenjw.client.impl.SimpleHttpClient" init-method="init" >
+	<bean id="httpClient" class="com.chenjw.client.impl.HtmlUnitHttpClient" init-method="init" >
 	</bean>
 
 	<!-- 下面是动态组件部分的配置 -->

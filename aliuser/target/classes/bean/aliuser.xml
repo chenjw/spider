@@ -4,7 +4,7 @@
 	<bean id="aliUserService" class="com.chenjw.spider.aliuser.impl.AliUserServiceImpl" >
 	</bean>
 	
-	<bean id="actorService" class="com.chenjw.spider.aliuser.impl.ActorService" >
+	<bean id="actorFactory" class="com.chenjw.spider.aliuser.ActorFactory" >
 	</bean>
 
 	<bean id="aliUserDAO" class="com.chenjw.spider.aliuser.dao.impl.AliUserDAOImpl">

@@ -10,15 +10,15 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-import com.chenjw.spider.aliuser.Actor;
-import com.chenjw.spider.aliuser.Sender;
+import akka.actor.Actor;
+
 import com.chenjw.spider.aliuser.model.AliUserInfo;
 import com.chenjw.tools.BeanCopyUtils;
 import com.csvreader.CsvReader;
 
-public class StatActor implements Actor {
+public class StatActor {
 
-    public void action(Sender sender) throws Exception {
+    public void action() throws Exception {
         CsvReader csvReader = new CsvReader("/home/chenjw/test/2014-01-27.csv", ',',
             Charset.forName("UTF-8"));
         csvReader.readHeaders();
