@@ -1,14 +1,8 @@
 package com.chenjw.spider.hacktools.spi.visitor;
 
-import java.io.File;
-
-import akka.actor.UntypedActor;
-
-import com.chenjw.spider.hacktools.model.AccountModel;
 import com.chenjw.spider.hacktools.spi.AccountHandler;
 import com.chenjw.spider.hacktools.spi.Convertor;
 import com.chenjw.spider.hacktools.spi.constants.VisitorActionEnum;
-import com.chenjw.spider.hacktools.spi.visitor.Pi.PiApproximation;
 import com.chenjw.spider.hacktools.utils.ThreadPoolFactory;
 
 

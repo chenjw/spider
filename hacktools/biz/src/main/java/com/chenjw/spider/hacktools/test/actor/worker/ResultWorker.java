@@ -20,7 +20,7 @@ public class ResultWorker extends AbstractWorker {
 		if (message instanceof JobFinishMessage) {
 			finishedNum++;
 			if (finishedNum >= num) {
-				listener.tell(new HandleFinishMessage());
+				listener.tell(new HandleFinishMessage(),listener);
 			}
 		}
 	}

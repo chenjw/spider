@@ -53,7 +53,7 @@ public class CheckFileEncodingWorker extends AbstractWorker {
 					//resultWorker.tell(new StartMessage());
 	
 					if (!iter.hasNext()) {
-						resultWorker.tell(new AllStartedMessage());
+						resultWorker.tell(new AllStartedMessage(),resultWorker);
 					}
 					ActorRef checkLineEncodingWorker = this.getContext()
 							.actorOf(new Props(new UntypedActorFactory() {
@@ -64,7 +64,7 @@ public class CheckFileEncodingWorker extends AbstractWorker {
 							}));
 					
 					checkLineEncodingWorker.tell(new LineEncodingMessage(line,
-							encoding));
+							encoding),checkLineEncodingWorker);
 					
 
 				}

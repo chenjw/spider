@@ -52,13 +52,14 @@ public class FolderWorker extends AbstractWorker {
 									}
 								})).tell(new FolderMessage(f), getSelf());
 					} else if (f.isFile()) {
-						this.getContext()
+					    ActorRef actor=	this.getContext()
 								.actorOf(new Props(new UntypedActorFactory() {
 									public UntypedActor create() {
 										return new FileWorker(visitor,
 												getSelf());
 									}
-								})).tell(new FileMessage(f));
+								}));
+					    actor.tell(new FileMessage(f),actor);
 					}
 				}
 			} finally {

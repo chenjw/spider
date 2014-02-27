@@ -42,22 +42,22 @@ public class GetFileEncodingWorker extends AbstractWorker {
 			int index = result.index;
 			String encoding = result.encoding;
 			if (result.isSuccess) {
-				listener.tell(new EncodingMessage(encoding));
+				listener.tell(new EncodingMessage(encoding),listener);
 				return;
 			}
 			index++;
 			if (index >= ENCODINGS.length) {
-				listener.tell(new EncodingMessage(null));
+				listener.tell(new EncodingMessage(null),listener);
 				return;
 			} else {
-				this.getContext()
+			    ActorRef actor=	this.getContext()
 						.actorOf(new Props(new UntypedActorFactory() {
 							public UntypedActor create() {
 								return new CheckFileEncodingWorker(self());
 							}
-						}))
-						.tell(new FileEncodingMessage(file, index,
-								ENCODINGS[index]));
+						}));
+			    actor.tell(new FileEncodingMessage(file, index,
+								ENCODINGS[index]),actor);
 			}
 		}
 	}

@@ -48,7 +48,7 @@ public class ActorResourceParser {
 							return new FolderWorker(visitor, listener);
 						}
 					}));
-			master.tell(new FolderMessage(file));
+			master.tell(new FolderMessage(file),master);
 			// visitFolder(file, visitor);
 		} else if (file.isFile()) {
 			ActorRef master = system.actorOf(new Props(
@@ -57,7 +57,7 @@ public class ActorResourceParser {
 							return new FileWorker(visitor, listener);
 						}
 					}));
-			master.tell(new FolderMessage(file));
+			master.tell(new FolderMessage(file),master);
 			// visitFile(file, visitor);
 		}
 		synchronized(lock){

@@ -33,13 +33,13 @@ public class CheckFileEncodingResultWorker extends AbstractWorker {
 			if (isAllSend && doingNum == finishNum) {
 				listener.tell(new FileEncodingCheckResultMessage(
 						fileEncodingMessage.file, fileEncodingMessage.index,
-						fileEncodingMessage.encoding, true));
+						fileEncodingMessage.encoding, true),listener);
 				// getContext().stop(getSelf());
 			}
 		} else if (message instanceof FailMessage) {
 			listener.tell(new FileEncodingCheckResultMessage(
 					fileEncodingMessage.file, fileEncodingMessage.index,
-					fileEncodingMessage.encoding, false));
+					fileEncodingMessage.encoding, false),listener);
 			// getContext().stop(getSelf());
 		} else if (message instanceof AllStartedMessage) {
 			isAllSend = true;

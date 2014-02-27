@@ -42,7 +42,7 @@ public class AkkaTester implements Tester {
 					}
 				}));
 
-		handleWorker.tell(new HandleMessage(handler));
+		handleWorker.tell(new HandleMessage(handler),handleWorker);
 	}
 
 	@Override

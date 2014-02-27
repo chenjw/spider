@@ -25,15 +25,15 @@ public class CheckLineEncodingWorker extends AbstractWorker {
 						&& !line.equals(new String(line.getBytes(encoding),
 								encoding))) {
 
-					listener.tell(new FailMessage());
+					listener.tell(new FailMessage(),listener);
 					return;
 				}
 			} catch (UnsupportedEncodingException e) {
 				e.printStackTrace();
-				listener.tell(new FailMessage());
+				listener.tell(new FailMessage(),listener);
 				return;
 			}
-			listener.tell(new SuccessMessage());
+			listener.tell(new SuccessMessage(),listener);
 		} else {
 			unhandled(message);
 		}

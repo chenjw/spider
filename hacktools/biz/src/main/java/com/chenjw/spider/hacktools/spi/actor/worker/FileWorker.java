@@ -57,12 +57,13 @@ public class FileWorker extends AbstractWorker {
 					if (!iter.hasNext()) {
 						isAllSend = true;
 					}
-					this.getContext()
+					ActorRef actor= this.getContext()
 							.actorOf(new Props(new UntypedActorFactory() {
 								public UntypedActor create() {
 									return new LineWorker(visitor);
 								}
-							})).tell(new LineMessage(line));
+							}));
+					actor.tell(new LineMessage(line),actor);
 					// visitor.enterLine(line);
 				}
 
