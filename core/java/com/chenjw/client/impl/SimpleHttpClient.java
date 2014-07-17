@@ -1,7 +1,10 @@
 package com.chenjw.client.impl;
 
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.concurrent.ConcurrentHashMap;
@@ -10,12 +13,15 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
 import org.apache.http.client.CookieStore;
-import org.apache.http.client.HttpClient;
+import org.apache.http.client.config.RequestConfig;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpUriRequest;
-import org.apache.http.client.protocol.ClientContext;
+import org.apache.http.client.protocol.HttpClientContext;
 import org.apache.http.config.Registry;
 import org.apache.http.config.RegistryBuilder;
 import org.apache.http.conn.ConnectTimeoutException;
@@ -31,6 +37,7 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
+import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.protocol.HttpContext;
 import org.apache.http.util.EntityUtils;
@@ -40,37 +47,40 @@ import com.chenjw.client.exception.HttpClientException;
 import com.chenjw.logger.Logger;
 
 public class SimpleHttpClient implements com.chenjw.client.HttpClient {
-    public static final Logger             LOGGER                = Logger
-                                                                     .getLogger(SimpleHttpClient.class);
-    private int                            httpConnectionTimeout = 100000;
-    private int                            socketTimeout         = 100000;
+    public static final Logger       LOGGER                = Logger
+                                                               .getLogger(SimpleHttpClient.class);
+    private int                      httpConnectionTimeout = 100000;
+    private int                      socketTimeout         = 100000;
 
-    private int                            maxTotalConnections   = 50;
-    private HttpClientBuilder httpClientBuilder;
-    private Map<String, CookieStore>       cookieStores          = new ConcurrentHashMap<String, CookieStore>();
+    private int                      maxTotalConnections   = 30;
+    private int                      defaultMaxPerRoute   = 10;
+    private HttpClientBuilder        httpClientBuilder;
+    private Map<String, CookieStore> cookieStores          = new ConcurrentHashMap<String, CookieStore>();
+    private RequestConfig            requestConfig;
 
     /** 位置key */
 
     public void init() {
-        
-        
-        LayeredConnectionSocketFactory sslsf = new SSLConnectionSocketFactory(MySSLSocketFactory.createSSLContext(),SSLConnectionSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER);
-        Registry<ConnectionSocketFactory> r = RegistryBuilder.<ConnectionSocketFactory>create()
-                .register("http", PlainConnectionSocketFactory.getSocketFactory())
-                .register("https", sslsf)
-                .build();
+
+        LayeredConnectionSocketFactory sslsf = new SSLConnectionSocketFactory(
+            MySSLSocketFactory.createSSLContext(),
+            SSLConnectionSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER);
+        Registry<ConnectionSocketFactory> r = RegistryBuilder.<ConnectionSocketFactory> create()
+            .register("http", PlainConnectionSocketFactory.getSocketFactory())
+            .register("https", sslsf).build();
 
         PoolingHttpClientConnectionManager cm = new PoolingHttpClientConnectionManager(r);
         cm.setMaxTotal(maxTotalConnections);
-        cm.setDefaultMaxPerRoute(10);
-        httpClientBuilder=HttpClients.custom()
-                .setConnectionManager(cm);
+        cm.setDefaultMaxPerRoute(defaultMaxPerRoute);
+        httpClientBuilder = HttpClients.custom().setConnectionManager(cm);
+
+
+        requestConfig = RequestConfig.custom().setSocketTimeout(socketTimeout)
+            .setConnectTimeout(httpConnectionTimeout).build();
     }
 
     private CloseableHttpClient getHttpClient() {
-       return  httpClientBuilder.build();
-  
-       
+        return httpClientBuilder.build();
     }
 
     private String prepareUrl(String url, Map<String, String> params, String encoding) {
@@ -122,6 +132,7 @@ public class SimpleHttpClient implements com.chenjw.client.HttpClient {
                                                                                                 throws HttpClientException {
         String realUrl = prepareUrl(url, params, encoding);
         HttpGet request = new HttpGet(realUrl);
+        request.setConfig(requestConfig);
         HttpRequestResult result = excuteMethod(sessionId, request, encoding);
         return result.getContent();
     }
@@ -131,9 +142,16 @@ public class SimpleHttpClient implements com.chenjw.client.HttpClient {
                                                                                                  throws HttpClientException {
         String realUrl = url;
         HttpPost request = new HttpPost(realUrl);
+        request.setConfig(requestConfig);
         if (params != null) {
+            List<NameValuePair> nvps = new ArrayList<NameValuePair>();
             for (Entry<String, String> entry : params.entrySet()) {
-                request.getParams().setParameter(entry.getKey(), entry.getValue());
+                nvps.add(new BasicNameValuePair(entry.getKey(), entry.getValue()));
+            }
+            try {
+                request.setEntity(new UrlEncodedFormEntity(nvps, encoding));
+            } catch (UnsupportedEncodingException e) {
+                LOGGER.error("encoding not support " + encoding, e);
             }
         }
         HttpRequestResult result = excuteMethod(sessionId, request, encoding);
@@ -151,7 +169,8 @@ public class SimpleHttpClient implements com.chenjw.client.HttpClient {
         if (StringUtils.isBlank(sessionId)) {
             return;
         }
-        CookieStore cookieStore = (CookieStore) context.getAttribute(ClientContext.COOKIE_STORE);
+        CookieStore cookieStore = (CookieStore) context
+            .getAttribute(HttpClientContext.COOKIE_STORE);
         cookieStores.put(sessionId, cookieStore);
     }
 
@@ -161,7 +180,8 @@ public class SimpleHttpClient implements com.chenjw.client.HttpClient {
         for (Header header : request.getAllHeaders()) {
             LOGGER.debug(header.toString());
         }
-        CookieStore cookieStore = (CookieStore) context.getAttribute(ClientContext.COOKIE_STORE);
+        CookieStore cookieStore = (CookieStore) context
+            .getAttribute(HttpClientContext.COOKIE_STORE);
         for (Cookie cookie : cookieStore.getCookies()) {
             LOGGER.debug("[COOKIE] " + cookie);
         }
@@ -185,12 +205,13 @@ public class SimpleHttpClient implements com.chenjw.client.HttpClient {
         if (sessionId != null) {
             context = getHttpContext(sessionId);
         }
-        HttpClient httpClient = getHttpClient();
+        CloseableHttpClient httpClient = getHttpClient();
+        CloseableHttpResponse response = null;
         try {
             setHeaders(request);
             logRequest(request, context);
 
-            HttpResponse response = httpClient.execute(request, context);
+            response = httpClient.execute(request, context);
             logResponse(response);
 
             HttpEntity entity = response.getEntity();
@@ -210,6 +231,14 @@ public class SimpleHttpClient implements com.chenjw.client.HttpClient {
                 throw c;
             }
             LOGGER.error("执行HTTP请求失败", e);
+        } finally {
+            if (response != null) {
+                try {
+                    response.close();
+                } catch (IOException e) {
+                    LOGGER.error("关闭response失败", e);
+                }
+            }
         }
         return result;
     }
@@ -224,7 +253,8 @@ public class SimpleHttpClient implements com.chenjw.client.HttpClient {
                     newCookieStore.addCookie(cookie);
                 }
             }
-            context.setAttribute(ClientContext.COOKIE_STORE, newCookieStore);
+
+            context.setAttribute(HttpClientContext.COOKIE_STORE, newCookieStore);
         }
         return context;
     }

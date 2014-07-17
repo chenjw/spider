@@ -11,7 +11,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.http.client.CookieStore;
-import org.apache.http.client.protocol.ClientContext;
+import org.apache.http.client.protocol.HttpClientContext;
 import org.apache.http.impl.client.BasicCookieStore;
 import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.protocol.HttpContext;
@@ -42,7 +42,7 @@ public class HtmlUnitHttpClient extends SimpleHttpClient {
         if (StringUtils.isBlank(sessionId)) {
             return;
         }
-        CookieStore cookieStore = (CookieStore) context.getAttribute(ClientContext.COOKIE_STORE);
+        CookieStore cookieStore = (CookieStore) context.getAttribute(HttpClientContext.COOKIE_STORE);
         if(cookieStore!=null){
             CookieManager cookieManager=cookieManagers.get(sessionId);
             if(cookieManager==null){
@@ -67,7 +67,7 @@ public class HtmlUnitHttpClient extends SimpleHttpClient {
                     newCookieStore.addCookie(cookie.toHttpClient());
                 }
             }
-            context.setAttribute(ClientContext.COOKIE_STORE, newCookieStore);
+            context.setAttribute(HttpClientContext.COOKIE_STORE, newCookieStore);
         }
         return context;
     }
